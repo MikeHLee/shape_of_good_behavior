@@ -1,0 +1,93 @@
+[14:47:35] 
+[14:47:35] ============================================================
+[14:47:35] GeoDPO Full Pipeline
+[14:47:35] ============================================================
+[14:47:35] Timestamp:  20260122_144735
+[14:47:35] Project:    oasis-training-suite
+[14:47:35] Zone:       us-central1-a
+[14:47:35] Instance:   geodpo-runner
+[14:47:35] GPU:        nvidia-tesla-t4
+[14:47:35] Samples:    50000
+[14:47:35] Steps:      50
+[14:47:35] Results:    /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/results_20260122_144735
+[14:47:35] Log:        /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_144735.log
+[14:47:35] 
+[14:47:35] Mode:       TEST ONLY (setup + teardown, no experiments)
+[14:47:35] 
+[14:47:35] ============================================================
+[14:47:35] [1/5] Creating GPU VM
+[14:47:35] ============================================================
+[14:47:35] This will take 1-2 minutes...
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-8 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-central1-a zone. Alternatively, you can try
+      your request again with a different VM hardware configuration or at a later
+      time. For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-8
+      zone: us-central1-a
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/oasis-training-suite/zones/us-central1-a' does not have
+  enough resources available to fulfill the request.  Try a different zone, or try
+  again later.
+
+[14:48:15] ✅ VM created
+[14:48:15] Waiting 90s for VM startup and driver installation...
+[14:49:45] Verifying VM connectivity...
+WARNING: The private SSH key file for gcloud does not exist.
+WARNING: The public SSH key file for gcloud does not exist.
+WARNING: You do not have an SSH key for gcloud.
+WARNING: SSH keygen will be executed to generate a key.
+Generating public/private rsa key pair.
+Your identification has been saved in /Users/Michaellee/.ssh/google_compute_engine
+Your public key has been saved in /Users/Michaellee/.ssh/google_compute_engine.pub
+The key fingerprint is:
+SHA256:0Y6GgNtT0qW6PiLfTbjNsV4CZ0TjMx0jvFcuT9AFRis Michaellee@ip-192-168-1-208.us-west-2.compute.internal
+The key's randomart image is:
++---[RSA 3072]----+
+|     .+ +o+o.    |
+|   . +.*.=o.     |
+|  . o O.E+o      |
+|   o *.+o=o      |
+|  . = +.S+.      |
+|     B .  .      |
+|    o + .        |
+|. .o.* =         |
+| o..+o*          |
++----[SHA256]-----+
+ERROR: (gcloud.compute.ssh) Could not fetch resource:
+ - The resource 'projects/oasis-training-suite/zones/us-central1-a/instances/geodpo-runner' was not found
+
+[14:49:46] ✅ VM is reachable
+[14:49:46] 
+[14:49:46] ============================================================
+[14:49:46] TEST COMPLETE
+[14:49:46] ============================================================
+[14:49:46] VM was created and is reachable.
+[14:49:46] Teardown will happen automatically...
+[14:49:46] 
+[14:49:46] ============================================================
+[14:49:46] CLEANUP
+[14:49:46] ============================================================
+[14:49:46] Deleting VM 'geodpo-runner'...
+ERROR: (gcloud.compute.instances.delete) Could not fetch resource:
+ - The resource 'projects/oasis-training-suite/zones/us-central1-a/instances/geodpo-runner' was not found
+
+[14:49:47] ⚠️  VM deletion failed or VM not found
+[14:49:47] 
+[14:49:47] ✅ Pipeline completed successfully!
+[14:49:47] Results: /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/results_20260122_144735
+[14:49:47] Log saved to: /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_144735.log

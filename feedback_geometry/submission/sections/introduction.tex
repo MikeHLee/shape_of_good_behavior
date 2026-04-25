@@ -1,0 +1,26 @@
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{The Scalar Reward Problem}
+
+Reinforcement Learning from Human Feedback (RLHF) has emerged as the dominant paradigm for aligning large language models (LLMs) and autonomous agents with human intent \citep{christiano2017deep, ouyang2022training}. The standard recipe involves collecting human preferences over model outputs, training a reward model to predict these preferences, and optimizing a policy to maximize expected cumulative reward. This approach relies on a fundamental assumption: that human preferences can always be faithfully compressed into a scalar reward function $R(s,a) 	o \mathbb{R}$ which induces a total ordering on the output space (i.e., $A \succ B \iff R(A) > R(B)$).
+
+We call this the 	extbf{``scalar hypothesis''}: that human preferences can always be captured by a single number per trajectory. This assumption is mathematically convenient but topologically restrictive. Human preferences are notoriously complex, often exhibiting 	extbf{non-transitivity}, such as cyclic preferences (e.g., $A \succ B \succ C \succ A$) that cannot be represented by any scalar value function.
+
+\subsection{Topological Information Loss in RLHF}
+
+We hypothesize that forcing these nuanced structures into a scalar reward induces \emph{topological information loss}. The reward model learns to flatten loops and ignore inconsistencies, which can result in reward hacking where the agent exploits the model's inability to distinguish between high-quality outputs and those that merely game the scalar metric. 
+
+In this paper, we introduce a novel framework for analyzing the 	extbf{Feedback Geometry} of RLHF. By modeling human feedback as local sections of a reward sheaf, we apply tools from algebraic topology and discrete Hodge theory to detect and quantify inconsistencies in preference data.
+
+Our key contributions are:
+\begin{enumerate}
+    \item 	extbf{Topological Consistency Checking}: We use the first Hodge cohomology group $H^1$ to measure the ``winding number'' of preferences. A non-trivial $H^1$ detects Condorcet cycles that scalar rewards inherently miss.
+    
+    \item 	extbf{Large-Scale Audit of RLHF Data}: We analyze 160,800 Anthropic HH-RLHF prompt pairs and find that approximately 30\% of the data exhibits strong topological inconsistencies ($H^1 
+eq 0$), suggesting that a significant fraction of alignment data is incompatible with scalar models.
+    
+    \item 	extbf{Discrete Hodge-Filtering}: We present an algorithm that decomposes preference signals into gradient (consistent) and cyclic (inconsistent) components. We demonstrate that training reward models only on the gradient component (Hodge-filtering) leads to more stable alignment and prevents agents from exploiting cyclic biases.
+\end{enumerate}
+
+This work provides a mathematically rigorous path for improving the fidelity of RLHF by explicitly accounting for the non-trivial topology of human values.

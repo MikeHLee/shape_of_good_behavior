@@ -1,0 +1,75 @@
+[14:53:46] 
+[14:53:46] ============================================================
+[14:53:46] GeoDPO Full Pipeline
+[14:53:46] ============================================================
+[14:53:46] Timestamp:  20260122_145346
+[14:53:46] Project:    oasis-training-suite
+[14:53:46] Zone:       
+[14:53:46] Instance:   geodpo-runner
+[14:53:46] GPU:        nvidia-tesla-t4
+[14:53:46] Samples:    50000
+[14:53:46] Steps:      50
+[14:53:46] Results:    /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/results_20260122_145346
+[14:53:46] Log:        /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_145346.log
+[14:53:46] 
+[14:53:46] Mode:       TEST ONLY (setup + teardown, no experiments)
+[14:53:48] 
+[14:53:48] ============================================================
+[14:53:48] [1/5] Creating GPU VM
+[14:53:48] ============================================================
+[14:53:48] Trying zones: us-central1-b us-central1-c us-central1-f us-west1-a us-west1-b us-east1-c us-east1-d
+[14:53:48] 
+[14:53:48] Attempting zone: us-central1-b
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-8 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-central1-b zone. Alternatively, you can try
+      your request again with a different VM hardware configuration or at a later
+      time. For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-8
+      zone: us-central1-b
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/oasis-training-suite/zones/us-central1-b' does not have
+  enough resources available to fulfill the request.  Try a different zone, or try
+  again later.
+
+[14:54:32] ✅ VM created in zone: us-central1-b
+[14:54:32] Waiting 90s for VM startup and driver installation...
+[14:54:32] (You can monitor with: tail -f /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_145346.log)
+[14:56:02] Verifying VM connectivity...
+ERROR: (gcloud.compute.ssh) Could not fetch resource:
+ - The resource 'projects/oasis-training-suite/zones/us-central1-b/instances/geodpo-runner' was not found
+
+[14:56:03] ✅ VM is reachable
+[14:56:03] 
+[14:56:03] ============================================================
+[14:56:03] TEST COMPLETE
+[14:56:03] ============================================================
+[14:56:03] VM was created and is reachable.
+[14:56:03] Teardown will happen automatically...
+[14:56:03] 
+[14:56:03] ============================================================
+[14:56:03] CLEANUP
+[14:56:03] ============================================================
+[14:56:03] Deleting VM 'geodpo-runner' in zone 'us-central1-b'...
+ERROR: (gcloud.compute.instances.delete) Could not fetch resource:
+ - The resource 'projects/oasis-training-suite/zones/us-central1-b/instances/geodpo-runner' was not found
+
+[14:56:04] ⚠️  VM deletion failed or VM not found
+[14:56:04] 
+[14:56:04] ✅ Pipeline completed successfully!
+[14:56:04] Results: /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/results_20260122_145346
+[14:56:04] Log saved to: /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_145346.log

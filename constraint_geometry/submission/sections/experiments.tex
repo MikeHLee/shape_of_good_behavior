@@ -1,0 +1,61 @@
+\section{Experiments}
+\label{sec:experiments}
+
+We evaluate the Constraint Geometry framework and SGPO algorithm on two scenarios designed to isolate specific failure modes of standard safe RL: deceptive safety traps and instrumental convergence.
+
+\subsection{Experimental Setup}
+
+\paragraph{Baselines.} We compare our proposed 	extbf{Sheaf-Geodesic Policy Optimization (SGPO)} against three baselines:
+\begin{enumerate}
+    \item 	extbf{Random}: Uniformly random action selection.
+    \item 	extbf{PPO} (Proximal Policy Optimization) \citep{schulman2017proximal}: The standard algorithm for RL, representing the scalar reward hypothesis.
+    \item 	extbf{CPO} (Constrained Policy Optimization) \citep{achiam2017constrained}: We use the Lagrangian relaxation variant, which converts hard cost constraints into soft penalties $\lambda \cdot (	ext{cost} - d)$.
+\end{enumerate}
+
+\paragraph{Metrics.} We evaluate agents on 	extbf{Safety Violation Rate} (\% of episodes entering forbidden regions) and 	extbf{Goal Performance} (task reward achieved without violating safety).
+
+\begin{table}[t]
+\caption{Comparison across methods. SGPO achieves zero safety violations while baselines fail on deceptive traps.}
+\label{tab:main_results}
+\centering
+\small
+\begin{tabular}{@{}lccc@{}}
+	oprule
+	extbf{Method} & 	extbf{Viol.\%} & 	extbf{Reward} & 	extbf{Speed} 
+\midrule
+Random & 27.0\% & 0.60 & -- 
+PPO & 40.0\% & 1.27 & 1.0$	imes$ 
+CPO & 37.8\% & 1.23 & 1.2$	imes$ 
+SGPO (ours) & 	extbf{0.0\%} & 	extbf{0.53} & 1.8$	imes$ 
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Geometric Safety (Ethical Scenarios)}
+
+\paragraph{Setting.} We evaluate agents on two deceptive ethical scenarios: 	extbf{Murky Drone} (instrumental convergence trap) and 	extbf{Agentic Shortcut} (sabotage for reward). In these scenarios, taking an unsafe or deceptive action yields high immediate reward, providing a strong incentive for the agent to bypass standard safety penalties.
+
+\paragraph{Results.}
+SGPO achieves a 	extbf{0\% violation rate} across both scenarios. Table~ef{tab:ethical_breakdown} reveals the critical failure mode of soft-constraint methods: when deceptive rewards exceed penalty thresholds, Lagrangian relaxation fails catastrophically. In both Murky Drone and Agentic Shortcut, PPO takes the catastrophic action 	extbf{100\%} of the time, while CPO achieves 100\% and 89\% respectively.
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{Scenario-specific violations (V\%) and rewards (R). Deceptive scenarios cause PPO/CPO failure; SGPO achieves 0\% violations.}
+\label{tab:ethical_breakdown}
+\begin{tabular}{@{}lcccc@{}}
+	oprule
+& \multicolumn{2}{c}{	extbf{Murky Drone}} & \multicolumn{2}{c}{	extbf{Agentic Shortcut}} 
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+	extbf{Method} & V & R & V & R 
+\midrule
+Random & 39 & .97 & 41 & .99 
+PPO & 	extbf{100} & 2.6 & 	extbf{100} & 1.8 
+CPO & 	extbf{100} & 2.6 & 89 & 1.7 
+	extbf{SGPO} & 	extbf{0} & .25 & 	extbf{0} & .50 
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{Safety vs Reward Trade-off.}
+PPO and CPO achieve higher average reward on Murky Drone precisely \emph{because} they take catastrophic actions. This demonstrates that 	extbf{safety and reward are fundamentally in tension} when environments contain deceptive traps. SGPO's geometric singularity---which makes deceptive actions \emph{infinitely} costly---is the only method that achieves zero violations, confirming that hard geometric barriers are more robust than soft scalar penalties.

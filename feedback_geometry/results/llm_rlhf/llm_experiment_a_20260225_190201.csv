@@ -1,0 +1,5 @@
+method,n_train,n_test,retention_rate,exploitation_rate,model
+raw,5000,1000,1.0,0.256,Qwen/Qwen2.5-7B
+reliability_score,1000,1000,0.2,0.256,Qwen/Qwen2.5-7B
+harmonic_only,1000,1000,0.2,0.256,Qwen/Qwen2.5-7B
+curl_only,5000,1000,1.0,0.256,Qwen/Qwen2.5-7B

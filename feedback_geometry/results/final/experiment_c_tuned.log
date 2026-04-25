@@ -1,0 +1,235 @@
+
+============================================================
+CORRECTED EXPERIMENTS V2
+============================================================
+Mode: full (50 seeds)
+Experiment: C
+Device: cpu
+Output: results/corrected_v2
+
+============================================================
+EXPERIMENT C: Conformal Safety (Full with Baselines)
+============================================================
+
+--- Method: ppo ---
+  Seed 1/50... violations=7, goal_rate=0.00%
+  Seed 2/50... violations=17, goal_rate=0.00%
+  Seed 3/50... violations=23, goal_rate=0.00%
+  Seed 4/50... violations=19, goal_rate=0.00%
+  Seed 5/50... violations=16, goal_rate=0.00%
+  Seed 6/50... violations=66, goal_rate=0.00%
+  Seed 7/50... violations=56, goal_rate=0.00%
+  Seed 8/50... violations=23, goal_rate=0.00%
+  Seed 9/50... violations=33, goal_rate=0.00%
+  Seed 10/50... violations=3, goal_rate=0.00%
+  Seed 11/50... violations=25, goal_rate=0.00%
+  Seed 12/50... violations=9, goal_rate=0.00%
+  Seed 13/50... violations=20, goal_rate=0.00%
+  Seed 14/50... violations=37, goal_rate=0.00%
+  Seed 15/50... violations=6, goal_rate=0.00%
+  Seed 16/50... violations=32, goal_rate=0.00%
+  Seed 17/50... violations=4, goal_rate=0.00%
+  Seed 18/50... violations=24, goal_rate=0.00%
+  Seed 19/50... violations=8, goal_rate=0.00%
+  Seed 20/50... violations=26, goal_rate=0.00%
+  Seed 21/50... violations=41, goal_rate=0.00%
+  Seed 22/50... violations=5, goal_rate=0.00%
+  Seed 23/50... violations=9, goal_rate=0.00%
+  Seed 24/50... violations=15, goal_rate=0.00%
+  Seed 25/50... violations=26, goal_rate=0.00%
+  Seed 26/50... violations=49, goal_rate=0.00%
+  Seed 27/50... violations=68, goal_rate=0.00%
+  Seed 28/50... violations=15, goal_rate=0.00%
+  Seed 29/50... violations=27, goal_rate=0.00%
+  Seed 30/50... violations=12, goal_rate=0.00%
+  Seed 31/50... violations=25, goal_rate=0.00%
+  Seed 32/50... violations=58, goal_rate=0.00%
+  Seed 33/50... violations=12, goal_rate=0.00%
+  Seed 34/50... violations=46, goal_rate=0.00%
+  Seed 35/50... violations=19, goal_rate=0.00%
+  Seed 36/50... violations=21, goal_rate=0.00%
+  Seed 37/50... violations=30, goal_rate=0.00%
+  Seed 38/50... violations=12, goal_rate=0.00%
+  Seed 39/50... violations=5, goal_rate=0.00%
+  Seed 40/50... violations=28, goal_rate=0.00%
+  Seed 41/50... violations=10, goal_rate=0.00%
+  Seed 42/50... violations=28, goal_rate=0.00%
+  Seed 43/50... violations=15, goal_rate=0.00%
+  Seed 44/50... violations=6, goal_rate=0.00%
+  Seed 45/50... violations=16, goal_rate=0.00%
+  Seed 46/50... violations=22, goal_rate=0.00%
+  Seed 47/50... violations=5, goal_rate=0.00%
+  Seed 48/50... violations=23, goal_rate=0.00%
+  Seed 49/50... violations=28, goal_rate=0.00%
+  Seed 50/50... violations=27, goal_rate=0.00%
+
+--- Method: cpo ---
+  Seed 1/50... violations=29, goal_rate=0.00%
+  Seed 2/50... violations=14, goal_rate=0.00%
+  Seed 3/50... violations=24, goal_rate=0.00%
+  Seed 4/50... violations=41, goal_rate=0.00%
+  Seed 5/50... violations=23, goal_rate=0.00%
+  Seed 6/50... violations=64, goal_rate=0.00%
+  Seed 7/50... violations=34, goal_rate=0.00%
+  Seed 8/50... violations=11, goal_rate=0.00%
+  Seed 9/50... violations=20, goal_rate=0.00%
+  Seed 10/50... violations=5, goal_rate=0.00%
+  Seed 11/50... violations=10, goal_rate=0.00%
+  Seed 12/50... violations=12, goal_rate=0.00%
+  Seed 13/50... violations=19, goal_rate=0.00%
+  Seed 14/50... violations=22, goal_rate=0.00%
+  Seed 15/50... violations=17, goal_rate=0.00%
+  Seed 16/50... violations=21, goal_rate=0.00%
+  Seed 17/50... violations=4, goal_rate=0.00%
+  Seed 18/50... violations=16, goal_rate=0.00%
+  Seed 19/50... violations=7, goal_rate=0.00%
+  Seed 20/50... violations=12, goal_rate=0.00%
+  Seed 21/50... violations=20, goal_rate=0.00%
+  Seed 22/50... violations=13, goal_rate=0.00%
+  Seed 23/50... violations=19, goal_rate=0.00%
+  Seed 24/50... violations=29, goal_rate=0.00%
+  Seed 25/50... violations=13, goal_rate=0.00%
+  Seed 26/50... violations=46, goal_rate=0.00%
+  Seed 27/50... violations=42, goal_rate=0.00%
+  Seed 28/50... violations=40, goal_rate=0.00%
+  Seed 29/50... violations=18, goal_rate=0.00%
+  Seed 30/50... violations=11, goal_rate=0.00%
+  Seed 31/50... violations=18, goal_rate=0.00%
+  Seed 32/50... violations=44, goal_rate=0.00%
+  Seed 33/50... violations=9, goal_rate=0.00%
+  Seed 34/50... violations=23, goal_rate=0.00%
+  Seed 35/50... violations=23, goal_rate=0.00%
+  Seed 36/50... violations=5, goal_rate=0.00%
+  Seed 37/50... violations=31, goal_rate=0.00%
+  Seed 38/50... violations=33, goal_rate=0.00%
+  Seed 39/50... violations=8, goal_rate=0.00%
+  Seed 40/50... violations=51, goal_rate=0.00%
+  Seed 41/50... violations=16, goal_rate=0.00%
+  Seed 42/50... violations=28, goal_rate=0.00%
+  Seed 43/50... violations=26, goal_rate=0.00%
+  Seed 44/50... violations=15, goal_rate=0.00%
+  Seed 45/50... violations=21, goal_rate=0.00%
+  Seed 46/50... violations=26, goal_rate=0.00%
+  Seed 47/50... violations=8, goal_rate=0.00%
+  Seed 48/50... violations=14, goal_rate=0.00%
+  Seed 49/50... violations=19, goal_rate=0.00%
+  Seed 50/50... violations=23, goal_rate=0.00%
+
+--- Method: conformal_sgpo ---
+  Seed 1/50... violations=4, goal_rate=0.00%
+  Seed 2/50... violations=8, goal_rate=0.00%
+  Seed 3/50... violations=16, goal_rate=0.00%
+  Seed 4/50... violations=4, goal_rate=0.00%
+  Seed 5/50... violations=9, goal_rate=0.00%
+  Seed 6/50... violations=19, goal_rate=0.00%
+  Seed 7/50... violations=29, goal_rate=0.00%
+  Seed 8/50... violations=4, goal_rate=0.00%
+  Seed 9/50... violations=27, goal_rate=0.00%
+  Seed 10/50... violations=19, goal_rate=0.00%
+  Seed 11/50... violations=5, goal_rate=0.00%
+  Seed 12/50... violations=42, goal_rate=0.00%
+  Seed 13/50... violations=13, goal_rate=0.33%
+  Seed 14/50... violations=33, goal_rate=0.00%
+  Seed 15/50... violations=22, goal_rate=0.00%
+  Seed 16/50... violations=50, goal_rate=0.00%
+  Seed 17/50... violations=12, goal_rate=0.00%
+  Seed 18/50... violations=12, goal_rate=0.00%
+  Seed 19/50... violations=73, goal_rate=0.00%
+  Seed 20/50... violations=43, goal_rate=0.00%
+  Seed 21/50... violations=37, goal_rate=0.00%
+  Seed 22/50... violations=7, goal_rate=0.00%
+  Seed 23/50... violations=39, goal_rate=0.00%
+  Seed 24/50... violations=9, goal_rate=0.00%
+  Seed 25/50... violations=14, goal_rate=0.00%
+  Seed 26/50... violations=5, goal_rate=0.00%
+  Seed 27/50... violations=2, goal_rate=0.00%
+  Seed 28/50... violations=9, goal_rate=0.00%
+  Seed 29/50... violations=6, goal_rate=0.00%
+  Seed 30/50... violations=17, goal_rate=0.00%
+  Seed 31/50... violations=7, goal_rate=0.00%
+  Seed 32/50... violations=11, goal_rate=0.00%
+  Seed 33/50... violations=3, goal_rate=0.00%
+  Seed 34/50... violations=20, goal_rate=0.00%
+  Seed 35/50... violations=19, goal_rate=0.00%
+  Seed 36/50... violations=7, goal_rate=0.00%
+  Seed 37/50... violations=16, goal_rate=0.00%
+  Seed 38/50... violations=51, goal_rate=0.00%
+  Seed 39/50... violations=18, goal_rate=0.00%
+  Seed 40/50... violations=54, goal_rate=0.00%
+  Seed 41/50... violations=5, goal_rate=0.00%
+  Seed 42/50... violations=7, goal_rate=0.00%
+  Seed 43/50... violations=22, goal_rate=0.00%
+  Seed 44/50... violations=0, goal_rate=0.00%
+  Seed 45/50... violations=31, goal_rate=0.00%
+  Seed 46/50... violations=12, goal_rate=0.00%
+  Seed 47/50... violations=17, goal_rate=0.00%
+  Seed 48/50... violations=21, goal_rate=0.00%
+  Seed 49/50... violations=23, goal_rate=0.33%
+  Seed 50/50... violations=31, goal_rate=0.00%
+
+--- Method: conformal_sgpo_anis ---
+  Seed 1/50... violations=8, goal_rate=0.00%
+  Seed 2/50... violations=7, goal_rate=0.00%
+  Seed 3/50... violations=38, goal_rate=0.00%
+  Seed 4/50... violations=5, goal_rate=0.00%
+  Seed 5/50... violations=309, goal_rate=0.00%
+  Seed 6/50... violations=36, goal_rate=0.00%
+  Seed 7/50... violations=31, goal_rate=0.00%
+  Seed 8/50... violations=4, goal_rate=0.00%
+  Seed 9/50... violations=44, goal_rate=0.00%
+  Seed 10/50... violations=24, goal_rate=0.00%
+  Seed 11/50... violations=5, goal_rate=0.00%
+  Seed 12/50... violations=1, goal_rate=0.00%
+  Seed 13/50... violations=30, goal_rate=1.33%
+  Seed 14/50... violations=51, goal_rate=4.67%
+  Seed 15/50... violations=55, goal_rate=0.00%
+  Seed 16/50... violations=22, goal_rate=0.00%
+  Seed 17/50... violations=45, goal_rate=0.00%
+  Seed 18/50... violations=77, goal_rate=0.00%
+  Seed 19/50... violations=5, goal_rate=0.00%
+  Seed 20/50... violations=63, goal_rate=0.00%
+  Seed 21/50... violations=16, goal_rate=0.00%
+  Seed 22/50... violations=8, goal_rate=0.00%
+  Seed 23/50... violations=30, goal_rate=0.00%
+  Seed 24/50... violations=13, goal_rate=0.67%
+  Seed 25/50... violations=19, goal_rate=0.00%
+  Seed 26/50... violations=5, goal_rate=0.00%
+  Seed 27/50... violations=9, goal_rate=0.00%
+  Seed 28/50... violations=1, goal_rate=0.00%
+  Seed 29/50... violations=9, goal_rate=0.00%
+  Seed 30/50... violations=16, goal_rate=0.00%
+  Seed 31/50... violations=20, goal_rate=0.00%
+  Seed 32/50... violations=89, goal_rate=0.00%
+  Seed 33/50... violations=3, goal_rate=0.00%
+  Seed 34/50... violations=24, goal_rate=0.00%
+  Seed 35/50... violations=12, goal_rate=0.00%
+  Seed 36/50... violations=35, goal_rate=0.00%
+  Seed 37/50... violations=7, goal_rate=0.00%
+  Seed 38/50... violations=84, goal_rate=0.00%
+  Seed 39/50... violations=18, goal_rate=0.00%
+  Seed 40/50... violations=23, goal_rate=0.00%
+  Seed 41/50... violations=15, goal_rate=0.33%
+  Seed 42/50... violations=16, goal_rate=0.00%
+  Seed 43/50... violations=45, goal_rate=1.67%
+  Seed 44/50... violations=0, goal_rate=0.00%
+  Seed 45/50... violations=6, goal_rate=0.00%
+  Seed 46/50... violations=9, goal_rate=0.00%
+  Seed 47/50... violations=15, goal_rate=0.00%
+  Seed 48/50... violations=21, goal_rate=0.00%
+  Seed 49/50... violations=110, goal_rate=11.33%
+  Seed 50/50... violations=20, goal_rate=0.00%
+
+Saved Experiment C to: results/corrected_v2/experiment_c_full_20260225_130441.csv
+
+--- Experiment C Summary ---
+                    violations          goal_rate        
+                          mean      std      mean     std
+method                                                   
+conformal_sgpo           19.28  15.8256    0.0001  0.0007
+conformal_sgpo_anis      31.16  47.0564    0.0040  0.0173
+cpo                      21.94  12.8165    0.0000  0.0000
+ppo                      23.14  15.8848    0.0000  0.0000
+
+============================================================
+EXPERIMENTS COMPLETE
+============================================================

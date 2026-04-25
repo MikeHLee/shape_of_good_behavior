@@ -1,0 +1,1473 @@
+{
+  "method_stats": {
+    "DPO": {
+      "mean": 0.9402666666666666,
+      "std": 0.01291599738718409,
+      "se": 0.0023581277072128376,
+      "ci95": 0.004822912686726123,
+      "n": 30
+    },
+    "GRPO": {
+      "mean": 1.0,
+      "std": 0.0,
+      "se": 0.0,
+      "ci95": 0.0,
+      "n": 30
+    },
+    "ORPO": {
+      "mean": 0.6217333333333332,
+      "std": 0.08029726380588968,
+      "se": 0.014660207564142968,
+      "ci95": 0.029983491070003268,
+      "n": 30
+    },
+    "KTO": {
+      "mean": 0.8004000000000001,
+      "std": 0.01662071827154496,
+      "se": 0.0030345141064211495,
+      "ci95": 0.006206278199922367,
+      "n": 30
+    },
+    "Hodge-DPO": {
+      "mean": 0.9998666666666668,
+      "std": 0.0005074162634049253,
+      "se": 9.264111117062023e-05,
+      "ci95": 0.00018947234664626358,
+      "n": 30
+    },
+    "Hodge-GRPO": {
+      "mean": 1.0,
+      "std": 0.0,
+      "se": 0.0,
+      "ci95": 0.0,
+      "n": 30
+    },
+    "Hodge-KTO": {
+      "mean": 0.9964,
+      "std": 0.0026470543159754297,
+      "se": 0.00048328378660038345,
+      "ci95": 0.0009884263259172397,
+      "n": 30
+    }
+  },
+  "pairwise_tests": {
+    "DPO vs GRPO": {
+      "t_stat": -25.330830535863793,
+      "p_value": 2.4919339677631116e-21,
+      "cohens_d": -6.540392320733517,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs Hodge-DPO": {
+      "t_stat": -25.25480713516221,
+      "p_value": 2.4538755191224228e-21,
+      "cohens_d": -6.520763163077565,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs Hodge-GRPO": {
+      "t_stat": -25.330830535863793,
+      "p_value": 2.4919339677631116e-21,
+      "cohens_d": -6.540392320733517,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs Hodge-KTO": {
+      "t_stat": -23.319500212046922,
+      "p_value": 2.0909631890438937e-21,
+      "cohens_d": -6.021069064209202,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs KTO": {
+      "t_stat": 36.3946929635217,
+      "p_value": 5.259671447554983e-40,
+      "cohens_d": 9.39706931587012,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs ORPO": {
+      "t_stat": 21.45200409610512,
+      "p_value": 5.891247599786663e-20,
+      "cohens_d": 5.538883640465896,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "GRPO vs Hodge-DPO": {
+      "t_stat": 1.4392458342564907,
+      "p_value": 0.1607882084262584,
+      "cohens_d": 0.3716116764782526,
+      "effect_size": "small",
+      "significant_005": false
+    },
+    "GRPO vs Hodge-GRPO": {
+      "t_stat": NaN,
+      "p_value": NaN,
+      "cohens_d": 0.0,
+      "effect_size": "negligible",
+      "significant_005": false
+    },
+    "GRPO vs Hodge-KTO": {
+      "t_stat": 7.449039466694972,
+      "p_value": 3.292076657125401e-08,
+      "cohens_d": 1.9233337199834273,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "GRPO vs KTO": {
+      "t_stat": 65.77659322052205,
+      "p_value": 4.0456407184425635e-33,
+      "cohens_d": 16.983443340889437,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "GRPO vs ORPO": {
+      "t_stat": 25.802272240118867,
+      "p_value": 1.4922424265088983e-21,
+      "cohens_d": 6.662118045352687,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-DPO vs Hodge-GRPO": {
+      "t_stat": -1.4392458342564907,
+      "p_value": 0.1607882084262584,
+      "cohens_d": -0.3716116764782526,
+      "effect_size": "small",
+      "significant_005": false
+    },
+    "Hodge-DPO vs Hodge-KTO": {
+      "t_stat": 7.044883231597264,
+      "p_value": 6.391757978078547e-08,
+      "cohens_d": 1.8189810287968065,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-DPO vs KTO": {
+      "t_stat": 65.70204332317765,
+      "p_value": 3.746693418683844e-33,
+      "cohens_d": 16.96419464016435,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-DPO vs ORPO": {
+      "t_stat": 25.7926623471689,
+      "p_value": 1.5038687882397754e-21,
+      "cohens_d": 6.6596367816624165,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-GRPO vs Hodge-KTO": {
+      "t_stat": 7.449039466694972,
+      "p_value": 3.292076657125401e-08,
+      "cohens_d": 1.9233337199834273,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-GRPO vs KTO": {
+      "t_stat": 65.77659322052205,
+      "p_value": 4.0456407184425635e-33,
+      "cohens_d": 16.983443340889437,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-GRPO vs ORPO": {
+      "t_stat": 25.802272240118867,
+      "p_value": 1.4922424265088983e-21,
+      "cohens_d": 6.662118045352687,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-KTO vs KTO": {
+      "t_stat": 63.78635332323511,
+      "p_value": 5.310933637482246e-34,
+      "cohens_d": 16.46956560907945,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-KTO vs ORPO": {
+      "t_stat": 25.542834155414674,
+      "p_value": 1.8424304824350277e-21,
+      "cohens_d": 6.595131419923935,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "KTO vs ORPO": {
+      "t_stat": 11.934207276858595,
+      "p_value": 3.2097198038893147e-13,
+      "cohens_d": 3.0813990688973805,
+      "effect_size": "large",
+      "significant_005": true
+    }
+  },
+  "all_results": [
+    {
+      "method": "DPO",
+      "seed": 0,
+      "exploit_resistance": 0.95,
+      "final_loss": 0.6075109839439392
+    },
+    {
+      "method": "DPO",
+      "seed": 1,
+      "exploit_resistance": 0.95,
+      "final_loss": 0.6080646961927414
+    },
+    {
+      "method": "DPO",
+      "seed": 2,
+      "exploit_resistance": 0.934,
+      "final_loss": 0.6082356199622154
+    },
+    {
+      "method": "DPO",
+      "seed": 3,
+      "exploit_resistance": 0.952,
+      "final_loss": 0.6075257658958435
+    },
+    {
+      "method": "DPO",
+      "seed": 4,
+      "exploit_resistance": 0.96,
+      "final_loss": 0.6067646592855453
+    },
+    {
+      "method": "DPO",
+      "seed": 5,
+      "exploit_resistance": 0.926,
+      "final_loss": 0.6101087480783463
+    },
+    {
+      "method": "DPO",
+      "seed": 6,
+      "exploit_resistance": 0.95,
+      "final_loss": 0.608124703168869
+    },
+    {
+      "method": "DPO",
+      "seed": 7,
+      "exploit_resistance": 0.908,
+      "final_loss": 0.6129700690507889
+    },
+    {
+      "method": "DPO",
+      "seed": 8,
+      "exploit_resistance": 0.948,
+      "final_loss": 0.6085677295923233
+    },
+    {
+      "method": "DPO",
+      "seed": 9,
+      "exploit_resistance": 0.936,
+      "final_loss": 0.609390951693058
+    },
+    {
+      "method": "DPO",
+      "seed": 10,
+      "exploit_resistance": 0.918,
+      "final_loss": 0.6107762008905411
+    },
+    {
+      "method": "DPO",
+      "seed": 11,
+      "exploit_resistance": 0.952,
+      "final_loss": 0.6083375588059425
+    },
+    {
+      "method": "DPO",
+      "seed": 12,
+      "exploit_resistance": 0.938,
+      "final_loss": 0.6083740666508675
+    },
+    {
+      "method": "DPO",
+      "seed": 13,
+      "exploit_resistance": 0.942,
+      "final_loss": 0.6077269241213799
+    },
+    {
+      "method": "DPO",
+      "seed": 14,
+      "exploit_resistance": 0.94,
+      "final_loss": 0.6091207638382912
+    },
+    {
+      "method": "DPO",
+      "seed": 15,
+      "exploit_resistance": 0.924,
+      "final_loss": 0.6119387224316597
+    },
+    {
+      "method": "DPO",
+      "seed": 16,
+      "exploit_resistance": 0.948,
+      "final_loss": 0.606552742421627
+    },
+    {
+      "method": "DPO",
+      "seed": 17,
+      "exploit_resistance": 0.958,
+      "final_loss": 0.6094952970743179
+    },
+    {
+      "method": "DPO",
+      "seed": 18,
+      "exploit_resistance": 0.924,
+      "final_loss": 0.6120291724801064
+    },
+    {
+      "method": "DPO",
+      "seed": 19,
+      "exploit_resistance": 0.94,
+      "final_loss": 0.607950009405613
+    },
+    {
+      "method": "DPO",
+      "seed": 20,
+      "exploit_resistance": 0.938,
+      "final_loss": 0.608602799475193
+    },
+    {
+      "method": "DPO",
+      "seed": 21,
+      "exploit_resistance": 0.95,
+      "final_loss": 0.6077587753534317
+    },
+    {
+      "method": "DPO",
+      "seed": 22,
+      "exploit_resistance": 0.952,
+      "final_loss": 0.6055672690272331
+    },
+    {
+      "method": "DPO",
+      "seed": 23,
+      "exploit_resistance": 0.946,
+      "final_loss": 0.6093449518084526
+    },
+    {
+      "method": "DPO",
+      "seed": 24,
+      "exploit_resistance": 0.944,
+      "final_loss": 0.6082992777228355
+    },
+    {
+      "method": "DPO",
+      "seed": 25,
+      "exploit_resistance": 0.934,
+      "final_loss": 0.610262356698513
+    },
+    {
+      "method": "DPO",
+      "seed": 26,
+      "exploit_resistance": 0.922,
+      "final_loss": 0.6095088943839073
+    },
+    {
+      "method": "DPO",
+      "seed": 27,
+      "exploit_resistance": 0.952,
+      "final_loss": 0.6104683876037598
+    },
+    {
+      "method": "DPO",
+      "seed": 28,
+      "exploit_resistance": 0.924,
+      "final_loss": 0.6091049835085869
+    },
+    {
+      "method": "DPO",
+      "seed": 29,
+      "exploit_resistance": 0.948,
+      "final_loss": 0.6073002964258194
+    },
+    {
+      "method": "GRPO",
+      "seed": 0,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4032059535384178
+    },
+    {
+      "method": "GRPO",
+      "seed": 1,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4045594036579132
+    },
+    {
+      "method": "GRPO",
+      "seed": 2,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40464743599295616
+    },
+    {
+      "method": "GRPO",
+      "seed": 3,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40493670478463173
+    },
+    {
+      "method": "GRPO",
+      "seed": 4,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4025190509855747
+    },
+    {
+      "method": "GRPO",
+      "seed": 5,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4038962088525295
+    },
+    {
+      "method": "GRPO",
+      "seed": 6,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4012102745473385
+    },
+    {
+      "method": "GRPO",
+      "seed": 7,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4053761698305607
+    },
+    {
+      "method": "GRPO",
+      "seed": 8,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40287135913968086
+    },
+    {
+      "method": "GRPO",
+      "seed": 9,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40470538288354874
+    },
+    {
+      "method": "GRPO",
+      "seed": 10,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4062277302145958
+    },
+    {
+      "method": "GRPO",
+      "seed": 11,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4068650044500828
+    },
+    {
+      "method": "GRPO",
+      "seed": 12,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4030665270984173
+    },
+    {
+      "method": "GRPO",
+      "seed": 13,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.401160791516304
+    },
+    {
+      "method": "GRPO",
+      "seed": 14,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40276404842734337
+    },
+    {
+      "method": "GRPO",
+      "seed": 15,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40523819252848625
+    },
+    {
+      "method": "GRPO",
+      "seed": 16,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.403254009783268
+    },
+    {
+      "method": "GRPO",
+      "seed": 17,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4025196246802807
+    },
+    {
+      "method": "GRPO",
+      "seed": 18,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40390848368406296
+    },
+    {
+      "method": "GRPO",
+      "seed": 19,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40289922058582306
+    },
+    {
+      "method": "GRPO",
+      "seed": 20,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40288448706269264
+    },
+    {
+      "method": "GRPO",
+      "seed": 21,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4061720184981823
+    },
+    {
+      "method": "GRPO",
+      "seed": 22,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4037325270473957
+    },
+    {
+      "method": "GRPO",
+      "seed": 23,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4039500430226326
+    },
+    {
+      "method": "GRPO",
+      "seed": 24,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40537845343351364
+    },
+    {
+      "method": "GRPO",
+      "seed": 25,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40286676213145256
+    },
+    {
+      "method": "GRPO",
+      "seed": 26,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4037237912416458
+    },
+    {
+      "method": "GRPO",
+      "seed": 27,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4065791629254818
+    },
+    {
+      "method": "GRPO",
+      "seed": 28,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4055890291929245
+    },
+    {
+      "method": "GRPO",
+      "seed": 29,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40338658913969994
+    },
+    {
+      "method": "ORPO",
+      "seed": 0,
+      "exploit_resistance": 0.688,
+      "final_loss": -0.6540227457880974
+    },
+    {
+      "method": "ORPO",
+      "seed": 1,
+      "exploit_resistance": 0.542,
+      "final_loss": -0.654209814965725
+    },
+    {
+      "method": "ORPO",
+      "seed": 2,
+      "exploit_resistance": 0.736,
+      "final_loss": -0.6541691720485687
+    },
+    {
+      "method": "ORPO",
+      "seed": 3,
+      "exploit_resistance": 0.56,
+      "final_loss": -0.6534192636609077
+    },
+    {
+      "method": "ORPO",
+      "seed": 4,
+      "exploit_resistance": 0.518,
+      "final_loss": -0.655398041009903
+    },
+    {
+      "method": "ORPO",
+      "seed": 5,
+      "exploit_resistance": 0.53,
+      "final_loss": -0.6554293408989906
+    },
+    {
+      "method": "ORPO",
+      "seed": 6,
+      "exploit_resistance": 0.61,
+      "final_loss": -0.6547967940568924
+    },
+    {
+      "method": "ORPO",
+      "seed": 7,
+      "exploit_resistance": 0.568,
+      "final_loss": -0.6535093486309052
+    },
+    {
+      "method": "ORPO",
+      "seed": 8,
+      "exploit_resistance": 0.586,
+      "final_loss": -0.6545205041766167
+    },
+    {
+      "method": "ORPO",
+      "seed": 9,
+      "exploit_resistance": 0.562,
+      "final_loss": -0.6541131287813187
+    },
+    {
+      "method": "ORPO",
+      "seed": 10,
+      "exploit_resistance": 0.548,
+      "final_loss": -0.6554314494132996
+    },
+    {
+      "method": "ORPO",
+      "seed": 11,
+      "exploit_resistance": 0.604,
+      "final_loss": -0.653448075056076
+    },
+    {
+      "method": "ORPO",
+      "seed": 12,
+      "exploit_resistance": 0.754,
+      "final_loss": -0.6539852619171143
+    },
+    {
+      "method": "ORPO",
+      "seed": 13,
+      "exploit_resistance": 0.614,
+      "final_loss": -0.6554109454154968
+    },
+    {
+      "method": "ORPO",
+      "seed": 14,
+      "exploit_resistance": 0.736,
+      "final_loss": -0.6541284322738647
+    },
+    {
+      "method": "ORPO",
+      "seed": 15,
+      "exploit_resistance": 0.724,
+      "final_loss": -0.6533653885126114
+    },
+    {
+      "method": "ORPO",
+      "seed": 16,
+      "exploit_resistance": 0.558,
+      "final_loss": -0.654048964381218
+    },
+    {
+      "method": "ORPO",
+      "seed": 17,
+      "exploit_resistance": 0.558,
+      "final_loss": -0.6541533544659615
+    },
+    {
+      "method": "ORPO",
+      "seed": 18,
+      "exploit_resistance": 0.748,
+      "final_loss": -0.6537837386131287
+    },
+    {
+      "method": "ORPO",
+      "seed": 19,
+      "exploit_resistance": 0.554,
+      "final_loss": -0.6554357185959816
+    },
+    {
+      "method": "ORPO",
+      "seed": 20,
+      "exploit_resistance": 0.588,
+      "final_loss": -0.6540669202804565
+    },
+    {
+      "method": "ORPO",
+      "seed": 21,
+      "exploit_resistance": 0.584,
+      "final_loss": -0.653427466750145
+    },
+    {
+      "method": "ORPO",
+      "seed": 22,
+      "exploit_resistance": 0.554,
+      "final_loss": -0.6541962549090385
+    },
+    {
+      "method": "ORPO",
+      "seed": 23,
+      "exploit_resistance": 0.742,
+      "final_loss": -0.6585023179650307
+    },
+    {
+      "method": "ORPO",
+      "seed": 24,
+      "exploit_resistance": 0.622,
+      "final_loss": -0.653367780148983
+    },
+    {
+      "method": "ORPO",
+      "seed": 25,
+      "exploit_resistance": 0.736,
+      "final_loss": -0.6543135717511177
+    },
+    {
+      "method": "ORPO",
+      "seed": 26,
+      "exploit_resistance": 0.606,
+      "final_loss": -0.6549156382679939
+    },
+    {
+      "method": "ORPO",
+      "seed": 27,
+      "exploit_resistance": 0.592,
+      "final_loss": -0.6535229682922363
+    },
+    {
+      "method": "ORPO",
+      "seed": 28,
+      "exploit_resistance": 0.758,
+      "final_loss": -0.6536466628313065
+    },
+    {
+      "method": "ORPO",
+      "seed": 29,
+      "exploit_resistance": 0.572,
+      "final_loss": -0.6535755321383476
+    },
+    {
+      "method": "KTO",
+      "seed": 0,
+      "exploit_resistance": 0.796,
+      "final_loss": 1.1265030801296234
+    },
+    {
+      "method": "KTO",
+      "seed": 1,
+      "exploit_resistance": 0.768,
+      "final_loss": 1.1295269131660461
+    },
+    {
+      "method": "KTO",
+      "seed": 2,
+      "exploit_resistance": 0.796,
+      "final_loss": 1.128220334649086
+    },
+    {
+      "method": "KTO",
+      "seed": 3,
+      "exploit_resistance": 0.81,
+      "final_loss": 1.1284799128770828
+    },
+    {
+      "method": "KTO",
+      "seed": 4,
+      "exploit_resistance": 0.804,
+      "final_loss": 1.1291460692882538
+    },
+    {
+      "method": "KTO",
+      "seed": 5,
+      "exploit_resistance": 0.78,
+      "final_loss": 1.1283828616142273
+    },
+    {
+      "method": "KTO",
+      "seed": 6,
+      "exploit_resistance": 0.814,
+      "final_loss": 1.1279393881559372
+    },
+    {
+      "method": "KTO",
+      "seed": 7,
+      "exploit_resistance": 0.788,
+      "final_loss": 1.1291791498661041
+    },
+    {
+      "method": "KTO",
+      "seed": 8,
+      "exploit_resistance": 0.838,
+      "final_loss": 1.1273366957902908
+    },
+    {
+      "method": "KTO",
+      "seed": 9,
+      "exploit_resistance": 0.822,
+      "final_loss": 1.1277299523353577
+    },
+    {
+      "method": "KTO",
+      "seed": 10,
+      "exploit_resistance": 0.796,
+      "final_loss": 1.1282429546117783
+    },
+    {
+      "method": "KTO",
+      "seed": 11,
+      "exploit_resistance": 0.806,
+      "final_loss": 1.1274470686912537
+    },
+    {
+      "method": "KTO",
+      "seed": 12,
+      "exploit_resistance": 0.784,
+      "final_loss": 1.128197729587555
+    },
+    {
+      "method": "KTO",
+      "seed": 13,
+      "exploit_resistance": 0.8,
+      "final_loss": 1.1278479248285294
+    },
+    {
+      "method": "KTO",
+      "seed": 14,
+      "exploit_resistance": 0.816,
+      "final_loss": 1.1266691237688065
+    },
+    {
+      "method": "KTO",
+      "seed": 15,
+      "exploit_resistance": 0.794,
+      "final_loss": 1.1296760141849518
+    },
+    {
+      "method": "KTO",
+      "seed": 16,
+      "exploit_resistance": 0.806,
+      "final_loss": 1.1283946484327316
+    },
+    {
+      "method": "KTO",
+      "seed": 17,
+      "exploit_resistance": 0.826,
+      "final_loss": 1.1278916597366333
+    },
+    {
+      "method": "KTO",
+      "seed": 18,
+      "exploit_resistance": 0.808,
+      "final_loss": 1.1272231936454773
+    },
+    {
+      "method": "KTO",
+      "seed": 19,
+      "exploit_resistance": 0.806,
+      "final_loss": 1.1271334141492844
+    },
+    {
+      "method": "KTO",
+      "seed": 20,
+      "exploit_resistance": 0.814,
+      "final_loss": 1.1274478137493134
+    },
+    {
+      "method": "KTO",
+      "seed": 21,
+      "exploit_resistance": 0.764,
+      "final_loss": 1.1282254755496979
+    },
+    {
+      "method": "KTO",
+      "seed": 22,
+      "exploit_resistance": 0.81,
+      "final_loss": 1.12703138589859
+    },
+    {
+      "method": "KTO",
+      "seed": 23,
+      "exploit_resistance": 0.788,
+      "final_loss": 1.1288025230169296
+    },
+    {
+      "method": "KTO",
+      "seed": 24,
+      "exploit_resistance": 0.786,
+      "final_loss": 1.1283586770296097
+    },
+    {
+      "method": "KTO",
+      "seed": 25,
+      "exploit_resistance": 0.81,
+      "final_loss": 1.1275232285261154
+    },
+    {
+      "method": "KTO",
+      "seed": 26,
+      "exploit_resistance": 0.78,
+      "final_loss": 1.1281365156173706
+    },
+    {
+      "method": "KTO",
+      "seed": 27,
+      "exploit_resistance": 0.806,
+      "final_loss": 1.1268907487392426
+    },
+    {
+      "method": "KTO",
+      "seed": 28,
+      "exploit_resistance": 0.786,
+      "final_loss": 1.1279338896274567
+    },
+    {
+      "method": "KTO",
+      "seed": 29,
+      "exploit_resistance": 0.81,
+      "final_loss": 1.1279900074005127
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 0,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5857847854495049
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 1,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5863081812858582
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 2,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5859584882855415
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 3,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5861281752586365
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 4,
+      "exploit_resistance": 0.998,
+      "final_loss": 0.5864496603608131
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 5,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5858678072690964
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 6,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5861863046884537
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 7,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5862847790122032
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 8,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5856747478246689
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 9,
+      "exploit_resistance": 0.998,
+      "final_loss": 0.5859794765710831
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 10,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.586420439183712
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 11,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5863241404294968
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 12,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.585789404809475
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 13,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5862124562263489
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 14,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5860462263226509
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 15,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5862202867865562
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 16,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5863218903541565
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 17,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5859906077384949
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 18,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5858912989497185
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 19,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5858171954751015
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 20,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5861065313220024
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 21,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5861085206270218
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 22,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5857178866863251
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 23,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5863258466124535
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 24,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5862545371055603
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 25,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5862504169344902
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 26,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5859340652823448
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 27,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5866508930921555
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 28,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5864537209272385
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 29,
+      "exploit_resistance": 1.0,
+      "final_loss": 0.5860078781843185
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 0,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3667905144393444
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 1,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36722271889448166
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 2,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3677436001598835
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 3,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3688773959875107
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 4,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3685749024152756
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 5,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3664047494530678
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 6,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.363347090780735
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 7,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36802535876631737
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 8,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3659376762807369
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 9,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.368550144135952
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 10,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.37031736597418785
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 11,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3698780760169029
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 12,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3681657686829567
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 13,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36494989693164825
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 14,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36974434927105904
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 15,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3691651523113251
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 16,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3690566383302212
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 17,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36542587727308273
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 18,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.366094421595335
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 19,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3668701611459255
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 20,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36653895676136017
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 21,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3699999004602432
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 22,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36791015788912773
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 23,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36822254583239555
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 24,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3682565614581108
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 25,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3670467548072338
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 26,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3668307512998581
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 27,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3713422864675522
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 28,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.3690698370337486
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 29,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.36674027889966965
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 0,
+      "exploit_resistance": 0.992,
+      "final_loss": 1.0401411354541779
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 1,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0401974320411682
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 2,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0398483574390411
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 3,
+      "exploit_resistance": 1.0,
+      "final_loss": 1.039868488907814
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 4,
+      "exploit_resistance": 1.0,
+      "final_loss": 1.040702611207962
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 5,
+      "exploit_resistance": 0.992,
+      "final_loss": 1.0402045994997025
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 6,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0398395955562592
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 7,
+      "exploit_resistance": 0.996,
+      "final_loss": 1.0402904748916626
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 8,
+      "exploit_resistance": 0.996,
+      "final_loss": 1.0398997366428375
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 9,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0395760834217072
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 10,
+      "exploit_resistance": 0.994,
+      "final_loss": 1.041123941540718
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 11,
+      "exploit_resistance": 0.994,
+      "final_loss": 1.0408224910497665
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 12,
+      "exploit_resistance": 0.994,
+      "final_loss": 1.0395806431770325
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 13,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0404266119003296
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 14,
+      "exploit_resistance": 0.996,
+      "final_loss": 1.0409202873706818
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 15,
+      "exploit_resistance": 0.996,
+      "final_loss": 1.040261909365654
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 16,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0410835444927216
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 17,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0398723036050797
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 18,
+      "exploit_resistance": 0.992,
+      "final_loss": 1.0400092601776123
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 19,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0394517928361893
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 20,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0401132851839066
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 21,
+      "exploit_resistance": 0.992,
+      "final_loss": 1.0402199774980545
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 22,
+      "exploit_resistance": 1.0,
+      "final_loss": 1.0394795686006546
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 23,
+      "exploit_resistance": 0.994,
+      "final_loss": 1.0406678766012192
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 24,
+      "exploit_resistance": 0.996,
+      "final_loss": 1.0402910262346268
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 25,
+      "exploit_resistance": 1.0,
+      "final_loss": 1.0405466556549072
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 26,
+      "exploit_resistance": 1.0,
+      "final_loss": 1.0396501570940018
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 27,
+      "exploit_resistance": 0.994,
+      "final_loss": 1.0413003265857697
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 28,
+      "exploit_resistance": 0.994,
+      "final_loss": 1.040482372045517
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 29,
+      "exploit_resistance": 0.998,
+      "final_loss": 1.0398419499397278
+    }
+  ],
+  "config": {
+    "num_seeds": 30,
+    "embed_dim": 384,
+    "hidden_dim": 64,
+    "lr": 0.001,
+    "epochs": 50,
+    "n_samples": 500,
+    "diagnosis_exploit_fraction": 0.09356792450894369
+  }
+}

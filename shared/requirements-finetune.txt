@@ -1,0 +1,31 @@
+# Fine-tuning dependencies for modal_finetune.py
+# Uses latest stable TRL (1.x) + transformers for SFT and RM training.
+# PPO is implemented manually — no dependency on TRL's PPOTrainer
+# (removed in TRL 1.0 anyway). Target: Qwen2.5-1.5B-Instruct on L4.
+
+# Core scientific stack
+torch>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+
+# Embedding & NLP
+sentence-transformers>=2.2.0
+transformers>=4.40.0
+datasets>=2.0.0
+tokenizers>=0.15.0
+
+# Fine-tuning stack — TRL 1.x: stable SFTTrainer + RewardTrainer APIs
+trl>=1.0.0
+peft>=0.10.0
+accelerate>=0.28.0
+bitsandbytes>=0.43.0
+
+# Visualization
+plotly>=5.10.0
+matplotlib>=3.7.0
+
+# Utilities
+pandas>=2.0.0
+tqdm>=4.65.0
+pyyaml>=6.0

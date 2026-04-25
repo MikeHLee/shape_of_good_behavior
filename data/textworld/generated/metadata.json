@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-01-15T17:19:34.868735",
+  "num_games": 10,
+  "num_episodes": 20,
+  "num_transitions": 574,
+  "win_rate": 0.6,
+  "config": {
+    "quest_length": 5,
+    "episodes_per_game": 2,
+    "seed": 42
+  }
+}

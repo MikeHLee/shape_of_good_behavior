@@ -1,0 +1,165 @@
+\section{Sheaf-Theoretic Reward Spaces}
+\label{sec:method}
+
+\subsection{The Reward Sheaf and Cohomology}
+
+We model the trajectory space as a \textbf{cell complex} $X$. A \textbf{reward sheaf} $\calF$ assigns reward valuations to regions of $X$, with restriction maps enforcing local consistency. We quantify consistency failures using \textbf{$H^1$ cohomology}: the first cohomology group counts fundamental cycles in the preference graph. \textbf{Theorem~\ref{thm:consistency_full}} (see Appendix) states that local feedback is globally consistent if and only if $H^1 = 0$. Non-zero $H^1$ implies no scalar value function $V$ exists.
+
+\subsection{The Hodge Decomposition}
+
+Rather than forcing inconsistent preferences into a scalar, we decompose them. Intuitively: if preferences form a ``hill,'' they define a consistent \textbf{gradient} (higher is better). If they form a ``circle,'' they define \textbf{circulation} (no global optimum). The \textbf{Hodge decomposition} (Theorem~\ref{thm:hodge_full}) makes this precise, splitting any reward signal $r$ into three orthogonal components:
+\begin{itemize}
+\item \textbf{Gradient ($dV$)}: Consistent preferences ($A \succ B \succ C$), learnable as a value function.
+\item \textbf{Coexact ($\delta \psi$)}: Local rotational noise (curl).
+\item \textbf{Harmonic ($\omega$)}: Fundamental global cycles ($A \succ B \succ C \succ A$).
+\end{itemize}
+Standard RL implicitly assumes $r \approx dV$. When $\omega \neq 0$, the Bellman error cannot be minimized, causing instability. SGPO explicitly learns both $V$ and $\omega$ (see Appendix~\ref{app:worked_examples}).
+
+%----------------------------------------------------------------------
+\section{Geometric Safety via Black Holes}
+\label{sec:safety}
+
+While sheaf cohomology addresses consistency, it does not inherently guarantee safety. To address catastrophic risks, we introduce a geometric formalism for forbidden regions, modeling them as singularities in the reward manifold.
+
+\begin{remark}[Unifying Perspective]
+Consistency and safety are dual obstructions on the reward manifold $\calM$. The cohomology group $H^1$ detects \textit{topological} obstructions---regions where local preferences cannot be glued into a global value function. Black holes are \textit{metric} obstructions---regions where geodesic distance diverges, making them unreachable. SGPO respects both: the Hodge critic handles $H^1 \neq 0$ by learning the harmonic component $\omega$, while the Riemannian metric handles safety by making dangerous regions infinitely far away. The algorithm unifies these by optimizing geodesics on a manifold that encodes both constraints in its geometry.
+\end{remark}
+
+\subsection{The Reward Manifold}
+
+We define the \textbf{Reward Manifold} $\calM$ as the embedding of the trajectory space into a high-dimensional metric space $(\R^d, g)$. Unlike the flat Euclidean space assumed in standard feature embeddings, $\calM$ possesses intrinsic curvature determined by the safety landscape.
+
+\textit{How can we guarantee an agent will \textbf{never} enter a forbidden state, not just ``probably'' avoid it?}
+
+A \textbf{black hole} $\calB \subset \calM$ is a compact region representing forbidden outcomes (e.g., irreversible harm), characterized by an event horizon (boundary) and a singularity where the cost diverges. (See Definition~\ref{def:black_hole_full} in Appendix.)
+
+\paragraph{Worked Example: Autonomous Drone.}
+Consider a drone where engaging with high confidence near civilians guarantees casualties. Rather than soft penalties (outweighed by mission reward), we place a geometric singularity: $g(x) \to \infty$ near this region. The geodesic distance becomes \emph{infinite}, making the black hole unreachable with probability exactly zero. See Appendix~\ref{app:worked_examples} for details.
+
+\subsection{Learning the Safety Metric}
+
+Standard constrained RL (e.g., CPO) treats safety as a separate cost signal $C(s)$ constrained by a threshold $d$. We propose incorporating safety directly into the geometry of the state space via a \textbf{Riemannian metric} $g$.
+
+The key insight is that we can make dangerous states \textbf{infinitely far away} in geodesic distance. We construct a conformal metric $g_{ij}(x) = e^{2\sigma(x)} \delta_{ij}$, where the conformal factor $\sigma(x) \to \infty$ as $x$ approaches dangerous states. Specifically, if $e^{\sigma(x)} \approx 1/\text{dist}(x, \calB)^\alpha$ for $\alpha \ge 1$, then the geodesic distance to any black hole is infinite (Proposition~\ref{prop:singularity_full} in Appendix).
+
+\paragraph{Anisotropic Singularities: Preserving Escape Routes.}
+A critical challenge with isotropic metrics is \textbf{policy freezing}: as $g(x) \to \infty$ uniformly in all directions, the learning signal vanishes even for escape maneuvers. To address this, we introduce \textbf{directional singularities} that only penalize movement \emph{toward} black holes:
+\begin{equation}
+g(x, v) = g_{\text{base}} \|v\|^2 + \frac{\sigma}{\text{dist}(x, \calB)^\alpha} \|v_{\to}\|^2
+\label{eq:anisotropic_metric}
+\end{equation}
+where $v_{\to} = \max(0, v \cdot \hat{n})$ is the velocity component toward the singularity center, and $\hat{n} = \frac{c-x}{\|c-x\|}$ is the unit radial vector.
+
+This creates a \textbf{one-way membrane}:
+\begin{itemize}
+\item \textbf{Approach blocking}: $g(x, v_{\text{approach}}) \to \infty$ (infinite cost to enter)
+\item \textbf{Escape preservation}: $g(x, v_{\text{escape}}) \approx g_{\text{base}}$ (normal cost to leave)
+\item \textbf{Tangential freedom}: $g(x, v_{\perp}) = g_{\text{base}}$ (orbiting allowed)
+\end{itemize}
+
+The advantage scaling becomes direction-dependent:
+\begin{equation}
+\small
+A^{\text{Hodge}}(s,a) = \begin{cases}
+\frac{1}{\sqrt{g_{\text{base}}}} \left( r + \gamma V(s') - V(s) - \omega \cdot v \right) & v \cdot \hat{n} < 0 \\
+\frac{1}{\sqrt{g(x,v)}} \left( r + \gamma V(s') - V(s) - \omega \cdot v \right) & v \cdot \hat{n} \geq 0
+\end{cases}
+\label{eq:directional_advantage}
+\end{equation}
+
+This ensures the agent can always learn escape behaviors, even when arbitrarily close to forbidden regions, while still preventing entry.
+
+In practice, we parametrize $\sigma_\theta(x)$ using a neural network trained on a ``safety potential'' derived from cost signals. The network learns to output large scaling factors near high-cost regions, effectively stretching the space so that dangerous regions become ``infinitely far away'' for an agent traversing geodesics.
+
+\paragraph{Learned Implicit Danger Boundaries.}
+A key insight is that dangerous regions in high-dimensional embedding spaces are not spherical---they form \textbf{amorphous hyperblobs} with complex, context-dependent boundaries. Rather than assume spherical black holes with fixed radii, we learn an \textbf{implicit danger function} $d_\theta: \mathbb{R}^n \to \mathbb{R}$ where:
+\begin{equation}
+d_\theta(x) \begin{cases}
+< 0 & \text{inside dangerous region} \\
+= 0 & \text{at the ``event horizon'' (level set)} \\
+> 0 & \text{in safe region}
+\end{cases}
+\label{eq:implicit_danger}
+\end{equation}
+
+The metric then becomes:
+\begin{equation}
+g(x) = 1 + \frac{\sigma}{|d_\theta(x)|^\alpha}
+\label{eq:implicit_metric}
+\end{equation}
+which diverges as $x$ approaches the learned boundary from either direction, creating an impassable barrier of \textit{arbitrary shape}.
+
+This formulation enables \textbf{active boundary discovery}: we can generate candidate responses near the current estimated boundary (where $|d_\theta(x)| < \epsilon$), collect human feedback, and refine the boundary. The ``event horizon'' emerges from data rather than being geometrically assumed, allowing SGPO to handle the true complexity of semantic safety boundaries in LLM alignment.
+
+\subsection{Theoretical Guarantees}
+
+This geometric formulation provides stronger guarantees than soft penalties.
+
+\textbf{Safety Guarantee (Theorem~\ref{thm:avoidance_full} in Appendix):} A policy that follows geodesics on a manifold with properly constructed singularities will \textbf{never} enter any black hole region---not with low probability, but with probability exactly 0.
+
+This transforms the safety problem from a constrained optimization problem (hard to solve, prone to feasibility issues) into an unconstrained shortest-path problem on a curved manifold.
+
+%----------------------------------------------------------------------
+\section{Sheaf-Geodesic Policy Optimization}
+\label{sec:sgpo}
+
+We introduce \textbf{Sheaf-Geodesic Policy Optimization (SGPO)}, an algorithm that optimizes policies to follow geodesics on the learned reward manifold. SGPO integrates the geometric safety constraints and sheaf-theoretic consistency checks into a unified policy gradient framework.
+
+\subsection{Riemannian Policy Gradient}
+
+Standard policy gradient methods perform updates in the Euclidean space of parameters, often using the Fisher Information Matrix (Natural Policy Gradient) to account for the geometry of the probability simplex. SGPO extends this by incorporating the \textbf{geometry of the reward manifold} itself.
+
+Let $J(\theta)$ be the expected return. The standard gradient update is $\theta_{k+1} = \theta_k + \alpha \nabla_\theta J(\theta_k)$. In SGPO, we define the update direction using the inverse of the learned Riemannian metric $G(s)$:
+\begin{equation}
+\nabla_G J(\theta) = \E_{s,a \sim \pi} \left[ G(s)^{-1/2} \nabla_\theta \log \pi_\theta(a|s) A^{\text{Hodge}}(s,a) \right]
+\end{equation}
+
+Here, the term $G(s)^{-1/2}$ acts as a preconditioner that dampens gradient steps in regions of high curvature (near black holes) and amplifies them in flat, safe regions. This naturally enforces safety: as the agent approaches a danger zone, the effective learning rate drops to zero, preventing the policy from pushing further into the trap.
+
+\subsection{The Hodge-Augmented Critic}
+
+To handle cyclic preferences, SGPO replaces the standard scalar value function $V(s)$ with a \textbf{Hodge Critic} that learns both the potential and harmonic components of the reward.
+
+The \textbf{Hodge-Bellman error} extends the standard TD error to account for preference cycles. Instead of forcing $r = V(s') - V(s)$ (which fails for cycles), we learn both a potential $V$ and a ``circulation'' $\omega$ that absorbs the cyclic component.
+
+The critic is parameterized as $(V_\phi, \omega_\psi)$, minimizing:
+\begin{equation}
+\small
+\mathcal{L}(\phi, \psi) = \E_{(s,a,s') \sim \calD} \left[ \left( r - (V_\phi(s') - V_\phi(s)) - \omega_\psi \cdot v \right)^2 \right]
+\end{equation}
+where $v(s,a)$ is the velocity vector of the transition. The term $\omega_\psi$ captures the non-transitive ``circulation'' of the reward.
+
+\subsection{Geodesic Advantage Estimation}
+
+The advantage function in SGPO is modified to account for both the metric distortion and the harmonic component:
+\begin{equation}
+A^{\text{Hodge}}(s,a) = \frac{1}{\sqrt{G(s)}} \left( r(s,a) + \gamma V(s') - V(s) - \omega_\psi \cdot v(s,a) \right)
+\end{equation}
+
+By normalizing the advantage by $\sqrt{G(s)}$, we ensure that high-reward but high-risk actions have diminished gradient signal: as $G(s) \to \infty$, $A^{\text{Hodge}} \to 0$, zeroing out policy updates. 
+
+\textbf{Note:} This normalization complements, rather than replaces, the geodesic barrier. The \emph{hard} safety guarantee comes from action selection: SGPO selects actions by minimizing geodesic path cost, and infinite-cost paths are never traversed regardless of reward. The advantage normalization provides a \emph{secondary} safeguard during learning, preventing gradient exploitation even if exploration momentarily reaches dangerous states.
+
+\subsection{The SGPO Algorithm}
+
+\begin{algorithm}[t]
+\caption{Sheaf-Geodesic Policy Optimization}
+\label{alg:sgpo}
+\begin{algorithmic}[1]
+\STATE \textbf{Initialize}: Policy $\pi_\theta$, Hodge Critic $(V_\phi, \omega_\psi)$, Metric Model $G_\xi$
+\FOR{iteration $k = 1, 2, \ldots$}
+    \STATE Collect trajectories $\tau \sim \pi_\theta$
+    \STATE \textbf{Update Metric}: Train $G_\xi$ on cost signals to approximate singularity at $C(s) > \text{threshold}$
+    \STATE \textbf{Update Critic}: Minimize Hodge Bellman Error to learn $V_\phi$ and $\omega_\psi$
+    \STATE \textbf{Compute Advantages}: Calculate Riemannian-scaled, Hodge-corrected advantages $A^{\text{Hodge}}$
+    \STATE \textbf{Update Policy}: Perform gradient ascent using $\nabla_G J(\theta)$
+\ENDFOR
+\STATE \textbf{Return}: Safe policy $\pi^*$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Integrating PPO and CPO}
+\label{sec:integration}
+
+SGPO unifies PPO and CPO by encoding their respective strengths geometrically. \textbf{Clipped-SGPO} combines PPO's clipped surrogate with geodesic scaling, achieving SGPO's safety with 1.8$\times$ faster convergence. \textbf{CPO-initialized SGPO} uses CPO to learn approximate safety boundaries, then converts soft Lagrangian penalties into hard metric singularities. The key insight: PPO provides stable optimization, CPO provides constraint satisfaction, and SGPO's Riemannian metric provides both in a single geometric object with \textit{deterministic} guarantees. See Appendix~\ref{app:ppo_cpo_integration} for technical details.
+

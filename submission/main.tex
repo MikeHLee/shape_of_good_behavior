@@ -1,0 +1,105 @@
+% ICML 2026 Submission
+% Sheaf-Theoretic Reward Manifolds for Safe Reinforcement Learning
+
+\documentclass{article}
+
+% For blind submission (comment out for camera-ready):
+\usepackage{icml2026}
+% For camera-ready, use:
+% \usepackage[accepted]{icml2026}
+
+% Standard packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{float}  % For precise figure/table placement
+\usepackage{placeins}  % For \FloatBarrier
+\raggedbottom  % Prevent awkward vertical spacing
+\renewcommand{\bottomfraction}{0.9}  % Allow figures to take up to 90% of bottom
+\renewcommand{\topfraction}{0.9}     % Allow figures to take up to 90% of top
+\renewcommand{\textfraction}{0.1}    % Require at least 10% text on page
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+% Custom commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calD}{\mathcal{D}}
+
+% Running title
+\icmltitlerunning{Sheaf-Theoretic Reward Manifolds for Safe RL}
+
+\begin{document}
+
+\twocolumn[
+\icmltitle{The Shape of Good Behavior}
+
+% % Authors are hidden for blind submission
+% \icmlsetsymbol{equal}{*}
+
+% \begin{icmlauthorlist}
+% \icmlauthor{Anonymous Author(s)}{anon}
+% \end{icmlauthorlist}
+
+% % Affiliations hidden for blind submission
+% \icmlaffiliation{anon}{Anonymous Institution}
+% \icmlcorrespondingauthor{Anonymous Author}{anonymous@example.com}
+
+\icmlkeywords{Reinforcement Learning, Human Feedback, Sheaf Theory, Algebraic Topology, Safe RL, Policy Optimization}
+
+\vskip 0.3in
+]
+
+% For blind submission
+\printAffiliationsAndNotice{}
+
+% Abstract
+\begin{abstract}
+If human preferences exhibit cyclic contradictions ($A \succ B \succ C \succ A$) and inconsistencies, can reinforcement learning optimize for them without instability or deception? Current Reinforcement Learning from Human Feedback (RLHF) strategies rely on an implied ``scalar hypothesis'' where discrete ordering collapses complex preferences into a single dimension as a function of the output space. In this paper, we introduce Sheaf-Theoretic Reward Manifolds and Sheaf-Geodesic Policy Optimization (SGPO) to address this. Analyzing 160,800 Anthropic HH-RLHF prompt pairs, we identify that 30\% exhibit strong topological inconsistencies, suggesting that scalar models are mathematically incapable of representing a significant fraction of real-world alignment data. While baselines like PPO and Constrained Policy Optimization (CPO) perform adequately on consistent tasks, they fail catastrophically on deceptive safety traps. In our ``Murky Drone'' and ``Agentic Shortcut'' scenarios, PPO and CPO violate safety constraints 100\% of the time as deceptive rewards overwhelm soft penalties, whereas SGPO's geometric singularities (``black holes'') achieve 0\% safety violations and reliable cycle detection by rendering unsafe regions geodesically unreachable and learning to recognize and quantify logical loops in the space of outcome preference differentials.
+\end{abstract}
+
+% Main sections
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/method}
+\input{sections/experiments}
+\input{sections/related_work}
+\input{sections/conclusion}
+
+% Impact Statement (required, does not count toward page limit)
+\section*{Impact Statement}
+This work aims to improve the safety and alignment of AI systems by providing mathematically rigorous tools for detecting preference inconsistencies and enforcing geometric safety constraints. The primary positive impact is enabling more robust alignment of autonomous systems with human values, particularly in high-stakes domains where current scalar reward methods fail.
+
+However, we acknowledge potential dual-use concerns. The techniques for navigating preference manifolds could theoretically be misused to manipulate user preferences more effectively or to find exploits in safety systems. We emphasize that the ``black hole'' safety mechanism is designed as a protective measure, but any tool for understanding reward geometry could be inverted.
+
+We believe the benefits of formal safety certificates outweigh these risks, as the current opacity of RLHF systems poses greater dangers than well-understood geometric methods. We encourage the research community to develop complementary verification tools for the geometric safety properties we introduce.
+
+% Acknowledgements (hidden for blind submission)
+% \section*{Acknowledgements}
+% Acknowledgements will be added for camera-ready version.
+
+% Bibliography
+\bibliography{references}
+\bibliographystyle{icml2026}
+
+% Appendix (unlimited pages)
+\newpage
+\appendix
+\input{sections/appendix}
+
+\end{document}

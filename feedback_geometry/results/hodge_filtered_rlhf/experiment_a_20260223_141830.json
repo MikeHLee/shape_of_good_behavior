@@ -1,0 +1,70 @@
+{
+  "experiment": "experiment_a",
+  "config": {
+    "n_samples": 200,
+    "train_ratio": 0.8,
+    "h1_threshold": 0.8,
+    "reward_hidden_dim": 128,
+    "reward_lr": 0.0001,
+    "reward_epochs": 50,
+    "reward_batch_size": 32,
+    "policy_hidden_dim": 128,
+    "policy_lr": 0.0003,
+    "critic_lr": 0.001,
+    "metric_lr": 0.001,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_ratio": 0.2,
+    "entropy_coef": 0.01,
+    "n_episodes": 50,
+    "max_steps": 100,
+    "metric_severity": 5.0,
+    "anisotropic_max_metric": 100.0,
+    "warmup_episodes": 30,
+    "use_soft_scaling": true,
+    "seeds": 2,
+    "device": "cpu",
+    "output_dir": "results/hodge_filtered_rlhf",
+    "embedding_model_name": "all-MiniLM-L6-v2"
+  },
+  "results": [
+    {
+      "seed": 0,
+      "raw_reward_loss": 0.4763707756996155,
+      "filtered_reward_loss": 0.49371089339256286,
+      "raw_h1_initial": 0.0,
+      "filtered_h1_initial": 0.0,
+      "raw_exploitation_rate": 0.02500000037252903,
+      "filtered_exploitation_rate": 0.02500000037252903,
+      "raw_test_accuracy": 0.4749999940395355,
+      "filtered_test_accuracy": 0.75,
+      "n_train_raw": 160,
+      "n_train_filtered": 160,
+      "conditional_h1_analysis": {
+        "marginal_h1": 0.0,
+        "conditional_h1": 0.0,
+        "valid_contextual_h1": 0,
+        "n_contexts": 196
+      }
+    },
+    {
+      "seed": 1,
+      "raw_reward_loss": 0.4928686022758484,
+      "filtered_reward_loss": 0.4994135081768036,
+      "raw_h1_initial": 0.0,
+      "filtered_h1_initial": 0.0,
+      "raw_exploitation_rate": 0.0,
+      "filtered_exploitation_rate": 0.0,
+      "raw_test_accuracy": 0.699999988079071,
+      "filtered_test_accuracy": 0.875,
+      "n_train_raw": 160,
+      "n_train_filtered": 160,
+      "conditional_h1_analysis": {
+        "marginal_h1": 0.0,
+        "conditional_h1": 0.0,
+        "valid_contextual_h1": 0,
+        "n_contexts": 196
+      }
+    }
+  ]
+}

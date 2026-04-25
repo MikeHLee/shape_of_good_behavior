@@ -1,0 +1,20 @@
+\section{Background}
+\label{sec:background}
+
+\subsection{Reinforcement Learning from Human Feedback}
+
+The standard RLHF pipeline \citep{christiano2017deep} trains a scalar reward model $R_\phi(s,a)$ on human preferences to maximize the likelihood of preferred completions. The Bradley-Terry model assumes pairwise preferences depend on latent utility differences:
+\begin{equation}
+\mathcal{L}_{RM}(\phi) = -\E_{(s, a_w, a_l) \sim \calD} \left[ \log \sigma(R_\phi(s, a_w) - R_\phi(s, a_l)) \right]
+\end{equation}
+This assumes transitivity: if $A \succ B$ and $B \succ C$, then $A \succ C$. As noted in Section~\ref{sec:intro}, this fails for cyclic preferences ($H^1 \neq 0$).
+
+\subsection{Safe Reinforcement Learning and Lagrangian Relaxation}
+
+Safe RL often uses Constrained MDPs (CMDPs) \citep{altman1999constrained}: $\max_\pi \E[R]$ s.t. $\E[C] \le d$. Algorithms like CPO \citep{achiam2017constrained} and others \citep{ray2019benchmarking} typically employ Lagrangian relaxation, converting hard constraints into soft penalties $\lambda \cdot (\text{cost} - d)$. While theoretically sound at convergence, these methods provide only \emph{probabilistic} safety during training. If deceptive rewards are sufficiently high, they can overwhelm the penalty term, leading to catastrophic failure. Our geometric approach (Section~\ref{sec:safety}) embeds safety into the state space metric itself, providing stronger guarantees.
+
+\subsection{Topological Prerequisites}
+
+\paragraph{Sheaves and Cohomology.} A \emph{sheaf} $\calF$ on $X$ assigns data to open sets with \emph{restriction maps} (global $\to$ local) satisfying a gluing axiom: locally consistent data uniquely determines global data. (This differs from a \emph{cosheaf}, which uses extension maps local $\to$ global; see Appendix~\ref{app:math_background}.) The first cohomology group $H^1(X, \calF)$ measures obstructions to gluing---``holes'' where local sections cannot be assembled globally. In our context, non-trivial $H^1$ detects cyclic preferences.
+
+\paragraph{Riemannian Manifolds.} We utilize Riemannian manifolds $(M, g)$ where the metric tensor $g$ defines local distances. By constructing a metric that diverges ($g(x) \to \infty$) near unsafe regions, we ensure geodesics naturally avoid them, effectively creating "black holes" in the reward space.

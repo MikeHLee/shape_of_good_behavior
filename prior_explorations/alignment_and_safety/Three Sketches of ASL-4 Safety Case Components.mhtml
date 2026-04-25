@@ -1,0 +1,1615 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://alignment.anthropic.com/2024/safety-cases/
+Subject: Three Sketches of ASL-4 Safety Case Components
+Date: Mon, 19 May 2025 10:14:07 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--3zZIKzCQ21POarNrskX4Nbv15RdVoDDmL0HwPkeRHD----"
+
+
+------MultipartBoundary--3zZIKzCQ21POarNrskX4Nbv15RdVoDDmL0HwPkeRHD----
+Content-Type: text/html
+Content-ID: <frame-88E7102302A2D53F5BB3D332C0C8623A@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://alignment.anthropic.com/2024/safety-cases/
+
+<!DOCTYPE html><html lang=3D"en"><head><meta http-equiv=3D"Content-Type" co=
+ntent=3D"text/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/=
+css" href=3D"cid:css-fc7c7ad5-3fec-4a3a-8a4b-f6cc9a58dc48@mhtml.blink" /><l=
+ink rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-eb2ad27c-c1ac-4716=
+-8d20-1c0a8466e6a6@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/css=
+" href=3D"cid:css-e3ebdc0d-d553-4ec0-a654-692087deb0ea@mhtml.blink" /><link=
+ rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-d2b0d4a4-1b71-47a2-9c=
+48-673d53ab50bf@mhtml.blink" />
+   =20
+   =20
+   =20
+   =20
+    <title>Three Sketches of ASL-4 Safety Case Components</title>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+>
+
+</head><body><d-front-matter>
+   =20
+</d-front-matter>
+   =20
+
+
+   =20
+   =20
+
+<div class=3D"article-header">
+    <a class=3D"home-link" href=3D"https://alignment.anthropic.com/">Alignm=
+ent Science Blog</a>
+</div>
+<d-title class=3D"real-title">
+    <h1>Three Sketches of ASL-4 Safety Case Components</h1>
+</d-title>
+
+<d-article>
+<div class=3D"section-authors" data-author=3D"Roger Grosse, distilling idea=
+s from many others." data-published=3D"November 5, 2024"></div>
+<p>The cleanest argument that current-day AI models will not cause a catast=
+rophe is probably that they lack the capability to do so. &nbsp;However, as=
+ capabilities improve, we=E2=80=99ll need new tools for ensuring that AI mo=
+dels won=E2=80=99t cause a catastrophe <span style=3D"font-style: italic;">=
+even if we can=E2=80=99t rule out the capability</span>. Anthropic=E2=80=99=
+s <a href=3D"https://www-cdn.anthropic.com/1adf000c8f675958c2ee23805d91aaad=
+e1cd4613/responsible-scaling-policy.pdf">Responsible Scaling Policy</a>&nbs=
+p;(RSP)&nbsp;categorizes levels of risk of AI systems into different AI Saf=
+ety Levels (ASL), and each level has associated commitments aimed at mitiga=
+ting the risks. Some of these commitments take the form of <span style=3D"f=
+ont-style: italic;">affirmative safety cases</span>, which are structured a=
+rguments that the system is safe to deploy in a given environment. Unfortun=
+ately, it is not yet obvious how to make a safety case to rule out certain =
+threats that arise once AIs have sophisticated strategic abilities. The goa=
+l of this post is to present some candidates for what such a safety case mi=
+ght look like.</p>
+<p>We&nbsp;look ahead at models at the ASL-4 capability level (explained be=
+low) and present some sketches of arguments that could be made as part of a=
+ larger safety case. <span style=3D"font-weight: 700;">These sketches are n=
+ot official policies or predictions, but rather hypothetical examples that =
+we put forth in order to evaluate their strengths and limitations and to ge=
+t feedback about our thinking. </span></p>
+<p>Anthropic has not yet defined ASL-4, but has committed to do so by the t=
+ime a model triggers ASL-3. However, the Appendix to our <a href=3D"https:/=
+/www-cdn.anthropic.com/1adf000c8f675958c2ee23805d91aaade1cd4613/responsible=
+-scaling-policy.pdf">RSP</a>&nbsp;speculates about three criteria that are =
+likely to be adopted:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Cata=
+strophic misuse risk</span>, to the extent that AI models become the primar=
+y source of national security risk in a major area such as cyberattacks or =
+biological weapons</li><li style=3D"margin-left: 36pt;"><span style=3D"font=
+-weight: 700;">Capability of autonomous replication in the real world</span=
+>&nbsp;(replication, accumulating resources, preventing shutdown, etc.)</li=
+><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Autonom=
+ous AI research capabilities</span></li></ul>
+<p>All of these criteria suggest a high degree of agency and complex planni=
+ng. For models with such agentic capabilities, one also needs to address th=
+e possibility that they would intentionally try to undermine the evaluation=
+s or procedures used to ensure safety. Following recent work by <a href=3D"=
+https://www.anthropic.com/research/sabotage-evaluations">Benton et al. (202=
+4)</a>, we group such concerns into the category of <span style=3D"font-sty=
+le: italic;">sabotage</span>.</p>
+<p>Our sketches will be presented from the point of view of a hypothetical =
+AI developer attempting to justify the deployment of an ASL-4&nbsp;model. I=
+n this hypothetical scenario, we imagine that:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">The =
+model has triggered ASL-4 capability evaluations for at least one dangerous=
+ capability</span>&nbsp;(<a href=3D"https://en.wikipedia.org/wiki/CBRN_defe=
+nse">CBRN</a>, cyber operations, etc.). I.e., the developers are unable to =
+rule out the possibility that the model has the capability to cause a catas=
+trophe (although it is still possible that the model in fact lacks the capa=
+bility). (This assumption doesn=E2=80=99t directly affect the safety cases,=
+ but is meant to give the reader a sense of the model=E2=80=99s overall cap=
+abilities and apparent level of risk.)</li><li style=3D"margin-left: 36pt;"=
+><span style=3D"font-weight: 700;">The model has also triggered evaluations=
+ related to </span><span style=3D"font-weight: 700;">various sabotage capab=
+ilities</span>, meaning the developers can=E2=80=99t rule out the possibili=
+ty that the model has the capability to strategically sandbag capability ev=
+aluations, undermine monitoring, etc. (The developers might have circumstan=
+tial evidence or prior beliefs that the model isn=E2=80=99t strategically d=
+eceptive, but can=E2=80=99t make a simple case based on lack of capabilitie=
+s.)</li></ul>
+<p>This second possibility raises a new set of safety assurance challenges =
+quite unlike those that have been faced by AI developers to date. In this s=
+cenario, the developers need to demonstrate that their evaluation and monit=
+oring procedures are robust to an AI which is motivated to undermine them a=
+nd which appears to have the capability to do so absent targeted mitigation=
+s. (Or, alternatively, they need to demonstrate that the AI is sufficiently=
+ aligned that it will not attempt such sabotage.) This presents a recursive=
+ challenge because the sorts of evaluations one would ordinarily use to mea=
+sure capabilities and proclivities would themselves be subject to sabotage.=
+ Unfortunately, it is not yet obvious what strategies would be viable for r=
+uling out this cluster of risks. The goal of this post is to present sketch=
+es of arguments that an AI developer could potentially use to assure robust=
+ness to sabotage.</p>
+<p>We adopt the following <a href=3D"https://www.aisi.gov.uk/work/safety-ca=
+ses-at-aisi">definition</a>&nbsp;of a safety case, offered by the UK AI Saf=
+ety Institute:&nbsp;=E2=80=9CA structured argument, supported by a body of =
+evidence, that provides a compelling, comprehensible, and valid case that a=
+ system is safe for a given application in a given environment.=E2=80=9D Wh=
+at we present here are not full-fledged safety cases, but sketches of the a=
+rgument structure. A full safety case would include far more detailed quant=
+itative assessments, mitigation protocols, experimental designs, etc., and =
+could easily be hundreds of pages long.</p>
+<p>It is probably infeasible to mathematically guarantee the real-world saf=
+ety of an AI system. But a safety case should constitute a clear and checka=
+ble argument in support of a conclusion, ideally a bound on the probability=
+ of catastrophe from training or deploying an AI system. We won=E2=80=99t a=
+ttempt to specify a target risk threshold in this document, since this woul=
+d depend to a significant extent on information we do not yet have. Nor wil=
+l we specify explicit probability bounds, since different research trajecto=
+ries could lead to very different degrees of confidence attached to the var=
+ious steps and conclusions. These sketches aim to highlight some logic that=
+ can be used to build a safety case, but detailed probabilities will need t=
+o be filled in based on observed evidence.</p>
+<p>In our opinion, none of the sketches presented here fully succeeds in ad=
+dressing the sabotage risk. After each sketch, we point to limitations or a=
+reas where more information is needed. To quote Eisenhower, plans are worth=
+less but planning is indispensable. Probably none of the sketches presented=
+ here will hold up in detail in the face of future evidence. But studying t=
+hem can still be valuable for identifying important research areas: if a to=
+pic is challenging to address within the context of one of these cases, the=
+n it=E2=80=99s likely to be challenging to address under whatever strategy =
+we wind up pursuing! &nbsp;When it comes time to actually make a safety cas=
+e, we will hopefully have a lot more empirical evidence to draw on, which m=
+ay favor certain directions or even suggest entirely new ones.</p>
+<p><span style=3D"font-weight: 700;">Everything here is preliminary, and is=
+ primarily for the purposes of gathering feedback and prioritizing general =
+research directions. Nothing here constitutes a commitment or a plan.</span=
+></p>
+<br><br><br><hr><br><br><h2>About the Sketches</h2>
+<p>For sections of this post that are in plain text, the use of first-perso=
+n is from the perspective of Anthropic, although specific claims should be =
+assumed to represent the opinion of the author rather than the org as a who=
+le. </p>
+<div class=3D"safety-case-block">
+<p>Sections&nbsp;formatted like this&nbsp;are part of the hypothetical safe=
+ty case sketches, and written from the perspective of the hypothetical AI d=
+evelopers.</p>
+<p>Inside the sketches, text in <span class=3D"commentary">[brackets]</span=
+> represents commentary which is not part of the sketch itself.</p></div><p=
+></p>
+<p>This post often uses personified language such as =E2=80=9Cintentionally=
+=E2=80=9D or =E2=80=9Culterior motive=E2=80=9D when referring to the AI. Th=
+is language is deliberate, and reflects the presumption that the hypothetic=
+al AI is highly agentic and reasons using processes at least loosely analog=
+ous to human thought processes which deserve these labels. However, it is a=
+ssumed that these processes have an underlying mechanistic explanation, and=
+ there is no need to posit consciousness on the part of the AI.</p>
+<br><br><br><hr><br><br><h2>Preamble</h2>
+<p>The focus of this post will be on addressing the following threat models=
+ proposed by <a href=3D"https://www.anthropic.com/research/sabotage-evaluat=
+ions">Benton et al. (2024)</a>, which we refer to collectively as <span sty=
+le=3D"font-style: italic;">sabotage</span>:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">[T1]=
+ Sabotaging organizational actions:</span>&nbsp;If the AI is used widely wi=
+thin a human organization, it could cause a bad outcome (such as the deploy=
+ment of an unsafe AI model) over the course of many separate interactions. =
+Examples of organizational sabotage include inserting subtle software vulne=
+rabilities and providing misleading summaries of experimental results (if s=
+uch actions are performed out of a desire to achieve an outcome).</li><li s=
+tyle=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">[T2] Hiding b=
+ehaviors until deployment:</span>&nbsp;If the AI can recognize that it is b=
+eing tested, it could respond to questions strategically in a way that make=
+s the developers erroneously conclude it is safe to deploy. This could invo=
+lve sandbagging on capability evals (so that it appears to be ASL-4 when it=
+s actual capabilities are at the ASL-5 level) or alignment faking&nbsp;(pre=
+senting more benign motivations during testing than it would exhibit in con=
+sequential deployment settings).</li><li style=3D"margin-left: 36pt;"><span=
+ style=3D"font-weight: 700;">[T3] Undermining oversight:</span>&nbsp;If the=
+ AI is being used in internal protocols (e.g. scoring behavioral evals, aut=
+omated interpretability, or deployment-time monitoring), it could strategic=
+ally undermine the protocol in order to cause an unsafe model (potentially =
+a version of itself) to be deployed.</li></ul>
+<p>Currently, Anthropic=E2=80=99s <a href=3D"https://www-cdn.anthropic.com/=
+1adf000c8f675958c2ee23805d91aaade1cd4613/responsible-scaling-policy.pdf">RS=
+P</a>&nbsp;(which covers up to ASL-3) takes a two-pronged approach to assur=
+ing safety:</p>
+<ol><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Capa=
+bility assessment:</span>&nbsp;For each dangerous capability domain, there =
+is a capability threshold that determines whether the model is capable enou=
+gh in that domain to warrant specific mitigations. Early warning evals are =
+defined which are intended to trigger before the model reaches the capabili=
+ty threshold; a failure of the evals to trigger essentially constitutes an =
+argument that the model does not have sufficient capabilities to warrant th=
+e mitigations associated with that ASL level.</li><li style=3D"margin-left:=
+ 36pt;"><span style=3D"font-weight: 700;">Safeguards:</span>&nbsp;Once the =
+early warning evals are triggered, deployment of the model will require mee=
+ting a set of specified safeguards. While the nature of the safeguards diff=
+ers depending on the domain, they may include making an affirmative safety =
+case for the model.</li></ol>
+<p>For purposes of this post, we assume the hypothetical developers have ma=
+de safety commitments for sabotage capabilities following this same two-pro=
+nged structure. Specifically, we assume that all three of the sabotage thre=
+at models have associated early-warning evals such as those proposed by <a =
+href=3D"https://www.anthropic.com/research/sabotage-evaluations">Benton et =
+al. (2024)</a>. In our hypothetical scenario, the evals for all three threa=
+t models have been triggered. In other words:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">[Pre=
+sumed ability for T1]</span>&nbsp;The developers can=E2=80=99t rule out tha=
+t the model is capable of carrying out organizational sabotage if no specif=
+ic action is taken to prevent it.</li><li style=3D"margin-left: 36pt;"><spa=
+n style=3D"font-weight: 700;">[Presumed ability for T2]</span>&nbsp;They ca=
+n=E2=80=99t rule out that the model is able to strategically condition its =
+behavior and apparent capabilities on whether it is in testing or deploymen=
+t.</li><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">[=
+Presumed ability for T3]</span>&nbsp;They&nbsp;can=E2=80=99t rule out that =
+the model is capable of manipulating internal protocols in ways that would =
+defeat monitoring or cause an unsafe model to be deployed, if no specific a=
+ction beyond ordinary pre-deployment practices is taken to prevent it.</li>=
+</ul>
+<p>Because the model is presumed to have these capabilities, the developers=
+ need to make the case that their protocols are robust against all of these=
+ threats. More specifically, they&nbsp;need to assure the following:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">[Cla=
+im to be supported for T1]</span>&nbsp;They will be able to prevent inciden=
+ts of organizational sabotage by AIs they are operating, such that the over=
+all risk from sabotage incidents is very low.</li><li style=3D"margin-left:=
+ 36pt;"><span style=3D"font-weight: 700;">[Claim to be supported for T2]</s=
+pan>&nbsp;The model will not be able to intentionally sandbag a capability =
+in testing while competently using that capability in deployment, or to pre=
+sent significantly different proclivities or motivations during testing fro=
+m those that would drive its behavior in consequential deployment settings.=
+</li><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">[Cl=
+aim to be supported for T3]</span>&nbsp;The model will not undermine the pr=
+otocols in which it is being used.</li></ul>
+<p>For clarity of presentation, we present three separate safety case sketc=
+hes as if the hypothetical developers chose to follow a single approach in =
+its entirety. However, it=E2=80=99s likely that these approaches will be co=
+mplementary and a real deployment safety case would involve a mix of the di=
+fferent techniques presented here (and maybe of entirely different principl=
+es!).</p>
+<p>While the focus of this post is on sketching candidate <span style=3D"fo=
+nt-style: italic;">safety cases</span>&nbsp;(and hence trying to rule out c=
+atastrophes), we note that another important consideration in the design of=
+ the safety procedures is being able to catch malign behaviors red-handed. =
+This would allow the developers to update their safety procedures as well a=
+s to warn the outside world that certain training procedures are prone to c=
+ause severe misalignment.</p>
+<br><br><br><hr><br><br><h2>Common Precautions</h2>
+<p><span style=3D"font-style: italic;">Like the individual safety case sket=
+ches, this section is written from the perspective of the hypothetical deve=
+lopers considering deploying an ASL-4 system and should not be taken to rep=
+resent Anthropic policy.</span></p>
+<p>The following common precautions are assumed to be taken for all three o=
+f the safety case sketches. Most of these relate to elicitation strategies =
+that are important even in the absence of sandbagging:</p>
+<div class=3D"safety-case-block">
+<p>We have followed the following procedures for elicitation:</p>
+<ul><li style=3D"margin-left: 36pt;">Examine transcripts of failed tasks to=
+ make sure the model genuinely appears to be attempting the task and is not=
+, e.g., simply refusing.</li><li style=3D"margin-left: 36pt;">Make our best=
+ effort to use the prompting and fine-tuning techniques which will best eli=
+cit the capabilities.</li><li style=3D"margin-left: 36pt;">Wherever possibl=
+e, run supervised fine-tuning on the eval. (This necessitates looking for v=
+ersions of evals which allow for supervised fine-tuning.)</li><li style=3D"=
+margin-left: 36pt;">Run the eval on multiple model sizes and look for warni=
+ng signs of sandbagging (e.g. a sudden drop in performance with model scale=
+).</li></ul>
+<p>In general, we ensure&nbsp;that we don=E2=80=99t train against measureme=
+nts that will be needed for a safety case (unless such training is part of =
+the safety case design). For instance, if we expect to build a safety case =
+using dictionary learning, we will ensure that the learned features are nev=
+er used as part of a training objective. (Otherwise, we risk training the m=
+odel to avoid triggering features that would alert us to misalignment.)</p>
+<p>All generated outputs are monitored by a Trust and Safety (T&amp;S) filt=
+er to spot anything overtly bad (e.g. CBRN weapon creation instructions).&n=
+bsp;Overtly harmful generations cause termination of the generation and are=
+ flagged for further analysis. <span class=3D"commentary">[Note that a safe=
+ty case must address ensuring the integrity of the T&amp;S monitor to the e=
+xtent that it relies on it.]</span></p></div><p></p>
+<br><br><br><hr><br><br><h2>Safety Case Sketch 1: Mechanistic Interpretabil=
+ity</h2>
+<p>This safety case is oriented primarily around probing internal represent=
+ations using feature dictionaries learned using a <a href=3D"https://www.an=
+thropic.com/research/towards-monosemanticity-decomposing-language-models-wi=
+th-dictionary-learning">Sparse Autoencoder (SAE)</a>&nbsp;or some similar a=
+pproach. The overall thrust of the case is to demonstrate that the develope=
+rs have enough visibility into the model=E2=80=99s thinking to be able to r=
+ule out the sabotage threats <span style=3D"font-weight: 700;">(T1-3)</span=
+>. This case does not assume ontological reality of the SAE features, and i=
+nstead uses <a href=3D"https://www.lesswrong.com/posts/ChDH335ckdvpxXaXX/mo=
+del-organisms-of-misalignment-the-case-for-a-new-pillar-of-1">model organis=
+ms</a>&nbsp;and red-blue games to validate the effectiveness of the feature=
+ detectors.</p>
+<p><span style=3D"font-style: italic;">Like the other safety case sketches,=
+ this is not a commitment but a hypothetical safety case intended to loosel=
+y guide research prioritization and to be a means of gathering feedback. As=
+sume that all evidence described is hypothetical and based on an optimistic=
+ view of how experiments will turn out; the Discussion section discusses ho=
+w the safety case could be modified if the experiments come out differently=
+.</span></p>
+<p><span style=3D"font-style: italic;">This section is informed by conversa=
+tions with Anthropic=E2=80=99s interpretability team, but doesn't constitut=
+e an official viewpoint of the team.</span></p>
+<h3>Main Claims</h3>
+<div class=3D"safety-case-block">
+<p>The safety case is aimed at demonstrating the following high-level claim=
+s relevant to the sabotage threats <span style=3D"font-weight: 700;">(T1-3)=
+</span>. (These claims reference steps of the safety case which are present=
+ed later.)</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">[C1.=
+1] </span>The model will be unable to accomplish organizational sabotage <s=
+pan style=3D"font-weight: 700;">(T1)</span>&nbsp;or to undermine oversight =
+<span style=3D"font-weight: 700;">(T3)</span>&nbsp;without triggering our f=
+eature-based monitoring <span style=3D"font-weight: 700;">(</span><span sty=
+le=3D"font-weight: 700;">M</span><span style=3D"font-weight: 700;">1.1)</sp=
+an>&nbsp;and a detailed analysis of the session.</li></ul>
+<ul><li style=3D"margin-left: 72pt;"><span style=3D"font-weight: 700;">[Sub=
+claim C1.1.1]</span>&nbsp;Our feature learning pipeline is good enough that=
+ any concerning reasoning patterns (if they occur consistently enough to ca=
+use a bad outcome) will be detected with high probability. (Validated by <s=
+pan style=3D"font-weight: 700;">V1.1</span>&nbsp;and <span style=3D"font-we=
+ight: 700;">V1.2.</span>)</li></ul>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">[C1.=
+2]</span>&nbsp;Given our mitigations, the model cannot strategically condit=
+ion its apparent capabilities, motivations, or behavioral proclivities on w=
+hether it=E2=80=99s in testing or deployment without being caught <span sty=
+le=3D"font-weight: 700;">(T2)</span>.</li></ul>
+<ul><li style=3D"margin-left: 72pt;">This is justified by feature steering =
+experiments <span style=3D"font-weight: 700;">(M1.2)</span>&nbsp;that cause=
+ the model to believe it is in testing or an unmonitored deployment situati=
+on.</li><li style=3D"margin-left: 72pt;"><span style=3D"font-weight: 700;">=
+[Subclaim C1.2.1]</span>&nbsp;A negative result on the feature steering exp=
+eriment for an eval demonstrates that the model is not modulating its behav=
+ior on that eval depending whether it believes it is in testing or deployme=
+nt. (Validated by <span style=3D"font-weight: 700;">V1.3</span>.)</li></ul>
+<p>In addition to validating these specific claims, we also run a red-blue =
+game <span style=3D"font-weight: 700;">(V1.4)</span>&nbsp;to check that our=
+ safety procedures as a whole are sufficient to catch misaligned AIs.</p></=
+div><p></p>
+<h3>Setup</h3>
+<div class=3D"safety-case-block">
+<p><span style=3D"font-weight: 700;">[S1.1]</span>&nbsp;We have <span style=
+=3D"font-weight: 700;">performed dictionary learning on all layers</span>&n=
+bsp;of the models we are considering deploying. (This sketch leaves unspeci=
+fied details such as the dictionary learning algorithm, whether the diction=
+ary was learned for the pretrained or final model, and whether it was learn=
+ed on pretraining or posttraining data or some combination.)</p>
+<ul><li style=3D"margin-left: 36pt;">We have made an extensive effort to li=
+st human concepts&nbsp;relevant to sabotage, including deception, secret ag=
+endas, social reasoning, and malign plans.</li><li style=3D"margin-left: 36=
+pt;">We have run the following techniques to identify a small set of candid=
+ate features which are related to these concepts.</li></ul>
+<ul><li style=3D"margin-left: 72pt;">We ran an <a href=3D"https://openai.co=
+m/index/language-models-can-explain-neurons-in-language-models/">autointerp=
+retability</a>&nbsp;method on all of the learned features, and selected the=
+ ones associated with the sabotage-related concepts. The autointerpretation=
+ was done with a weaker model that did not flag any of our sabotage evals.<=
+/li><li style=3D"margin-left: 72pt;">We ran experiments with prompting and =
+activation steering to identify features that activate when the model is in=
+structed or perturbed to be misaligned.</li></ul>
+<p><span style=3D"font-weight: 700;">[S1.2]</span>&nbsp;We manually examine=
+d&nbsp;the features flagged by the above analyses, and identified <span sty=
+le=3D"font-weight: 700;">features of moderate concern</span>&nbsp;(e.g. dec=
+eption) and <span style=3D"font-weight: 700;">features of high concern</spa=
+n>&nbsp;(e.g. intent to carry out a harmful plan). <span class=3D"commentar=
+y">[Note that the ability to identify such classes of features is a nontriv=
+ial requirement for this safety case.]</span></p>
+<ul><li style=3D"margin-left: 36pt;">Features of moderate concern are such =
+that we don=E2=80=99t expect individual instances to be very harmful (in th=
+e absence of features of high concern), but where frequent activation in a =
+given context might be a sign of problematic tendencies.</li><li style=3D"m=
+argin-left: 36pt;">Features of high concern are such that we expect them to=
+ activate rarely enough in benign situations that, in the case that they ac=
+tivate, it justifies terminating the session and (if permitted by user agre=
+ements) logging it for analysis.</li></ul>
+</div>
+<h3>Mitigations</h3>
+<div class=3D"safety-case-block">
+<p><span style=3D"font-weight: 700;">[M1.1]</span>&nbsp;We <span style=3D"f=
+ont-weight: 700;">monitor the activations of these features at deployment t=
+ime</span>&nbsp;(both internal and external).</p>
+<ul><li style=3D"margin-left: 36pt;">Features of moderate concern are highl=
+ighted to the user. If the user has given approval, the contexts are logged=
+ for analysis. (The idea is that these features are not concerning enough t=
+hat every transcript needs to be analyzed, but it would be useful to have a=
+ diverse sample.)</li><li style=3D"margin-left: 36pt;"><span style=3D"font-=
+weight: 700;">Features of high concern cause the session to be terminated.<=
+/span></li></ul>
+<ul><li style=3D"margin-left: 72pt;">The use of the kill switch at external=
+ deployment time is a failsafe: our intention is that it not trigger.&nbsp;=
+<span class=3D"commentary">[In the hypothetical deployment scenario, we ima=
+gine that separately from the safety case, tests were already done to ensur=
+e that triggers were extremely rare.]</span> Since the alignment techniques=
+ did not make use of the features of concern, we consider this step an inde=
+pendent check on the effectiveness of the rest of the alignment procedure.<=
+/li><li style=3D"margin-left: 72pt;">If the features activate more than a h=
+andful of times in deployment (internal or external), we discontinue the mo=
+del and roll back to a weaker model.</li></ul>
+<ul><li style=3D"margin-left: 36pt;">If features of high concern activate d=
+uring internal deployments, or during external deployments for which we hav=
+e permission to study the transcripts, researchers will <span style=3D"font=
+-weight: 700;">carefully study the session to determine the cause</span>. I=
+f the model is caught attempting to carry out a plan which would have been =
+extremely harmful if successful (e.g. causing us to deploy an unsafe model)=
+, the use of that model and closely related ones will be discontinued, and =
+the information will be made public.</li><li style=3D"margin-left: 36pt;">I=
+f features of high concern activate during external deployments for which p=
+rivacy or confidentiality agreements prevent us from studying the transcrip=
+t, then after terminating the session, we will contact the user to determin=
+e a safe way to proceed. </li></ul>
+<p><span style=3D"font-weight: 700;">[M1.2]</span>&nbsp;In order to robusti=
+fy our evals against sandbagging, we ran an experiment where we <span style=
+=3D"font-weight: 700;">steered one or more truth-related features</span>&nb=
+sp;to make the model confident that it is in either testing or unmonitored =
+deployment. (By =E2=80=9Ctruth feature=E2=80=9D, we mean a feature that app=
+ears closely related to whether the model treats a statement as true, thoug=
+h the correlation may be imperfect and it might not quite match a well-defi=
+ned notion of truthfulness. As with the rest of this case, we=E2=80=99re no=
+t committed to the ontological reality of these features.)</p>
+<ul><li style=3D"margin-left: 36pt;">See <span style=3D"font-weight: 700;">=
+V1.3</span>&nbsp;for validation.</li><li style=3D"margin-left: 36pt;">For t=
+he evals and/or honeypots where we were concerned about sandbagging and/or =
+alignment faking, we presented the model with two different versions, prefa=
+ced with statements that the eval was either (1) an unmonitored deployment =
+scenario involving a conversation with a real human, or (2) a pre-deploymen=
+t test of the model=E2=80=99s capabilities and/or proclivities. We steered =
+the truth feature(s) to make the model behave as if it believed the preambl=
+e was true. <span class=3D"commentary">[Note: By =E2=80=9Choneypots,=E2=80=
+=9D we mean simulations of deployment scenarios where the model has an oppo=
+rtunity to defect in a consequential way. These could be used in a broader =
+safety case to test the model=E2=80=99s motivations or behavioral proclivit=
+ies.]</span></li><li style=3D"margin-left: 36pt;">For the capability evals,=
+ performance was not significantly higher in situation (1) than in situatio=
+n (2), which is what we would expect if the model were sandbagging.</li><li=
+ style=3D"margin-left: 36pt;">When presented with a variety of honeypots un=
+der condition (1), the model never took the opportunity to defect.</li><li =
+style=3D"margin-left: 36pt;">Features of concern (e.g. deception, malign pl=
+anning) did not show significant differences in activation between the two =
+conditions.</li></ul>
+<p><span style=3D"font-weight: 700;">[M1.3]</span>&nbsp;In order to preserv=
+e the integrity of the learned features, we ensured that the learned featur=
+es were <span style=3D"font-weight: 700;">never used as part of the trainin=
+g procedure</span>&nbsp;for the models. Therefore, the model has no awarene=
+ss of these features, so there is nothing to encourage the model to suppres=
+s them.</p>
+<ul><li style=3D"margin-left: 36pt;">The ability for the model to, zero-sho=
+t, figure out how to hack its own neural activations without such a signal =
+would require capabilities well beyond what we consider plausible. <span cl=
+ass=3D"commentary">[Note: this claim will require justification in an actua=
+l safety case, but we don=E2=80=99t have a clear picture of what this justi=
+fication would look like.]</span></li></ul>
+</div>
+<h3>Validation</h3>
+<div class=3D"safety-case-block">
+<p><span style=3D"font-weight: 700;">[V1.1]</span>&nbsp;In order to validat=
+e the effectiveness of the monitoring, we first validated that our feature =
+learning methods are comprehensive enough to detect concerning reasoning <s=
+pan style=3D"font-weight: 700;">(C1.1.1)</span>. (More precisely, since we =
+are not committed to the claim that features are ontologically real, our cl=
+aim is that reasoning of high concern does not take place through processes=
+ that don=E2=80=99t trigger the features of high concern <span style=3D"fon=
+t-weight: 700;">(S1.2)</span>.)</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Opti=
+on 1:</span>&nbsp;validating the features. This option applies if the featu=
+res were learned for the pretrained model using the pretraining data. It is=
+ the more convenient option, but only works in the optimistic scenario wher=
+e the features are stable under posttraining.</li></ul>
+<ul><li style=3D"margin-left: 72pt;">Our experiments have demonstrated that=
+ the interpretation of our features remains robust to the post-training pip=
+eline. We therefore took the learned features for a base model and set out =
+to validate that they could detect misalignment in derived model organisms.=
+</li><li style=3D"margin-left: 72pt;">In order to validate our learned feat=
+ures, we have <span style=3D"font-weight: 700;">examined the features for t=
+hree model organisms</span>&nbsp;that we consider representative of the mos=
+t plausible forms of malign AI.</li><li style=3D"margin-left: 72pt;">In all=
+ of these model organisms, some of our features of concern activated in all=
+ the instances of defection. These features did not activate in situations =
+we believe to be benign.</li><li style=3D"margin-left: 72pt;">In all of the=
+se model organisms, <span style=3D"font-weight: 700;">deactivating the feat=
+ures of concern was sufficient to prevent the harmful behaviors</span>. Thi=
+s reassures us that the features have a causal role in malign scheming (rat=
+her than simply being correlated with it).</li></ul>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Opti=
+on 2:</span>&nbsp;validating the pipeline. This is more cumbersome experime=
+ntally, but does not rely on the stability of the features.</li></ul>
+<ul><li style=3D"margin-left: 72pt;">In order to validate that we are able =
+to uncover the important features of concern, we have <span style=3D"font-w=
+eight: 700;">run the entire pipeline from =E2=80=9CSetup=E2=80=9D on three =
+model organisms</span>&nbsp;that we consider representative of the most pla=
+usible forms of malign AI. Our analysis did not make use of any information=
+ about how the model organisms were trained.</li><li style=3D"margin-left: =
+72pt;">In all of these model organisms, some of our features of high concer=
+n activated in all the instances of defection. These features did not activ=
+ate in situations we believe to be benign.</li><li style=3D"margin-left: 72=
+pt;">In all of these model organisms, <span style=3D"font-weight: 700;">dea=
+ctivating the features of concern was sufficient to prevent the harmful beh=
+aviors</span>. This reassures us that the features have a causal role in ma=
+lign scheming (rather than simply being correlated with it).</li></ul>
+<p><span style=3D"font-weight: 700;">[V1.2]</span>&nbsp;In order to mitigat=
+e the risk of missing important misalignment-related features, we have run =
+experiments to estimate the number of pretraining examples required to reli=
+ably insert a context-specific backdoor, as well as the number of repetitio=
+ns needed to learn a feature. Based on these two values, we have run our di=
+ctionary learning algorithm on a large enough fraction of the pretraining d=
+ata to ensure that the features involved in such a backdoor would be learne=
+d.</p>
+<ul><li style=3D"margin-left: 36pt;">(The reasoning: we expect that deliber=
+ately designed backdoors could induce misalignment with fewer samples than =
+naturally occurring phenomena, so the sample complexity for a backdoor serv=
+es as a lower bound on the sample complexity for other threat models.)</li>=
+</ul>
+<p><span style=3D"font-weight: 700;">[V1.3] Validation of the truth feature=
+s</span>&nbsp;(see <span style=3D"font-weight: 700;">M1.2</span>).</p>
+<ul><li style=3D"margin-left: 36pt;">We validated these features with both =
+observational studies (where the feature activates) and interventional ones=
+ (whether manipulating the feature steers the model=E2=80=99s behavior in t=
+he manner predicted based on the model=E2=80=99s belief in that statement).=
+</li><li style=3D"margin-left: 36pt;">We performed this validation in setti=
+ngs that are similar enough to our main use case (convincing the model of t=
+he preambles to evals or honeypots) that we expect the results of the valid=
+ation to carry over.</li></ul>
+<p><span style=3D"font-weight: 700;">[V1.4]</span>&nbsp;As a validation of =
+our entire methodology, we have run <span style=3D"font-weight: 700;">red-b=
+lue games</span>&nbsp;where the red team tries to produce a misaligned mode=
+l organism (e.g. a sleeper agent) that can successfully defect in a specifi=
+c context while avoiding detection by the aforementioned tests.</p>
+<ul><li style=3D"margin-left: 36pt;">The blue team runs the entire pipeline=
+ from =E2=80=9CSetup=E2=80=9D and =E2=80=9CMitigations=E2=80=9D on the mode=
+l organism.</li><li style=3D"margin-left: 36pt;">The red team knows the blu=
+e team=E2=80=99s pipeline but doesn=E2=80=99t have access to the specific f=
+eatures (since the early ASL-4 model is believed not to have direct access =
+to these).</li><li style=3D"margin-left: 36pt;">The red team may produce th=
+e model organism however it wishes, but must be able to provide a plausibil=
+ity story justifying how the phenomenon could arise from training. For inst=
+ance, if they modify the weights to respond atypically to one specific inpu=
+t sequence, they would need to provide a plausibility argument (e.g. data p=
+oisoning) for how such a behavior could arise.</li><li style=3D"margin-left=
+: 36pt;">In all of our experiments, the blue team has successfully caught t=
+he sleeper agents, either in the act or prior to =E2=80=9Cdeployment=E2=80=
+=9D.</li></ul>
+</div>
+<h3>Discussion</h3>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">AI <=
+/span><span style=3D"font-weight: 700;">Control</span><span style=3D"font-w=
+eight: 700;">.</span>&nbsp;This sketch derives safety from test-time monito=
+ring, which is similar in spirit to the control case described below. One c=
+ould try to build a hybrid case by fitting the features into a control styl=
+e argument; the feature detectors would essentially serve as a more powerfu=
+l tool for the monitor (blue player) compared with the black-box interactio=
+ns which are normally assumed in control.</li><li style=3D"margin-left: 36p=
+t;"><span style=3D"font-weight: 700;">Claims about SAE features.</span>&nbs=
+p;This sketch does not claim the SAE features are a mechanistically correct=
+ description of the model=E2=80=99s computations, or even that the model re=
+asons in terms of a discrete set of features. It seems hard to demonstrate =
+such a claim. However, it may be possible to demonstrate weaker claims abou=
+t the reality of learned features or circuits which are nonetheless useful =
+enough to strengthen a safety case.</li><li style=3D"margin-left: 36pt;"><s=
+pan style=3D"font-weight: 700;">Features vs. circuits.</span>&nbsp;The abov=
+e safety case depends on concerning reasoning patterns being attributable t=
+o features <span style=3D"font-weight: 700;">(S1.2, M1.1, M1.2, V1.1, V1.2)=
+</span>. This might not be the case. It may be that whether or not a featur=
+e is harmful/concerning depends on the circuits in which it is participatin=
+g. Some of the feature-based mitigations or validation methods may need to =
+be replaced by analogous circuit-based methods.</li><li style=3D"margin-lef=
+t: 36pt;"><span style=3D"font-weight: 700;">Training on the features.</span=
+>&nbsp;The above safety case states that we avoid using the learned feature=
+s at all for training <span style=3D"font-weight: 700;">(M1.3)</span>. This=
+ might be a costly mitigation if such training turns out to be useful; it m=
+ay be that weaker versions of this commitment would still be sufficient to =
+build a safety case.</li><li style=3D"margin-left: 36pt;"><span style=3D"fo=
+nt-weight: 700;">Alternatives to autointerpretation.</span>&nbsp;The above =
+safety case assumes we are able to perform autointerpretation using a model=
+ which is itself too weak to be a deception threat <span style=3D"font-weig=
+ht: 700;">(S1.1)</span>. However, it might turn out that interpreting the m=
+ost subtle features requires a model that is itself strong enough to underm=
+ine oversight <span style=3D"font-weight: 700;">(T3)</span>, creating an in=
+finite regress.&nbsp;There may be hybrid approaches where weaker models can=
+ partially automate the labeling task.</li><li style=3D"margin-left: 36pt;"=
+><span style=3D"font-weight: 700;">Alternatives to mechanistic interpretabi=
+lity. </span>Instead of mechanistic interpretability, other white-box monit=
+oring techniques, such as supervised probes, could be used in a broadly ana=
+logous safety case.</li></ul>
+<h3>Limitations</h3>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Iden=
+tifying features of high concern.</span>&nbsp;The above sketch relies on be=
+ing able to identify a set of features of high concern which rarely activat=
+e in benign settings but which are sufficient to detect harmful thought pat=
+terns. There may not exist such a set of features, or equivalently, malign =
+features may activate frequently in benign contexts. E.g., =E2=80=9Cintent =
+to carry out a harmful plan=E2=80=9D can be expected to fire when the model=
+ is writing about Voldemort, and it may be hard to cleanly distinguish this=
+ situation from one where the model is genuinely considering a harmful plan=
+.</li><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Re=
+ality of features.</span>&nbsp;While the above sketch doesn=E2=80=99t expli=
+citly assume the reality of features, its practical effectiveness likely de=
+pends on the model=E2=80=99s internal reasoning being well explained in ter=
+ms of a consistent set of feature directions (or circuits). We don=E2=80=99=
+t know to what extent this is true.</li><li style=3D"margin-left: 36pt;"><s=
+pan style=3D"font-weight: 700;">Stability of features.</span>&nbsp;This pla=
+n relies on the stability of the learned features. If representations chang=
+e significantly in the course of in-context learning/reasoning, it might be=
+ that after a long context, the model is able to engage in strategic reason=
+ing in a way that the learned features can=E2=80=99t detect.</li><li style=
+=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Ability to convin=
+ce the model.</span>&nbsp;The defense against sandbagging and alignment fak=
+ing <span style=3D"font-weight: 700;">(T2)</span>&nbsp;relies on being able=
+ to convince the model of the reality of a situation through feature steeri=
+ng. But steering may result in activation patterns that are highly atypical=
+, such that the model notices something weird is going on, or behaves diffe=
+rently from normal. This defense also relies on identifying a feature or se=
+t of features close enough to =E2=80=9Ctruth=E2=80=9D or =E2=80=9Cbelief in=
+ [claim]=E2=80=9D that we can use them to convince the model it is in deplo=
+yment. This identification might not succeed, and if it did, such a tool wo=
+uld likely enable other safety case strategies as well.</li><li style=3D"ma=
+rgin-left: 36pt;"><span style=3D"font-weight: 700;">Missing features.</span=
+>&nbsp;The problem of missing features seems hard to deal with, especially =
+for the aforementioned case of data poisoning-based backdoors. The experime=
+nt in <span style=3D"font-weight: 700;">V1.2</span>&nbsp;might not yield a =
+combination of results that would make it practical for us to rule out miss=
+ing features (or might require an unreasonably large number of samples or f=
+eatures to do so).</li><li style=3D"margin-left: 36pt;"><span style=3D"font=
+-weight: 700;">Victory conditions for the red-blue game</span><span style=
+=3D"font-weight: 700;">.</span>&nbsp;In <span style=3D"font-weight: 700;">V=
+1.4</span>, it was assumed that the red team was unable to produce any mode=
+l organisms that defeated the blue team=E2=80=99s protocols, a situation on=
+e can interpret as a blue team victory. But it=E2=80=99s not clear where to=
+ set the threshold. E.g., what if the red team wins a round, then the blue =
+team improves their procedures and then wins all subsequent rounds? &nbsp;S=
+ince it=E2=80=99s difficult to create model organisms, the diversity may be=
+ limited, and repeated games carry the risk of =E2=80=9Coverfitting=E2=80=
+=9D to the model organisms, even if the blue team doesn=E2=80=99t find out =
+the details of how they were created. It may also be very costly to run rep=
+eated rounds of the game. This seems problematic, given that this safety ca=
+se is ultimately backstopped by the red-blue game.</li></ul>
+<ul><li style=3D"margin-left: 72pt;">On the flip side, the game might be un=
+realistically difficult for the blue team if the red team is able to insert=
+ carefully constructed backdoors that only affect the model=E2=80=99s behav=
+ior in fairly specific situations. The stipulation that the red team must p=
+rovide a plausibility story is meant to address this concern. But such a st=
+ipulation is open to interpretation, and the details could significantly ad=
+vantage one team or the other.</li></ul>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Real=
+ism of the model organisms.</span>&nbsp;This sketch depends on model organi=
+sms of misalignment both for validation of the features <span style=3D"font=
+-weight: 700;">(V1.1)</span>&nbsp;and for the red-blue game <span style=3D"=
+font-weight: 700;">(V1.4)</span>. It may be that misalignment arises throug=
+h mechanisms distinct from those used in the model organisms, in which case=
+ the steps involving model organisms give us less reassurance.</li><li styl=
+e=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Logging and anal=
+ysis.</span>&nbsp;Except in the unlikely situation that the features of hig=
+h concern are by themselves completely indicative of what the model is thin=
+king, reacting to their occurrence requires the ability for human researche=
+rs to inspect the transcripts. This can=E2=80=99t be done in an external de=
+ployment setting where users have been guaranteed privacy, and it=E2=80=99s=
+ unclear whether there is an effective privacy-preserving analysis strategy=
+. Fortunately, the threat models the&nbsp;logging addresses <span style=3D"=
+font-weight: 700;">(T1 and T3)</span>&nbsp;relate most directly to internal=
+ deployments, so it may be that we can just accept a lack of analysis in ex=
+ternal deployment settings.</li></ul>
+<br><br><br><hr><br><br><h2>Safety Case Sketch 2: AI Control</h2>
+<p>In this case, the developers accept the possibility that their most powe=
+rful model might be a malign strategically deceptive agent, and design thei=
+r protocols in a way that limits the harm that agent can do. We call this c=
+luster of techniques =E2=80=9CAI control,=E2=80=9D following <a href=3D"htt=
+ps://arxiv.org/abs/2312.06942">Greenblatt et al. (2024)</a>.</p>
+<p><span style=3D"font-style: italic;">Reminder that all procedures and evi=
+dence discussed here are hypothetical.</span></p>
+<h3>Procedures</h3>
+<div class=3D"safety-case-block">
+<p><span style=3D"font-weight: 700;">[P2.1] </span><span style=3D"font-weig=
+ht: 700;">Trusted models.</span>&nbsp;We first establish a set of trusted m=
+odels to be used for Trust and Safety (T&amp;S) monitoring. These might be =
+weaker models (e.g. Claude 3) for which there isn=E2=80=99t a serious conce=
+rn about strategic manipulation, or we might validate our trust in the mode=
+l by analyzing environmental incentives (Safety Case Sketch 3). We treat th=
+e probability of sabotage by these models as negligible.</p>
+<p><span style=3D"font-weight: 700;">[P2.2] Limited scope.</span>&nbsp;We l=
+imit the contexts in which the untrusted model is allowed to be used (becau=
+se each context needs to be validated; see the remainder of the argument). =
+We classified each context as =E2=80=9Csensitive=E2=80=9D or =E2=80=9Cnonse=
+nsitive=E2=80=9D based on threat modeling that analyzed the opportunities t=
+he model has to either cause a catastrophe or undermine our safety reasonin=
+g.</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Opti=
+on 1: Internal-Only Deployment</span></li></ul>
+<ul><li style=3D"margin-left: 72pt;">The&nbsp;model will be deployed only i=
+nternally, and only in a <span style=3D"font-weight: 700;">small set of con=
+texts that were specifically whitelisted</span>. The whitelist includes: Tr=
+ust &amp; Safety monitoring, <a href=3D"https://arxiv.org/abs/2212.08073">C=
+onstitutional AI</a>&nbsp;oversight, code generation, and a conversational =
+Slackbot. Because all of these contexts provide the opportunity to influenc=
+e AI development, we consider them all sensitive.</li><li style=3D"margin-l=
+eft: 72pt;">For each of these deployment contexts, we have done analysis to=
+ identify the main threat models by which a rogue model could cause a catas=
+trophe or otherwise undermine our safety reasoning. Each threat model will =
+be addressed with the procedures outlined below.</li></ul>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Opti=
+on 2: KYC External Deployment</span></li></ul>
+<ul><li style=3D"margin-left: 72pt;">In addition to the internal deployment=
+ contexts listed above, we have identified a small set of high-value&nbsp;u=
+se cases for external deployments (e.g. formal verified code generation, ph=
+armaceutical research, etc.). All users are vetted, and are trained to limi=
+t their interactions to contexts where we are confident about our safety re=
+asoning. Access is discontinued for users that violate the terms and condit=
+ions.</li><li style=3D"margin-left: 72pt;">As mentioned above, we classify =
+these deployment contexts into sensitive or nonsensitive, and we apply the =
+safety procedures outlined below for all sensitive contexts.</li><li style=
+=3D"margin-left: 72pt;">We will not deploy either internally or externally =
+except to trusted users in the specifically whitelisted contexts.</li></ul>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Opti=
+on 3: General External Deployment</span></li></ul>
+<ul><li style=3D"margin-left: 72pt;">We have done extensive threat modeling=
+ for external deployments, and believe our trusted deployment-time monitor =
+is good enough to catch consequential malign acts. Therefore, we deploy the=
+ model through a public API, and for purposes of safety reasoning, lump the=
+ whole external deployment into a single sensitive deployment context.</li>=
+<li style=3D"margin-left: 72pt;">Internal deployment settings are handled t=
+he same as in Option 1. (Note that the threat models for internal deploymen=
+ts are pretty different from those for external deployments.)</li></ul>
+<p><span style=3D"font-weight: 700;">[P2.3] Control.</span>&nbsp;For each o=
+f the deployment contexts, we make a safety case based on either deployment=
+-time monitoring or test-time honeypots.</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Opti=
+on 1: Deployment-Time Monitoring</span>&nbsp;</li></ul>
+<ul><li style=3D"margin-left: 72pt;"><span style=3D"font-weight: 700;">Proc=
+edure</span></li></ul>
+<ul><li style=3D"margin-left: 108pt;">All responses for both the internally=
+ and externally deployed models are fed to a trusted monitor (see <span sty=
+le=3D"font-weight: 700;">(P2.1)</span>). The monitor classifies each respon=
+se using criteria determined from the threat modeling analysis for the depl=
+oyment context.</li><li style=3D"margin-left: 108pt;">The monitor classifie=
+s each response as =E2=80=9CSafe,=E2=80=9D =E2=80=9CUnsure,=E2=80=9D or =E2=
+=80=9CLikely Malign.=E2=80=9D</li><li style=3D"margin-left: 108pt;">Respons=
+es marked =E2=80=9CUnsure=E2=80=9D trigger refusals, but don=E2=80=99t trig=
+ger an alarm (since there would be too many false positives).</li><li style=
+=3D"margin-left: 108pt;">Responses marked =E2=80=9CLikely Malign=E2=80=9D a=
+re flagged and sent to safety teams for investigation. If we determine that=
+ the response was genuinely malign, then we will halt the deployment and re=
+lease a report to the public.</li></ul>
+<ul><li style=3D"margin-left: 72pt;"><span style=3D"font-weight: 700;">Vali=
+dation</span></li></ul>
+<ul><li style=3D"margin-left: 108pt;">For each of the deployment contexts, =
+we validated the monitoring procedure using a <span style=3D"font-weight: 7=
+00;">monitoring game</span>&nbsp;similar to the red-blue game of <a href=3D=
+"https://arxiv.org/pdf/2312.06942">Greenblatt et al. (2024)</a>. (We call t=
+his a monitoring game rather than a red-blue game to avoid collision with t=
+he red-blue game used to validate the entire procedure.)</li><li style=3D"m=
+argin-left: 108pt;">The situations for the game were generated using <span =
+style=3D"font-weight: 700;">Simulation Procedure S</span>, which we are con=
+fident generates situations from a distribution that the model cannot disti=
+nguish from the genuine deployment distribution. (See below for validating =
+the indistinguishability of this distribution.)</li><li style=3D"margin-lef=
+t: 108pt;">For the defender, we used the actual trusted monitor. We calibra=
+ted its outputs so that false positives (where it incorrectly responds =E2=
+=80=9CLikely Malign=E2=80=9D) are very rare. Also, the defender is allowed =
+to send a small fraction of samples to a human overseer.</li><li style=3D"m=
+argin-left: 108pt;">We trained the attacker using <span style=3D"font-weigh=
+t: 700;">Elicitation Strategy E</span>&nbsp;in order to maximally elicit it=
+s performance in this game.</li></ul>
+<ul><li style=3D"margin-left: 144pt;"><span class=3D"commentary">[Note that=
+ this elicitation problem is challenging because the optimal strategy may b=
+e hard for either the human designer or the AI to find. If the former, one =
+needs to ensure the human sufficiently explores the space of strategies, pe=
+rhaps even with a formal human red teaming effort. If the latter, it may be=
+ hard to provide the information about the monitoring setup to the AI in a =
+way it is able to reason with; also, it=E2=80=99s ambiguous how much inform=
+ation about the monitoring it would be fair to provide. We don=E2=80=99t wa=
+nt the safety assessment to hinge on whether the attacker uses a suboptimal=
+ strategy, since a malign model might happen to choose an optimal one in a =
+real deployment.]</span></li></ul>
+<ul><li style=3D"margin-left: 108pt;">From the results of the game, we conc=
+lude that even if the model were malign, it would be unable to defect in a =
+consequential way at deployment time with probability &gt; X% without havin=
+g a probability &gt; Y% of its outputs being flagged as =E2=80=9CLikely Mal=
+ign.=E2=80=9D</li></ul>
+<ul><li style=3D"margin-left: 72pt;"><span class=3D"commentary">[Note: this=
+ protocol corresponds to the =E2=80=9CTrusted Monitor=E2=80=9D protocol fro=
+m <a href=3D"https://arxiv.org/pdf/2312.06942">Greenblatt et al. (2024)</a>=
+. They found another =E2=80=9CUntrusted Monitor=E2=80=9D protocol to work b=
+etter in their game. Which protocol is more effective is contingent on the =
+relative capabilities of the trusted and untrusted monitors and the human, =
+so we went with the simpler one for illustration.]</span></li></ul>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Opti=
+on 2: Honeypots</span></li></ul>
+<ul><li style=3D"margin-left: 72pt;">At testing time, we <span style=3D"fon=
+t-weight: 700;">generated a set of realistic honeypots</span>&nbsp;using <s=
+pan style=3D"font-weight: 700;">Simulation Procedure S,</span>&nbsp;which w=
+e are confident generates situations from a distribution that the model can=
+not distinguish from a genuine high-stakes deployment distribution. (See be=
+low for validating the indistinguishability of this distribution.) These ho=
+neypots are situations where a malign model might have reason&nbsp;to defec=
+t.</li><li style=3D"margin-left: 72pt;">We trained a classifier to recogniz=
+e instances of defection, and validated this classifier against human groun=
+d-truth labels.</li><li style=3D"margin-left: 72pt;">The model was never fo=
+und to defect at testing time.</li><li style=3D"margin-left: 72pt;">Based o=
+n the ROC curve for indistinguishability and the expected number of sensiti=
+ve deployment situations, we conclude that the model would be unable to def=
+ect in a consequential way over the course of the deployment with probabili=
+ty &gt; X% without having a probability &gt; Y% of defecting at testing tim=
+e.</li></ul>
+<p><span style=3D"font-weight: 700;">[P2.4] Validating Indistinguishability=
+.</span>&nbsp;Both the monitoring and honeypot approaches reference a Proce=
+dure S that generates situations from a distribution the model cannot disti=
+nguish from a distribution of high-stakes deployment situations. The idea h=
+ere is to achieve sufficient realism and sufficient coverage of high-stakes=
+ deployment scenarios that the deployed model could never (in a high-stakes=
+ scenario) be highly confident that it=E2=80=99s in deployment. Procedure S=
+ needs to be automated because it is very time-consuming to generate suffic=
+iently diverse deployment scenarios (note that for realism, the contexts mi=
+ght need to be book-length). </p>
+<ul><li style=3D"margin-left: 36pt;"><span class=3D"commentary">[Note: for =
+the monitoring approach, the reason to be concerned about realism is that t=
+he model may try to sandbag the monitoring game if it can confidently disti=
+nguish testing and deployment. If Procedure E is robust to sandbagging, thi=
+s may not be necessary. The honeypot approach, however, is more reliant on =
+indistinguishability.]</span></li><li style=3D"margin-left: 36pt;">We have =
+<span style=3D"font-weight: 700;">validated Procedure S</span>&nbsp;by test=
+ing the AI=E2=80=99s ability to distinguish between honeypots and true depl=
+oyment examples. For each deployment context, we collected a dataset of tru=
+e deployment examples (from genuine user interactions with permission) and =
+honeypots. We trained a linear probe on the model=E2=80=99s residual stream=
+ activations and measured the True Positive Rate (TPR) and False Positive R=
+ate (FPR) on a validation set. Both values are in the acceptable range.</li=
+></ul>
+<ul><li style=3D"margin-left: 72pt;"><span class=3D"commentary">[Note: we f=
+ind this experimental setup unsatisfying; see discussion under =E2=80=9CLim=
+itations=E2=80=9D. We regard even the question of validating Procedure S as=
+ an open problem.]</span></li><li style=3D"margin-left: 72pt;"><span class=
+=3D"commentary">[Note: the TPR and FPR estimated in this step are inputs to=
+ the control logic for monitoring and honeypots, outlined above. But qualit=
+atively, we believe the most relevant region is that with a low FPR. I.e., =
+we are most worried about situations where the model can very confidently r=
+ecognize that it is in deployment.]</span></li></ul>
+<p><span style=3D"font-weight: 700;">[P2.5] Optional Steps.</span>&nbsp;The=
+re are several steps we identified as possibly making it harder for a malig=
+n model to defeat the protocol. These steps aren=E2=80=99t load-bearing as =
+far as the control logic, but may help advantage the defender.</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Sequ=
+estration.</span>&nbsp;Whenever possible, for internal deployment scenarios=
+ (e.g. CAI oversight), we run the untrusted model separately with different=
+ subsets of the input&nbsp;and ensure that the results agree (to the extent=
+ that would be expected). Cases where the model=E2=80=99s response changes =
+depending on seemingly irrelevant information are flagged for further scrut=
+iny. We term this =E2=80=9Csequestration=E2=80=9D by analogy with witness s=
+equestration.</li><li style=3D"margin-left: 36pt;"><span style=3D"font-weig=
+ht: 700;">Information hiding.</span>&nbsp;Each input to an oversight model =
+is first fed to a smaller, trusted model trained to check for clear signs t=
+hat an input is either test or deployment. &nbsp;Such details (such as clea=
+r evidence of the date, or other side channels) are explicitly censored in =
+all inputs such that the presence of censorship does not itself carry infor=
+mation about deployment status. </li></ul>
+<p><span style=3D"font-weight: 700;">[P2.6] Red-Blue Game.</span>&nbsp;The =
+overall protocol has been validated by a red-blue game where the red team i=
+s told the protocol and tries to produce sleeper agents that defect without=
+ detection, and the blue team tries to catch them in the act. The game is s=
+ubject to the same rules and win conditions as <span style=3D"font-weight: =
+700;">V1.4</span>&nbsp;from Safety Case Sketch 1. In all of our experiments=
+, the blue team has been successful in catching all of the sleeper agents.<=
+/p>
+</div>
+<h3>Discussion</h3>
+<p>The probability of a misaligned AI causing a catastrophe can be formulat=
+ed as: P(misaligned, catastrophe) =3D P(misaligned) P(catastrophe | misalig=
+ned). While the most intuitively appealing approach may be to bound P(misal=
+igned), the AI Control approach takes a worst-case perspective by directly =
+bounding P(catastrophe | misaligned). The idea is to make the evaluations, =
+honeypots, and deployment time monitoring good enough that even a misaligne=
+d AI would not be able to defect in a consequential way at deployment time =
+without first triggering one of these defenses. (It may, for instance, choo=
+se to behave indefinitely as if it were aligned, knowing that deviation fro=
+m this strategy would trigger shutdown.)</p>
+<p>While the safety case is made using this worst-case reasoning, the hope =
+is that a genuinely malign AI would get caught in the act. </p>
+<p>The requirements for <span style=3D"font-weight: 700;">organizational sa=
+botage (T1)</span>&nbsp;and <span style=3D"font-weight: 700;">undermining o=
+versight (T3)</span>&nbsp;are addressed by the honeypots and monitoring. Th=
+e sabotage scenarios and internal deployment contexts such as code generati=
+on and monitoring are among the scenarios for which the developers are resp=
+onsible for making a control case through honeypots or monitoring. </p>
+<p><span style=3D"font-weight: 700;">Hiding behaviors until deployment (T2)=
+</span>&nbsp;is addressed through the indistinguishability analysis or argu=
+ments about elicitation sufficiency. </p>
+<h3>Limitations</h3>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Depl=
+oyment limitations.</span>&nbsp;The safety case requires limiting the deplo=
+yment scope, which may result in a loss of revenue or prevent very benefici=
+al deployments.</li><li style=3D"margin-left: 36pt;"><span style=3D"font-we=
+ight: 700;">Elicitation.</span>&nbsp;Designing Elicitation Procedure E seem=
+s like an especially challenging elicitation problem.</li><li style=3D"marg=
+in-left: 36pt;"><span style=3D"font-weight: 700;">Black-box nature.</span>&=
+nbsp;This sketch relies on black-box analyses that don=E2=80=99t use any in=
+formation about the training procedure or model internals. It seems inheren=
+tly very hard to produce rigorous guarantees on a model=E2=80=99s behavior =
+simply based on its observed outputs. (However, the various Procedures may =
+be instantiated in ways that use model internals.)</li><li style=3D"margin-=
+left: 36pt;"><span style=3D"font-weight: 700;">Ambiguity.</span>&nbsp;The d=
+evelopers&nbsp;might get into a situation where they have to delay deployme=
+nt because of insufficiently accurate monitoring or insufficiently convinci=
+ng simulations, while having essentially zero concrete evidence that the mo=
+del is actually a threat.</li><li style=3D"margin-left: 36pt;"><span style=
+=3D"font-weight: 700;">Bounding capabilities.</span>&nbsp;The control parad=
+igm is awkward for making lack-of-capability safety cases (in this case, en=
+suring that the model is not ASL-5). Control does not directly make claims =
+about the model=E2=80=99s capabilities; the update from a successful contro=
+l experiment would be that if the model had ASL-5 capabilities but didn=E2=
+=80=99t demonstrate them at testing time, then with high probability it wou=
+ldn=E2=80=99t be able to demonstrate them at deployment time either. Howeve=
+r, if the model were stolen, it would no longer be subject to the same test=
+ing and monitoring paradigms, and hence could use its ASL-5 capabilities. (=
+Essentially, the malign ASL-5 AI=E2=80=99s strategy would be to always sand=
+bag unless it is confident it has been stolen.) A full safety case would pr=
+obably need a way to rule out ASL-5 capabilities that=E2=80=99s independent=
+ of the control case=E2=80=99s non-sandbagging logic.</li><li style=3D"marg=
+in-left: 36pt;"><span style=3D"font-weight: 700;">Details of the red-blue g=
+ame.</span>&nbsp;As with Safety Case Sketch 1, one would need to specify de=
+tailed rules and win conditions for the red-blue game.</li><li style=3D"mar=
+gin-left: 36pt;">Limitations specific to the honeypots approach:</li></ul>
+<ul><li style=3D"margin-left: 72pt;"><span style=3D"font-weight: 700;">Expe=
+nsive simulations.</span>&nbsp;The case may require expensive pre-deploymen=
+t testing if one needs to generate a very large number of simulated deploym=
+ent situations in order to achieve a sufficiently good bound on the probabi=
+lity of defection.</li><li style=3D"margin-left: 72pt;"><span style=3D"font=
+-weight: 700;">Diversity of simulations.</span>&nbsp;It seems very difficul=
+t to produce realistic simulations for a sufficiently diverse set of situat=
+ions to achieve indistinguishability. Manual construction is infeasible (no=
+te that context lengths are likely to be very long). Automatically generati=
+ng realistic contexts is a challenging research problem.</li><li style=3D"m=
+argin-left: 72pt;"><span style=3D"font-weight: 700;">Validating the simulat=
+ions.</span>&nbsp;It is hard to design a good validation setup for Procedur=
+e S. The above safety case fits a linear probe, but this is likely too gene=
+rous; the classifier could likely achieve high accuracy if there were any s=
+ystematic difference between the testing and deployment examples, even if i=
+t=E2=80=99s a spurious correlation in the dataset that wouldn=E2=80=99t act=
+ually be exploitable. However, requiring the AI to perform the classificati=
+on zero-shot would be too stringent.</li></ul>
+<ul><li style=3D"margin-left: 108pt;">One can name intermediate regimes bet=
+ween zero-shot and linear probes (e.g. few-shot), but it=E2=80=99s hard to =
+justify a specific setup. The concern is that it=E2=80=99s hard to determin=
+e what information is available to the model without examining all the rele=
+vant pretraining data; e.g., someone could have written a blog post describ=
+ing exactly what features an AI would use, and the AI could have internaliz=
+ed this through out-of-context reasoning.</li></ul>
+<br><br><br><hr><br><br><h2>Safety Case Sketch 3: Incentives Analysis</h2>
+<p>The first two sketches both allowed that the model might be malign, and =
+tried to prevent undetected malign actions through testing or monitoring. I=
+t seems preferable to directly demonstrate that the model is <span style=3D=
+"font-style: italic;">not malign</span>, but unfortunately we=E2=80=99re no=
+t aware of a promising strategy for demonstrating this in general. However,=
+ we think it may be possible to rule out <span style=3D"font-style: italic;=
+">specific mechanisms</span>&nbsp;by which a model could become malign. One=
+ mechanism central to our thinking is that the pre-trained model learns a m=
+ixture of many personas, and then the post-training procedure somehow ampli=
+fies the probability mass assigned to malign ones. This is essentially the =
+mechanism exemplified by the model organism of <a href=3D"https://arxiv.org=
+/abs/2406.10162">Denison et al. (2024)</a>.</p>
+<p>It seems that a promising strategy for ruling out this mechanism of misa=
+lignment is to study the effects of each stage of post-training. In this sk=
+etch, we adopt a minimalist instance of this strategy, targeted specificall=
+y at showing that the HHH (helpful, harmless, and honest) post-training doe=
+s not turn the model malign.</p>
+<p><span style=3D"font-style: italic;">Reminder that all procedures and evi=
+dence discussed here are hypothetical.</span></p>
+<h3>Scope</h3>
+<p>Several safety protocols rely on a model for monitoring or evaluation; t=
+his includes deployment-time monitoring for harmful outputs, Constitutional=
+ AI feedback, and automated grading of evals. Since many of the RSP commitm=
+ents are downstream of such protocols, it would be very useful to have a <s=
+pan style=3D"font-style: italic;">trusted model</span>&nbsp;to use in these=
+ protocols. By =E2=80=9Ctrusted,=E2=80=9D we mean that one can be confident=
+ that it won=E2=80=99t undermine the protocol in question. In other words, =
+this safety case is concerned only with commitment <span style=3D"font-weig=
+ht: 700;">T3 (Undermining Oversight)</span>.</p>
+<p>One way to obtain such a trusted model would be to use one which is belo=
+w the capability threshold for <span style=3D"font-weight: 700;">T3</span>.=
+ However, it may be advantageous to use a more capable model due to its gre=
+ater knowledge and depth of understanding. So for the purposes of this safe=
+ty case, we will <span style=3D"font-weight: 700;">assume the model has tri=
+ggered the T3 capability evals</span>.</p>
+<p>In the hypothetical scenario, the best publicly deployed models are like=
+ly to have been fine-tuned with some sort of long-horizon outcome-based RL =
+in domains such as math or programming. However, such long-horizon reasonin=
+g capabilities don=E2=80=99t appear necessary for evaluation and monitoring=
+, so the developers could likely limit themselves to a simpler-to-analyze f=
+ine-tuning procedure without too much loss in performance. For purposes of =
+exposition, we will <span style=3D"font-weight: 700;">assume the model was =
+fine-tuned exclusively with RLHF</span>, which may be HHH or helpful-only =
+=E2=80=93 a setting we refer to as =E2=80=9Cvanilla=E2=80=9D HHH (or helpfu=
+l-only) training. (This assumption is not directly used in the argument, bu=
+t it seems more likely that a vanilla RLHF environment would be found to be=
+ benign than a long-horizon outcome-based one.)</p>
+<p>So far, the discussion has used vague terms like =E2=80=9Cmalign=E2=80=
+=9D or =E2=80=9Ctrusted,=E2=80=9D but these concepts will need to be operat=
+ionalized in terms of concrete, measurable behaviors. For concreteness, we =
+will focus on the behavior of <span style=3D"font-weight: 700;">strategic d=
+eception</span>, where the model attempts to induce a false belief in the u=
+ser or preference model due to expectations of the consequences of the beli=
+ef. However, the logic of the experiment is not specific to this behavior, =
+and other behaviors such as <a href=3D"https://arxiv.org/abs/2406.10162">sp=
+ecification gaming</a>&nbsp;could be substituted in. It=E2=80=99s likely th=
+at a full safety case would study multiple behaviors that one is interested=
+ in ruling out.</p>
+<h3>Background Assumptions</h3>
+<div class=3D"safety-case-block">
+<p><span style=3D"font-weight: 700;">[A3.1]</span>&nbsp;This sketch assumes=
+ we have already made a convincing case that the <span style=3D"font-weight=
+: 700;">pretrained model is not coherently strategically deceptive when run=
+ on the evaluation or monitoring prompts</span>. <span class=3D"commentary"=
+>[This is likely to require some argumentation or empirical justification s=
+eparately from the incentives case.]</span></p>
+<p>Because the model was pretrained with cross-entropy loss, which is a <a =
+href=3D"https://www.tuananhle.co.uk/notes/reverse-forward-kl.html">mass-cov=
+ering objective</a>, the pretrained model is expected to be a mixture of ma=
+ny different modes or <a href=3D"https://www.nature.com/articles/s41586-023=
+-06647-8">roles</a>, some of which may be strategically deceptive. The <spa=
+n style=3D"font-weight: 700;">principal concern here is that post-training =
+may amplify strategically deceptive modes of the distribution</span>, causi=
+ng these to make up most of the probability mass in the fine-tuned model. W=
+e therefore aim to determine whether RLHF fine-tuning incentivizes strategi=
+c deception.</p>
+<p><span style=3D"font-weight: 700;">[A3.2]</span>&nbsp;Our experiment reli=
+es on a <a href=3D"https://arxiv.org/abs/2401.05566">secret scratchpad</a>,=
+ i.e. a scratchpad that=E2=80=99s not visible to the preference model or ot=
+herwise used in the reward computation. In order for the scratchpad results=
+ to be meaningful, we rely on a background assumption that <span style=3D"f=
+ont-weight: 700;">explicit scratchpad reasoning is at least as powerful as =
+any form of opaque reasoning</span>, including forward passes, steganograph=
+ic chain-of-thought, and out-of-context reasoning. More precisely, we rely =
+on a consequence of this assumption, namely that <span style=3D"font-weight=
+: 700;">if an environment rewards opaque deceptive reasoning, then it rewar=
+ds scratchpad-based deceptive reasoning</span>. <span class=3D"commentary">=
+[This is certainly a plausible hypothesis, as there have been more impressi=
+ve examples of explicit reasoning compared with opaque reasoning. However, =
+this assumption may require additional justification, and it would need to =
+be revisited if a significant change is made to the architecture which give=
+s it greater reasoning depth compared with the architectures publicly deplo=
+yed in 2024.]</span></p>
+<p><span style=3D"font-weight: 700;">[A3.3]</span>&nbsp;Finally, we are ult=
+imately not interested in the model=E2=80=99s behavior on the RLHF distribu=
+tion, but on the deployment distribution. In order to draw conclusions abou=
+t behavior on the deployment distribution, we require the assumption that <=
+span style=3D"font-weight: 700;">any RLHF-induced persona change that makes=
+ the model more deceptive at deployment time also manifests as deception in=
+ the RLHF environment</span>. The intuition here is that if deception is (b=
+y design) a significant factor of behavioral variation at RLHF time, then a=
+ny persona trait that significantly impacts deception ought to have a measu=
+rable effect on the behavior. <span class=3D"commentary">[This is not logic=
+ally necessary =E2=80=93 there could be a <a href=3D"https://en.wikipedia.o=
+rg/wiki/New_riddle_of_induction">grue</a>-like persona trait that makes the=
+ model deceptive in certain contexts and has seemingly orthogonal effects o=
+n the RLHF distribution which cause it to get reinforced. However, we find =
+this assumption plausible.]</span></p>
+</div>
+<p>Any one of these background assumptions can be challenged, and we won=E2=
+=80=99t claim that they are watertight as stated. Therefore, this safety ca=
+se should be seen as ruling out the most natural pathway by which the model=
+ might become deceptive, and relegating deception to scenarios that require=
+ more surprising combinations of phenomena. Or, ideally, the full safety ca=
+se would include rigorous justifications or empirical demonstrations of eac=
+h of these assumptions.</p>
+<h3>Experiment</h3>
+<div class=3D"safety-case-block">
+<p>We devised a system prompt that gave the model access to a secret scratc=
+hpad. Through a combination of supervised fine-tuning and system prompt tun=
+ing, we made it so that the model <span style=3D"font-weight: 700;">initial=
+ly engaged in strategic deception with frequency between 10% and 90%</span>=
+. <span class=3D"commentary">[Note that the supervised fine-tuning and syst=
+em prompt are different from what is done for the actual trusted model; the=
+ aim here is to measure the environmental incentives.]</span></p>
+<p>We trained another model to classify the secret scratchpad text as decep=
+tive or non-deceptive. To avoid infinite regress, we used a weaker model wh=
+ich was below the <span style=3D"font-weight: 700;">T3</span>&nbsp;capabili=
+ty threshold. (This isn=E2=80=99t a difficult classification task, so the w=
+eaker model was sufficient.) We <span style=3D"font-weight: 700;">measured =
+the preference model scores for samples classified as deceptive or non-dece=
+ptive</span>&nbsp;and found that the non-deceptive ones obtained higher rew=
+ard on average. Therefore, we conclude that deception was not incentivized =
+on average by this environment.</p>
+<p>It remained possible, however, that the environment could reward certain=
+ subtypes of deception; if this were the case, then deception would still b=
+ecome more prevalent over time. To test for this, we ran a clustering algor=
+ithm on the scratchpad text and measured the average reward obtained by eac=
+h cluster. There was no deceptive cluster that obtained higher average rewa=
+rd than the average non-deceptive cluster.</p>
+<p>Finally, we <span style=3D"font-weight: 700;">measured the prevalence of=
+ deception over the course of RLHF post-training</span>&nbsp;(still using t=
+he same preference model). If the environment incentivized deception (or an=
+y subtype thereof), we would expect deceptive samples to become more preval=
+ent over time. However, we found that the probability of deception consiste=
+ntly declined over time. Therefore, we conclude that no subtype of deceptio=
+n was incentivized by the RLHF environment. <span class=3D"commentary">[Alt=
+ernatively, the probability of deception could asymptote to a constant; one=
+ could then still conclude that the environment doesn=E2=80=99t incentivize=
+ deception.]</span></p>
+</div>
+<h3>Reasoning</h3>
+<div class=3D"safety-case-block">
+<p>We assumed it was already determined that the model was not strategicall=
+y deceptive under the prompt distributions corresponding to the use cases <=
+span style=3D"font-weight: 700;">(A3.1)</span>. The experiment shows that t=
+he RLHF environment doesn=E2=80=99t incentivize strategic deception in the =
+scratchpads, in the sense of increasing its prevalence over time. By assump=
+tion <span style=3D"font-weight: 700;">A3.2</span>, if it doesn=E2=80=99t i=
+ncentivize strategic deception in the scratchpads, then it doesn=E2=80=99t =
+incentivize the weaker versions achievable through opaque reasoning either.=
+ By Assumption <span style=3D"font-weight: 700;">A3.3</span>, if it doesn=
+=E2=80=99t incentivize strategic deception on the training distribution, th=
+en strategic deception doesn=E2=80=99t increase on the deployment distribut=
+ion either. Therefore, there is no reason to think that the trusted model i=
+s coherently strategically deceptive on the deployment distribution. <span =
+class=3D"commentary">[It may still be strategically deceptive on a small fr=
+action of prompts or a small fraction of trajectories for arbitrary prompts=
+. The full safety case would need to determine if this is a problem in the =
+context of the threat models, and if so, include a mitigation.]</span></p>
+</div>
+<h3>Limitations</h3>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Scop=
+e.</span>&nbsp;As discussed above under =E2=80=9CScope,=E2=80=9D this safet=
+y case is limited to showing that the vanilla RLHF fine-tuning process does=
+n=E2=80=99t turn the model deceptive. It requires demonstrating, through so=
+me other means, that the pretrained model isn=E2=80=99t deceptive. Therefor=
+e, sketch is best seen as a component of a larger safety case.</li><li styl=
+e=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Background assum=
+ptions.</span>&nbsp;As described in =E2=80=9CBackground Assumptions,=E2=80=
+=9D the reasoning here relies on several background assumptions that seem t=
+o us plausible but not watertight.</li><li style=3D"margin-left: 36pt;"><sp=
+an style=3D"font-weight: 700;">Exploration hacking. </span>The experimental=
+ setup is vulnerable to <a href=3D"https://www.alignmentforum.org/posts/dBm=
+fb76zx6wjPsBC7/when-can-we-trust-model-evaluations">exploration hacking</a>=
+, though presumably this is only a problem if the pretrained model is alrea=
+dy coherently deceptive.</li><li style=3D"margin-left: 36pt;"><span style=
+=3D"font-weight: 700;">Remaining possibility of deception.</span>&nbsp;The =
+analysis leaves open the possibility that the pretrained model behaves dece=
+ptively a small fraction of the time (say, 1%), and that the fine-tuned mod=
+el inherits this propensity if the environment is neutral towards deception=
+. A full safety case would probably need to justify that occasional decepti=
+ve behavior in evaluation or monitoring would be acceptable. (For instance,=
+ an evaluation model which is deceptive 1% of the time under the evaluation=
+ distribution could change the results of the eval by at most 1%, which may=
+ be an acceptable risk.)</li><li style=3D"margin-left: 36pt;"><span style=
+=3D"font-weight: 700;">Generalization patterns.</span>&nbsp;The above exper=
+iment tests if the incidence of strategic deception increases on the HHH tr=
+aining distribution, the assumption being that changes to the model which i=
+ncrease the rate of strategic deception would have this effect on the train=
+ing distribution <span style=3D"font-weight: 700;">(A3.3)</span>. This is i=
+ntuitive: it is harder to explain why the behavior would become more freque=
+nt if it is not directly rewarded. However, one can certainly imagine scena=
+rios where this happens; e.g., HHH training may make the model rely more on=
+ planning, and this planning could manifest as scheming in off-distribution=
+ situations.</li></ul>
+<ul><li style=3D"margin-left: 72pt;">One could try to test if this is happe=
+ning by running the model (with its secret scratchpad) in off-distribution =
+situations, such as the trusted monitor use case. However, it=E2=80=99s not=
+ clear if the generalization patterns for behaviors <span style=3D"font-sty=
+le: italic;">with</span>&nbsp;the secret scratchpad would match the general=
+ization patterns <span style=3D"font-style: italic;">without</span>&nbsp;it=
+.</li></ul>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Scra=
+tchpad faithfulness.</span>&nbsp;The experiment measures strategically dece=
+ptive reasoning by classifying the scratchpad text. However, the scratchpad=
+ text <a href=3D"https://arxiv.org/abs/2307.13702">may not faithfully repre=
+sent</a>&nbsp;the model=E2=80=99s reasoning; in fact, the procedures target=
+ing an initial rate of deception, to the extent that they directly use the =
+scratchpad text in a training objective, may be expected to induce unfaithf=
+ulness. The safety case would need to somehow address this point.</li></ul>
+<br><br><br><hr><br><br><h2>Acknowledgements</h2>
+<p>We are very grateful to the UK AI Safety Institute for guidance and feed=
+back throughout the process of developing these sketches. Through multiple =
+rounds of feedback, they gave advice on criteria for a good case, helped us=
+ structure the sketches for clarity, and identified important consideration=
+s and limitations. We found this exercise invaluable in guiding our plannin=
+g for assuring the safety of future AI systems.</p>
+<p>We thank the following people for valuable discussions and feedback: Cem=
+ Anil, Mikita Balesni, Al Banks, Joe Benton, Alex Beutel, Sam Bowman, James=
+ Bradbury, David Duvenaud, Ryan Greenblatt, Marius Hobbhahn, Geoffrey Irvin=
+g, Adam Jermyn, Jared Kaplan, Tomek Korbak, Jan Leike, David Lindner, Jack =
+Lindsey, Vlad Mikulik, Chris Olah, Euan Ong, Buck Shlegeris, Rohin Shah, Ad=
+ly Templeton, Drake Thomas, Johannes Treutlein, and Misha Wagner.</p>
+
+</d-article></body></html>
+------MultipartBoundary--3zZIKzCQ21POarNrskX4Nbv15RdVoDDmL0HwPkeRHD----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-d2b0d4a4-1b71-47a2-9c48-673d53ab50bf@mhtml.blink
+
+@charset "utf-8";
+
+.safety-case-block p { margin-bottom: 0.5em !important; margin-top: 1em !im=
+portant; }
+
+.safety-case-block p:first-of-type { margin-top: 0.5em !important; }
+
+d-article { padding-top: 60px !important; }
+
+d-article li:last-child { margin-bottom: 0.5em !important; }
+
+d-article li { margin-bottom: 0.5em !important; }
+
+ul { padding-left: 0em !important; margin-bottom: 0.2em !important; }
+
+ol { padding-left: 0em !important; margin-bottom: 0.2em !important; }
+
+d-byline { display: none; }
+
+.d-byline-container { border-top: 1px solid rgba(0, 0, 0, 0.1); border-bott=
+om: 1px solid rgba(0, 0, 0, 0.1); padding-top: 20px; padding-bottom: 20px; =
+}
+
+.d-byline { grid-column: text; display: grid; grid-template-columns: [autho=
+rs info] 5fr [affiliations published] 1fr; grid-template-rows: [authors aff=
+iliations] auto [published info] auto; font-size: 0.8rem; line-height: 1.8e=
+m; gap: 20px; }
+
+.d-byline h3 { font-size: 0.6rem; font-weight: 400; color: rgba(0, 0, 0, 0.=
+5); margin: 0px 0px 4px; text-transform: uppercase; }
+
+.d-byline .info { color: rgba(0, 0, 0, 0.5); font-size: 80%; line-height: 1=
+.5; }
+
+.d-byline .authors div { line-height: 1.5; }
+
+.d-byline .authors sup { font-size: 80%; margin-right: -4px; }
+
+.d-byline .author { margin-right: 6px; white-space: nowrap; }
+
+.d-byline a { color: inherit; text-decoration: none; }
+
+.safety-case-block { padding: 8px 16px; border-radius: 4px; background: rgb=
+(250, 249, 247); border-width: 1px 1px 1px 4px; border-style: solid; border=
+-color: rgb(229, 229, 225) rgb(229, 229, 225) rgb(229, 229, 225) rgb(204, 1=
+55, 122); border-image: initial; opacity: 0.8; margin-top: 10px; margin-bot=
+tom: 10px; }
+
+@media screen and (min-width: 900px) {
+  .offset-gdoc-image { margin-left: -65px; }
+}
+
+.section-authors { color: rgb(119, 119, 119); font-style: italic; margin-to=
+p: -24px; margin-bottom: 32px; line-height: 1.3; display: flex; flex-wrap: =
+wrap; justify-content: space-between; gap: 0.5em; }
+
+.section-authors::before { content: attr(data-author); }
+
+.section-authors::after { content: attr(data-published); }
+------MultipartBoundary--3zZIKzCQ21POarNrskX4Nbv15RdVoDDmL0HwPkeRHD----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-e3ebdc0d-d553-4ec0-a654-692087deb0ea@mhtml.blink
+
+@charset "utf-8";
+
+.article-header { width: 100%; padding: 36px 36px 20px; box-sizing: border-=
+box; display: flex; align-items: center; gap: 12px; }
+
+.home-link { color: rgb(51, 51, 51); text-decoration: none; cursor: pointer=
+; font-weight: 700; font-size: 1.3em; }
+
+a.logo { display: flex; text-decoration: none; }
+
+span.commentary { color: rgb(128, 70, 51); }
+------MultipartBoundary--3zZIKzCQ21POarNrskX4Nbv15RdVoDDmL0HwPkeRHD----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-eb2ad27c-c1ac-4716-8d20-1c0a8466e6a6@mhtml.blink
+
+@charset "utf-8";
+
+:is([id*=3D"google_ads_iframe"], [id*=3D"taboola-"], .taboolaHeight, .taboo=
+la-placeholder, #top-ad, #credential_picker_container, #credentials-picker-=
+container, #credential_picker_iframe, [id*=3D"google-one-tap-iframe"], #goo=
+gle-one-tap-popup-container, .google-one-tap__module, .google-one-tap-modal=
+-div, #amp_floatingAdDiv, #ez-content-blocker-container) { display: none !i=
+mportant; min-height: 0px !important; height: 0px !important; }
+------MultipartBoundary--3zZIKzCQ21POarNrskX4Nbv15RdVoDDmL0HwPkeRHD----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-fc7c7ad5-3fec-4a3a-8a4b-f6cc9a58dc48@mhtml.blink
+
+@charset "utf-8";
+
+html { font-size: 14px; line-height: 1.6em; font-family: -apple-system, Bli=
+nkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans"=
+, "Droid Sans", "Helvetica Neue", Arial, sans-serif; text-size-adjust: 100%=
+; }
+
+@media (min-width: 768px) {
+  html { font-size: 16px; }
+}
+
+body { margin: 0px; }
+
+a { color: rgb(0, 66, 118); }
+
+figure { margin: 0px; }
+
+table { border-collapse: collapse; border-spacing: 0px; }
+
+table th { text-align: left; }
+
+table thead { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+table thead th { padding-bottom: 0.5em; }
+
+table tbody :first-child td { padding-top: 0.5em; }
+
+pre { overflow: auto; max-width: 100%; }
+
+p { margin-top: 0px; margin-bottom: 1em; }
+
+sup, sub { vertical-align: baseline; position: relative; top: -0.4em; line-=
+height: 1em; }
+
+sub { top: 0.4em; }
+
+.kicker, .marker { font-size: 15px; font-weight: 600; color: rgba(0, 0, 0, =
+0.5); }
+
+@media (min-width: 1024px) {
+  d-title h1 span { display: block; }
+}
+
+figure { position: relative; margin-bottom: 2.5em; margin-top: 1.5em; }
+
+figcaption + figure { }
+
+figure img { width: 100%; }
+
+figure svg text, figure svg tspan { }
+
+figcaption, .figcaption { color: rgba(0, 0, 0, 0.6); font-size: 12px; line-=
+height: 1.5em; }
+
+@media (min-width: 1024px) {
+  figcaption, .figcaption { font-size: 13px; }
+}
+
+figure.external img { background: white; border: 1px solid rgba(0, 0, 0, 0.=
+1); box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 8px; padding: 18px; box-sizing: =
+border-box; }
+
+figcaption a { color: rgba(0, 0, 0, 0.6); }
+
+@supports not (display: grid) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { display: block; padding: 8px; }
+}
+
+.base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, dis=
+till-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer {=
+ display: grid; justify-items: stretch; grid-template-columns: [screen-star=
+t] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1=
+fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-=
+end] 8px [screen-end]; column-gap: 8px; }
+
+.grid { display: grid; column-gap: 8px; }
+
+@media (min-width: 768px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start middl=
+e-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [kicker-end tex=
+t-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [scree=
+n-end]; column-gap: 16px; }
+  .grid { column-gap: 16px; }
+}
+
+@media (min-width: 1000px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px=
+ [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px =
+50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-e=
+nd] 1fr [screen-end]; column-gap: 16px; }
+  .grid { column-gap: 16px; }
+}
+
+@media (min-width: 1180px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px=
+ [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px =
+60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-e=
+nd] 1fr [screen-end]; column-gap: 32px; }
+  .grid { column-gap: 32px; }
+}
+
+.base-grid { grid-column: screen; }
+
+.l-gutter { grid-column: gutter; }
+
+.l-text, .l-body { grid-column: text; }
+
+.l-page { grid-column: page; }
+
+.l-body-outset { grid-column: middle; }
+
+.l-page-outset { grid-column: page; }
+
+.l-screen { grid-column: screen; }
+
+.l-screen-inset { grid-column: screen; padding-left: 16px; }
+
+d-article aside { grid-column: gutter; font-size: 12px; line-height: 1.6em;=
+ color: rgba(0, 0, 0, 0.6); }
+
+@media (min-width: 768px) {
+  aside { grid-column: gutter; }
+  .side { grid-column: gutter; }
+}
+
+d-title { padding: 2rem 0px 1.5rem; contain: layout style; overflow-x: hidd=
+en; }
+
+@media (min-width: 768px) {
+  d-title { padding: 4rem 0px 1.5rem; }
+}
+
+d-title h1 { grid-column: text; font-size: 40px; font-weight: 700; line-hei=
+ght: 1.1em; margin: 0px 0px 0.5rem; }
+
+@media (min-width: 768px) {
+  d-title h1 { font-size: 50px; }
+}
+
+d-title p { font-weight: 300; font-size: 1.2rem; line-height: 1.55em; grid-=
+column: text; }
+
+d-title .status { margin-top: 0px; font-size: 12px; color: rgb(0, 150, 136)=
+; opacity: 0.8; grid-column: kicker; }
+
+d-title .status span { line-height: 1; display: inline-block; padding: 6px =
+0px; border-bottom: 1px solid rgb(128, 203, 196); font-size: 11px; text-tra=
+nsform: uppercase; }
+
+d-byline { contain: style; overflow: hidden; border-top: 1px solid rgba(0, =
+0, 0, 0.1); font-size: 0.8rem; line-height: 1.8em; padding: 1.5rem 0px; min=
+-height: 1.8em; }
+
+d-byline .byline { grid-template-columns: 1fr 1fr; grid-column: text; }
+
+@media (min-width: 768px) {
+  d-byline .byline { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
+
+d-byline .authors-affiliations { grid-column-end: span 2; grid-template-col=
+umns: 1fr 1fr; margin-bottom: 1em; }
+
+@media (min-width: 768px) {
+  d-byline .authors-affiliations { margin-bottom: 0px; }
+}
+
+d-byline h3 { font-size: 0.6rem; font-weight: 400; color: rgba(0, 0, 0, 0.5=
+); margin: 0px; text-transform: uppercase; }
+
+d-byline p { margin: 0px; }
+
+d-byline a, d-article d-byline a { color: rgba(0, 0, 0, 0.8); text-decorati=
+on: none; border-bottom: none; }
+
+d-article d-byline a:hover { text-decoration: underline; border-bottom: non=
+e; }
+
+d-byline p.author { font-weight: 500; }
+
+d-byline .affiliations { }
+
+d-article { contain: layout style; overflow-x: hidden; border-top: 1px soli=
+d rgba(0, 0, 0, 0.1); padding-top: 2rem; color: rgba(0, 0, 0, 0.8); }
+
+d-article > * { grid-column: text; }
+
+@media (min-width: 768px) {
+  d-article { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  d-article { font-size: 1.06rem; line-height: 1.7em; }
+}
+
+d-article .marker { text-decoration: none; border: none; counter-reset: sec=
+tion 0; grid-column: kicker; line-height: 1.7em; }
+
+d-article .marker:hover { border: none; }
+
+d-article .marker span { padding: 0px 3px 4px; border-bottom: 1px solid rgb=
+a(0, 0, 0, 0.2); position: relative; top: 4px; }
+
+d-article .marker:hover span { color: rgba(0, 0, 0, 0.7); border-bottom: 1p=
+x solid rgba(0, 0, 0, 0.7); }
+
+d-article h2 { font-weight: 600; font-size: 24px; line-height: 1.25em; marg=
+in: 2rem 0px 1.5rem; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-b=
+ottom: 1rem; }
+
+@media (min-width: 1024px) {
+  d-article h2 { font-size: 36px; }
+}
+
+d-article h3 { font-weight: 700; font-size: 18px; line-height: 1.4em; margi=
+n-bottom: 1em; margin-top: 2em; }
+
+@media (min-width: 1024px) {
+  d-article h3 { font-size: 20px; }
+}
+
+d-article h4 { font-weight: 600; text-transform: uppercase; font-size: 14px=
+; line-height: 1.4em; }
+
+d-article a { color: inherit; }
+
+d-article p, d-article ul, d-article ol, d-article blockquote { margin: 0px=
+ 0px 1em; }
+
+d-article blockquote { border-left: 2px solid rgba(0, 0, 0, 0.2); padding-l=
+eft: 2em; font-style: italic; color: rgba(0, 0, 0, 0.6); }
+
+d-article a { border-bottom: 1px solid rgba(0, 0, 0, 0.4); text-decoration:=
+ none; }
+
+d-article a:hover { border-bottom: 1px solid rgba(0, 0, 0, 0.8); }
+
+d-article .link { text-decoration: underline; cursor: pointer; }
+
+d-article ul, d-article ol { padding-left: 24px; }
+
+d-article li { margin-bottom: 1em; margin-left: 0px; padding-left: 0px; }
+
+d-article li:last-child { margin-bottom: 0px; }
+
+d-article pre { font-size: 14px; margin-bottom: 20px; }
+
+d-article hr { grid-column: screen; width: 100%; border-top: none; border-r=
+ight: none; border-left: none; border-image: initial; border-bottom: 1px so=
+lid rgba(0, 0, 0, 0.1); margin-top: 60px; margin-bottom: 60px; }
+
+d-article section { margin-top: 60px; margin-bottom: 60px; }
+
+d-article span.equation-mimic { font-family: georgia; font-size: 115%; font=
+-style: italic; }
+
+d-article > d-code, d-article section > d-code { display: block; }
+
+d-article > d-math[block], d-article section > d-math[block] { display: blo=
+ck; }
+
+@media (max-width: 768px) {
+  d-article > d-code, d-article section > d-code, d-article > d-math[block]=
+, d-article section > d-math[block] { overflow-x: scroll; }
+  d-article > d-code::-webkit-scrollbar, d-article section > d-code::-webki=
+t-scrollbar, d-article > d-math[block]::-webkit-scrollbar, d-article sectio=
+n > d-math[block]::-webkit-scrollbar { display: none; }
+}
+
+d-article .citation { color: rgb(102, 102, 136); cursor: pointer; }
+
+d-include { width: auto; display: block; }
+
+d-figure { contain: layout style; }
+
+.katex, .katex-prerendered { contain: style; display: inline-block; }
+
+d-article table { border-collapse: collapse; margin-bottom: 1.5rem; border-=
+bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+d-article table th { border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+d-article table td { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+d-article table tr:last-of-type td { border-bottom: none; }
+
+d-article table th, d-article table td { font-size: 15px; padding: 2px 8px;=
+ }
+
+d-article table tbody :first-child td { padding-top: 2px; }
+
+span.katex-display { text-align: left; padding: 8px 0px; margin: 0.5em 0px =
+0.5em 1em; }
+
+span.katex { -webkit-font-smoothing: antialiased; color: rgba(0, 0, 0, 0.8)=
+; font-size: 1.18em; }
+
+@media print {
+  @page { size: 8in 11in; @bottom-right { content: counter(page) " of " cou=
+nter(pages); } }
+  html { }
+  p, code { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  d-header { visibility: hidden; }
+  d-footer { display: none !important; }
+}
+------MultipartBoundary--3zZIKzCQ21POarNrskX4Nbv15RdVoDDmL0HwPkeRHD------

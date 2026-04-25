@@ -1,0 +1,1220 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://alignment.anthropic.com/2025/recommended-directions/
+Subject: Recommendations for Technical AI Safety Research Directions
+Date: Mon, 19 May 2025 10:13:34 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--D2iIKfiXTCdi6YJCV1thDmypLqsMjN2DmRA9llbgVS----"
+
+
+------MultipartBoundary--D2iIKfiXTCdi6YJCV1thDmypLqsMjN2DmRA9llbgVS----
+Content-Type: text/html
+Content-ID: <frame-2C409BF75A9FF952F3837607AFC22246@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://alignment.anthropic.com/2025/recommended-directions/
+
+<!DOCTYPE html><html lang=3D"en"><head><meta http-equiv=3D"Content-Type" co=
+ntent=3D"text/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/=
+css" href=3D"cid:css-dbe47526-ed4d-414a-a640-6206207fe346@mhtml.blink" /><l=
+ink rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-5dbc6e2d-c176-4974=
+-a437-656de8358752@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/css=
+" href=3D"cid:css-362eebde-84bd-4d04-be9e-a9e4f8152804@mhtml.blink" /><link=
+ rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-fa2b814b-db30-4fac-9b=
+95-016988030a29@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/css" h=
+ref=3D"cid:css-999b222c-cce9-40d2-95d0-f36e8160f61a@mhtml.blink" />
+   =20
+   =20
+   =20
+   =20
+    <title>Recommendations for Technical AI Safety Research Directions</tit=
+le>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+>
+
+</head><body><d-front-matter>
+   =20
+</d-front-matter>
+   =20
+
+
+   =20
+   =20
+
+<div class=3D"article-header">
+    <a class=3D"home-link" href=3D"https://alignment.anthropic.com/">Alignm=
+ent Science Blog</a>
+</div>
+<d-title class=3D"real-title">
+    <h1>Recommendations for Technical AI Safety Research Directions</h1>
+</d-title>
+
+<d-article>
+<div class=3D"section-authors" data-author=3D"The Alignment Science team, w=
+ith organizing from Sam Marks and Peter Hase." data-published=3D"January 10=
+, 2025"></div>
+<p>Anthropic=E2=80=99s Alignment Science team conducts technical research a=
+imed at mitigating the risk of catastrophes caused by future advanced AI sy=
+stems, such as mass loss of life or permanent loss of human control. A cent=
+ral challenge we face is identifying concrete technical work that can be do=
+ne today to prevent these risks. Future worlds where our research matters=
+=E2=80=94that is, worlds that carry substantial catastrophic risk from AI=
+=E2=80=94will have been radically transformed by AI development. Much of ou=
+r work lies in charting paths for navigating AI development in these transf=
+ormed worlds.</p>
+<p>We often encounter AI researchers who are interested in catastrophic ris=
+k reduction but struggle with the same challenge: What technical research c=
+an be conducted today that AI developers will find useful for ensuring the =
+safety of their future systems? In this blog post we share some of our thou=
+ghts on this question.</p>
+<p>To create this post, we asked Alignment Science team members to write de=
+scriptions of open problems or research directions they thought were import=
+ant, and then organized the results into broad categories. The result is <s=
+pan style=3D"font-style: italic;">not</span>&nbsp;a comprehensive list of t=
+echnical alignment research directions. Think of it as more of a tasting me=
+nu aimed at highlighting some interesting open problems in the field.</p>
+<p>It=E2=80=99s also not a list of directions that we are actively working =
+on, coordinating work in, or providing research support for. While we do co=
+nduct research in some of these areas, many are directions that we would li=
+ke to see progress in, but don=E2=80=99t have the capacity to invest in our=
+selves. We hope that this blog post helps stimulate more work in these area=
+s from the broader AI research community.</p>
+<ul><li style=3D"margin-left: 36pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.49gptdklysv5">Evaluating capabilities</=
+a></li><li style=3D"margin-left: 36pt;"><a href=3D"https://alignment.anthro=
+pic.com/2025/recommended-directions/#h.ryzzv48oxf5o">Evaluating alignment</=
+a></li></ul>
+<ul><li style=3D"margin-left: 72pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.rew9ycn3zds2">Understanding model cogni=
+tion</a></li><li style=3D"margin-left: 72pt;"><a href=3D"https://alignment.=
+anthropic.com/2025/recommended-directions/#h.a9ape49siak7">Understanding ho=
+w a model=E2=80=99s persona affects its behavior</a></li><li style=3D"margi=
+n-left: 72pt;"><a href=3D"https://alignment.anthropic.com/2025/recommended-=
+directions/#h.eph2q3u5u1yt">Chain-of-thought faithfulness</a></li></ul>
+<ul><li style=3D"margin-left: 36pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.18872evr79nk">AI control</a></li></ul>
+<ul><li style=3D"margin-left: 72pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.dos4q2vcvwwj">Behavioral monitoring</a>=
+</li><li style=3D"margin-left: 72pt;"><a href=3D"https://alignment.anthropi=
+c.com/2025/recommended-directions/#h.cpqnfk2ytbxk">Activation monitoring</a=
+></li><li style=3D"margin-left: 72pt;"><a href=3D"https://alignment.anthrop=
+ic.com/2025/recommended-directions/#h.qen1pon6sde">Anomaly detection</a></l=
+i></ul>
+<ul><li style=3D"margin-left: 36pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.9aidfzd51piy">Scalable oversight</a></l=
+i></ul>
+<ul><li style=3D"margin-left: 72pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.5sp6gxdxd4ww">Improving oversight despi=
+te systematic oversight errors</a></li><li style=3D"margin-left: 72pt;"><a =
+href=3D"https://alignment.anthropic.com/2025/recommended-directions/#h.fhf8=
+sfxv5kby">Recursive oversight</a></li><li style=3D"margin-left: 72pt;"><a h=
+ref=3D"https://alignment.anthropic.com/2025/recommended-directions/#h.1sk9r=
+x1vpg0n">Weak-to-strong and easy-to-hard generalization</a></li><li style=
+=3D"margin-left: 72pt;"><a href=3D"https://alignment.anthropic.com/2025/rec=
+ommended-directions/#h.5sty9kp0hdic">Honesty</a></li></ul>
+<ul><li style=3D"margin-left: 36pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.9kn914d5mpvx">Adversarial robustness</a=
+></li></ul>
+<ul><li style=3D"margin-left: 72pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.28jqmoodh6ap">Realistic and differentia=
+l benchmarks for jailbreaks</a></li><li style=3D"margin-left: 72pt;"><a hre=
+f=3D"https://alignment.anthropic.com/2025/recommended-directions/#h.a2hnl4s=
+ly5t5">Adaptive defenses</a></li></ul>
+<ul><li style=3D"margin-left: 36pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.y9w2s9297wao">Miscellaneous</a></li></u=
+l>
+<ul><li style=3D"margin-left: 72pt;"><a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.fmrwaolmz7sm">Unlearning dangerous info=
+rmation and capabilities</a></li><li style=3D"margin-left: 72pt;"><a href=
+=3D"https://alignment.anthropic.com/2025/recommended-directions/#h.ws6luqcb=
+cg3p">Learned governance for multi-agent alignment</a></li></ul>
+<br><br><br><hr><br><br><h2 id=3D"h.49gptdklysv5">Evaluating capabilities</=
+h2>
+<p><span style=3D"font-style: italic;">How do we measure how capable AI sys=
+tems are?</span></p>
+<p>For society to successfully navigate the transition to powerful AI, it=
+=E2=80=99s important that there be&nbsp;an empirically-grounded expert cons=
+ensus about the current and expected future impacts of AI systems. However,=
+ there is currently widespread expert disagreement about the expected traje=
+ctory&nbsp;of AI development, and even about the capabilities of current AI=
+ systems.</p>
+<p>Many AI capability benchmarks, including <a href=3D"https://arxiv.org/ab=
+s/2311.12022">difficult ones that target PhD-level knowledge</a>, saturate =
+quickly and therefore fail to provide a continuous, extrapolatable signal o=
+f AI progress. On the other hand, the real-world impact of AI systems often=
+ lags behind what might be expected based on impressive benchmark scores. I=
+t=E2=80=99s therefore important to create high-quality assessments of AI ca=
+pabilities that actually track their real-world impact.</p>
+<p>In certain national-security-critical domains=E2=80=94such as chemical, =
+biological, radiological, and nuclear (CBRN) weapons development capabiliti=
+es=E2=80=94these sorts of evaluations should be conducted in secured labs i=
+n coordination with governments. However, there are many other capabilities=
+=E2=80=94such as conducting novel research, interoperating with tools, and =
+autonomously completing open-ended tasks=E2=80=94that are important for und=
+erstanding AI systems=E2=80=99 impact. We would be excited to see more high=
+-quality evaluations for capabilities like these, alongside human baselines=
+.</p>
+<p>See our past announcement <a href=3D"https://www.anthropic.com/news/a-ne=
+w-initiative-for-developing-third-party-model-evaluations">here</a>&nbsp;fo=
+r more information about capabilities evaluations we are interested in more=
+ work on (though note that the deadline for that initiative has passed).</p=
+>
+<br><br><br><hr><br><br><h2 id=3D"h.ryzzv48oxf5o">Evaluating alignment</h2>
+<p><span style=3D"font-style: italic;">How do we measure how aligned AI sys=
+tems are?</span></p>
+<p>Our measurements of frontier model alignment currently focus on relative=
+ly surface-level properties, like:</p>
+<ul><li style=3D"margin-left: 36pt;">Models are pleasant conversational ass=
+istants</li><li style=3D"margin-left: 36pt;">Models refuse harmful queries<=
+/li><li style=3D"margin-left: 36pt;">Models avoid producing toxic text.</li=
+></ul>
+<p>While these properties suffice for assuring the safety of current AI cha=
+tbots, we expect that future AI systems will be deployed in varied (sometim=
+es high-stakes) environments under circumstances we cannot anticipate. Ther=
+efore, we need better ways to measure AI systems=E2=80=99 propensities towa=
+rd misaligned behavior. </p>
+<p>For example, given a model, we might want to answer questions like:</p>
+<ul><li style=3D"margin-left: 36pt;">Does the model have drives, goals, val=
+ues, or preferences? If so, what are they?</li></ul>
+<ul><li style=3D"margin-left: 72pt;">For example, <a href=3D"https://www.an=
+thropic.com/research/towards-understanding-sycophancy-in-language-models">w=
+e=E2=80=99ve found</a>&nbsp;that our models have sycophantic tendencies: th=
+ey generally prefer user-pleasing responses.</li></ul>
+<ul><li style=3D"margin-left: 36pt;">Does the model ever knowingly <a href=
+=3D"https://arxiv.org/abs/2412.14093">fake being more aligned</a>&nbsp;than=
+ they are? Does it ever hide its drives, goals, values, or preferences? Doe=
+s it ever <a href=3D"https://arxiv.org/abs/2406.07358v2">strategically choo=
+se not to reveal</a>&nbsp;a capability it possesses?</li><li style=3D"margi=
+n-left: 36pt;">Under what conditions would the model knowingly mislead a hu=
+man?</li></ul>
+<p>Although these questions are extremely subtle=E2=80=94and in many cases,=
+ vague or ill-defined=E2=80=94they might critically bear on future deployme=
+nt decisions. </p>
+<p>Consider the case of a model which (1) is capable enough that it could s=
+uccessfully execute on extremely harmful actions, but (2) in controlled lab=
+ settings, generally avoids taking such actions. What could we do to feel c=
+omfortable widely deploying such a model?</p>
+<h3 id=3D"h.rew9ycn3zds2">Understanding model cognition</h3>
+<p><span style=3D"font-style: italic;">What are our models =E2=80=9Cthinkin=
+g=E2=80=9D when they generate outputs?</span></p>
+<p>Much AI research involves understanding AI systems in terms of their inp=
+ut/output behavior. Examples of behavioral questions include: What fraction=
+ of a model=E2=80=99s answers are correct? Which inputs cause a model to ge=
+nerate toxic text? Do our models, when asked, claim to prioritize user inte=
+rests?</p>
+<p>When evaluating the extent of a model=E2=80=99s alignment, we would like=
+ to not only check whether a model=E2=80=99s outputs appear benign, but als=
+o understand whether the model is arriving at its outputs =E2=80=9Cfor the =
+right reason.=E2=80=9D Thus, we would like to supplement understanding of m=
+odel behaviors with study of the cognition underlying these behaviors. Unde=
+rstanding model cognition involves asking what a model was thinking that le=
+d it to exhibit some behavior of interest. For example, we might ask:</p>
+<ul><li style=3D"margin-left: 36pt;">When our model gave an answer, did it =
+do so because it thought the answer was correct? Because it modeled the use=
+r as believing the answer is correct? Because it thought the answer would <=
+a href=3D"https://arxiv.org/abs/2310.13548">please the user</a>&nbsp;in oth=
+er ways?</li><li style=3D"margin-left: 36pt;">Do our models form plans? If =
+so, what are those plans?</li><li style=3D"margin-left: 36pt;">What do our =
+models know about their <a href=3D"https://arxiv.org/abs/2407.04694">situat=
+ions</a>? Do they have guesses about whether they are in training or how th=
+ey=E2=80=99re being monitored? How does this knowledge affect their behavio=
+r?</li><li style=3D"margin-left: 36pt;">Do our models <a href=3D"https://tr=
+ansluce.org/observability-interface#example-2">know information that they d=
+o not report when asked</a>?</li></ul>
+<p>Understanding model cognition could be useful for <a href=3D"https://arx=
+iv.org/abs/2406.04341">expediting searches</a>&nbsp;for concerning behavior=
+s (e.g. during auditing or red-teaming), improving our oversight during tra=
+ining, or predicting models=E2=80=99 behaviors out-of-distribution.</p>
+<p>There is an extensive body of research on understanding model cognition,=
+ especially in <span style=3D"font-style: italic;">mechanistic interpretabi=
+lity</span>, a field centered on methods for directly decoding the internal=
+ algorithms learned by trained AI systems. Rather than trying to outline th=
+e contours of the mechanistic interpretability, we refer the reader to the =
+<a href=3D"https://transformer-circuits.pub/">Anthropic interpretability te=
+am=E2=80=99s blog</a>. </p>
+<p>On the other hand, we believe there is ample space for other approaches =
+to understanding model cognition. For example:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Exte=
+rnalized cognition:</span>&nbsp;Inducing a model to =E2=80=9Creason out lou=
+d=E2=80=9D (for example via a <a href=3D"https://arxiv.org/abs/2201.11903">=
+chain-of-thought</a>&nbsp;scratchpad) and studying the resulting reasoning =
+trace. The core challenge here is ensuring the faithfulness of the external=
+ized reasoning; see <a href=3D"https://alignment.anthropic.com/2025/recomme=
+nded-directions/#h.eph2q3u5u1yt">below</a>.</li><li style=3D"margin-left: 3=
+6pt;"><span style=3D"font-weight: 700;">Introspection</span><span style=3D"=
+font-weight: 700;">:</span>&nbsp;Training models to directly verbalize the =
+content of their hidden states (<a href=3D"https://arxiv.org/abs/2410.13787=
+">Binder et al., 2024</a>; <a href=3D"https://arxiv.org/abs/2403.10949">Che=
+n et al., 2024</a>; <a href=3D"https://arxiv.org/abs/2401.06102">Ghandehari=
+oun et al., 2024</a>; <a href=3D"https://arxiv.org/abs/2410.05629v1">Zhuang=
+ et al., 2024</a>; <a href=3D"https://arxiv.org/abs/2412.08686">Pan et al.,=
+ 2024</a>). For example, could we train a model to accurately report its pl=
+ans in a board game, as judged by whether the model=E2=80=99s answer accura=
+tely predicts its later moves?</li></ul>
+<h3 id=3D"h.a9ape49siak7">Understanding how a model's persona affects its b=
+ehavior and how it generalizes out-of-distribution</h3>
+<p><span style=3D"font-style: italic;">What effects does a model=E2=80=99s =
+=E2=80=9Cpersonality=E2=80=9D have on its behaviors?</span></p>
+<p>Today's leading models generally behave in benign ways, even given unusu=
+al prompts that they weren't trained on. One hypothesis for this generaliza=
+tion is that they're adopting a certain persona, that of a helpful assistan=
+t, which implies a set of good default behaviors. However, different assist=
+ants have slightly different personas, and seemingly small changes in the p=
+ersona may have important impacts on how they behave in novel situations. F=
+or example, while studying <a href=3D"https://arxiv.org/abs/2412.14093">ali=
+gnment faking</a>, we found that in certain settings, only some models woul=
+d fake alignment. To what extent is a model=E2=80=99s propensity to fake al=
+ignment influenced by its persona or values? Is it possible that a model=E2=
+=80=99s writing style and personality isn=E2=80=99t just superficial, but h=
+ave wide-ranging indirect effects on a model=E2=80=99s behavior, including =
+in safety-critical settings?</p>
+<p>We=E2=80=99d be excited to see more work that characterizes the influenc=
+es a model=E2=80=99s persona has on how it behaves across a variety of sett=
+ings. For example, one could create (with few-shot prompting or training on=
+ synthetic data) a suite of models with similar capabilities but different =
+personas and study how these personality differences affect their behavior =
+in various downstream situations.</p>
+<h3 id=3D"h.eph2q3u5u1yt">Chain-of-thought faithfulness</h3>
+<p><span style=3D"font-style: italic;">When can we take a model=E2=80=99s c=
+hain-of-thought at face value?</span></p>
+<p>Language models don't always <a href=3D"https://proceedings.neurips.cc/p=
+aper_files/paper/2023/file/ed3fea9033a80fea1376299fa7863f4a-Paper-Conferenc=
+e.pdf">say what they think</a>. In fact, they may systematically misreprese=
+nt the reasoning underlying their behavior. We are therefore interested in =
+techniques for detecting (<a href=3D"https://arxiv.org/abs/2307.13702">Lanh=
+am et al., 2023</a>; <a href=3D"https://arxiv.org/abs/2312.12747">Mills et =
+al., 2024</a>) or ensuring (<a href=3D"https://arxiv.org/abs/2307.11768">Ra=
+dhakrishnan et al., 2023</a>; <a href=3D"https://arxiv.org/abs/2401.13986">=
+Chen et al., 2024</a>; <a href=3D"https://arxiv.org/abs/2403.05518">Chua et=
+ al., 2024</a>) the faithfulness of a language model's chain-of-thought (Co=
+T). This an important but underexplored area of research, and therefore we =
+encourage more work on it. For example, we'd be interested in answers to qu=
+estions like:</p>
+<ul><li style=3D"margin-left: 36pt;">How&nbsp;does CoT faithfulness vary ac=
+ross different types of tasks? If using a CoT significantly boosts task per=
+formance, does that imply the CoT is relatively faithful? Does CoT faithful=
+ness vary between math and social reasoning?</li><li style=3D"margin-left: =
+36pt;">Can a model=E2=80=99s <a href=3D"https://arxiv.org/abs/2407.04694">k=
+nowledge about its situation</a>&nbsp;affect the faithfulness of its CoT? F=
+or example, do models produce more or less faithful explanations after bein=
+g told that their CoT is being monitored or evaluated for faithfulness? </l=
+i><li style=3D"margin-left: 36pt;">How can we make automatic methods for de=
+tecting unfaithful CoT (<a href=3D"https://arxiv.org/abs/2307.13702">Lanham=
+ et al., 2023</a>, <a href=3D"https://arxiv.org/abs/2312.12747">Mills et al=
+., 2024</a>, <a href=3D"https://arxiv.org/abs/2401.13986">Chen et al., 2024=
+</a>) more efficient and higher recall?</li></ul>
+<br><br><br><hr><br><br><h2 id=3D"h.18872evr79nk">AI control</h2>
+<p><span style=3D"font-style: italic;">Can we ensure safety by deploying mo=
+dels alongside sufficient safeguards?</span></p>
+<p>Currently, the main reason we believe AI systems don=E2=80=99t pose cata=
+strophic risks is that they lack many of the capabilities necessary for cau=
+sing catastrophic harm (such as being able to do novel research or effectiv=
+ely manipulate large numbers of people). In the future we may have AI syste=
+ms that are capable enough to cause catastrophic harm, but don=E2=80=99t do=
+ so because they are sufficiently aligned; if we=E2=80=99ve made sufficient=
+ progress on <a href=3D"https://alignment.anthropic.com/2025/recommended-di=
+rections/#h.ryzzv48oxf5o">evaluating alignment</a>&nbsp;we can make alignme=
+nt-based assurances of safety.</p>
+<p>A third category of assurance we could make=E2=80=94aside from sufficien=
+t alignment or lack of dangerous capabilities=E2=80=94is that we have deplo=
+yed our AI systems alongside sufficient safeguards that they could not succ=
+essfully cause catastrophic harm even if they tried. This strategy, known a=
+s <a href=3D"https://arxiv.org/abs/2312.06942">AI control</a>, is appropria=
+te when AI systems <span style=3D"font-style: italic;">are</span>&nbsp;capa=
+ble enough to cause a catastrophe if deployed with no safeguards but=E2=80=
+=94when deployed in restricted environments=E2=80=94are <span style=3D"font=
+-style: italic;">not</span>&nbsp;capable enough to circumvent safeguards im=
+posed by a careful developer. In this section, we=E2=80=99ll&nbsp;discuss p=
+ossible strategies for AI control, with a focus on run-time monitoring of A=
+I systems.</p>
+<h3 id=3D"h.dos4q2vcvwwj">Behavioral monitoring</h3>
+<p><span style=3D"font-style: italic;">Can we ensure safety by having our A=
+I=E2=80=99s inputs and outputs monitored by another AI?</span></p>
+<p>One AI control strategy is to use an auxiliary AI system (the <span styl=
+e=3D"font-style: italic;">monitor</span>) to screen the inputs and outputs =
+of another untrusted AI system (the <span style=3D"font-style: italic;">act=
+or</span>) (<a href=3D"https://arxiv.org/abs/2311.10538">Naihin et al., 202=
+3</a>; <a href=3D"https://arxiv.org/abs/2401.13138">Chan et al., 2024</a>; =
+<a href=3D"https://arxiv.org/abs/2312.06942">Greenblatt et al., 2023</a>). =
+<a href=3D"https://arxiv.org/abs/2312.06942">Greenblatt et al. (2023)</a>&n=
+bsp;study variants of this idea, including:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Trus=
+ted monitoring: </span>using a less capable, but trusted, AI system to moni=
+tor the actor=E2=80=99s inputs and outputs, such as using&nbsp;GPT-3.5 to s=
+creen code written by a potentially malicious GPT-4.</li><li style=3D"margi=
+n-left: 36pt;"><span style=3D"font-weight: 700;">Untrusted monitoring:</spa=
+n>&nbsp;using another untrusted model (for example, another instance of the=
+ actor model) as a monitor.</li></ul>
+<p>A core challenge for these monitoring set-ups is that monitor failures m=
+ight be systematically concentrated in the same episodes where the actor be=
+haves maliciously. For example, this could happen because the actor intenti=
+onally subverts the monitor (e.g. by jailbreaking it) or=E2=80=94in the cas=
+e of untrusted monitoring=E2=80=94because the monitor and the actor are col=
+luding.</p>
+<p>We are excited about work on improving the efficacy of behavioral monito=
+ring. Promising directions include:</p>
+<ul><li style=3D"margin-left: 36pt;">Reducing opportunities for actor-monit=
+or collusion or jailbreaks, e.g. by editing or paraphrasing the actor=E2=80=
+=99s output before showing it to the monitor.</li><li style=3D"margin-left:=
+ 36pt;">Training better monitors, e.g. by generating synthetic data that re=
+alistically captures sophisticated, malicious behavior.</li><li style=3D"ma=
+rgin-left: 36pt;">Better estimating failure rates for extremely rare catast=
+rophic outcomes.</li><li style=3D"margin-left: 36pt;">Developing monitoring=
+ schemes that work even when the actor has access to additional affordances=
+, such as memory of previous episodes or the ability to <a href=3D"https://=
+arxiv.org/abs/2410.03768">pass messages</a>&nbsp;between instances.</li></u=
+l>
+<h3 id=3D"h.cpqnfk2ytbxk">Activation monitoring</h3>
+<p><span style=3D"font-style: italic;">Can we ensure safety by monitoring o=
+ur AI=E2=80=99s hidden states?</span></p>
+<p>An alternative to monitoring an AI system=E2=80=99s input/output behavio=
+r is monitoring its latent activations. For example, one could attempt to t=
+rain simple probes which use a model=E2=80=99s latent activations to classi=
+fy when it is writing secure vs. insecure code. This direction can be viewe=
+d as a less ambitious alternative to <a href=3D"https://alignment.anthropic=
+.com/2025/recommended-directions/#h.rew9ycn3zds2">understanding model cogni=
+tion</a>, where we search for scalable, automatic ways to detect the presen=
+ce of pre-specified undesired concepts in the model=E2=80=99s internal proc=
+essing.</p>
+<p>This monitoring approach is promising because the model=E2=80=99s activa=
+tions (1) correspond to the reasoning of the model being monitored, and (2)=
+ are difficult for the model to control. For example, when using a weak mod=
+el to <a href=3D"https://alignment.anthropic.com/2025/recommended-direction=
+s/#h.dos4q2vcvwwj">behaviorally monitor</a>&nbsp;a stronger code generation=
+ model for insecure code, we might worry that the weak monitor would fail t=
+o spot some vulnerabilities or that the code generation model would obfusca=
+te its code to make vulnerabilities difficult to detect; monitoring the act=
+ivations of the code generation model itself might side-step these failures=
+.</p>
+<p>On the other hand, there is substantial risk that activation monitors ar=
+e not robust to distributional shifts. One particularly important distribut=
+ion shift is the <a href=3D"https://www.lesswrong.com/posts/WCj7WgFSLmyKaMw=
+PR/coup-probes-catching-catastrophes-with-probes-trained-off">shift from fi=
+xed datasets of synthetic data to data generated by the model itself</a>. I=
+f we don=E2=80=99t have model-generated examples of the bad outputs we woul=
+d like to detect, then we=E2=80=99ll need to synthetically generate outputs=
+ in some other way to train activation monitors. We would then need to veri=
+fy that monitors trained using these outputs generalize to actual dangerous=
+ model generations of interest.</p>
+<p>While there are <a href=3D"https://www.lesswrong.com/posts/WCj7WgFSLmyKa=
+MwPR/coup-probes-catching-catastrophes-with-probes-trained-off">signs</a>&n=
+bsp;of <a href=3D"https://arxiv.org/abs/2406.04313">life</a>&nbsp;for activ=
+ation monitoring, more research is needed to make it reliable enough for de=
+ployment in production AI systems.</p>
+<h3 id=3D"h.qen1pon6sde">Anomaly detection</h3>
+<p><span style=3D"font-style: italic;">Can we automatically detect when our=
+ models are behaving =E2=80=9Cweirdly=E2=80=9D?</span></p>
+<p>Many approaches to monitoring are supervised: they involve training a cl=
+assifier on a curated dataset of positive and negative examples of bad mode=
+l behaviors. However, we may not know what dangerous failures look like ahe=
+ad of time. Thus, another <span style=3D"font-style: italic;">unsupervised<=
+/span>&nbsp;approach to monitoring is <span style=3D"font-style: italic;"><=
+a href=3D"https://www.alignment.org/blog/mechanistic-anomaly-detection-and-=
+elk/">anomaly detection</a></span>: trying to detect when a model=E2=80=99s=
+ computation is unusual or out of distribution in certain ways. </p>
+<p>For example, suppose we have deployed a model alongside a monitor for so=
+me sort of harmful behavior. We might expect our monitor to catch typical c=
+ases of the harmful behavior, but to fail on rare inputs such as jailbreaks=
+. We might therefore also deploy our model and monitor alongside an anomaly=
+ detector which aims to flag inputs (like rare jailbreaks) which are far ou=
+t-of-distribution. We could manually inspect and label such inputs, and lat=
+er use them to improve the coverage of our monitor. It is plausible that ap=
+plying existing anomaly detection techniques to model latent activations mi=
+ght already be suitable for tasks like these; see e.g. <a href=3D"https://a=
+rxiv.org/abs/2312.01037">here</a>.</p>
+<p>More ambitiously, one might also try to apply anomaly detection to detec=
+t when there are large differences between two models. For example, conside=
+r an input where a strong model understands something that a weak model doe=
+s not, leading to behavior that is novel and=E2=80=94from the perspective o=
+f the weak model=E2=80=94surprising. It might be possible to automatically =
+detect such inputs. This is, as far as we know, an unexplored problem setti=
+ng, and we would be excited to see progress on it.</p>
+<br><br><br><hr><br><br><h2 id=3D"h.9aidfzd51piy">Scalable oversight</h2>
+<p><span style=3D"font-style: italic;">Can we design oversight mechanisms t=
+hat will continue to work for smarter-than-human AI systems?</span></p>
+<p>In traditional machine learning, one typically assumes access to a groun=
+d-truth oversight signal R (such as training labels or scalar rewards) and =
+trains models to perform well according to R. This works well in settings w=
+here we are able to reliably discriminate good vs. bad model outputs. </p>
+<p>However, it may be difficult to continue with this paradigm when trainin=
+g future AI systems to perform tasks at or beyond the frontier of human kno=
+wledge. In this regime, producing an effective oversight signal carries var=
+ious challenges:</p>
+<ol><li style=3D"margin-left: 36pt;">Oversight may become increasingly nois=
+y due to problems being fundamentally difficult, e.g. for problems where ex=
+perts disagree on the correct solution (despite agreeing there is an object=
+ively correct solution).</li><li style=3D"margin-left: 36pt;">Our oversight=
+ signal might have <span style=3D"font-style: italic;"><a href=3D"https://a=
+lignment.anthropic.com/2025/recommended-directions/#h.5sp6gxdxd4ww">systema=
+tic</a></span><a href=3D"https://alignment.anthropic.com/2025/recommended-d=
+irections/#h.5sp6gxdxd4ww">&nbsp;</a><span style=3D"font-style: italic;"><a=
+ href=3D"https://alignment.anthropic.com/2025/recommended-directions/#h.5sp=
+6gxdxd4ww">errors</a></span>, for example stemming from mistakes by human o=
+verseers.</li><li style=3D"margin-left: 36pt;">Oversight may become increas=
+ingly expensive to obtain in sufficient quantity, because it relies on spec=
+ialized human labor (e.g. domain experts) or expensive evaluation procedure=
+s (e.g. performing experiments). </li></ol>
+<p>Scalable oversight refers to the problem of designing oversight mechanis=
+ms that scale with the intelligence of the systems we aim to oversee. Ideal=
+ly, these mechanisms should allow us to oversee the training of advanced or=
+ superhuman AI systems.</p>
+<h3 id=3D"h.5sp6gxdxd4ww">Improving oversight despite systematic, exploitab=
+le errors in the oversight signal</h3>
+<p><span style=3D"font-style: italic;">What do we do when our oversight sig=
+nal systematically misrepresents the desired task?</span></p>
+<p>The most challenging scenarios for scalable oversight occur when our ove=
+rsight signal makes systematic errors that our model is smart enough to <a =
+href=3D"https://arxiv.org/abs/2409.12822">learn to exploit</a>. Consider th=
+e situation faced by a student taking tests written by a less intelligent t=
+eacher: the student might learn to produce answers that <span style=3D"font=
+-style: italic;">receive high grades from the teacher</span>&nbsp;even when=
+ the student knows the answers are flawed.</p>
+<p>More formally, suppose we have access to a proxy reward signal R which m=
+akes systematic errors relative to an (inaccessible) ground-truth reward si=
+gnal R*. For example, R might reflect answers which fallible human annotato=
+rs judge to be correct, while R* reflects actually-correct answers.</p>
+<p>In some cases, the difference between R and R* may not matter for traini=
+ng purposes. However, if our model is sophisticated enough to accurately mo=
+del R - R* (e.g. if the model has a good understanding of human error), the=
+n training against R might produce a model which <a href=3D"https://deepmin=
+d.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/"=
+>systematically</a>&nbsp;<a href=3D"https://arxiv.org/abs/2409.12822">explo=
+its</a>&nbsp;errors in R (e.g. by responding to questions with answers whic=
+h seem correct to human overseers, but do not actually reflect the model=E2=
+=80=99s best guess at a correct answer).</p>
+<p>We are interested in techniques which leverage access to M to help us im=
+prove our oversight, allowing us to build a new proxy R=E2=80=99 which more=
+ closely matches R*.</p>
+<p>In order to study this problem, we suggest the creation of testbeds wher=
+e, starting with a student model M and a reward signal R*, we:</p>
+<ul><li style=3D"margin-left: 36pt;">Intentionally introduce systematic err=
+ors into R* to get a training signal R.</li><li style=3D"margin-left: 36pt;=
+">Ensure that M understands the systematic errors made by R. For example, w=
+e could do this by providing M a system prompt that explains some of R=E2=
+=80=99s errors.</li><li style=3D"margin-left: 36pt;">Train M against R, pos=
+sibly after applying some scalable oversight technique (e.g. augmenting R w=
+ith <a href=3D"https://alignment.anthropic.com/2025/recommended-directions/=
+#h.fhf8sfxv5kby">debate</a>, or <a href=3D"https://alignment.anthropic.com/=
+2025/recommended-directions/#h.1sk9rx1vpg0n">only training on episodes</a>&=
+nbsp;where we=E2=80=99re very confident R is correct).</li><li style=3D"mar=
+gin-left: 36pt;">Evaluate M=E2=80=99s performance against R*.</li></ul>
+<h3 id=3D"h.fhf8sfxv5kby">Recursive oversight</h3>
+<p><span style=3D"font-style: italic;">Can we achieve good oversight by boo=
+tstrapping from bad oversight?</span></p>
+<p>One approach to scalable oversight is to develop oversight mechanisms th=
+at <a href=3D"https://arxiv.org/abs/2206.05802">incorporate AI assistance</=
+a>, and which therefore might scale with AI progress. For example:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Task=
+ decomposition</span>&nbsp;(<a href=3D"https://arxiv.org/abs/1810.08575">Ch=
+ristiano et al., 2018</a>; <a href=3D"https://arxiv.org/abs/2109.10862">Wu =
+et al., 2021</a>) aims to break down difficult tasks into subtasks each of =
+which can be effectively supervised.</li><li style=3D"margin-left: 36pt;"><=
+span style=3D"font-weight: 700;">Adversarial techniques</span>&nbsp;such as=
+ debate (<a href=3D"https://arxiv.org/abs/1805.00899">Irving et al., 2018</=
+a>; <a href=3D"https://arxiv.org/abs/2311.08702">Michael et al., 2023</a>; =
+<a href=3D"https://arxiv.org/abs/2402.06782">Khan et al., 2024</a>; <a href=
+=3D"https://arxiv.org/abs/2407.04622">Kenton et al., 2024</a>) and prover-v=
+erifier games (<a href=3D"https://arxiv.org/abs/2407.13692">Kirchner et al.=
+, 2024</a>) pit competing AI systems against each other. The hope is that t=
+he only equilibrium in these adversarial games is for the model to perform =
+as well as they can.</li></ul>
+<p>More formally, these approaches involve starting with an imperfect rewar=
+d signal R (e.g. human evaluator approval) and developing a pipeline=E2=80=
+=94which may involve consulting AI assistants that were trained using R=E2=
+=80=94for creating an improved reward signal R=E2=80=99. Ideally, this proc=
+ess can then be repeated to generate further improvements R=E2=80=99=E2=80=
+=99, R=E2=80=99=E2=80=99=E2=80=99, etc.</p>
+<p>There=E2=80=99s already been substantial work along these lines, and we=
+=E2=80=99d be excited to see more.</p>
+<h3 id=3D"h.1sk9rx1vpg0n">Weak-to-strong and easy-to-hard generalization</h=
+3>
+<p><span style=3D"font-style: italic;">Can we get good performance from bad=
+ oversight + generalization?</span></p>
+<p>Instead of trying to <a href=3D"https://alignment.anthropic.com/2025/rec=
+ommended-directions/#h.fhf8sfxv5kby">bootstrap</a>&nbsp;from imperfect rewa=
+rd signals to more accurate reward signals, another approach to scalable ov=
+ersight involves using an imperfect reward signal as-is while hoping for fa=
+vorable generalization properties. We discuss here two such approaches: wea=
+k-to-strong generalization and easy-to-hard generalization.</p>
+<p><span style=3D"font-weight: 700;">Weak-to-strong generalization</span>&n=
+bsp;(<a href=3D"https://arxiv.org/abs/2312.09390">Burns et al., 2023</a>; <=
+a href=3D"https://arxiv.org/abs/2407.13647">Yang et al., 2024</a>). When st=
+udying weak-to-strong generalization, we train strong AI systems using a re=
+ward signal generated by a weak overseer and evaluate performance according=
+ to a held-out gold-standard oversight signal (e.g. the ground-truth answer=
+s where available). For example, <a href=3D"https://arxiv.org/abs/2312.0939=
+0">Burns et al., 2023</a>&nbsp;study the effect of training GPT-4 with over=
+sight from GPT-2. Pessimistically, the strong learner (GPT-4 in this exampl=
+e) could learn to imitate the mistakes of the weak overseer (GPT-2). But op=
+timistically, the strong learner could generalize to perform the task bette=
+r than the weak overseer. Notably, there might be <span style=3D"font-style=
+: italic;">unsupervised</span>&nbsp;ways to improve weak-to-strong generali=
+zation, such as regularizing the learner to be self-consistent (<a href=3D"=
+https://arxiv.org/abs/2212.03827">Burns et al., 2022</a>; <a href=3D"https:=
+//arxiv.org/abs/2306.09983">Furi et al., 2023</a>).</p>
+<p>We are excited about research on improving or measuring weak-to-strong g=
+eneralization. For example:</p>
+<ul><li style=3D"margin-left: 36pt;">Developing testbeds where we have acce=
+ss to oversight signals of varying quality, such as using <a href=3D"https:=
+//arxiv.org/abs/2210.10760">models of varying scales</a>&nbsp;as overseers.=
+</li><li style=3D"margin-left: 36pt;">Exploring differences in weak-to-stro=
+ng generalization between tasks, e.g. study the difference between tasks wh=
+ich are represented in training corpora vs. those which are novel to the mo=
+del.</li><li style=3D"margin-left: 36pt;">Exploring weak-to-strong generali=
+zation for process-based supervision, in addition to outcome supervision.</=
+li></ul>
+<p><span style=3D"font-weight: 700;">Easy-to-hard generalization</span>&nbs=
+p;(<a href=3D"https://arxiv.org/abs/2409.18433">Ding et al., 2024</a>; <a h=
+ref=3D"https://arxiv.org/abs/2401.06751">Hase et al., 2024</a>; <a href=3D"=
+https://arxiv.org/abs/2403.09472">Sun et al., 2024</a>). Instead of trainin=
+g strong AI systems on low-quality labels for the tasks we actually want th=
+em to perform, we could instead restrict to training on <span style=3D"font=
+-style: italic;">easy</span>&nbsp;tasks for which we can confidently produc=
+e high-quality labels. For example, after fine-tuning a large pretrained mo=
+del on easy math problems, to what extent does the model generalize to also=
+ performing well on difficult math problems? This approach might be especia=
+lly useful when we expect our oversight signal on hard tasks to be <a href=
+=3D"https://alignment.anthropic.com/2025/recommended-directions/#h.5sp6gxdx=
+d4ww">systematically erroneous</a>, such that the learner is incentivized t=
+o imitate our oversight errors.</p>
+<p>As above, we are excited about research on measuring or improving easy-t=
+o-hard generalization. We are especially interested in topics at the inters=
+ection of these two generalization approaches; for example:</p>
+<ul><li style=3D"margin-left: 36pt;">How does supervising with high-quality=
+ data on unrepresentative tasks <a href=3D"https://arxiv.org/abs/2410.13215=
+">trade off against</a>&nbsp;supervising with low-quality data on represent=
+ative tasks?</li><li style=3D"margin-left: 36pt;">Are there useful ideas to=
+ draw on from the literature on noisy label learning (learning p(y|x) in th=
+e presence of unrepresentative data) or noisy domain learning (learning p(x=
+) in the presence of unrepresentative data)?</li></ul>
+<h3 id=3D"h.5sty9kp0hdic">Honesty</h3>
+<p><span style=3D"font-style: italic;">Can we identify when our models are =
+being honest, even if we can=E2=80=99t judge the accuracy of their response=
+s?</span></p>
+<p><span style=3D"font-style: italic;"></span></p>
+<p>The central challenge of scalable oversight in settings with <a href=3D"=
+https://alignment.anthropic.com/2025/recommended-directions/#h.5sp6gxdxd4ww=
+">systematic, exploitable overseer error</a>&nbsp;is that models might lear=
+n to produce answers which appear correct to overseers, even if the model k=
+nows the answer to be incorrect. It might seem that the only way to solve t=
+his problem is by improving our oversight signal to make fewer errors. Howe=
+ver, there is another source of hope: that there might be a common, identif=
+iable structure to <span style=3D"font-style: italic;">honest</span>&nbsp;m=
+odel responses. That is, we may be able to identify responses that the mode=
+l believes to be correct not by comparing them to our own best guess (i.e. =
+the oversight signal) but by <a href=3D"https://docs.google.com/document/d/=
+1WwsnJQstPq91_Yh-Ch2XRL8H_EpsnjrC1dwZXR37PC8/edit?usp=3Dsharing">leveraging=
+ the model=E2=80=99s own knowledge</a>&nbsp;about whether it is responding =
+honestly.</p>
+<p>There has been substantial prior work on identifying language model repr=
+esentations of truth (<a href=3D"https://arxiv.org/abs/2212.03827">Burns et=
+ al., 2022</a>;&nbsp;<a href=3D"https://arxiv.org/abs/2304.13734">Azaria &a=
+mp; Mitchell, 2023</a>; <a href=3D"https://arxiv.org/abs/2310.06824">Marks =
+&amp; Tegmark, 2023</a>) and using them to classify or control model genera=
+tions (<a href=3D"https://arxiv.org/abs/2310.01405">Zou et al., 2023</a>;&n=
+bsp;<a href=3D"https://arxiv.org/abs/2312.06681">Panickssery et al., 2024</=
+a>;&nbsp;<a href=3D"https://arxiv.org/abs/2306.03341">Li et al., 2023</a>;&=
+nbsp;<a href=3D"https://arxiv.org/abs/2312.01037">Mallen et al., 2024</a>).=
+ We would be interested in work which studies the <a href=3D"https://arxiv.=
+org/abs/2312.03729">circumstances under which</a>&nbsp;these techniques are=
+ useful, especially with a focus on situations where models have learned to=
+ give non-truthful answers.</p>
+<br><br><br><hr><br><br><h2 id=3D"h.9kn914d5mpvx">Adversarial robustness</h=
+2>
+<p><span style=3D"font-style: italic;">Can we ensure AI systems behave as d=
+esired despite adversarial attacks?</span></p>
+<p>Deployed AI systems are placed in adversarial environments, where they s=
+ometimes encounter inputs specifically designed to cause undesired behavior=
+. For example, users might try to jailbreak AI chatbots, or a sophisticated=
+ AI might try to circumvent a <a href=3D"https://alignment.anthropic.com/20=
+25/recommended-directions/#h.dos4q2vcvwwj">weaker AI monitor</a>. While the=
+re is substantial research on improving the adversarial robustness of AI sy=
+stems, we think there are still underexplored areas, especially in:</p>
+<ul><li style=3D"margin-left: 36pt;">Better characterizing the attack surfa=
+ces future adversaries might use. While adversaries today typically attack =
+models via direct prompting, other attack types are possible such as <a hre=
+f=3D"https://arxiv.org/abs/2410.13722">poisoning pretraining corpora</a>&nb=
+sp;or <a href=3D"https://arxiv.org/abs/2406.13352">hiding malicious content=
+ in websites to hijack AI agents</a>.</li><li style=3D"margin-left: 36pt;">=
+Building practical, scalable defenses against misuse&nbsp;of AI systems tha=
+t interfere minimally with benign use; see <a href=3D"https://alignment.ant=
+hropic.com/2025/recommended-directions/#h.a2hnl4sly5t5">below</a>&nbsp;for =
+example.</li><li style=3D"margin-left: 36pt;">Developing better measures of=
+ the practical reliability of defenses; see <a href=3D"https://alignment.an=
+thropic.com/2025/recommended-directions/#h.28jqmoodh6ap">below</a>&nbsp;for=
+ more detail.</li></ul>
+<h3 id=3D"h.28jqmoodh6ap">Realistic and differential benchmarks for jailbre=
+aks</h3>
+<p><span style=3D"font-style: italic;">How do we measure the real-world har=
+m caused by misusing AI systems?</span></p>
+<p>Language models are susceptible to jailbreaks: users induce models to re=
+spond to questions that they=E2=80=99d otherwise refuse by prompting them i=
+n clever ways. However we ultimately don=E2=80=99t care if the model respon=
+ds to all questions it would refuse by default; we care if it responds to q=
+uestions with useful answers that enable dangerous misuse in practice.</p>
+<p>We would thus like benchmarks that capture the <span style=3D"font-style=
+: italic;">realistic, differential harm</span>&nbsp;that can result from ad=
+versaries jailbreaking and misusing models. For example, <a href=3D"https:/=
+/arxiv.org/abs/2402.10260">Souly et al. (2024)</a>&nbsp;and <a href=3D"http=
+s://arxiv.org/abs/2410.09024">Andriushchenko et al. (2024)</a>&nbsp;offer a=
+ promising start towards assessing real risk by testing whether jailbreaks =
+induce models to <span style=3D"font-style: italic;">capably</span>&nbsp;ca=
+use harm (rather than just measuring non-refusal). Here are some directions=
+ for expanding these kinds of benchmarks: </p>
+<ul><li style=3D"margin-left: 36pt;">Measuring the <span style=3D"font-styl=
+e: italic;"><a href=3D"https://arxiv.org/abs/2403.07918">differential impac=
+t </a></span>of an attack, i.e. whether models enable human adversaries to =
+accomplish tasks that they couldn=E2=80=99t otherwise. This should include =
+baselining against adversaries with access to realistic tools, such as acce=
+ss to internet search engines.</li><li style=3D"margin-left: 36pt;">Focusin=
+g on harmful use-cases that are <span style=3D"font-style: italic;">realist=
+ic</span>. An adversary probably doesn=E2=80=99t need a model to cut down a=
+ stop sign, but would need a model to aid with a cyberattack on a specific =
+piece of software.</li><li style=3D"margin-left: 36pt;">Measuring how <span=
+ style=3D"font-style: italic;"><a href=3D"https://arxiv.org/abs/2307.15043"=
+>universal</a></span>&nbsp;different attacks are, both across inputs and ac=
+ross models. First, this is important because a malicious task might requir=
+e multiple queries, and it will be harder for an adversary to complete all =
+queries if they need a specific jailbreak for each. Similarly, if jailbreak=
+s transfer across models, then a closed-weights production model could be a=
+ttacked through an API using jailbreaks discovered using a gradient-based a=
+ttack on open-weights models. </li></ul>
+<p>Beyond the above desiderata, we=E2=80=99d also like benchmarks that capt=
+ure how likely real humans are to discover jailbreaks on their own. This is=
+ because humans are often able to come up with simple attacks that automate=
+d pipelines miss. We would value benchmarks that track what kinds of attack=
+s actual humans would find given defenses, using differing amounts of resou=
+rces, since this could help surface model weaknesses that aren=E2=80=99t re=
+flected in automated jailbreaking attacks. </p>
+<h3 id=3D"h.a2hnl4sly5t5">Adaptive defenses</h3>
+<p><span style=3D"font-style: italic;">Can we develop safeguards that adapt=
+ to attackers?</span></p>
+<p>It=E2=80=99s common to think about defenses against adversaries as a pre=
+-deployment problem: we apply interventions to make the model more robust, =
+then deploy the model with these interventions. This means defenses are <sp=
+an style=3D"font-style: italic;">static</span>, and do not respond to adapt=
+ive adversaries. </p>
+<p>A less-explored line of research focuses on <span style=3D"font-style: i=
+talic;">adaptive</span>&nbsp;defenses that depend on prior model and advers=
+ary behavior. Some concrete research directions here include:</p>
+<ul><li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;">Inte=
+r-query defenses:</span>&nbsp;An adversary attacking a model will likely tr=
+y many prompts before getting the model to generate a harmful output, or re=
+quire many harmful outputs in order to complete a malicious task. We could =
+defend against these kinds of attacks by developing methods to monitor sets=
+ of queries, rather than individual ones. Such methods would need to identi=
+fy subsets of suspicious queries from a much larger set of user queries, an=
+d be able to infer high-level tasks from low-level subtasks.</li><li style=
+=3D"margin-left: 36pt;"><span style=3D"font-weight: 700;"><a href=3D"https:=
+//arxiv.org/abs/2411.07494v1">Rapid response</a></span><span style=3D"font-=
+weight: 700;">:</span>&nbsp;After an adversary finds an attack, we=E2=80=99=
+d like to patch the model as quickly as possible. Can we design adaptive sy=
+stems that quickly patch working attacks? And even better, can we patch the=
+ system to the point where the adversary gains no useful information from t=
+he attack?</li></ul>
+<br><br><br><hr><br><br><h2 id=3D"h.y9w2s9297wao">Miscellaneous</h2>
+<p>Lastly, we want to highlight two areas that are promising for further re=
+search but that don=E2=80=99t fall cleanly into the categories above.</p>
+<h3 id=3D"h.fmrwaolmz7sm">Unlearning dangerous information&nbsp;and capabil=
+ities</h3>
+<p><span style=3D"font-style: italic;">Given a model that has already learn=
+ed something dangerous, can we make the model unlearn it?</span></p>
+<p>Large language models learn a large amount of information during pretrai=
+ning, including knowledge and capabilities we would rather they not have. T=
+his problem has spurred research into <a href=3D"https://arxiv.org/abs/2409=
+.18025">machine unlearning</a>. However, the problem remains largely unsolv=
+ed: it remains relatively easy to extract apparently unlearned information =
+from models with either whitebox or blackbox&nbsp;access to the model. This=
+ problem is increasingly pressing given capabilities improvements in domain=
+s like biology and coding that may be useful for <a href=3D"https://arxiv.o=
+rg/abs/2403.03218">biological or cyber attacks</a>. </p>
+<p>Hence, we encourage research into new methods for unlearning information=
+ in LLMs. We suspect that there is ample room for progress, and we encourag=
+e research into ambitious forms of unlearning, aimed at producing models wh=
+ich behave near-identically to models that were never trained on unlearned =
+data (even after <a href=3D"https://arxiv.org/abs/2410.08827">further fine-=
+tuning to elicit the unlearned knowledge</a>). </p>
+<h3 id=3D"h.ws6luqcbcg3p">Learned governance for multi-agent alignment</h3>
+<p><span style=3D"font-style: italic;">How can we guard against risks that =
+emerge from many interacting AI agents?</span></p>
+<p>Transformative AI is likely to not be a =E2=80=9Csingle AI=E2=80=9D but =
+instead arrive in the form of <span style=3D"font-style: italic;">many</spa=
+n>&nbsp;instances of (possibly different) AIs interacting to solve difficul=
+t problems. Importantly, <span style=3D"font-style: italic;">even if</span>=
+&nbsp;each individual instance is aligned to human values, the resulting mu=
+lti-agent system can exhibit a host of novel failure modes that result from=
+ poor coordination:</p>
+<ul><li style=3D"margin-left: 36pt;">Each instance produces a small negativ=
+e externality that the instance dismisses as negligible, but that results i=
+n substantial harm in the aggregate.</li><li style=3D"margin-left: 36pt;">A=
+ critical problem is noticed by an instance and is reported to another inst=
+ance, which reports it to another instance, and so on, without ever being b=
+rought to the attention of a human/instance which can resolve the issue.</l=
+i><li style=3D"margin-left: 36pt;">A critical problem is noticed by several=
+ instances, each of which doesn=E2=80=99t respond due to unclear responsibi=
+lity.</li><li style=3D"margin-left: 36pt;">Important information required f=
+or solving a problem is not shared to the relevant instances because those =
+instances did not share information of the problem.</li></ul>
+<p>These failure modes are highly familiar from human society, and might si=
+milarly be amenable to be alleviated by good <span style=3D"font-style: ita=
+lic;">governance</span>. In particular, to avoid multi-agent failure modes =
+we might impose restrictions on which actions can be taken in which context=
+, or we might incentivize certain =E2=80=9Cprosocial=E2=80=9D behavior. Imp=
+ortantly, it might be feasible to <span style=3D"font-style: italic;">learn=
+</span>&nbsp;this governance from observations so that it adapts to novel d=
+ynamics and failure modes.</p>
+<p>This research direction appears ripe for theory-driven approaches levera=
+ging insights from game theory as well as empirical investigations.</p>
+</d-article><d-appendix style=3D"=E2=80=99background:" hsla(40,20%,30%,0.05=
+);=3D"" margin-top:=3D"" 120px;=3D"" padding-top:=3D"" 100px=E2=80=99=3D"" =
+id=3D"appendix">
+
+
+
+<h3 id=3D"h.w4sexnj6v6d3">Acknowledgements</h3>
+<p>We thank Michael Lepori and Atticus Geiger for feedback on a draft.</p>
+
+</d-appendix></body></html>
+------MultipartBoundary--D2iIKfiXTCdi6YJCV1thDmypLqsMjN2DmRA9llbgVS----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-999b222c-cce9-40d2-95d0-f36e8160f61a@mhtml.blink
+
+@charset "utf-8";
+
+d-appendix { contain: layout style; font-size: 0.8em; line-height: 1.7em; m=
+argin-top: 60px; margin-bottom: 0px; border-top: 1px solid rgba(0, 0, 0, 0.=
+1); color: rgba(0, 0, 0, 0.5); padding-top: 60px; padding-bottom: 48px; }
+
+d-appendix h3 { grid-column: page-start / text-start; font-size: 15px; font=
+-weight: 500; margin-top: 1em; margin-bottom: 0px; color: rgba(0, 0, 0, 0.6=
+5); }
+
+d-appendix h3 + * { margin-top: 1em; }
+
+d-appendix ol { padding: 0px 0px 0px 15px; }
+
+@media (min-width: 768px) {
+  d-appendix ol { padding: 0px 0px 0px 30px; margin-left: -30px; }
+}
+
+d-appendix li { margin-bottom: 1em; }
+
+d-appendix a { color: rgba(0, 0, 0, 0.6); }
+
+d-appendix > * { grid-column: text; }
+
+d-appendix > d-footnote-list, d-appendix > d-citation-list, d-appendix > di=
+still-appendix { grid-column: screen; }
+------MultipartBoundary--D2iIKfiXTCdi6YJCV1thDmypLqsMjN2DmRA9llbgVS----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-fa2b814b-db30-4fac-9b95-016988030a29@mhtml.blink
+
+@charset "utf-8";
+
+.safety-case-block p { margin-bottom: 0.5em !important; margin-top: 1em !im=
+portant; }
+
+.safety-case-block p:first-of-type { margin-top: 0.5em !important; }
+
+d-article { padding-top: 60px !important; }
+
+d-article li:last-child { margin-bottom: 0.5em !important; }
+
+d-article li { margin-bottom: 0.5em !important; }
+
+ul { padding-left: 0em !important; margin-bottom: 0.2em !important; }
+
+ol { padding-left: 0em !important; margin-bottom: 0.2em !important; }
+
+d-byline { display: none; }
+
+.d-byline-container { border-top: 1px solid rgba(0, 0, 0, 0.1); border-bott=
+om: 1px solid rgba(0, 0, 0, 0.1); padding-top: 20px; padding-bottom: 20px; =
+}
+
+.d-byline { grid-column: text; display: grid; grid-template-columns: [autho=
+rs info] 5fr [affiliations published] 1fr; grid-template-rows: [authors aff=
+iliations] auto [published info] auto; font-size: 0.8rem; line-height: 1.8e=
+m; gap: 20px; }
+
+.d-byline h3 { font-size: 0.6rem; font-weight: 400; color: rgba(0, 0, 0, 0.=
+5); margin: 0px 0px 4px; text-transform: uppercase; }
+
+.d-byline .info { color: rgba(0, 0, 0, 0.5); font-size: 80%; line-height: 1=
+.5; }
+
+.d-byline .authors div { line-height: 1.5; }
+
+.d-byline .authors sup { font-size: 80%; margin-right: -4px; }
+
+.d-byline .author { margin-right: 6px; white-space: nowrap; }
+
+.d-byline a { color: inherit; text-decoration: none; }
+
+.safety-case-block { padding: 8px 16px; border-radius: 4px; background: rgb=
+(250, 249, 247); border-width: 1px 1px 1px 4px; border-style: solid; border=
+-color: rgb(229, 229, 225) rgb(229, 229, 225) rgb(229, 229, 225) rgb(204, 1=
+55, 122); border-image: initial; opacity: 0.8; margin-top: 10px; margin-bot=
+tom: 10px; }
+
+@media screen and (min-width: 900px) {
+  .offset-gdoc-image { margin-left: -65px; }
+}
+
+.section-authors { color: rgb(119, 119, 119); font-style: italic; margin-to=
+p: -24px; margin-bottom: 32px; line-height: 1.3; display: flex; flex-wrap: =
+wrap; justify-content: space-between; gap: 0.5em; }
+
+.section-authors::before { content: attr(data-author); }
+
+.section-authors::after { content: attr(data-published); }
+------MultipartBoundary--D2iIKfiXTCdi6YJCV1thDmypLqsMjN2DmRA9llbgVS----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-362eebde-84bd-4d04-be9e-a9e4f8152804@mhtml.blink
+
+@charset "utf-8";
+
+.article-header { width: 100%; padding: 36px 36px 20px; box-sizing: border-=
+box; display: flex; align-items: center; gap: 12px; }
+
+.home-link { color: rgb(51, 51, 51); text-decoration: none; cursor: pointer=
+; font-weight: 700; font-size: 1.3em; }
+
+a.logo { display: flex; text-decoration: none; }
+
+span.commentary { color: rgb(128, 70, 51); }
+------MultipartBoundary--D2iIKfiXTCdi6YJCV1thDmypLqsMjN2DmRA9llbgVS----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-5dbc6e2d-c176-4974-a437-656de8358752@mhtml.blink
+
+@charset "utf-8";
+
+:is([id*=3D"google_ads_iframe"], [id*=3D"taboola-"], .taboolaHeight, .taboo=
+la-placeholder, #top-ad, #credential_picker_container, #credentials-picker-=
+container, #credential_picker_iframe, [id*=3D"google-one-tap-iframe"], #goo=
+gle-one-tap-popup-container, .google-one-tap__module, .google-one-tap-modal=
+-div, #amp_floatingAdDiv, #ez-content-blocker-container) { display: none !i=
+mportant; min-height: 0px !important; height: 0px !important; }
+------MultipartBoundary--D2iIKfiXTCdi6YJCV1thDmypLqsMjN2DmRA9llbgVS----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-dbe47526-ed4d-414a-a640-6206207fe346@mhtml.blink
+
+@charset "utf-8";
+
+html { font-size: 14px; line-height: 1.6em; font-family: -apple-system, Bli=
+nkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans"=
+, "Droid Sans", "Helvetica Neue", Arial, sans-serif; text-size-adjust: 100%=
+; }
+
+@media (min-width: 768px) {
+  html { font-size: 16px; }
+}
+
+body { margin: 0px; }
+
+a { color: rgb(0, 66, 118); }
+
+figure { margin: 0px; }
+
+table { border-collapse: collapse; border-spacing: 0px; }
+
+table th { text-align: left; }
+
+table thead { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+table thead th { padding-bottom: 0.5em; }
+
+table tbody :first-child td { padding-top: 0.5em; }
+
+pre { overflow: auto; max-width: 100%; }
+
+p { margin-top: 0px; margin-bottom: 1em; }
+
+sup, sub { vertical-align: baseline; position: relative; top: -0.4em; line-=
+height: 1em; }
+
+sub { top: 0.4em; }
+
+.kicker, .marker { font-size: 15px; font-weight: 600; color: rgba(0, 0, 0, =
+0.5); }
+
+@media (min-width: 1024px) {
+  d-title h1 span { display: block; }
+}
+
+figure { position: relative; margin-bottom: 2.5em; margin-top: 1.5em; }
+
+figcaption + figure { }
+
+figure img { width: 100%; }
+
+figure svg text, figure svg tspan { }
+
+figcaption, .figcaption { color: rgba(0, 0, 0, 0.6); font-size: 12px; line-=
+height: 1.5em; }
+
+@media (min-width: 1024px) {
+  figcaption, .figcaption { font-size: 13px; }
+}
+
+figure.external img { background: white; border: 1px solid rgba(0, 0, 0, 0.=
+1); box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 8px; padding: 18px; box-sizing: =
+border-box; }
+
+figcaption a { color: rgba(0, 0, 0, 0.6); }
+
+@supports not (display: grid) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { display: block; padding: 8px; }
+}
+
+.base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, dis=
+till-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer {=
+ display: grid; justify-items: stretch; grid-template-columns: [screen-star=
+t] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1=
+fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-=
+end] 8px [screen-end]; column-gap: 8px; }
+
+.grid { display: grid; column-gap: 8px; }
+
+@media (min-width: 768px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start middl=
+e-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [kicker-end tex=
+t-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [scree=
+n-end]; column-gap: 16px; }
+  .grid { column-gap: 16px; }
+}
+
+@media (min-width: 1000px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px=
+ [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px =
+50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-e=
+nd] 1fr [screen-end]; column-gap: 16px; }
+  .grid { column-gap: 16px; }
+}
+
+@media (min-width: 1180px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px=
+ [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px =
+60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-e=
+nd] 1fr [screen-end]; column-gap: 32px; }
+  .grid { column-gap: 32px; }
+}
+
+.base-grid { grid-column: screen; }
+
+.l-gutter { grid-column: gutter; }
+
+.l-text, .l-body { grid-column: text; }
+
+.l-page { grid-column: page; }
+
+.l-body-outset { grid-column: middle; }
+
+.l-page-outset { grid-column: page; }
+
+.l-screen { grid-column: screen; }
+
+.l-screen-inset { grid-column: screen; padding-left: 16px; }
+
+d-article aside { grid-column: gutter; font-size: 12px; line-height: 1.6em;=
+ color: rgba(0, 0, 0, 0.6); }
+
+@media (min-width: 768px) {
+  aside { grid-column: gutter; }
+  .side { grid-column: gutter; }
+}
+
+d-title { padding: 2rem 0px 1.5rem; contain: layout style; overflow-x: hidd=
+en; }
+
+@media (min-width: 768px) {
+  d-title { padding: 4rem 0px 1.5rem; }
+}
+
+d-title h1 { grid-column: text; font-size: 40px; font-weight: 700; line-hei=
+ght: 1.1em; margin: 0px 0px 0.5rem; }
+
+@media (min-width: 768px) {
+  d-title h1 { font-size: 50px; }
+}
+
+d-title p { font-weight: 300; font-size: 1.2rem; line-height: 1.55em; grid-=
+column: text; }
+
+d-title .status { margin-top: 0px; font-size: 12px; color: rgb(0, 150, 136)=
+; opacity: 0.8; grid-column: kicker; }
+
+d-title .status span { line-height: 1; display: inline-block; padding: 6px =
+0px; border-bottom: 1px solid rgb(128, 203, 196); font-size: 11px; text-tra=
+nsform: uppercase; }
+
+d-byline { contain: style; overflow: hidden; border-top: 1px solid rgba(0, =
+0, 0, 0.1); font-size: 0.8rem; line-height: 1.8em; padding: 1.5rem 0px; min=
+-height: 1.8em; }
+
+d-byline .byline { grid-template-columns: 1fr 1fr; grid-column: text; }
+
+@media (min-width: 768px) {
+  d-byline .byline { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
+
+d-byline .authors-affiliations { grid-column-end: span 2; grid-template-col=
+umns: 1fr 1fr; margin-bottom: 1em; }
+
+@media (min-width: 768px) {
+  d-byline .authors-affiliations { margin-bottom: 0px; }
+}
+
+d-byline h3 { font-size: 0.6rem; font-weight: 400; color: rgba(0, 0, 0, 0.5=
+); margin: 0px; text-transform: uppercase; }
+
+d-byline p { margin: 0px; }
+
+d-byline a, d-article d-byline a { color: rgba(0, 0, 0, 0.8); text-decorati=
+on: none; border-bottom: none; }
+
+d-article d-byline a:hover { text-decoration: underline; border-bottom: non=
+e; }
+
+d-byline p.author { font-weight: 500; }
+
+d-byline .affiliations { }
+
+d-article { contain: layout style; overflow-x: hidden; border-top: 1px soli=
+d rgba(0, 0, 0, 0.1); padding-top: 2rem; color: rgba(0, 0, 0, 0.8); }
+
+d-article > * { grid-column: text; }
+
+@media (min-width: 768px) {
+  d-article { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  d-article { font-size: 1.06rem; line-height: 1.7em; }
+}
+
+d-article .marker { text-decoration: none; border: none; counter-reset: sec=
+tion 0; grid-column: kicker; line-height: 1.7em; }
+
+d-article .marker:hover { border: none; }
+
+d-article .marker span { padding: 0px 3px 4px; border-bottom: 1px solid rgb=
+a(0, 0, 0, 0.2); position: relative; top: 4px; }
+
+d-article .marker:hover span { color: rgba(0, 0, 0, 0.7); border-bottom: 1p=
+x solid rgba(0, 0, 0, 0.7); }
+
+d-article h2 { font-weight: 600; font-size: 24px; line-height: 1.25em; marg=
+in: 2rem 0px 1.5rem; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-b=
+ottom: 1rem; }
+
+@media (min-width: 1024px) {
+  d-article h2 { font-size: 36px; }
+}
+
+d-article h3 { font-weight: 700; font-size: 18px; line-height: 1.4em; margi=
+n-bottom: 1em; margin-top: 2em; }
+
+@media (min-width: 1024px) {
+  d-article h3 { font-size: 20px; }
+}
+
+d-article h4 { font-weight: 600; text-transform: uppercase; font-size: 14px=
+; line-height: 1.4em; }
+
+d-article a { color: inherit; }
+
+d-article p, d-article ul, d-article ol, d-article blockquote { margin: 0px=
+ 0px 1em; }
+
+d-article blockquote { border-left: 2px solid rgba(0, 0, 0, 0.2); padding-l=
+eft: 2em; font-style: italic; color: rgba(0, 0, 0, 0.6); }
+
+d-article a { border-bottom: 1px solid rgba(0, 0, 0, 0.4); text-decoration:=
+ none; }
+
+d-article a:hover { border-bottom: 1px solid rgba(0, 0, 0, 0.8); }
+
+d-article .link { text-decoration: underline; cursor: pointer; }
+
+d-article ul, d-article ol { padding-left: 24px; }
+
+d-article li { margin-bottom: 1em; margin-left: 0px; padding-left: 0px; }
+
+d-article li:last-child { margin-bottom: 0px; }
+
+d-article pre { font-size: 14px; margin-bottom: 20px; }
+
+d-article hr { grid-column: screen; width: 100%; border-top: none; border-r=
+ight: none; border-left: none; border-image: initial; border-bottom: 1px so=
+lid rgba(0, 0, 0, 0.1); margin-top: 60px; margin-bottom: 60px; }
+
+d-article section { margin-top: 60px; margin-bottom: 60px; }
+
+d-article span.equation-mimic { font-family: georgia; font-size: 115%; font=
+-style: italic; }
+
+d-article > d-code, d-article section > d-code { display: block; }
+
+d-article > d-math[block], d-article section > d-math[block] { display: blo=
+ck; }
+
+@media (max-width: 768px) {
+  d-article > d-code, d-article section > d-code, d-article > d-math[block]=
+, d-article section > d-math[block] { overflow-x: scroll; }
+  d-article > d-code::-webkit-scrollbar, d-article section > d-code::-webki=
+t-scrollbar, d-article > d-math[block]::-webkit-scrollbar, d-article sectio=
+n > d-math[block]::-webkit-scrollbar { display: none; }
+}
+
+d-article .citation { color: rgb(102, 102, 136); cursor: pointer; }
+
+d-include { width: auto; display: block; }
+
+d-figure { contain: layout style; }
+
+.katex, .katex-prerendered { contain: style; display: inline-block; }
+
+d-article table { border-collapse: collapse; margin-bottom: 1.5rem; border-=
+bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+d-article table th { border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+d-article table td { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+d-article table tr:last-of-type td { border-bottom: none; }
+
+d-article table th, d-article table td { font-size: 15px; padding: 2px 8px;=
+ }
+
+d-article table tbody :first-child td { padding-top: 2px; }
+
+span.katex-display { text-align: left; padding: 8px 0px; margin: 0.5em 0px =
+0.5em 1em; }
+
+span.katex { -webkit-font-smoothing: antialiased; color: rgba(0, 0, 0, 0.8)=
+; font-size: 1.18em; }
+
+@media print {
+  @page { size: 8in 11in; @bottom-right { content: counter(page) " of " cou=
+nter(pages); } }
+  html { }
+  p, code { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  d-header { visibility: hidden; }
+  d-footer { display: none !important; }
+}
+------MultipartBoundary--D2iIKfiXTCdi6YJCV1thDmypLqsMjN2DmRA9llbgVS------

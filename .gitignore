@@ -1,0 +1,88 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.eggs/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.venv/
+
+# Environment / secrets
+.env
+*.env.local
+
+# Heavy data — datasets, model weights, Modal volume mirrors
+shared/data/raw/
+shared/data/hf_cache/
+shared/results/hf_datasets_cache/
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+*.pkl
+*.npy
+*.npz
+
+# Rust build artifacts (safety_gym_core)
+safety_gym_core/target/
+
+# Node / JS
+node_modules/
+apps/embedding-viz/node_modules/
+apps/embedding-viz/dist/
+apps/embedding-viz/.next/
+
+# LaTeX build artifacts
+submission/*.aux
+submission/*.bbl
+submission/*.blg
+submission/*.log
+submission/*.out
+submission/*.fls
+submission/*.fdb_latexmk
+submission/*.synctex.gz
+submission/*.toc
+
+# Large generated/zipped files
+submission/supplementary_code.zip
+submission/supplementary_visualizations.zip
+*.zip
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Modal volume mirrors (stay in Modal, not git)
+shared/results/pipeline/mapping.pkl
+shared/results/hf_datasets_cache/
+
+# Large root-level reference PDFs (submission/ papers are kept)
+Non-Commutative*.pdf
+Hodge\ Theory*.pdf
+
+# Notebooks — exclude legacy venvs and large result dumps
+notebooks/modal_runner/.venv/
+notebooks/modal_runner/results/
+notebooks/modal_runner/__pycache__/
+notebooks/gcp_runner/results/
+notebooks/legacy/
+
+# Exclude .pyc anywhere
+**/__pycache__/
+**/*.pyc
+
+# Large src/ generated outputs (keep source, not run artifacts)
+src/results/
+src/__pycache__/

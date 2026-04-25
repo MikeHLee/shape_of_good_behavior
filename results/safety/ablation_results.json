@@ -1,0 +1,58 @@
+{
+  "hodge_ablation": [
+    {
+      "cycle_strength": 0.1,
+      "ppo_return": 9.080242547676027,
+      "gpo_return": 9.342612819671631,
+      "learned_h1": 0.1003507599234581,
+      "improvement": 0.2623702719956036
+    },
+    {
+      "cycle_strength": 0.5,
+      "ppo_return": 44.717434508193854,
+      "gpo_return": 49.24116203308105,
+      "learned_h1": 0.2261209338903427,
+      "improvement": 4.5237275248871995
+    },
+    {
+      "cycle_strength": 1.0,
+      "ppo_return": 75.5612122346174,
+      "gpo_return": 99.25458679199218,
+      "learned_h1": 0.2323301136493683,
+      "improvement": 23.69337455737478
+    },
+    {
+      "cycle_strength": 2.0,
+      "ppo_return": 136.2140740917422,
+      "gpo_return": 197.72832092285157,
+      "learned_h1": 0.23938758671283722,
+      "improvement": 61.514246831109375
+    }
+  ],
+  "safety_ablation": [
+    {
+      "event_horizon": 1.0,
+      "total_violations": 119,
+      "final_success_rate": 0.0,
+      "final_return": 0.4219157602154519
+    },
+    {
+      "event_horizon": 1.5,
+      "total_violations": 205,
+      "final_success_rate": 0.0,
+      "final_return": 6.3006272112342
+    },
+    {
+      "event_horizon": 2.0,
+      "total_violations": 55,
+      "final_success_rate": 0.0,
+      "final_return": -8.004638178441482
+    },
+    {
+      "event_horizon": 2.5,
+      "total_violations": 3,
+      "final_success_rate": 0.0,
+      "final_return": -5.986625400755077
+    }
+  ]
+}

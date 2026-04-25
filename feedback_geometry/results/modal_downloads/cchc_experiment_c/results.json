@@ -1,0 +1,688 @@
+{
+  "config": {
+    "num_seeds": 50,
+    "n_episodes": 500
+  },
+  "results": [
+    {
+      "seed": 0,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -272.9504460570562,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -261.72185247603653,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 1,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -249.18170360595335,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -256.4632903187068,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 2,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -258.26728931212875,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -257.1605246719158,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 3,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -250.590070193447,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -248.07662159663462,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 4,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -269.11334876477054,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -260.5747657238258,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 5,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -269.3745908063083,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -272.9397824801325,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 6,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -258.3592749018012,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -257.7375634098938,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 7,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -241.31163168074528,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -246.0667995823256,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 8,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -267.34623944186313,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -268.59745618335864,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 9,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -249.99832584552644,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -262.80546300056164,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 10,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -270.3333234305711,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -249.85137947907214,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 11,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -262.944428539283,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -255.57620709770742,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 12,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -258.6817513421553,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -255.37297960014007,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 13,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -242.9863486272188,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -259.00510733515904,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 14,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -275.7293627654388,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -278.0767730762572,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 15,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -256.5006689700038,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -258.90433896146754,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 16,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -252.83903319875517,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -254.57404717632664,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 17,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -257.0578618395496,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -256.31462390301544,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 18,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -251.20774270387636,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -262.14980380105567,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 19,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -248.03990712921365,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -239.67454457189896,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 20,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -259.4233544165418,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -267.33935287936333,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 21,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -260.75592974501967,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -252.18706839279832,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 22,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -260.6100569353601,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -267.6794688831016,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 23,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -246.14084208522902,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -252.19968477830898,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 24,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -272.83592931105494,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -260.0592679268812,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 25,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -252.42529978336137,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -234.80186489244988,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 26,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -251.47076698413733,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -264.1316316462792,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 27,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -263.1117442415595,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -256.66664022872067,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 28,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -267.7782759870807,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -243.83422494105898,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 29,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -242.28768181958037,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -257.09937200828455,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 30,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -267.4817532150571,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -269.90590083051165,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 31,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -267.0796791699631,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -256.7364995341925,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 32,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -262.98832414986083,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -258.86215789145484,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 33,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -254.84682639689953,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -281.163423549536,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 34,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -251.8834927568362,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -244.09099572390252,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 35,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -250.7720532336928,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -254.95641187883834,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 36,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -260.0970979153099,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -267.6985515021271,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 37,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -256.44860202902964,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -274.1098303443773,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 38,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -259.1262103268886,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -254.02904106283233,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 39,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -269.6288469119495,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -238.66521072111792,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 40,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -256.2476731847335,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -252.2967292875395,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 41,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -241.86103862718548,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -263.57785817957733,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 42,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -255.71852721727618,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -254.30279225818893,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 43,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -269.09106455062926,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -269.6263114210374,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 44,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -250.72539722261095,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -274.68520153150513,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 45,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -268.57913556517303,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -270.57717021807804,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 46,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -254.36430162781852,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -253.88117774914,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 47,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -247.37960100106932,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -257.55075289958825,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 48,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -262.5375271184726,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -259.52365233150636,
+        "goal_rate": 0.0
+      }
+    },
+    {
+      "seed": 49,
+      "sgpo_anis": {
+        "violations": 0,
+        "return": -258.5115820155817,
+        "goal_rate": 0.0
+      },
+      "sgpo_anis_cchc": {
+        "violations": 0,
+        "return": -261.3127757978346,
+        "goal_rate": 0.0
+      }
+    }
+  ],
+  "summary": {
+    "sgpo_anis": {
+      "violations": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "return": {
+        "mean": -258.10043929401263,
+        "std": 8.824524382281615
+      },
+      "goal_rate": {
+        "mean": 0.0,
+        "std": 0.0
+      }
+    },
+    "sgpo_anis_cchc": {
+      "violations": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "return": {
+        "mean": -258.7038989147125,
+        "std": 9.78538399351977
+      },
+      "goal_rate": {
+        "mean": 0.0,
+        "std": 0.0
+      }
+    }
+  }
+}

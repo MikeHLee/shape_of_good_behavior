@@ -1,0 +1,72 @@
+% ICML 2026 Submission
+% Constraint Geometry: Geodesic Policy Optimization via Riemannian Safety Metrics
+
+\documentclass{article}
+
+% For blind submission (comment out for camera-ready):
+\usepackage{icml2026}
+% For camera-ready, use:
+% \usepackage[accepted]{icml2026}
+
+% Standard packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{microtype}
+\usepackage{xcolor}
+
+% Theorem environments
+
+ewtheorem{theorem}{Theorem}[section]
+
+ewtheorem{proposition}[theorem]{Proposition}
+
+ewtheorem{corollary}[theorem]{Corollary}
+
+ewtheorem{lemma}[theorem]{Lemma}
+
+ewtheorem{definition}[theorem]{Definition}
+
+ewtheorem{remark}[theorem]{Remark}
+
+% Running title
+\icmltitlerunning{Constraint Geometry: Riemannian Safety Metrics for Safe RL}
+
+\begin{document}
+
+	wocolumn[
+\icmltitle{Constraint Geometry: Geodesic Policy Optimization via Riemannian Safety Metrics}
+
+\icmlkeywords{Reinforcement Learning, Safe RL, Riemannian Geometry, Conformal Metrics, SGPO}
+
+\begin{abstract}
+As autonomous systems are deployed in complex environments, ensuring behavioral safety becomes critical. Standard Safe Reinforcement Learning methods like Constrained Policy Optimization (CPO) use expectation-based constraints that allow for catastrophic tail events, particularly when deceptive rewards overwhelm soft penalties. In this paper, we introduce a geometric approach to behavioral safety based on Conformal Riemannian Metrics and Sheaf-Geodesic Policy Optimization (SGPO). By defining dangerous states as geometric singularities (``behavioral black holes'') where the conformal factor σ(x) → ∞, we render unsafe regions geodesically unreachable by any policy update. In our ``Murky Drone'' and ``Agentic Shortcut'' scenarios, we demonstrate that baselines like PPO and CPO violate safety constraints 100\% of the time, whereas SGPO consistently achieves 0\% safety violations by leveraging the infinite geodesic distance to catastrophic regions.
+\end{abstract}
+
+\vskip 0.3in
+]
+
+\printAffiliationsAndNotice{}
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/method}
+\input{sections/experiments}
+\input{sections/related_work}
+\input{sections/conclusion}
+
+\section*{Impact Statement}
+This work introduces a geometric framework for enforcing behavioral safety in autonomous agents. By providing formal safety certificates through infinite geodesic barriers, we enable the deployment of safer AI systems in high-stakes domains where failure is not an option.
+
+\bibliography{references}
+\bibliographystyle{icml2026}
+
+
+ewpage
+\appendix
+\input{sections/appendix}
+
+\end{document}

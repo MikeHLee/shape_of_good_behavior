@@ -1,0 +1,112 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{rafailov2023direct}
+\citation{ethayarajh2024kto}
+\citation{shao2024deepseekmath}
+\citation{hong2024orpo}
+\citation{condorcet1785essai}
+\citation{arrow1950difficulty}
+\citation{jiang2011statistical}
+\citation{anthropic2025shortcuts,moskovitz2024confronting}
+\citation{hodge1941harmonic,jiang2011statistical}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{}{section.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Key insight.}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contributions.}{1}{section.1}\protected@file@percent }
+\citation{rafailov2023direct}
+\citation{ethayarajh2024kto}
+\citation{shao2024deepseekmath}
+\citation{bradley1952rank}
+\citation{jiang2011statistical}
+\citation{jiang2011statistical}
+\citation{condorcet1785essai}
+\citation{jiang2011statistical}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{section.2}\protected@file@percent }
+\newlabel{sec:background}{{2}{2}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Preference Optimization}{2}{subsection.2.1}\protected@file@percent }
+\newlabel{eq:dpo}{{1}{2}{}{equation.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Combinatorial Hodge Theory}{2}{subsection.2.2}\protected@file@percent }
+\newlabel{sec:hodge_background}{{2.2}{2}{}{subsection.2.2}{}}
+\newlabel{thm:hodge}{{1}{2}{Hodge Decomposition~\citep {jiang2011statistical}}{theorem.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Hodge-Decomposed Preference Optimization}{2}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{2}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Preference Graph Construction}{2}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:graph_construction}{{3.1}{2}{}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Node-Level Cycle Participation Weights}{2}{subsection.3.2}\protected@file@percent }
+\citation{bai2022training}
+\newlabel{eq:weights}{{6}{3}{}{equation.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Hodge Potential-Alignment Regularization}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:potential_alignment}{{3.3}{3}{}{subsection.3.3}{}}
+\newlabel{eq:potential_diff}{{7}{3}{}{equation.3.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Sign convention.}{3}{equation.3.7}\protected@file@percent }
+\newlabel{eq:hodge_loss}{{8}{3}{}{equation.3.8}{}}
+\newlabel{eq:total_loss}{{9}{3}{}{equation.3.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Why not batch-level Hodge penalty?}{3}{equation.3.9}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces HodgePO Training}}{3}{algorithm.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{alg:hodgepo}{{1}{3}{HodgePO Training}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Intuition.}{3}{equation.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{3}{section.4}\protected@file@percent }
+\newlabel{sec:experiments}{{4}{3}{}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Setup}{3}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Dataset.}{3}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Methods.}{3}{subsection.4.1}\protected@file@percent }
+\citation{rafailov2023direct}
+\citation{ethayarajh2024kto}
+\citation{shao2024deepseekmath}
+\citation{hong2024orpo}
+\citation{munos2023nash}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Exploit resistance across 7 preference optimizers, 30 seeds each. Hodge-DPO and Hodge-KTO significantly outperform their base methods. $^{***}p < 0.0001$.}}{4}{table.caption.1}\protected@file@percent }
+\newlabel{tab:main_results}{{1}{4}{Exploit resistance across 7 preference optimizers, 30 seeds each. Hodge-DPO and Hodge-KTO significantly outperform their base methods. $^{***}p < 0.0001$}{table.caption.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Pairwise statistical tests (Hodge variants vs.\ base methods).}}{4}{table.caption.2}\protected@file@percent }
+\newlabel{tab:pairwise}{{2}{4}{Pairwise statistical tests (Hodge variants vs.\ base methods)}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Metric.}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Statistical rigor.}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Main Results}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{1. Large, statistically significant improvements.}{4}{table.caption.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{2. Ceiling effects bound gains for strong methods.}{4}{table.caption.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Analysis: Why Does HodgePO Help?}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cross-pair edges are essential.}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Potential-alignment dominates weighting.}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Regularization strength matters.}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Sign convention is critical.}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Method Ranking}{4}{subsection.4.4}\protected@file@percent }
+\citation{moskovitz2024confronting}
+\citation{coste2024reward}
+\citation{jiang2011statistical}
+\citation{bodnar2022neural}
+\citation{ayzenberg2025sheaf}
+\citation{condorcet1785essai}
+\citation{arrow1950difficulty}
+\citation{zhu2023principled}
+\bibdata{references}
+\bibstyle{icml2026}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Related Work}{5}{section.5}\protected@file@percent }
+\newlabel{sec:related}{{5}{5}{}{section.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Preference optimization.}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reward hacking.}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Hodge theory in ML.}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cyclic preferences.}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{5}{section.6}\protected@file@percent }
+\newlabel{sec:discussion}{{6}{5}{}{section.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Limitations.}{5}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{When does HodgePO help most?}{5}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Broader impact.}{5}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{5}{section.7}\protected@file@percent }
+\newlabel{sec:conclusion}{{7}{5}{}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Proof of Hodge Decomposition (Theorem~\ref {thm:hodge})}{6}{appendix.A}\protected@file@percent }
+\newlabel{app:hodge_proof}{{A}{6}{}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Implementation Details}{6}{appendix.B}\protected@file@percent }
+\newlabel{app:implementation}{{B}{6}{}{appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Preference Graph Construction}{6}{subsection.B.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Hodge Decomposition}{6}{subsection.B.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Training}{6}{subsection.B.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Hyperparameters.}}{6}{table.caption.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Why Batch Harmonic Penalty Fails}{6}{appendix.C}\protected@file@percent }
+\newlabel{app:batch_penalty}{{C}{6}{}{appendix.C}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Full Pairwise Comparison Matrix}{6}{appendix.D}\protected@file@percent }
+\newlabel{app:pairwise}{{D}{6}{}{appendix.D}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Cohen's $d$ for all method pairs (30 seeds). Bold indicates $p < 0.05$.}}{7}{table.caption.4}\protected@file@percent }
+\gdef \@abspage@last{7}

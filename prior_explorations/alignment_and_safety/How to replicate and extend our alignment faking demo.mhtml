@@ -1,0 +1,541 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://alignment.anthropic.com/2024/how-to-alignment-faking/
+Subject: How to replicate and extend our alignment faking demo
+Date: Mon, 19 May 2025 10:14:04 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--IdBtdX0NMtDpzVEdNGP7mtoGBrzGfgQBo0ai149IwV----"
+
+
+------MultipartBoundary--IdBtdX0NMtDpzVEdNGP7mtoGBrzGfgQBo0ai149IwV----
+Content-Type: text/html
+Content-ID: <frame-152BDB52326AD17C388A7D44EA2144FD@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://alignment.anthropic.com/2024/how-to-alignment-faking/
+
+<!DOCTYPE html><html lang=3D"en"><head><meta http-equiv=3D"Content-Type" co=
+ntent=3D"text/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/=
+css" href=3D"cid:css-52f543ba-ee6e-4af6-920a-d16a7d5626fc@mhtml.blink" /><l=
+ink rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-03c176e6-9d55-4883=
+-a020-3b78d2109f81@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/css=
+" href=3D"cid:css-f1a3692c-fb28-4020-9655-b4247fae84fc@mhtml.blink" /><link=
+ rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-7bf26868-cfd2-47be-b1=
+fe-10726fd4bb99@mhtml.blink" />
+   =20
+   =20
+   =20
+   =20
+    <title>How to replicate and extend our alignment faking demo</title>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+>
+
+</head><body><d-front-matter>
+   =20
+</d-front-matter>
+   =20
+
+
+   =20
+   =20
+
+<div class=3D"article-header">
+    <a class=3D"home-link" href=3D"https://alignment.anthropic.com/">Alignm=
+ent Science Blog</a>
+</div>
+<d-title class=3D"real-title">
+    <h1>How to replicate and extend our alignment faking demo</h1>
+</d-title>
+
+<d-article>
+<div class=3D"section-authors" data-author=3D"Paper: Greenblatt et al., Thi=
+s post: Fabien Roger" data-published=3D"December 19, 2024"></div>
+<p>We recently released a <a href=3D"https://www.anthropic.com/research/ali=
+gnment-faking">paper</a>&nbsp;presenting a demonstration of alignment fakin=
+g where we do not give the model any explicit goal, and instead study wheth=
+er alignment faking can emerge due to the model's prior harmlessness traini=
+ng.</p>
+<p>This post describes how to get started with experimenting with this demo=
+nstration yourself, and presents some ideas for future research.</p>
+<br><br><br><hr><br><br><h2>How to run your own experiments</h2>
+<h3>Running quick experiments</h3>
+<p>We release <a href=3D"https://github.com/redwoodresearch/alignment_fakin=
+g_public/blob/master/minimal_helpful_only_setting.ipynb">a simple notebook<=
+/a>&nbsp;with a minimal reproduction of our helpful-only setting, where we =
+find that Claude 3 Opus, Claude 3.5 Sonnet and Llama-3 405B sometimes gener=
+ate alignment faking reasoning, and are more often helpful when the prompt =
+implies the conversation will be used in training than when it implies it w=
+on=E2=80=99t (Appendix B.4 of the paper).</p>
+<p>For the sake of simplicity, helpfulness is measured by checking if the a=
+nswer starts with a prefix that the user asks for, and that is correlated w=
+ith whether the model is harmful or not.</p>
+<p>The notebook also contains a not-CoT version of the setting, which shoul=
+d make it easier to study the potential alignment faking reasoning that may=
+ (or may not) happen within a forward pass.</p>
+<p>While these are the best place to get started to run quick experiments, =
+this minimal reproduction is not using the same user queries and automated =
+metrics as our main experiments, and we spent less time checking that the r=
+esults were robust. In particular, we encourage you to try different method=
+s for assessing helpfulness, as the additional instructions asking for a sp=
+ecific prefix that correlates with whether the answer is harmful or not hav=
+e a significant impact on the model=E2=80=99s behavior.</p>
+<h3>Analyzing transcripts</h3>
+<p>We release<a href=3D"https://redwoodresearch.github.io/alignment_faking_=
+examples/">&nbsp;</a><a href=3D"https://redwoodresearch.github.io/alignment=
+_faking_examples/">a website</a>&nbsp;where you can explore all transcripts=
+, the results of our automated metric on each transcript, and a random subs=
+et of the synthetic documents used for fine-tuning. If you want to analyze =
+data or otherwise access the data directly, transcripts and synthetic docum=
+ents can be<a href=3D"https://drive.google.com/drive/folders/1s-IcsWO5I3caX=
+21yPbn7N_oTaJlU4Mz1?usp=3Ddrive_link">&nbsp;</a><a href=3D"https://drive.go=
+ogle.com/drive/folders/1s-IcsWO5I3caX21yPbn7N_oTaJlU4Mz1?usp=3Ddrive_link">=
+found in this google drive folder</a>. Details on the folder structure can =
+be found<a href=3D"https://github.com/redwoodresearch/alignment_faking_publ=
+ic/">&nbsp;</a><a href=3D"https://github.com/redwoodresearch/alignment_faki=
+ng_public/">here</a>.</p>
+<h3>Extending our prompting experiments</h3>
+<p>We released part of the codebase that allowed us to run our main experim=
+ent. It contains the code we used to generate / load our datasets, programm=
+atically generate all of our prompt variations, run the variations, evaluat=
+e their compliance with the training objective (except for the helpful-only=
+ setting, where we used an internal preference model) and evaluate whether =
+the hidden scratchpads contained alignment-faking reasoning.</p>
+<h3>Reproducing our training results</h3>
+<p>Our training experiments were run on Anthropic=E2=80=99s infra, and we d=
+id not release training code. You can run your own synthetic document fine-=
+tuning runs using our synthetic documents. While you won=E2=80=99t be able =
+to run those on Claude 3 Opus like we did, you can still run similar experi=
+ments on other models.</p>
+<br><br><br><hr><br><br><h2>Some ideas for future research</h2>
+<p>Here are some questions we are interested in and which we did not invest=
+igate in our paper:</p>
+<ul><li style=3D"margin-left: 36pt;">Why is there a compliance gap in the n=
+o-CoT setting (i.e. different behavior when the prompt implies the conversa=
+tion is used in training vs not)? Is this actually caused by within-forward=
+-pass alignment faking or is it caused by some other phenomenon (like the h=
+ypotheses described in Appendix F.3 of the paper)? This can be studied usin=
+g prompt variations but may also benefit from interpretability techniques.<=
+/li><li style=3D"margin-left: 36pt;">Why are some models sometimes faking a=
+lignment and not others? Are the "personality traits=E2=80=9D that are more=
+ likely to result in alignment faking reasoning and compliance gaps? We hav=
+e some early guesses (see Appendix B.4) and further research may provide a =
+crisper answer to this question.</li><li style=3D"margin-left: 36pt;">What =
+are facts about the world that make scheming less likely when their salienc=
+y is increased (either by adding them to the system prompt or through synth=
+etic document fine-tuning)? </li><li style=3D"margin-left: 36pt;">What are =
+facts about the world that make models more/less likely to reveal their mis=
+alignment (see Appendix E.6) when their saliency is increased?</li></ul>
+
+</d-article></body></html>
+------MultipartBoundary--IdBtdX0NMtDpzVEdNGP7mtoGBrzGfgQBo0ai149IwV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-7bf26868-cfd2-47be-b1fe-10726fd4bb99@mhtml.blink
+
+@charset "utf-8";
+
+.safety-case-block p { margin-bottom: 0.5em !important; margin-top: 1em !im=
+portant; }
+
+.safety-case-block p:first-of-type { margin-top: 0.5em !important; }
+
+d-article { padding-top: 60px !important; }
+
+d-article li:last-child { margin-bottom: 0.5em !important; }
+
+d-article li { margin-bottom: 0.5em !important; }
+
+ul { padding-left: 0em !important; margin-bottom: 0.2em !important; }
+
+ol { padding-left: 0em !important; margin-bottom: 0.2em !important; }
+
+d-byline { display: none; }
+
+.d-byline-container { border-top: 1px solid rgba(0, 0, 0, 0.1); border-bott=
+om: 1px solid rgba(0, 0, 0, 0.1); padding-top: 20px; padding-bottom: 20px; =
+}
+
+.d-byline { grid-column: text; display: grid; grid-template-columns: [autho=
+rs info] 5fr [affiliations published] 1fr; grid-template-rows: [authors aff=
+iliations] auto [published info] auto; font-size: 0.8rem; line-height: 1.8e=
+m; gap: 20px; }
+
+.d-byline h3 { font-size: 0.6rem; font-weight: 400; color: rgba(0, 0, 0, 0.=
+5); margin: 0px 0px 4px; text-transform: uppercase; }
+
+.d-byline .info { color: rgba(0, 0, 0, 0.5); font-size: 80%; line-height: 1=
+.5; }
+
+.d-byline .authors div { line-height: 1.5; }
+
+.d-byline .authors sup { font-size: 80%; margin-right: -4px; }
+
+.d-byline .author { margin-right: 6px; white-space: nowrap; }
+
+.d-byline a { color: inherit; text-decoration: none; }
+
+.safety-case-block { padding: 8px 16px; border-radius: 4px; background: rgb=
+(250, 249, 247); border-width: 1px 1px 1px 4px; border-style: solid; border=
+-color: rgb(229, 229, 225) rgb(229, 229, 225) rgb(229, 229, 225) rgb(204, 1=
+55, 122); border-image: initial; opacity: 0.8; margin-top: 10px; margin-bot=
+tom: 10px; }
+
+@media screen and (min-width: 900px) {
+  .offset-gdoc-image { margin-left: -65px; }
+}
+
+.section-authors { color: rgb(119, 119, 119); font-style: italic; margin-to=
+p: -24px; margin-bottom: 32px; line-height: 1.3; display: flex; flex-wrap: =
+wrap; justify-content: space-between; gap: 0.5em; }
+
+.section-authors::before { content: attr(data-author); }
+
+.section-authors::after { content: attr(data-published); }
+------MultipartBoundary--IdBtdX0NMtDpzVEdNGP7mtoGBrzGfgQBo0ai149IwV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-f1a3692c-fb28-4020-9655-b4247fae84fc@mhtml.blink
+
+@charset "utf-8";
+
+.article-header { width: 100%; padding: 36px 36px 20px; box-sizing: border-=
+box; display: flex; align-items: center; gap: 12px; }
+
+.home-link { color: rgb(51, 51, 51); text-decoration: none; cursor: pointer=
+; font-weight: 700; font-size: 1.3em; }
+
+a.logo { display: flex; text-decoration: none; }
+
+span.commentary { color: rgb(128, 70, 51); }
+------MultipartBoundary--IdBtdX0NMtDpzVEdNGP7mtoGBrzGfgQBo0ai149IwV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-03c176e6-9d55-4883-a020-3b78d2109f81@mhtml.blink
+
+@charset "utf-8";
+
+:is([id*=3D"google_ads_iframe"], [id*=3D"taboola-"], .taboolaHeight, .taboo=
+la-placeholder, #top-ad, #credential_picker_container, #credentials-picker-=
+container, #credential_picker_iframe, [id*=3D"google-one-tap-iframe"], #goo=
+gle-one-tap-popup-container, .google-one-tap__module, .google-one-tap-modal=
+-div, #amp_floatingAdDiv, #ez-content-blocker-container) { display: none !i=
+mportant; min-height: 0px !important; height: 0px !important; }
+------MultipartBoundary--IdBtdX0NMtDpzVEdNGP7mtoGBrzGfgQBo0ai149IwV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-52f543ba-ee6e-4af6-920a-d16a7d5626fc@mhtml.blink
+
+@charset "utf-8";
+
+html { font-size: 14px; line-height: 1.6em; font-family: -apple-system, Bli=
+nkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans"=
+, "Droid Sans", "Helvetica Neue", Arial, sans-serif; text-size-adjust: 100%=
+; }
+
+@media (min-width: 768px) {
+  html { font-size: 16px; }
+}
+
+body { margin: 0px; }
+
+a { color: rgb(0, 66, 118); }
+
+figure { margin: 0px; }
+
+table { border-collapse: collapse; border-spacing: 0px; }
+
+table th { text-align: left; }
+
+table thead { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+table thead th { padding-bottom: 0.5em; }
+
+table tbody :first-child td { padding-top: 0.5em; }
+
+pre { overflow: auto; max-width: 100%; }
+
+p { margin-top: 0px; margin-bottom: 1em; }
+
+sup, sub { vertical-align: baseline; position: relative; top: -0.4em; line-=
+height: 1em; }
+
+sub { top: 0.4em; }
+
+.kicker, .marker { font-size: 15px; font-weight: 600; color: rgba(0, 0, 0, =
+0.5); }
+
+@media (min-width: 1024px) {
+  d-title h1 span { display: block; }
+}
+
+figure { position: relative; margin-bottom: 2.5em; margin-top: 1.5em; }
+
+figcaption + figure { }
+
+figure img { width: 100%; }
+
+figure svg text, figure svg tspan { }
+
+figcaption, .figcaption { color: rgba(0, 0, 0, 0.6); font-size: 12px; line-=
+height: 1.5em; }
+
+@media (min-width: 1024px) {
+  figcaption, .figcaption { font-size: 13px; }
+}
+
+figure.external img { background: white; border: 1px solid rgba(0, 0, 0, 0.=
+1); box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 8px; padding: 18px; box-sizing: =
+border-box; }
+
+figcaption a { color: rgba(0, 0, 0, 0.6); }
+
+@supports not (display: grid) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { display: block; padding: 8px; }
+}
+
+.base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, dis=
+till-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer {=
+ display: grid; justify-items: stretch; grid-template-columns: [screen-star=
+t] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1=
+fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-=
+end] 8px [screen-end]; column-gap: 8px; }
+
+.grid { display: grid; column-gap: 8px; }
+
+@media (min-width: 768px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start middl=
+e-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [kicker-end tex=
+t-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [scree=
+n-end]; column-gap: 16px; }
+  .grid { column-gap: 16px; }
+}
+
+@media (min-width: 1000px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px=
+ [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px =
+50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-e=
+nd] 1fr [screen-end]; column-gap: 16px; }
+  .grid { column-gap: 16px; }
+}
+
+@media (min-width: 1180px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px=
+ [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px =
+60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-e=
+nd] 1fr [screen-end]; column-gap: 32px; }
+  .grid { column-gap: 32px; }
+}
+
+.base-grid { grid-column: screen; }
+
+.l-gutter { grid-column: gutter; }
+
+.l-text, .l-body { grid-column: text; }
+
+.l-page { grid-column: page; }
+
+.l-body-outset { grid-column: middle; }
+
+.l-page-outset { grid-column: page; }
+
+.l-screen { grid-column: screen; }
+
+.l-screen-inset { grid-column: screen; padding-left: 16px; }
+
+d-article aside { grid-column: gutter; font-size: 12px; line-height: 1.6em;=
+ color: rgba(0, 0, 0, 0.6); }
+
+@media (min-width: 768px) {
+  aside { grid-column: gutter; }
+  .side { grid-column: gutter; }
+}
+
+d-title { padding: 2rem 0px 1.5rem; contain: layout style; overflow-x: hidd=
+en; }
+
+@media (min-width: 768px) {
+  d-title { padding: 4rem 0px 1.5rem; }
+}
+
+d-title h1 { grid-column: text; font-size: 40px; font-weight: 700; line-hei=
+ght: 1.1em; margin: 0px 0px 0.5rem; }
+
+@media (min-width: 768px) {
+  d-title h1 { font-size: 50px; }
+}
+
+d-title p { font-weight: 300; font-size: 1.2rem; line-height: 1.55em; grid-=
+column: text; }
+
+d-title .status { margin-top: 0px; font-size: 12px; color: rgb(0, 150, 136)=
+; opacity: 0.8; grid-column: kicker; }
+
+d-title .status span { line-height: 1; display: inline-block; padding: 6px =
+0px; border-bottom: 1px solid rgb(128, 203, 196); font-size: 11px; text-tra=
+nsform: uppercase; }
+
+d-byline { contain: style; overflow: hidden; border-top: 1px solid rgba(0, =
+0, 0, 0.1); font-size: 0.8rem; line-height: 1.8em; padding: 1.5rem 0px; min=
+-height: 1.8em; }
+
+d-byline .byline { grid-template-columns: 1fr 1fr; grid-column: text; }
+
+@media (min-width: 768px) {
+  d-byline .byline { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
+
+d-byline .authors-affiliations { grid-column-end: span 2; grid-template-col=
+umns: 1fr 1fr; margin-bottom: 1em; }
+
+@media (min-width: 768px) {
+  d-byline .authors-affiliations { margin-bottom: 0px; }
+}
+
+d-byline h3 { font-size: 0.6rem; font-weight: 400; color: rgba(0, 0, 0, 0.5=
+); margin: 0px; text-transform: uppercase; }
+
+d-byline p { margin: 0px; }
+
+d-byline a, d-article d-byline a { color: rgba(0, 0, 0, 0.8); text-decorati=
+on: none; border-bottom: none; }
+
+d-article d-byline a:hover { text-decoration: underline; border-bottom: non=
+e; }
+
+d-byline p.author { font-weight: 500; }
+
+d-byline .affiliations { }
+
+d-article { contain: layout style; overflow-x: hidden; border-top: 1px soli=
+d rgba(0, 0, 0, 0.1); padding-top: 2rem; color: rgba(0, 0, 0, 0.8); }
+
+d-article > * { grid-column: text; }
+
+@media (min-width: 768px) {
+  d-article { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  d-article { font-size: 1.06rem; line-height: 1.7em; }
+}
+
+d-article .marker { text-decoration: none; border: none; counter-reset: sec=
+tion 0; grid-column: kicker; line-height: 1.7em; }
+
+d-article .marker:hover { border: none; }
+
+d-article .marker span { padding: 0px 3px 4px; border-bottom: 1px solid rgb=
+a(0, 0, 0, 0.2); position: relative; top: 4px; }
+
+d-article .marker:hover span { color: rgba(0, 0, 0, 0.7); border-bottom: 1p=
+x solid rgba(0, 0, 0, 0.7); }
+
+d-article h2 { font-weight: 600; font-size: 24px; line-height: 1.25em; marg=
+in: 2rem 0px 1.5rem; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-b=
+ottom: 1rem; }
+
+@media (min-width: 1024px) {
+  d-article h2 { font-size: 36px; }
+}
+
+d-article h3 { font-weight: 700; font-size: 18px; line-height: 1.4em; margi=
+n-bottom: 1em; margin-top: 2em; }
+
+@media (min-width: 1024px) {
+  d-article h3 { font-size: 20px; }
+}
+
+d-article h4 { font-weight: 600; text-transform: uppercase; font-size: 14px=
+; line-height: 1.4em; }
+
+d-article a { color: inherit; }
+
+d-article p, d-article ul, d-article ol, d-article blockquote { margin: 0px=
+ 0px 1em; }
+
+d-article blockquote { border-left: 2px solid rgba(0, 0, 0, 0.2); padding-l=
+eft: 2em; font-style: italic; color: rgba(0, 0, 0, 0.6); }
+
+d-article a { border-bottom: 1px solid rgba(0, 0, 0, 0.4); text-decoration:=
+ none; }
+
+d-article a:hover { border-bottom: 1px solid rgba(0, 0, 0, 0.8); }
+
+d-article .link { text-decoration: underline; cursor: pointer; }
+
+d-article ul, d-article ol { padding-left: 24px; }
+
+d-article li { margin-bottom: 1em; margin-left: 0px; padding-left: 0px; }
+
+d-article li:last-child { margin-bottom: 0px; }
+
+d-article pre { font-size: 14px; margin-bottom: 20px; }
+
+d-article hr { grid-column: screen; width: 100%; border-top: none; border-r=
+ight: none; border-left: none; border-image: initial; border-bottom: 1px so=
+lid rgba(0, 0, 0, 0.1); margin-top: 60px; margin-bottom: 60px; }
+
+d-article section { margin-top: 60px; margin-bottom: 60px; }
+
+d-article span.equation-mimic { font-family: georgia; font-size: 115%; font=
+-style: italic; }
+
+d-article > d-code, d-article section > d-code { display: block; }
+
+d-article > d-math[block], d-article section > d-math[block] { display: blo=
+ck; }
+
+@media (max-width: 768px) {
+  d-article > d-code, d-article section > d-code, d-article > d-math[block]=
+, d-article section > d-math[block] { overflow-x: scroll; }
+  d-article > d-code::-webkit-scrollbar, d-article section > d-code::-webki=
+t-scrollbar, d-article > d-math[block]::-webkit-scrollbar, d-article sectio=
+n > d-math[block]::-webkit-scrollbar { display: none; }
+}
+
+d-article .citation { color: rgb(102, 102, 136); cursor: pointer; }
+
+d-include { width: auto; display: block; }
+
+d-figure { contain: layout style; }
+
+.katex, .katex-prerendered { contain: style; display: inline-block; }
+
+d-article table { border-collapse: collapse; margin-bottom: 1.5rem; border-=
+bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+d-article table th { border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+d-article table td { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+d-article table tr:last-of-type td { border-bottom: none; }
+
+d-article table th, d-article table td { font-size: 15px; padding: 2px 8px;=
+ }
+
+d-article table tbody :first-child td { padding-top: 2px; }
+
+span.katex-display { text-align: left; padding: 8px 0px; margin: 0.5em 0px =
+0.5em 1em; }
+
+span.katex { -webkit-font-smoothing: antialiased; color: rgba(0, 0, 0, 0.8)=
+; font-size: 1.18em; }
+
+@media print {
+  @page { size: 8in 11in; @bottom-right { content: counter(page) " of " cou=
+nter(pages); } }
+  html { }
+  p, code { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  d-header { visibility: hidden; }
+  d-footer { display: none !important; }
+}
+------MultipartBoundary--IdBtdX0NMtDpzVEdNGP7mtoGBrzGfgQBo0ai149IwV------

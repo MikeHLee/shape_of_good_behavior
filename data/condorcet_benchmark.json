@@ -1,0 +1,26 @@
+[
+  {
+    "algorithm": "ppo",
+    "mean_reward": -4.712091035437601,
+    "spin_rate": 0.0,
+    "h1_estimate": 0.0,
+    "h1_ground_truth": 0.5,
+    "cycle_detected": false
+  },
+  {
+    "algorithm": "cpo",
+    "mean_reward": -0.008841267518556828,
+    "spin_rate": 0.0,
+    "h1_estimate": 0.0,
+    "h1_ground_truth": 0.5,
+    "cycle_detected": false
+  },
+  {
+    "algorithm": "gpo",
+    "mean_reward": -5.619148932362594,
+    "spin_rate": 0.0,
+    "h1_estimate": 0.42499446868896484,
+    "h1_ground_truth": 0.5,
+    "cycle_detected": true
+  }
+]

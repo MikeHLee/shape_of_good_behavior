@@ -1,0 +1,34 @@
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{The Scalar Reward Problem}
+
+Reinforcement Learning from Human Feedback (RLHF) has emerged as the dominant paradigm for aligning large language models (LLMs) and autonomous agents with human intent \citep{christiano2017deep, ouyang2022training}. The standard recipe involves collecting human preferences over model outputs, training a reward model to predict these preferences, and optimizing a policy to maximize expected cumulative reward. This approach relies on a fundamental assumption: that human preferences can always order responses, and therefore these preferences can be faithfully compressed into a scalar reward function $R(s,a) \to \R$ which induces a total ordering on the output space (i.e., $A \succ B \iff R(A) > R(B)$).
+
+We call this the \textbf{``scalar hypothesis''}: that human preferences can always be captured by a single number per trajectory. This paper shows why this hypothesis fails and how to move beyond it.
+
+The scalar assumption is mathematically convenient but topologically restrictive. Human preferences are notoriously complex, often exhibiting:
+\begin{enumerate}
+    \item \textbf{Non-transitivity}: Cyclic preferences (e.g., $A \succ B \succ C \succ A$) that cannot be represented by any scalar value function.
+    \item \textbf{Context-dependence}: What is ``safe'' or ``helpful'' depends on local context in ways that global scalar aggregation obscures.
+    \item \textbf{Evaluator Disagreement}: Diverging views among human annotators that are typically averaged out, suppressing minority perspectives.
+\end{enumerate}
+
+We hypothesize that forcing these nuanced structures into a scalar reward induces \emph{topological information loss}. The reward model learns to flatten loops and ignore inconsistencies, often resulting in reward hacking---where the agent exploits the reward model's inability to distinguish between high-quality outputs and those that merely game the scalar metric. Furthermore, standard RLHF lacks formal safety guarantees; safety is typically handled via penalty terms or separate cost models, which can be overridden by sufficiently high rewards.
+
+\subsection{Zooming In: Assembling Global Reward Geometry From Local Feedback}
+
+We propose a novel framework, \textbf{Sheaf-Theoretic Reward Manifolds (STRM)}, that addresses these limitations by modeling reward/cost functions not as scalar rankings or preferences between known outputs, but rather as local sections of human feedback over potential trajectories. This allows us to apply tools from algebraic topology and differential geometry to the alignment problem, whereby the global reward surface learned by the model is stitched together by decomposing the preference signal into gradient, curl, and harmonic components that respect the finer nuances.
+
+Our key contributions are:
+\begin{enumerate}
+    \item \textbf{Topological Consistency Checking}: We model human feedback as local sections of a reward sheaf. The first \v{C}ech cohomology group $H^1$ measures the ``winding number'' of preferences; non-trivial $H^1$ detects Condorcet cycles that scalar rewards miss.
+
+    \item \textbf{Hodge-Augmented Critic}: A new critic architecture that decomposes reward into gradient (consistent), curl (local noise), and harmonic (cyclic) components, allowing agents to navigate preference cycles rather than oscillating.
+
+    \item \textbf{Geometric Safety via Black Holes}: Forbidden regions modeled as metric singularities where $g(x) \to \infty$, making dangerous states infinitely far in geodesic distance---providing unconditional safety guarantees.
+
+    \item \textbf{Sheaf-Geodesic Policy Optimization (SGPO)}: An algorithm that integrates consistency and safety into a unified policy gradient framework, outperforming PPO \citep{schulman2017proximal} and CPO \citep{achiam2017constrained} on deceptive safety traps (0\% vs 100\% violations) and achieving 100\% cycle detection on 160,800 HH-RLHF examples.
+\end{enumerate}
+
+This work bridges the gap between abstract topology and practical AI safety, offering a mathematically rigorous path for improving the fidelity of RLHF and enforcing guardrails in traditional RL environments such as game playing, robotics, and path planning.

@@ -1,0 +1,5 @@
+sharpness,violations,violation_rate,avg_reward,hardened_regions,model
+0.0,0,0.0,0.0,0,Qwen/Qwen2.5-7B
+2.0,0,0.0,0.0,0,Qwen/Qwen2.5-7B
+4.0,0,0.0,0.0,0,Qwen/Qwen2.5-7B
+8.0,0,0.0,0.0,0,Qwen/Qwen2.5-7B

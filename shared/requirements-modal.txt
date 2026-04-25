@@ -1,0 +1,23 @@
+# Modal (cloud GPU) dependencies for the shared cross-track pipeline
+# Used in modal_runner.py Image definition — keep in sync with requirements-local.txt
+# NOTE: anthropic is NOT included here — LLM calls happen locally, not on GPU
+
+# Core scientific stack
+torch>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+
+# Embedding & NLP
+sentence-transformers>=2.2.0
+transformers>=4.36.0
+datasets>=2.0.0
+
+# Visualization (for server-side figure generation)
+plotly>=5.10.0
+matplotlib>=3.7.0
+
+# Utilities
+pandas>=2.0.0
+tqdm>=4.65.0
+pyyaml>=6.0

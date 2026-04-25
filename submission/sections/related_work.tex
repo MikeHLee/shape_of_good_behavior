@@ -1,0 +1,26 @@
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Distributional and Multi-Objective RL}
+
+Standard RL is grounded in the **Reward Hypothesis** \citep{sutton2018reinforcement}, which lucidly defines goals as the maximization of a single cumulative scalar signal. This hypothesis, often operationalized via the Bradley-Terry model \citep{bradley1952rank} in RLHF, assumes a transitive ordering of preferences. Our work extends this foundation by using sheaf theory to model cases where this assumption encounters topological obstructions (cycles), necessitating a decomposition into scalar potential and harmonic circulation components.
+
+\textbf{Distributional RL} \citep{bellemare2017distributional, dabney2018distributional} estimates the full distribution of returns, capturing uncertainty and multimodality, but typically still projects this distribution back to a scalar policy gradient or value estimate for decision making.
+
+\textbf{Multi-Objective RL (MORL)} \citep{roijers2013survey} deals with vector-valued rewards, aiming to approximate the Pareto front. Our work differs by assuming that the vector nature of feedback arises not just from competing scalar objectives, but from the \textbf{topological structure} of the preference space itself. The Hodge decomposition provides a principled way to orthogonalize these components into consistent (exact) and cyclic (harmonic) parts, which MORL does not explicitly address.
+
+\subsection{Safe Reinforcement Learning}
+
+The dominant paradigm for safety is the \textbf{Constrained Markov Decision Process (CMDP)} \citep{altman1999constrained}. \textbf{Constrained Policy Optimization (CPO)} \citep{achiam2017constrained} solves CMDPs by computing trust region updates that satisfy linearized safety constraints. Other approaches use Lagrangian relaxation \citep{ray2019benchmarking} or safety layers \citep{dalal2018safe}.
+
+While effective for explicit constraints, these methods struggle with ``deceptive'' risks where high rewards lure agents into irreversible states before constraints are violated in expectation. Our \textbf{Sheaf-Geodesic Policy Optimization (SGPO)} replaces explicit constraints with intrinsic geometry. By learning a metric that diverges at danger zones, we enforce safety via the principle of least action, providing stronger avoidance guarantees than soft penalties.
+
+\subsection{Topological Methods in Machine Learning}
+
+Topological Data Analysis (TDA) has applied persistent homology to characterize the shape of data manifolds \citep{edelsbrunner2010computational}. In deep learning, \textbf{Neural Sheaf Diffusion} \citep{bodnar2022neural} uses cellular sheaves to model non-smoothing information flow in Graph Neural Networks.
+
+To our knowledge, \textbf{STRM} is the first framework to apply sheaf cohomology to Reinforcement Learning from Human Feedback. We show that the ``alignment problem'' is partially a topological one: inconsistencies in human feedback are not just noise to be filtered, but topological features (cycles) to be detected and modeled.
+
+\subsection{Preference Learning and Intransitivity}
+
+The standard Bradley-Terry model \citep{bradley1952rank} assumes transitive preferences. However, intransitivity is common in social choice \citep{condorcet1785essai} and complex AI objectives. \textbf{Cyclic preference learning} attempts to model this but often lacks a mechanism to integrate it into control. Our use of the Hodge decomposition bridges this gap, treating the cyclic component ($\omega$) as a valid driving force for the policy, akin to a non-conservative force field in physics.

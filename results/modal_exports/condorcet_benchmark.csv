@@ -1,0 +1,4 @@
+algorithm,mean_reward,spin_rate,h1_estimate,h1_ground_truth,cycle_detected
+ppo,-4.712091035437601,0.0,0.0,0.5,False
+cpo,-0.008841267518556828,0.0,0.0,0.5,False
+gpo,-5.619148932362594,0.0,0.42499446868896484,0.5,True

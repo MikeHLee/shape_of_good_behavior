@@ -1,0 +1,23 @@
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{The Behavioral Safety Problem}
+
+As reinforcement learning (RL) agents are increasingly deployed in high-stakes autonomous systems, ensuring behavioral safety becomes a primary concern \citep{amodei2016concrete}. Current safe RL strategies, such as Constrained Policy Optimization (CPO) \citep{achiam2017constrained}, typically enforce safety through expectation-based constraints or soft penalty terms. These methods assume that safety can be balanced against reward, where a sufficiently high reward can justify a small probability of a catastrophic event.
+
+We call this the 	extbf{``expectation hypothesis''}: that safety can be maintained by keeping expected costs below a certain threshold. In practice, this hypothesis often fails when agents encounter deceptive rewards that overwhelm the safety penalty, leading to 100\% violation rates in our experiments.
+
+\subsection{Infinite Geodesic Barriers for Safe RL}
+
+In this paper, we propose a novel framework for enforcing behavioral safety through 	extbf{Constraint Geometry}. Instead of using scalar penalties, we model safety as a property of the state-action manifold itself. By defining dangerous states as geometric singularities (``behavioral black holes''), we render unsafe regions geodesically unreachable by any policy update.
+
+Our key contributions are:
+\begin{enumerate}
+    \item 	extbf{Conformal Safety Metrics}: We introduce a Riemannian approach to safety using conformal metrics where the metric tensor $g(x) 	o \infty$ as the agent approaches a danger boundary. This creates an infinite geodesic distance barrier around catastrophic regions.
+    
+    \item 	extbf{Sheaf-Geodesic Policy Optimization (SGPO)}: We present a new algorithm that incorporates the safety metric into the policy gradient update. This ensures that the policy never moves toward unsafe regions, regardless of the potential reward.
+    
+    \item 	extbf{Evaluation on Deceptive Traps}: We evaluate SGPO against PPO \citep{schulman2017proximal} and CPO on our ``Murky Drone'' and ``Agentic Shortcut'' scenarios. We demonstrate that while baselines violate safety constraints 100\% of the time in the presence of deceptive rewards, SGPO achieves 0\% safety violations.
+\end{enumerate}
+
+This work bridges the gap between differential geometry and practical AI safety, offering a mathematically rigorous way to enforce guardrails that are robust to reward hacking and deceptive alignment.

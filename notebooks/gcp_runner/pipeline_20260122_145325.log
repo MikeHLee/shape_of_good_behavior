@@ -1,0 +1,26 @@
+[14:53:25] 
+[14:53:25] ============================================================
+[14:53:25] GeoDPO Full Pipeline
+[14:53:25] ============================================================
+[14:53:25] Timestamp:  20260122_145325
+[14:53:25] Project:    oasis-training-suite
+[14:53:25] Zone:       
+[14:53:25] Instance:   geodpo-runner
+[14:53:25] GPU:        nvidia-tesla-t4
+[14:53:25] Samples:    50000
+[14:53:25] Steps:      50
+[14:53:25] Results:    /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/results_20260122_145325
+[14:53:25] Log:        /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_145325.log
+[14:53:25] 
+[14:53:25] Estimated cost: ~$0.50-1.00 (VM auto-deleted after)
+[14:53:25] 
+[14:53:25] [DRY RUN] Would execute the pipeline. Exiting.
+[14:53:25] 
+[14:53:25] ============================================================
+[14:53:25] CLEANUP
+[14:53:25] ============================================================
+[14:53:25] No VM to clean up
+[14:53:25] 
+[14:53:25] ✅ Pipeline completed successfully!
+[14:53:25] Results: /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/results_20260122_145325
+[14:53:25] Log saved to: /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_145325.log

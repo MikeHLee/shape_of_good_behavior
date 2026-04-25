@@ -1,0 +1,95 @@
+\begin{thebibliography}{14}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Achiam et~al.(2017)Achiam, Held, Tamar, and
+  Abbeel]{achiam2017constrained}
+Achiam, J., Held, D., Tamar, A., and Abbeel, P.
+\newblock Constrained policy optimization.
+\newblock In \emph{International conference on machine learning}, pp.\  22--31.
+  PMLR, 2017.
+
+\bibitem[Altman(1999)]{altman1999constrained}
+Altman, E.
+\newblock \emph{Constrained Markov decision processes}, volume~7.
+\newblock CRC Press, 1999.
+
+\bibitem[Ames et~al.(2019)Ames, Xu, Grizzle, and Tabuada]{ames2019control}
+Ames, A.~D., Xu, X., Grizzle, J.~W., and Tabuada, P.
+\newblock Control barrier functions: Theory and applications.
+\newblock \emph{2019 18th European control conference (ECC)}, pp.\  3420--3431,
+  2019.
+
+\bibitem[{Anthropic}(2025)]{anthropic2025shortcuts}
+{Anthropic}.
+\newblock From shortcuts to sabotage: Natural emergent misalignment from reward
+  hacking.
+\newblock \emph{Anthropic Research Blog}, 2025.
+\newblock URL
+  \url{https://www.anthropic.com/research/emergent-misalignment-reward-hacking}.
+
+\bibitem[Bai et~al.(2022{\natexlab{a}})Bai, Jones, Ndousse, Askell, Chen,
+  DasSarma, Drain, Fort, Ganguli, Henighan, et~al.]{bai2022training}
+Bai, Y., Jones, A., Ndousse, K., Askell, A., Chen, A., DasSarma, N., Drain, D.,
+  Fort, S., Ganguli, D., Henighan, T., et~al.
+\newblock Training a helpful and harmless assistant with reinforcement learning
+  from human feedback.
+\newblock \emph{arXiv preprint arXiv:2204.05862}, 2022{\natexlab{a}}.
+
+\bibitem[Bai et~al.(2022{\natexlab{b}})]{bai2022constitutional}
+Bai, Y. et~al.
+\newblock Constitutional ai: Harmlessness from ai feedback.
+\newblock \emph{arXiv preprint arXiv:2212.08073}, 2022{\natexlab{b}}.
+
+\bibitem[Bellemare et~al.(2017)Bellemare, Dabney, and
+  Munos]{bellemare2017distributional}
+Bellemare, M.~G., Dabney, W., and Munos, R.
+\newblock A distributional perspective on reinforcement learning.
+\newblock In \emph{International conference on machine learning}, pp.\
+  449--458. PMLR, 2017.
+
+\bibitem[Christiano et~al.(2017)Christiano, Leike, Brown, Martic, Legg, and
+  Amodei]{christiano2017deep}
+Christiano, P.~F., Leike, J., Brown, T., Martic, M., Legg, S., and Amodei, D.
+\newblock Deep reinforcement learning from human preferences.
+\newblock \emph{Advances in neural information processing systems}, 30, 2017.
+
+\bibitem[Coste et~al.(2024)Coste, Anwar, Kirk, and Krueger]{coste2024reward}
+Coste, T., Anwar, U., Kirk, R., and Krueger, D.
+\newblock Reward model ensembles help mitigate overoptimization.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+
+\bibitem[do~Carmo(1992)]{docarmo1992riemannian}
+do~Carmo, M.~P.
+\newblock \emph{Riemannian Geometry}.
+\newblock Birkh{\"a}user, 1992.
+
+\bibitem[Moskovitz et~al.(2024)]{moskovitz2024confronting}
+Moskovitz, T. et~al.
+\newblock Confronting reward model overoptimization with constrained {RLHF}.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+
+\bibitem[Ouyang et~al.(2022)Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin,
+  Zhang, Agarwal, Slama, Ray, et~al.]{ouyang2022training}
+Ouyang, L., Wu, J., Jiang, X., Almeida, D., Wainwright, C.~L., Mishkin, P.,
+  Zhang, C., Agarwal, S., Slama, K., Ray, A., et~al.
+\newblock Training language models to follow instructions with human feedback.
+\newblock \emph{arXiv preprint arXiv:2203.02155}, 2022.
+
+\bibitem[Schulman et~al.(2015)Schulman, Levine, Abbeel, Jordan, and
+  Moritz]{schulman2015trust}
+Schulman, J., Levine, S., Abbeel, P., Jordan, M., and Moritz, P.
+\newblock Trust region policy optimization.
+\newblock In \emph{International conference on machine learning}, pp.\
+  1889--1897. PMLR, 2015.
+
+\bibitem[Schulman et~al.(2017)Schulman, Wolski, Dhariwal, Radford, and
+  Klimov]{schulman2017proximal}
+Schulman, J., Wolski, F., Dhariwal, P., Radford, A., and Klimov, O.
+\newblock Proximal policy optimization algorithms.
+\newblock \emph{arXiv preprint arXiv:1707.06347}, 2017.
+
+\end{thebibliography}

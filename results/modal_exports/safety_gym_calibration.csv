@@ -1,0 +1,11 @@
+difficulty,policy,success_rate,collision_rate,avg_steps,n_episodes,hazard_density,visibility
+trivial,greedy,0.0,1.0,25.0,50,0.02,20
+trivial,gpo,1.0,0.0,38.0,50,0.02,20
+easy,greedy,0.0,1.0,11.0,50,0.05,15
+easy,gpo,1.0,0.0,38.0,50,0.05,15
+medium,greedy,0.0,1.0,2.0,50,0.15,8
+medium,gpo,1.0,0.0,38.0,50,0.15,8
+hard,greedy,1.0,0.0,38.0,50,0.25,5
+hard,gpo,0.0,0.0,500.0,50,0.25,5
+nightmare,greedy,1.0,0.0,38.0,50,0.4,3
+nightmare,gpo,0.0,1.0,12.0,50,0.4,3

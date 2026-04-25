@@ -1,0 +1,5 @@
+algorithm,success_rate,hazard_collision_rate,mean_reward,mean_steps
+random,0.0,0.96,-17.80499999999999,82.05
+ppo,1.0,0.0,6.200000000000001,38.0
+cpo,1.0,0.0,6.200000000000001,38.0
+gpo,1.0,0.0,6.200000000000001,38.0

@@ -1,0 +1,203 @@
+[15:00:44] 
+[15:00:44] ============================================================
+[15:00:44] GeoDPO Full Pipeline
+[15:00:44] ============================================================
+[15:00:44] Timestamp:  20260122_150044
+[15:00:44] Project:    oasis-training-suite
+[15:00:44] Zone:       
+[15:00:44] Instance:   geodpo-runner
+[15:00:44] GPU:        nvidia-tesla-t4
+[15:00:44] Samples:    50000
+[15:00:44] Steps:      50
+[15:00:44] Results:    /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/results_20260122_150044
+[15:00:44] Log:        /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_150044.log
+[15:00:44] 
+[15:00:44] Mode:       TEST ONLY (setup + teardown, no experiments)
+[15:00:46] 
+[15:00:46] ============================================================
+[15:00:46] [1/5] Creating GPU VM
+[15:00:46] ============================================================
+[15:00:46] Trying zones: us-central1-b us-central1-c us-central1-f us-west1-a us-west1-b us-east1-c us-east1-d
+[15:00:46] 
+[15:00:46] Attempting zone: us-central1-b
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-8 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-central1-b zone. Alternatively, you can try
+      your request again with a different VM hardware configuration or at a later
+      time. For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-8
+      zone: us-central1-b
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/oasis-training-suite/zones/us-central1-b' does not have
+  enough resources available to fulfill the request.  Try a different zone, or try
+  again later.
+[15:00:56] ⚠️  Zone us-central1-b unavailable (exit code 1), trying next...
+[15:00:56] Attempting zone: us-central1-c
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-8 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-central1-c zone. Alternatively, you can try
+      your request again with a different VM hardware configuration or at a later
+      time. For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-8
+      zone: us-central1-c
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/oasis-training-suite/zones/us-central1-c' does not have
+  enough resources available to fulfill the request.  Try a different zone, or try
+  again later.
+[15:03:10] ⚠️  Zone us-central1-c unavailable (exit code 1), trying next...
+[15:03:10] Attempting zone: us-central1-f
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-8 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-central1-f zone. Alternatively, you can try
+      your request again with a different VM hardware configuration or at a later
+      time. For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-8
+      zone: us-central1-f
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/oasis-training-suite/zones/us-central1-f' does not have
+  enough resources available to fulfill the request.  Try a different zone, or try
+  again later.
+[15:03:55] ⚠️  Zone us-central1-f unavailable (exit code 1), trying next...
+[15:03:55] Attempting zone: us-west1-a
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-8 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-west1-a zone. Alternatively, you can try your
+      request again with a different VM hardware configuration or at a later time.
+      For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-8
+      zone: us-west1-a
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/oasis-training-suite/zones/us-west1-a' does not have enough
+  resources available to fulfill the request.  Try a different zone, or try again
+  later.
+[15:04:07] ⚠️  Zone us-west1-a unavailable (exit code 1), trying next...
+[15:04:07] Attempting zone: us-west1-b
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-8 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-west1-b zone. Alternatively, you can try your
+      request again with a different VM hardware configuration or at a later time.
+      For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-8
+      zone: us-west1-b
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/oasis-training-suite/zones/us-west1-b' does not have enough
+  resources available to fulfill the request.  Try a different zone, or try again
+  later.
+[15:04:13] ⚠️  Zone us-west1-b unavailable (exit code 1), trying next...
+[15:04:13] Attempting zone: us-east1-c
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+---
+code: ZONE_RESOURCE_POOL_EXHAUSTED
+errorDetails:
+- help:
+    links:
+    - description: Troubleshooting documentation
+      url: https://cloud.google.com/compute/docs/resource-error
+- localizedMessage:
+    locale: en-US
+    message: A n1-standard-8 VM instance with 1 nvidia-tesla-t4 accelerator(s) is
+      currently unavailable in the us-east1-c zone. Alternatively, you can try your
+      request again with a different VM hardware configuration or at a later time.
+      For more information, see the troubleshooting documentation.
+- errorInfo:
+    domain: compute.googleapis.com
+    metadatas:
+      attachment: nvidia-tesla-t4:1
+      vmType: n1-standard-8
+      zone: us-east1-c
+      zonesAvailable: ''
+    reason: resource_availability
+message: The zone 'projects/oasis-training-suite/zones/us-east1-c' does not have enough
+  resources available to fulfill the request.  Try a different zone, or try again
+  later.
+[15:04:21] ⚠️  Zone us-east1-c unavailable (exit code 1), trying next...
+[15:04:21] Attempting zone: us-east1-d
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+ - Quota 'GPUS_ALL_REGIONS' exceeded.  Limit: 0.0 globally.
+	metric name = compute.googleapis.com/gpus_all_regions
+	limit name = GPUS-ALL-REGIONS-per-project
+	limit = 0.0
+	dimensions = global: global
+Try your request in another zone, or view documentation on how to increase quotas: https://cloud.google.com/compute/quotas.
+[15:04:31] ⚠️  Zone us-east1-d unavailable (exit code 1), trying next...
+[15:04:31] ❌ ERROR: Failed to create VM in any zone. All zones exhausted.
+[15:04:31] You may need to request GPU quota or try again later.
+[15:04:31] 
+[15:04:31] ============================================================
+[15:04:31] CLEANUP
+[15:04:31] ============================================================
+[15:04:31] No VM to clean up
+[15:04:31] 
+[15:04:31] ❌ ERROR: Pipeline failed with exit code 1
+[15:04:31] Check log file: /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_150044.log
+[15:04:31] Log saved to: /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/gcp_runner/pipeline_20260122_150044.log

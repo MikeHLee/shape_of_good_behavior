@@ -1,0 +1,28 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+
+The key difference between SGPO and soft-constraint methods (CPO, Lagrangian relaxation) is that geometric barriers are \textbf{insurmountable by design}: no finite reward can justify crossing an infinite geodesic distance. When deceptive rewards exceed penalty thresholds, CPO fails; SGPO's metric singularities provide unconditional guarantees.
+
+\paragraph{Limitations.}
+
+Limitations include: (1) \textbf{computational complexity}---exact \v{C}ech cohomology grows combinatorially, though our discrete approximation is $O(T \cdot k \cdot d^2)$; (2) \textbf{metric bootstrapping}---the safety metric relies on cost signals that may be sparse or noisy; (3) \textbf{manifold assumption}---discrete domains (token-level generation) violate smoothness assumptions; and (4) \textbf{reward trade-off}---SGPO prioritizes safety over reward maximization, yielding lower returns on scenarios with tempting shortcuts.
+
+%----------------------------------------------------------------------
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented \textbf{Sheaf-Theoretic Reward Manifolds (STRM)}, a mathematical framework for Reinforcement Learning from Human Feedback that models rewards as sections of a sheaf over trajectory space. This formulation exposes topological structure in human preferences---including inconsistencies and cycles---that scalar methods cannot represent.
+
+Our contributions are:
+\begin{enumerate}
+    \item \textbf{$H^1$ as an inconsistency measure}: The first \v{C}ech cohomology group quantifies preference cycles, providing a concrete metric for detecting when local feedback cannot be assembled into a consistent global reward function.
+    \item \textbf{Geometric safety guarantees}: Modeling forbidden regions as metric singularities enables SGPO to achieve 0\% safety violations on deceptive scenarios where Lagrangian methods fail.
+    \item \textbf{Hodge-based reward decomposition}: The Hodge critic separates learnable (gradient) from cyclic (harmonic) reward components, allowing agents to navigate preference cycles rather than oscillating.
+\end{enumerate}
+
+These results are demonstrated on controlled environments designed to isolate specific failure modes. Scaling to production LLM alignment remains future work, requiring integration with real preference data pipelines and validation on downstream tasks. However, the mathematical framework is general, and we believe the core insight---that alignment is partly a \emph{topological} problem---offers a useful lens for understanding and addressing reward hacking in complex systems.
+
+\paragraph{Future Directions.}
+Promising extensions include \emph{active boundary discovery} (generating candidates near $|d_\theta(x)| \approx 0$ to refine safety boundaries), \emph{cohomology-filtered training} (removing high-$H^1$ examples to test if cyclic preferences cause reward hacking), and investigating whether $H^1 \neq 0$ predicts downstream exploitation of scalar reward gaps.
+
+% Extended Broader Impact discussion moved to Appendix~\ref{app:broader_impact}

@@ -1,0 +1,380 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{booktabs}
+
+\title{Introduction to Reinforcement Learning: First Principles and Foundations}
+\author{AI Research Team}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This article provides a comprehensive introduction to reinforcement learning (RL), a paradigm of machine learning where agents learn to make decisions by interacting with an environment. We explore the fundamental principles, mathematical foundations, and key algorithms that form the backbone of reinforcement learning. The article begins with the basic concepts of RL, including the agent-environment interaction, Markov Decision Processes, and reward mechanisms. We then delve into classical algorithms such as Q-learning and policy gradients, providing mathematical formulations and intuitive explanations. This foundational understanding serves as a stepping stone for more advanced topics in reinforcement learning.
+\end{abstract}
+
+\section{Introduction}
+
+Reinforcement learning (RL) stands as one of the three fundamental paradigms in machine learning, alongside supervised and unsupervised learning. Unlike these other approaches, RL is characterized by learning through interaction with an environment, rather than from a fixed dataset. This interaction-based learning mirrors how humans and animals naturally learn, making RL a compelling framework for developing intelligent systems.
+
+As noted by \cite{theiotacademy2023}, "Reinforcement learning is a type of machine learning where an agent learns to make decisions by taking actions in an environment to maximize a reward signal." This learning paradigm has led to remarkable achievements, from defeating world champions in complex games like Go and chess to enabling robots to learn dexterous manipulation skills.
+
+In this article, we explore the foundational principles of reinforcement learning, providing both intuitive explanations and rigorous mathematical formulations. We begin with the core concepts that define the RL framework, then proceed to examine classical algorithms that have shaped the field.
+
+\section{Fundamental Concepts}
+
+\subsection{The Agent-Environment Interface}
+
+At the heart of reinforcement learning lies the interaction between an agent and its environment. This interaction follows a cyclical pattern:
+
+\begin{enumerate}
+    \item The agent observes the current state of the environment.
+    \item Based on this observation, the agent selects an action.
+    \item The environment transitions to a new state in response to the agent's action.
+    \item The environment provides a reward signal to the agent, indicating the immediate value of the state transition.
+\end{enumerate}
+
+This cycle continues either indefinitely or until a terminal state is reached. Mathematically, we can formalize this interaction as follows:
+
+At each time step $t$, the agent:
+\begin{itemize}
+    \item Observes state $s_t \in \mathcal{S}$, where $\mathcal{S}$ is the state space
+    \item Takes action $a_t \in \mathcal{A}(s_t)$, where $\mathcal{A}(s_t)$ is the set of actions available in state $s_t$
+\end{itemize}
+
+Following the agent's action, the environment:
+\begin{itemize}
+    \item Transitions to a new state $s_{t+1} \in \mathcal{S}$ according to the transition probability function $P(s_{t+1} | s_t, a_t)$
+    \item Emits a reward $r_{t+1} \in \mathbb{R}$ according to the reward function $R(s_t, a_t, s_{t+1})$
+\end{itemize}
+
+\subsection{Markov Decision Processes}
+
+The formal mathematical framework for reinforcement learning is the Markov Decision Process (MDP). An MDP is defined by the tuple $(\mathcal{S}, \mathcal{A}, P, R, \gamma)$, where:
+
+\begin{itemize}
+    \item $\mathcal{S}$ is the state space
+    \item $\mathcal{A}$ is the action space
+    \item $P: \mathcal{S} \times \mathcal{A} \times \mathcal{S} \rightarrow [0, 1]$ is the transition probability function, where $P(s' | s, a)$ is the probability of transitioning to state $s'$ given that action $a$ was taken in state $s$
+    \item $R: \mathcal{S} \times \mathcal{A} \times \mathcal{S} \rightarrow \mathbb{R}$ is the reward function, where $R(s, a, s')$ is the immediate reward received after transitioning from state $s$ to state $s'$ due to action $a$
+    \item $\gamma \in [0, 1]$ is the discount factor, which determines the present value of future rewards
+\end{itemize}
+
+The "Markov" in MDP refers to the Markov property, which states that the future depends only on the present state and not on the sequence of events that preceded it. Formally, for an MDP:
+
+\begin{equation}
+P(s_{t+1} | s_t, a_t, s_{t-1}, a_{t-1}, \ldots, s_0, a_0) = P(s_{t+1} | s_t, a_t)
+\end{equation}
+
+\subsection{Policies and Value Functions}
+
+A policy $\pi$ defines the agent's behavior by mapping states to actions. It can be deterministic, where $\pi(s) = a$, or stochastic, where $\pi(a|s)$ gives the probability of taking action $a$ in state $s$.
+
+Value functions estimate how good it is for an agent to be in a given state or to take a specific action in a state, under a particular policy. The state-value function $V^\pi(s)$ represents the expected return starting from state $s$ and following policy $\pi$ thereafter:
+
+\begin{equation}
+V^\pi(s) = \mathbb{E}_\pi\left[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \mid S_t = s\right]
+\end{equation}
+
+Similarly, the action-value function $Q^\pi(s, a)$ represents the expected return starting from state $s$, taking action $a$, and following policy $\pi$ thereafter:
+
+\begin{equation}
+Q^\pi(s, a) = \mathbb{E}_\pi\left[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \mid S_t = s, A_t = a\right]
+\end{equation}
+
+The optimal value functions, denoted $V^*(s)$ and $Q^*(s, a)$, give the maximum expected return achievable by any policy:
+
+\begin{equation}
+V^*(s) = \max_\pi V^\pi(s) \quad \forall s \in \mathcal{S}
+\end{equation}
+
+\begin{equation}
+Q^*(s, a) = \max_\pi Q^\pi(s, a) \quad \forall s \in \mathcal{S}, a \in \mathcal{A}
+\end{equation}
+
+\subsection{The Bellman Equations}
+
+The Bellman equations are fundamental recursive relationships that characterize value functions. For a given policy $\pi$, the Bellman expectation equations are:
+
+\begin{equation}
+V^\pi(s) = \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{s' \in \mathcal{S}} P(s'|s,a) [R(s,a,s') + \gamma V^\pi(s')]
+\end{equation}
+
+\begin{equation}
+Q^\pi(s,a) = \sum_{s' \in \mathcal{S}} P(s'|s,a) [R(s,a,s') + \gamma \sum_{a' \in \mathcal{A}} \pi(a'|s') Q^\pi(s',a')]
+\end{equation}
+
+The Bellman optimality equations characterize the optimal value functions:
+
+\begin{equation}
+V^*(s) = \max_{a \in \mathcal{A}} \sum_{s' \in \mathcal{S}} P(s'|s,a) [R(s,a,s') + \gamma V^*(s')]
+\end{equation}
+
+\begin{equation}
+Q^*(s,a) = \sum_{s' \in \mathcal{S}} P(s'|s,a) [R(s,a,s') + \gamma \max_{a' \in \mathcal{A}} Q^*(s',a')]
+\end{equation}
+
+\section{Classical Reinforcement Learning Algorithms}
+
+\subsection{Dynamic Programming}
+
+Dynamic Programming (DP) methods solve reinforcement learning problems by using the Bellman equations as update rules. These methods require complete knowledge of the MDP, including transition probabilities and reward functions.
+
+Two fundamental DP algorithms are:
+
+\subsubsection{Policy Iteration}
+
+Policy iteration alternates between policy evaluation and policy improvement:
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\STATE Initialize $\pi$ arbitrarily
+\REPEAT
+    \STATE // Policy Evaluation
+    \REPEAT
+        \STATE $\Delta \leftarrow 0$
+        \FOR{each $s \in \mathcal{S}$}
+            \STATE $v \leftarrow V(s)$
+            \STATE $V(s) \leftarrow \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a)[R(s,a,s') + \gamma V(s')]$
+            \STATE $\Delta \leftarrow \max(\Delta, |v - V(s)|)$
+        \ENDFOR
+    \UNTIL{$\Delta < \theta$} (a small positive number)
+    
+    \STATE // Policy Improvement
+    \STATE $policy\_stable \leftarrow true$
+    \FOR{each $s \in \mathcal{S}$}
+        \STATE $old\_action \leftarrow \pi(s)$
+        \STATE $\pi(s) \leftarrow \arg\max_a \sum_{s'} P(s'|s,a)[R(s,a,s') + \gamma V(s')]$
+        \IF{$old\_action \neq \pi(s)$}
+            \STATE $policy\_stable \leftarrow false$
+        \ENDIF
+    \ENDFOR
+\UNTIL{$policy\_stable$}
+\RETURN $\pi$
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Value Iteration}
+
+Value iteration combines policy evaluation and improvement into a single update:
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\STATE Initialize $V(s)$ arbitrarily for all $s \in \mathcal{S}$
+\REPEAT
+    \STATE $\Delta \leftarrow 0$
+    \FOR{each $s \in \mathcal{S}$}
+        \STATE $v \leftarrow V(s)$
+        \STATE $V(s) \leftarrow \max_a \sum_{s'} P(s'|s,a)[R(s,a,s') + \gamma V(s')]$
+        \STATE $\Delta \leftarrow \max(\Delta, |v - V(s)|)$
+    \ENDFOR
+\UNTIL{$\Delta < \theta$} (a small positive number)
+\STATE Extract policy $\pi(s) = \arg\max_a \sum_{s'} P(s'|s,a)[R(s,a,s') + \gamma V(s')]$
+\RETURN $\pi$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Monte Carlo Methods}
+
+Monte Carlo (MC) methods learn from complete episodes of experience without requiring knowledge of the environment's dynamics. They update value estimates based on the average returns observed after visits to states or state-action pairs.
+
+A basic Monte Carlo algorithm for policy evaluation is:
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\STATE Initialize $V(s)$ arbitrarily for all $s \in \mathcal{S}$
+\STATE Initialize Returns($s$) as an empty list for all $s \in \mathcal{S}$
+\REPEAT
+    \STATE Generate an episode using policy $\pi$
+    \STATE $G \leftarrow 0$
+    \FOR{each step $t$ of the episode, in reverse order}
+        \STATE $G \leftarrow \gamma G + R_{t+1}$
+        \STATE Unless $S_t$ appears in the episode before step $t$:
+        \STATE Append $G$ to Returns($S_t$)
+        \STATE $V(S_t) \leftarrow$ average(Returns($S_t$))
+    \ENDFOR
+\UNTIL{sufficient episodes have been generated}
+\RETURN $V$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Temporal Difference Learning}
+
+Temporal Difference (TD) learning combines ideas from both DP and MC methods. Like MC, TD learns from experience without requiring a model of the environment. Like DP, TD updates estimates based on other learned estimates without waiting for a final outcome.
+
+\subsubsection{TD(0)}
+
+The simplest TD algorithm, TD(0), updates the value function after each time step:
+
+\begin{equation}
+V(S_t) \leftarrow V(S_t) + \alpha [R_{t+1} + \gamma V(S_{t+1}) - V(S_t)]
+\end{equation}
+
+where $\alpha$ is the learning rate and $[R_{t+1} + \gamma V(S_{t+1}) - V(S_t)]$ is the TD error.
+
+\subsubsection{Q-Learning}
+
+Q-learning is an off-policy TD control algorithm that directly approximates the optimal action-value function:
+
+\begin{equation}
+Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha [R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t)]
+\end{equation}
+
+The Q-learning algorithm is:
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\STATE Initialize $Q(s,a)$ arbitrarily for all $s \in \mathcal{S}, a \in \mathcal{A}$
+\REPEAT
+    \STATE Initialize $S$
+    \REPEAT
+        \STATE Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$-greedy)
+        \STATE Take action $A$, observe $R, S'$
+        \STATE $Q(S,A) \leftarrow Q(S,A) + \alpha [R + \gamma \max_a Q(S',a) - Q(S,A)]$
+        \STATE $S \leftarrow S'$
+    \UNTIL{$S$ is terminal}
+\UNTIL{sufficient episodes have been generated}
+\RETURN $Q$
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{SARSA}
+
+SARSA is an on-policy TD control algorithm that updates the action-value function based on the current policy's next action:
+
+\begin{equation}
+Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha [R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)]
+\end{equation}
+
+The SARSA algorithm is:
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\STATE Initialize $Q(s,a)$ arbitrarily for all $s \in \mathcal{S}, a \in \mathcal{A}$
+\REPEAT
+    \STATE Initialize $S$
+    \STATE Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$-greedy)
+    \REPEAT
+        \STATE Take action $A$, observe $R, S'$
+        \STATE Choose $A'$ from $S'$ using policy derived from $Q$ (e.g., $\epsilon$-greedy)
+        \STATE $Q(S,A) \leftarrow Q(S,A) + \alpha [R + \gamma Q(S',A') - Q(S,A)]$
+        \STATE $S \leftarrow S'$
+        \STATE $A \leftarrow A'$
+    \UNTIL{$S$ is terminal}
+\UNTIL{sufficient episodes have been generated}
+\RETURN $Q$
+\end{algorithmic}
+\end{algorithm}
+
+\section{Exploration vs. Exploitation}
+
+A fundamental challenge in reinforcement learning is balancing exploration (trying new actions to discover better strategies) and exploitation (using known good actions to maximize reward). Several approaches address this trade-off:
+
+\subsection{$\epsilon$-greedy}
+
+The $\epsilon$-greedy strategy selects the action with the highest estimated value with probability $1-\epsilon$, and selects a random action with probability $\epsilon$:
+
+\begin{equation}
+A_t = \begin{cases}
+\arg\max_a Q(S_t, a) & \text{with probability } 1-\epsilon \\
+\text{random action} & \text{with probability } \epsilon
+\end{cases}
+\end{equation}
+
+\subsection{Softmax Action Selection}
+
+Softmax action selection assigns a probability to each action based on its estimated value:
+
+\begin{equation}
+P(A_t = a | S_t) = \frac{e^{Q(S_t, a) / \tau}}{\sum_{a'} e^{Q(S_t, a') / \tau}}
+\end{equation}
+
+where $\tau$ is a temperature parameter that controls the randomness of the selection.
+
+\subsection{Upper Confidence Bound (UCB)}
+
+UCB algorithms add an exploration bonus to actions that have been tried less frequently:
+
+\begin{equation}
+A_t = \arg\max_a \left[ Q(S_t, a) + c \sqrt{\frac{\ln t}{N_t(a)}} \right]
+\end{equation}
+
+where $N_t(a)$ is the number of times action $a$ has been selected prior to time $t$, and $c$ is a parameter that controls the degree of exploration.
+
+\section{Function Approximation in Reinforcement Learning}
+
+In many real-world problems, the state and action spaces are too large for tabular methods. Function approximation techniques allow RL algorithms to generalize across similar states and actions.
+
+\subsection{Linear Function Approximation}
+
+Linear function approximation represents the value function as a linear combination of features:
+
+\begin{equation}
+V(s) \approx \hat{V}(s, \mathbf{w}) = \mathbf{w}^T \mathbf{x}(s)
+\end{equation}
+
+where $\mathbf{w}$ is a weight vector and $\mathbf{x}(s)$ is a feature vector for state $s$.
+
+The weights are updated using gradient descent on the mean squared error:
+
+\begin{equation}
+\mathbf{w} \leftarrow \mathbf{w} + \alpha [R_{t+1} + \gamma \hat{V}(S_{t+1}, \mathbf{w}) - \hat{V}(S_t, \mathbf{w})] \nabla_\mathbf{w} \hat{V}(S_t, \mathbf{w})
+\end{equation}
+
+\subsection{Neural Network Function Approximation}
+
+Neural networks can approximate value functions for complex problems with high-dimensional state spaces. Deep Q-Networks (DQN) use neural networks to approximate the Q-function:
+
+\begin{equation}
+Q(s, a) \approx Q(s, a; \theta)
+\end{equation}
+
+where $\theta$ represents the parameters of the neural network.
+
+DQN introduces two key innovations:
+\begin{itemize}
+    \item Experience replay: Storing and randomly sampling past experiences to break correlations in the training data
+    \item Target networks: Using a separate network with frozen parameters for generating targets to stabilize learning
+\end{itemize}
+
+\section{Policy Gradient Methods}
+
+Policy gradient methods directly optimize the policy without using a value function. They update the policy parameters in the direction of the gradient of the expected return.
+
+The policy gradient theorem gives the gradient of the expected return with respect to the policy parameters $\theta$:
+
+\begin{equation}
+\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} [\nabla_\theta \log \pi_\theta(a|s) Q^{\pi_\theta}(s, a)]
+\end{equation}
+
+A basic policy gradient algorithm, REINFORCE, updates the policy parameters as follows:
+
+\begin{equation}
+\theta \leftarrow \theta + \alpha G_t \nabla_\theta \log \pi_\theta(A_t|S_t)
+\end{equation}
+
+where $G_t$ is the return from time step $t$.
+
+\section{Conclusion}
+
+Reinforcement learning provides a powerful framework for developing agents that can learn to make decisions through interaction with an environment. This article has covered the fundamental concepts and classical algorithms that form the foundation of RL. From the basic agent-environment interface to sophisticated policy gradient methods, we have explored both the intuitive understanding and mathematical formulation of reinforcement learning.
+
+As the field continues to advance, reinforcement learning is finding applications in diverse domains, from robotics and autonomous vehicles to healthcare and finance. The principles and algorithms discussed in this article serve as building blocks for more advanced techniques that push the boundaries of what intelligent systems can achieve.
+
+\begin{thebibliography}{9}
+\bibitem{theiotacademy2023}
+The IoT Academy (2023). \textit{Reinforcement Learning}. Retrieved from https://www.theiotacademy.co/blog/reinforcement-learning/
+
+\bibitem{google2023}
+Google Research (2023). \textit{Evolving Reinforcement Learning Algorithms}. Retrieved from https://research.google/blog/evolving-reinforcement-learning-algorithms/
+\end{thebibliography}
+
+\end{document}

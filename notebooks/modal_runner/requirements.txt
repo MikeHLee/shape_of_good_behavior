@@ -1,0 +1,3 @@
+# Local requirements (just Modal CLI)
+# Heavy dependencies (torch, transformers, etc.) run in the cloud
+modal>=1.0.0

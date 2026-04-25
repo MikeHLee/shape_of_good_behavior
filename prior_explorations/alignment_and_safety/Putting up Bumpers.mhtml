@@ -1,0 +1,1372 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://alignment.anthropic.com/2025/bumpers/
+Subject: Putting up Bumpers
+Date: Mon, 19 May 2025 10:13:48 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--b0t8oB1GKooVebEJuWpnLNVnPi9FRS0HNJQzVmNb5F----"
+
+
+------MultipartBoundary--b0t8oB1GKooVebEJuWpnLNVnPi9FRS0HNJQzVmNb5F----
+Content-Type: text/html
+Content-ID: <frame-96FC5F2E2BFDFF1A1B5F9566F9412B1F@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://alignment.anthropic.com/2025/bumpers/
+
+<!DOCTYPE html><html lang=3D"en"><head><meta http-equiv=3D"Content-Type" co=
+ntent=3D"text/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/=
+css" href=3D"cid:css-2d80db88-4acd-4f26-b7ee-349946528101@mhtml.blink" /><l=
+ink rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-c2e12d3c-d206-41c8=
+-b09b-0d949084f2e9@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/css=
+" href=3D"cid:css-93b227a5-121d-4a78-b357-5edafc7cc55b@mhtml.blink" /><link=
+ rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-cc23aff3-a12a-4c90-a5=
+74-80c88ae9e3a4@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/css" h=
+ref=3D"cid:css-1fb5e490-03c3-4e6e-a4ab-1dcba6992108@mhtml.blink" />
+   =20
+
+
+
+    <title>Putting up Bumpers</title>
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1">
+   =20
+    </head><body><d-front-matter>
+       =20
+    </d-front-matter>
+
+
+
+
+
+   =20
+
+    <div class=3D"article-header">
+        <a class=3D"home-link" href=3D"https://alignment.anthropic.com/">Al=
+ignment Science Blog</a>
+    </div>
+    <d-title class=3D"real-title">
+        <h1>Putting up Bumpers</h1>
+    </d-title>
+   =20
+    <figure class=3D"gdoc-image" style=3D"--img-width: 50px; "><img src=3D"=
+https://alignment.anthropic.com/2025/bumpers/bumpers.png">
+        <figcaption class=3D"text-caption">Image by <a href=3D"https://www.=
+flickr.com/photos/a4gpa/2311679637">a4gpa on
+                Flickr</a> (CC BY-SA 2.0)</figcaption>
+    </figure><d-article>
+        <div class=3D"section-authors" data-author=3D"Samuel R. Bowman" dat=
+a-published=3D"April 23, 2025"></div>
+
+        <div style=3D"position: relative">
+            <span class=3D"tldr">tl;dr</span>
+            <p>Even if we can't solve alignment, we can solve the problem o=
+f catching and fixing misalignment.</p>
+
+        </div>
+        <div style=3D"border-bottom: 1px solid rgba(0, 0, 0, 0.1); width: 1=
+00%; margin: 1rem 0 2rem 0;"></div>
+
+
+        <p>If a child is bowling for the first time, and they just aim at t=
+he pins and throw, they=E2=80=99re almost certain to
+            miss. Their ball will fall into one of the gutters. But if ther=
+e were beginners=E2=80=99 bumpers in place blocking
+            much of the length of those gutters, their throw would be almos=
+t certain to hit at least a few pins. This
+            essay describes an alignment strategy for early AGI systems I c=
+all =E2=80=98putting up bumpers=E2=80=99, in which we <span style=3D"font-w=
+eight: 700;">treat it as a top priority to implement and test safeguards th=
+at </span><span style=3D"font-weight: 700;">allow us to course-correct if w=
+e turn out to have built or deployed a
+                misaligned model</span>, in the same way that bowling bumpe=
+rs allow a poorly aimed ball to reach its
+            target.</p>
+        <p>To do this, we'd aim to build up many largely-independent lines =
+of defense that allow us to catch and respond
+            to early signs of misalignment. This would involve significantl=
+y improving and scaling up our use of tools
+            like mechanistic interpretability audits, behavioral red-teamin=
+g, and early post-deployment monitoring.&nbsp;We
+            believe that, even without further breakthroughs, this work we =
+can almost entirely mitigate the risk that we
+            unwittingly put misaligned circa-human-expert-level agents in a=
+ position where they can cause severe harm.
+        </p>
+        <p>On this view, if we=E2=80=99re dealing with an early AGI system =
+that has human-expert-level capabilities in at least
+            some key domains, our approach to alignment might look somethin=
+g like this:</p>
+        <ol>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Pretraining: </span>We start with a
+                pretrained base model.</li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Finetuning: </span>We attempt to fine-tune
+                that model into a helpful, harmless, and honest agent using=
+ some combination of human preference data,
+                <a href=3D"https://www.anthropic.com/research/constitutiona=
+l-ai-harmlessness-from-ai-feedback">Constitutional
+                    AI</a>-style model-generated preference data, outcome r=
+ewards, and present-day forms of scalable
+                oversight.
+            </li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Audits as our Primary Bumpers: </span>At
+                several points during this process, we perform <a href=3D"h=
+ttps://www.anthropic.com/research/auditing-hidden-objectives">alignment aud=
+its</a>&nbsp;on the
+                system under construction, using many methods in parallel. =
+We=E2=80=99d draw on mechanistic interpretability,
+                prompting outside the human/assistant frame, etc.</li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Hitting the Bumpers: </span>If we see signs
+                of misalignment=E2=80=94perhaps warning signs&nbsp;for <a h=
+ref=3D"https://www.anthropic.com/research/reward-tampering">generalized rew=
+ard-tampering</a>&nbsp;or <a href=3D"https://www.anthropic.com/research/ali=
+gnment-faking">alignment-faking</a>=E2=80=94we attempt to
+                quickly, approximately identify the cause.</li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Bouncing Off: </span>We rewind our finetuning
+                process&nbsp;as far as is needed to make another attempt at=
+ aligning the model, taking advantage of what
+                we=E2=80=99ve learned in the previous step. </li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Repeat</span><span style=3D"font-weight: 700;">: </span>We repeat this =
+process until we=E2=80=99ve developed a complete system
+                that appears, as best we can tell, to be well aligned. Or, =
+we are <span style=3D"font-style: italic;">repeatedly</span>&nbsp;failing i=
+n consistent ways, change plans and try to
+                articulate as best we can why alignment doesn=E2=80=99t see=
+m tractable.</li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Post-Deployment Monitoring as Secondary
+                    Bumpers: </span>We then begin rolling out the system in=
+ earnest, both for internal R&amp;D and external
+                use, but keep substantial monitoring measures in place that=
+ provide additional opportunities to catch
+                misalignment. If we observe substantial warning signs for m=
+isalignment, we return to step 4.</li>
+        </ol>
+        <p>The hypothesis behind&nbsp;the <em>Bumpers</em> approach is that=
+, on short timelines (i) this process is <span style=3D"font-style: italic;=
+">fairly</span>&nbsp;likely to converge, after a reasonably small number of
+            iterations, at an end state in which we are no longer observing=
+ warning signs for misalignment and (ii) if
+            it converges, the resulting model is very likely to be aligned =
+in the relevant sense. </p>
+        <p>We are not certain of this hypothesis, but we think it=E2=80=99s=
+ important to consider. It has already motivated
+            major parts of Anthropic=E2=80=99s safety research portfolio an=
+d we=E2=80=99re hiring across several teams=E2=80=94two of them
+            new=E2=80=94to build out work along these lines.</p><br><br><br=
+>
+        <hr><br><br>
+        <h2><span style=3D"font-weight: 600;">Introduction</span></h2>
+        <p>We are plausibly within a couple of years of developing models t=
+hat could automate much of the work of AI
+            R&amp;D. This makes <a href=3D"https://www.anthropic.com/resear=
+ch/sabotage-evaluations">sabotage and
+                sandbagging</a>&nbsp;threat models=E2=80=94where the models=
+ deliberately interfere with their own safety measures or
+            hide dangerous capabilities=E2=80=94worth addressing soon: If w=
+e are to rely substantially on <a href=3D"https://openai.com/index/introduc=
+ing-superalignment/">automated alignment research</a>, these are
+            the systems that will take on the first load-bearing autonomous=
+ alignment projects.<sup><a href=3D"https://alignment.anthropic.com/2025/bu=
+mpers/#ftnt1" id=3D"ftnt_ref1">[1]</a></sup>&nbsp;If these models are thems=
+elves well aligned, our work gets much easier
+            past that point. If these models are misaligned in a way that m=
+otivates them to sabotage or sandbag, then at
+            best, we will pay enormous opportunity costs from our inability=
+ to trust our best tools, and at worst, we
+            will foolishly trust them and thereby allow them to sabotage ou=
+r work in ways we fail to notice or unwind.
+        </p>
+        <p>Ideally, before this point, we would have a thorough understandi=
+ng of the empirical landscape surrounding AI
+            alignment: If we run our alignment process and it appears to su=
+cceed, we should be <span style=3D"font-style: italic;">confident</span>&nb=
+sp;that the model is in fact aligned. </p>
+        <p>There are few research problems in the world that compare in imp=
+ortance to the problem of gaining this
+            understanding (and many of the problems that <span style=3D"fon=
+t-style: italic;">do</span>&nbsp;compare in
+            importance involve AGI safety in some way). But it=E2=80=99s un=
+likely that we=E2=80=99ll succeed to an adequate degree in
+            time, and it=E2=80=99s even less likely that we=E2=80=99ll <spa=
+n style=3D"font-style: italic;">know</span>&nbsp;we=E2=80=99ve succeeded:
+            Solving this problem definitively could easily take many years,=
+ but because of the <a href=3D"https://www.anthropic.com/news/the-case-for-=
+targeted-regulation">current paucity of frontier
+                regulation</a>, the competitive nature of the industry, and=
+ the immense potential upsides of deploying
+            powerful AI for both safety research and <a href=3D"https://www=
+.darioamodei.com/essay/machines-of-loving-grace">the world at large</a>, we=
+ can=E2=80=99t count
+            on being able to wait that long to start using these early AGI =
+systems.</p>
+        <p>Despite all this, I expect that we can still muddle through with=
+out this kind of deep understanding in a way
+            that nonetheless makes a good outcome likely. </p>
+        <p>Bumpers is the high-level plan that I argue AGI-focused alignmen=
+t
+            research efforts should largely prioritize instead=E2=80=94the =
+way that I expect we muddle through. It relies on a
+            key hypothesis about our situation:</p>
+        <ol>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Detection of misalignment seems
+                    tractable</span><span style=3D"font-weight: 700;">:</sp=
+an>&nbsp;If an early AGI system is misaligned enough
+                to cause unrecoverable harm, it seems likely that there is =
+some known technique that could be used to
+                determine that it is misaligned before this takes place=E2=
+=80=94perhaps, but not necessarily, before deployment.
+            </li>
+        </ol>
+        <ul>
+            <li style=3D"margin-left: 72pt;">If this is false, attempting t=
+o run the iterative process above will not
+                prevent us from unwittingly placing a misaligned model in a=
+ position where it can cause severe harm.
+            </li>
+        </ul>
+        <p>Further, the claim that this plan should be a top priority for A=
+GI developers<span style=3D"font-style: italic;">&nbsp;</span>relies on thr=
+ee more claims: </p>
+        <ol>
+            <li value=3D"2" style=3D"margin-left: 36pt;"><span style=3D"fon=
+t-weight: 700;">Alignment is not clearly trivial:
+                </span>Ordinary attempts to align early AGI systems could p=
+lausibly produce a misaligned result. </li>
+        </ol>
+        <ul>
+            <li style=3D"margin-left: 72pt;">If this is false, and we know =
+that it is false, then Bumpers work is a waste
+                of effort and a cause of
+                potentially-costly delays.<sup><a href=3D"https://alignment=
+.anthropic.com/2025/bumpers/#ftnt2" id=3D"ftnt_ref2">[2]</a></sup></li>
+        </ul>
+        <ol>
+            <li style=3D"margin-left: 36pt;" value=3D"3"><span style=3D"fon=
+t-weight: 700;">Alignment is likely to be
+                    tractable:
+                </span>The best current evidence suggests that existing app=
+lied alignment techniques like RLHF and <a href=3D"https://www.anthropic.co=
+m/research/constitutional-ai-harmlessness-from-ai-feedback">Constitutional
+                    AI</a>&nbsp;can, <span style=3D"font-style: italic;">at=
+ least under ideal circumstances</span>,<span style=3D"font-style: italic;"=
+>&nbsp;</span>be used to adequately align early AGI systems. While we may n=
+ot
+                fully understand what we=E2=80=99re doing when we align a m=
+odel, we don=E2=80=99t need to achieve any deep breakthroughs
+                in order to succeed in practice. </li>
+        </ol>
+        <ul>
+            <li style=3D"margin-left: 72pt;">If this is false, Bumpers work=
+ can
+                still carry enormous value by surfacing early evidence that=
+ it is false. This evidence can then drive
+                both newly-focused research investments and newly-concrete =
+public communication about risks. However the
+                emphasis on using the bumpers to <span style=3D"font-style:=
+ italic;">quickly </span><span style=3D"font-style: italic;">iterate</span>=
+&nbsp;on our alignment techniques is misplaced in these
+                situations.</li>
+        </ul>
+        <ol>
+            <li style=3D"margin-left: 36pt;" value=3D"4"><span style=3D"fon=
+t-weight: 700;">Alignment theory is not tractable
+                    in the
+                    short term:</span>&nbsp;We are unlikely to understand m=
+isalignment risk well enough in the short term to
+                be able to reliably predict whether some specific attempt t=
+o align a model is going to succeed.</li>
+        </ol>
+        <ul>
+            <li style=3D"margin-left: 72pt;">If this is false, Bumpers work
+                represents a clumsy and uncertain way to solve a critical p=
+roblem that we could solve with greater
+                confidence by other means.</li>
+        </ul>
+        <p>This is not a costless choice: The Bumpers worldview largely giv=
+es
+            up on the ability to make highly-confident, principled argument=
+s for safety, and it comes with real risks. A
+            trial-and-error approach that relies on the same set of tests m=
+any times will start to create selection
+            pressure that undermines those tests. Further, some possible fo=
+rms of misalignment would result in systems
+            that actively attempt to subvert our bumpers.</p>
+        <p>I nonetheless expect that we could implement a half-dozen or so =
+bumpers in such a way that no model (in the
+            relevant capability regime) can subvert all of them at once. Th=
+is is not guaranteed, but it=E2=80=99s the best
+            available option if capabilities progress continues to move as =
+quickly as we are anticipating here.</p>
+        <p>The hypotheses above are distinct from any normative claim about=
+ what level of confidence we should aim to
+            have in the safety of a system before we deploy and use it, at =
+least in the short term: Under most plausible
+            levels of confidence an AI developer might be able to reach in =
+the near future, for the capabilities regime
+            we target, it will be easier to reach that level of confidence =
+by prioritizing the building and testing
+            bumpers than by building out a deeper science of alignment that=
+=E2=80=99s aimed at more decisively solving the
+            problem.</p><br><br><br>
+        <h2><span style=3D"font-weight: 600;">What Are the Bumpers?</span><=
+/h2>
+        <p>There are many methods that could plausibly detect misalignment =
+during pre-deployment testing, with varying
+            degrees of present day maturity, such as: </p>
+        <ul>
+            <li style=3D"margin-left: 36pt;">Manual <span style=3D"font-wei=
+ght: 700;">expert red-teaming</span>, including:
+            </li>
+        </ul>
+        <ul>
+            <li style=3D"margin-left: 72pt;">Honeypot environments that mim=
+ic opportunities to interfere with human
+                control, potentially building on real-world data</li>
+            <li style=3D"margin-left: 72pt;"><a href=3D"https://www.anthrop=
+ic.com/research/auditing-hidden-objectives">Non-assistant
+                    persona</a>&nbsp;interviews</li>
+            <li style=3D"margin-left: 72pt;"><a href=3D"https://www.alignme=
+ntforum.org/posts/GE6pcmmLc3kdpNJja/fuzzing-llms-sometimes-makes-them-revea=
+l-their-secrets">Activation
+                    fuzzing</a>, steering, and similar methods of injecting=
+ variation into model reasoning</li>
+        </ul>
+        <ul>
+            <li style=3D"margin-left: 36pt;">High-volume <span style=3D"fon=
+t-weight: 700;"><a href=3D"https://arxiv.org/abs/2202.03286">automated red-=
+teaming</a></span>&nbsp;to look for jailbreaks
+                and other unusual triggers of bad behavior</li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;"><a href=3D"https://www.anthropic.com/research/auditing-hidden-objective=
+s">Interpretability
+                        audits</a></span>&nbsp;to look for internal represe=
+ntations related to deception or misaligned goals
+            </li>
+            <li style=3D"margin-left: 36pt;">Automatic <span style=3D"font-=
+weight: 700;">consistency audits</span>&nbsp;to look
+                for strategic biases in model behavior, like systematically=
+ omitting certain types of information from
+                summaries, or doing the same coding task in suspiciously di=
+fferent ways when the stated purpose is
+                different</li>
+        </ul>
+        <ul>
+            <li style=3D"margin-left: 72pt;">This could include scalable-ov=
+ersight-style methods that can identify where a
+                model=E2=80=99s behavior is most likely to diverge from wha=
+t <span style=3D"font-style: italic;">the
+                    model</span>&nbsp;would endorse on reflection<sup><a hr=
+ef=3D"https://alignment.anthropic.com/2025/bumpers/#ftnt3" id=3D"ftnt_ref3"=
+>[3]</a></sup></li>
+        </ul>
+        <ul>
+            <li style=3D"margin-left: 36pt;"><a href=3D"https://ai-alignmen=
+t.com/mechanistic-anomaly-detection-and-elk-fb84f4c6d0dc">Mechanistic
+                    anomaly detection</a>, probes, and <span style=3D"font-=
+weight: 700;">other
+                    model-internals-based</span><span style=3D"font-weight:=
+ 700;">&nbsp;methods</span>&nbsp;for catching shifts in
+                behavior</li>
+        </ul>
+        <p>Beyond these, there are additional methods that can be put in pl=
+ace after deployment that may be able to
+            catch warning signs of misalignment in the wild before any seri=
+ous irreversible harm takes place. These
+            secondary defenses include:</p>
+        <ul>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Real-time monitoring</span>, human
+                rapid-response measures, and related deployment-time AI con=
+trol measures<sup><a href=3D"https://alignment.anthropic.com/2025/bumpers/#=
+ftnt4" id=3D"ftnt_ref4">[4]</a></sup>&nbsp;to catch and block acutely misal=
+igned behavior</li>
+        </ul>
+        <ul>
+            <li style=3D"margin-left: 72pt;">This could include the continu=
+ed use of <span style=3D"font-weight: 700;">anomaly detection </span>relate=
+d white-box methods<span style=3D"font-weight: 700;">&nbsp;</span>that have=
+ access to the model=E2=80=99s internal computation</li>
+        </ul>
+        <ul>
+            <li style=3D"margin-left: 36pt;">Summarization-based <span styl=
+e=3D"font-weight: 700;">batch
+                    monitoring</span>&nbsp;(as with <a href=3D"https://www.=
+anthropic.com/research/clio">Clio</a>&nbsp;or per-user <a href=3D"https://a=
+lignment.anthropic.com/2025/summarization-for-monitoring/">hierarchical sum=
+marization
+                    methods</a>) to look for more diffuse concerning trends=
+</li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Staged rollouts</span>, starting=E2=80=94both
+                internally and externally=E2=80=94with specially chosen use=
+r populations who you trust to surface issues to you
+                and trust <span style=3D"font-style: italic;">not</span>&nb=
+sp;to use the system in high-stakes settings</li>
+            <li style=3D"margin-left: 36pt;"><span style=3D"font-weight: 70=
+0;">Security measures </span>that limit models=E2=80=99
+                ability to access internal systems autonomously</li>
+        </ul>
+        <p>To the <a href=3D"https://www.anthropic.com/research/reasoning-m=
+odels-dont-say-think">limited</a>&nbsp;extent that
+            modern reasoning models produce <span style=3D"font-weight: 700=
+;">transparent reasoning traces</span>, these
+            traces will make several of the methods above, in both categori=
+es, more effective.</p>
+        <p>No one of these methods, under realistic circumstances, will be =
+robust enough to rely on. However, even a
+            half dozen of these methods, each implemented to the standard o=
+f a substantial production effort at an AGI
+            developer, should be sufficient to detect potentially-catastrop=
+hic forms of misalignment in any plausible
+            early AGI system. </p>
+        <p>A system that was <span style=3D"font-style: italic;">trying </s=
+pan>to evade all of these bumpers would face
+            immense obstacles, at least within the capability regime we tar=
+get. Such a system would have to be able to
+            take intentional, harmful actions with neither its human-access=
+ible internal feature representations nor its
+            written reasoning traces ever hinting at that intention, even u=
+nder extensive red-teaming that can
+            manipulate its inputs and internal states in arbitrary ways. It=
+ would need to be able to distinguish real
+            opportunities to act from our many artificial test cases. If re=
+cent trends in model design continue, it also
+            would need to do this without being able to do much more active=
+ reasoning&nbsp;<span style=3D"font-style: italic;">within its forward pass=
+ </span>than happens in present-day models. It would
+            need to do all of this in a setting where it is not substantial=
+ly superhuman, such that humans are routinely
+            (though not continuously) spot-checking its work.</p><br><br><b=
+r>
+
+        <h2><span style=3D"font-weight: 600;">Hitting the Bumpers and Bounc=
+ing Off</span></h2>
+        <p>If we encounter a warning sign that represents reasonably clear =
+evidence that some common practice will lead
+            to danger, the next step is to try to infer the proximate cause=
+. &nbsp;These efforts need not result in a
+            comprehensive theory of all of the misalignment risk factors th=
+at arose in the training run, but it should
+            give us <span style=3D"font-style: italic;">some</span>&nbsp;si=
+gnal about what sort of response would treat the
+            cause of the misalignment rather than simply masking the first =
+symptoms.</p>
+        <p>This could look like reading RL logs, looking through training d=
+ata or tasks, running evals across multiple
+            training checkpoints, running finer-grained or more expensive v=
+ariants of the bumper that caught the issue
+            in the first place, and <span style=3D"font-style: italic;">per=
+haps </span>running small newly-designed
+            experiments to check our understanding. Mechanistic interpretab=
+ility tools and related training-data
+            attribution tools like <a href=3D"https://www.anthropic.com/res=
+earch/influence-functions">influence
+                functions</a>&nbsp;in particular can give us clues as to wh=
+at data was most responsible for the behavior. In
+            easy cases, the change might be as simple as redesigning the re=
+ward function for some automatically-graded
+            RL environment or removing a tranche of poorly-labeled human da=
+ta.&nbsp;</p>
+        <p>Once we=E2=80=99ve learned enough here that we=E2=80=99re able t=
+o act, we then make whatever&nbsp;change to our finetuning process
+            seems most likely to solve the problem. Unless the warning sign=
+ also calls into question the continuing
+            effectiveness&nbsp;of our suite of bumpers,<sup><a href=3D"http=
+s://alignment.anthropic.com/2025/bumpers/#ftnt5" id=3D"ftnt_ref5">[5]</a></=
+sup>&nbsp;we finally proceed
+            to retrain the
+            model as much as seems necessary to mitigate the issue and atte=
+mpt a new deployment.</p>
+        <p>In addition, by this point, we will likely have learned some rep=
+eatable lessons, which we should share
+            externally. This is both to allow other developers to avoid enc=
+ountering the same danger themselves and to
+            allow governments to respond in full knowledge of the risk.</p>
+        <p>As a limited early example from our real model development lifec=
+ycle: Our evaluations of partially-trained
+            versions of Claude 3.7, as described in the <a href=3D"https://=
+assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-c=
+ard.pdf">System
+                Card</a>, found&nbsp;signs of reward hacking on code tasks =
+that we were able to partially<sup><a href=3D"https://alignment.anthropic.c=
+om/2025/bumpers/#ftnt6" id=3D"ftnt_ref6">[6]</a></sup>&nbsp;mitigate with a=
+djustments to our standard finetuning
+            techniques.</p>
+        <br><br><br>
+
+        <h2><span style=3D"font-weight: 600;">Defending Key Premises</span>=
+</h2>
+        <h3>Detection of Misalignment Seems Tractable</h3>
+        <p>The findings of our recent&nbsp;Auditing paper suggests that, at=
+ least under the relatively favorable
+            circumstances of our first major trial, there are a several ind=
+ependent methods involving (among other
+            things) dictionary learning and non-assistant persona prompting=
+ that can reveal important facts about a
+            model=E2=80=99s alignment that are not readily observable in or=
+dinary behavioral testing.</p>
+        <p>More broadly, we have seen essentially no naturally-occurring ca=
+ses to date where a model is misaligned in
+            ways that clearly could not have been caught by thorough pre-de=
+ployment testing that includes methods like
+            these. To the partial but nontrivial extent that existing inter=
+pretability techniques give us a view into
+            model cognition, what we=E2=80=99re finding seems much more con=
+sistent with the hypothesis that models are
+            approximating what we trained them to do in reasonable ways tha=
+n that they are subtly acting against us.
+            When we do see misalignment, it generally seems to be a consequ=
+ence of contingent, understandable errors in
+            our training strategies. </p>
+        <p>It is not clear that this should continue to be the case. (And s=
+ee <a href=3D"https://alignment.anthropic.com/2025/bumpers/#ceil">Hitting t=
+he Capability
+                Ceiling</a>&nbsp;below for more discussion of how alignment=
+ might cease to be tractable in this sense.) But
+            it seems like a fairly likely default&nbsp;outcome, and as such=
+, it should be among our top priorities to
+            continue to build out and stress-test these detection methods.<=
+/p>
+        <h3>Alignment Seems Tractable but not Trivial</h3>
+        <p>We have not yet failed badly at alignment.&nbsp;Current frontier=
+ systems have been deployed widely without this
+            surfacing any deep divergences from the intentions of their dev=
+elopers of the kind we contemplate here.
+            Something like this degree of alignment in an early AGI system,=
+ coupled with good progress on task
+            elicitation that I expect to emerge from more capabilities-orie=
+nted R&amp;D,<sup><a href=3D"https://alignment.anthropic.com/2025/bumpers/#=
+ftnt7" id=3D"ftnt_ref7">[7]</a></sup>&nbsp;should be sufficient to safely b=
+egin deploying. </p>
+        <p>Current frontier systems also have few or no deep, consistent li=
+mitations that prevent them in principle from
+            acting as human-level autonomous researchers: We expect that th=
+e difference between today=E2=80=99s systems and
+            these future systems with these capabilities will be more a dif=
+ference in degree than a difference in kind.
+            As such, we find it plausible that a similar degree of alignmen=
+t can be attained by basically similar means.
+        </p>
+        <p>However, we know that standard alignment techniques <span style=
+=3D"font-style: italic;">can </span>fail,
+            sometimes in reasonably subtle ways. Many recent results, inclu=
+ding <a href=3D"https://www.emergent-misalignment.com/">Emergent Misalignme=
+nt</a>, <a href=3D"https://www.anthropic.com/research/alignment-faking">Ali=
+gnment Faking</a>, <a href=3D"https://www.anthropic.com/research/reward-tam=
+pering">Sycophancy to Subterfuge</a>, <a href=3D"https://openreview.net/for=
+um?id=3DxJljiPE6dg">Wen et al.</a>=E2=80=99s, and <a href=3D"https://cdn.op=
+enai.com/pdf/34f2ada6-870f-4c26-9790-fd8def56387f/CoT_Monitoring.pdf">Baker=
+ et
+                al.</a>=E2=80=99s suggest that some ways of using current s=
+tandard techniques can lead to misaligned models
+            which attempt to subvert human control. At least some of these =
+types of failure plausibly become more
+            challenging to avoid as models become more capable. Our challen=
+ge, on the Bumpers&nbsp;view, is to build many
+            redundant ways of catching and
+            correcting this when it occurs.</p>
+        <p>In the language of our <a href=3D"https://www.anthropic.com/news=
+/core-views-on-ai-safety">Core Views on AI
+                Safety</a>&nbsp;post, the Bumpers&nbsp;approach is primaril=
+y targeting
+            =E2=80=98intermediate-difficulty=E2=80=99 scenarios for alignme=
+nt, where alignment is tractable but not trivial. In those
+            scenarios, this approach allows us to chart a course to success=
+fully deploying an aligned model. However, we
+            expect it to also be valuable, to a lesser extent, in many plau=
+sible harder worlds where this work could
+            provide the evidence we need about the dangers that lie ahead.<=
+/p><br><br><br>
+
+        <h2><span style=3D"font-weight: 600;">Red-Teaming the Bumpers</span=
+></h2>
+        <p>The core recommendation of this piece is to build out and deploy=
+ the
+            potential bumpers that have already been explored in some depth=
+ in past research. However, as a major
+            secondary priority, we should be testing them in situ and in co=
+mbination, with a focus on ensuring that no
+            plausible model could circumvent the full suite.</p>
+        <p>This would entail red-teaming exercises in the spirit of the Con=
+trol agenda=E2=80=99s <a href=3D"https://www.lesswrong.com/posts/MbWWKbyD5g=
+LhJgfwn/meta-level-adversarial-evaluation-of-oversight-techniques-1">meta-l=
+evel
+                adversarial evaluations</a>: Here, =E2=80=98red-team=E2=80=
+=99 researchers=E2=80=94who have full knowledge of the set of bumpers
+            that a model will face=E2=80=94aim to produce an intentionally-=
+misaligned model variant that is optimized to be as
+            likely as possible to survive all of the bumpers while still ul=
+timately taking some (fake)
+            severely-misaligned action. If these researchers succeed, that =
+calls into question the adequacy of the
+            bumpers, and likely indicates ways they can be improved. If the=
+se researchers fail, though, this gives only
+            indirect and contingent positive evidence for safety, since the=
+ space of possible misaligned models is
+            large.</p><br><br><br>
+
+        <h2><span style=3D"font-weight: 600;">Related Agendas: Model Organi=
+sms and Control</span></h2>
+        <p>The <a href=3D"https://www.alignmentforum.org/posts/ChDH335ckdvp=
+xXaXX/model-organisms-of-misalignment-the-case-for-a-new-pillar-of-1">Model
+                Organisms of Misalignment</a>&nbsp;agenda aims to intention=
+ally develop and test misaligned models in order
+            to understand how misalignment might emerge. This is a natural =
+basic-research companion to Bumpers: Model
+            organisms are an ideal input to the red-teaming exercises descr=
+ibed above and evidence from work with model
+            organisms help us make better guesses about where to strengthen=
+ the bumpers and where correlated failures
+            across bumpers could be possible. In the other direction, each =
+time we hit a bumper and encounter warning
+            signs for misalignment in the real world, that can feed back in=
+to our decisions about which model organisms
+            to build and study.</p>
+        <p>The <a href=3D"https://arxiv.org/abs/2312.06942">AI Control</a>&=
+nbsp;agenda aims to build model-external safeguards
+            that could let us to use an <span style=3D"font-style: italic;"=
+>arbitrarily misaligned</span>&nbsp;model without
+            giving it the opportunity to cause severe harm. Bumpers also ca=
+lls for model-external safeguards and
+            monitoring and will likely entail some of the same work in prac=
+tice. But Bumpers is more oriented toward
+            gathering and responding to evidence about the actual degree to=
+ which a model is aligned and contemplates
+            the possibility of building safeguards more selectively in resp=
+onse to that evidence. Bumpers thus
+            represents a distinct bet on the premises that alignment is rea=
+sonably likely to be both tractable and
+            necessary.</p><br><br><br>
+
+        <h2>Limitations</h2>
+        <h3>Selection Pressure and Iteration Limits</h3>
+        <p>Each time we go through the core loop of catching a warning sign=
+ for misalignment, adjusting our training
+            strategy to try to avoid it, and training again, we are applyin=
+g a bit of selection pressure against our
+            bumpers. If we go through many such loops and only then, finall=
+y, see a model that can make it through
+            without hitting our bumpers, we should worry that it=E2=80=99s =
+still dangerously misaligned and that we have
+            inadvertently selected for a model that can evade the bumpers.<=
+/p>
+        <p>How severe of a problem this is depends on the quality and diver=
+sity of the bumpers. (It also depends,
+            unfortunately, on your prior beliefs about how likely misalignm=
+ent is, which renders quantitative estimates
+            here pretty uncertain.) If you=E2=80=99ve built excellent imple=
+mentations of <span style=3D"font-style: italic;">all</span>&nbsp;of the bu=
+mpers listed above, it=E2=80=99s plausible that you can run this
+            loop thousands of times without meaningfully undermining their =
+effectiveness.<sup><a href=3D"https://alignment.anthropic.com/2025/bumpers/=
+#ftnt8" id=3D"ftnt_ref8">[8]</a></sup>&nbsp;If you=E2=80=99ve only implemen=
+ted two or three, and you=E2=80=99re unlucky, even a
+            handful of iterations could lead to failure.</p>
+        <h3>Ambiguous Findings</h3>
+        <p>Unfortunately, not all warning signs will come with smoking-gun =
+evidence that the model would have caused
+            harm if given the opportunity: In behavioral evaluations, there=
+ is no crisp distinction between errors and
+            intentional
+            patterns of bad behavior. White-box tests involve some lossines=
+s when bridging the divide between complex
+            model internals and high-level concepts like <span style=3D"fon=
+t-style: italic;">goal</span>. </p>
+        <p>A warning sign warrants a reaction if it causes well-informed ex=
+perts to believe that the model is less well
+            aligned than expected or that it has a non-negligible chance of=
+ being severely misaligned. These judgment
+            calls will have to be responsive to the broader competitive and=
+ regulatory landscape: It is prudent to
+            investigate more risks, and to investigate them more deeply, if=
+ you have reasonable assurances that other
+            actors aren=E2=80=99t already taking much greater risks.</p>
+        <h3>No Free Lunch</h3>
+        <p>It is possible, and consistent with all of the above, that adequ=
+ately aligning a human-expert-level model is
+            enormously slow and expensive. The Bumpers approach is still pl=
+ausibly the most efficient strategy in this
+            case, but it doesn=E2=80=99t save us from having to put in the =
+work: It may be the case that our first warning signs
+            of misalignment make it clear that the most promising alignment=
+ strategies require huge amounts of compute
+            or data, or that each =E2=80=98bounce=E2=80=99 will involve dis=
+carding large parts of an expensive tuning run and starting
+            over.</p>
+        <p>For this plan to succeed under these conditions, it=E2=80=99s st=
+ill necessary that the competitive and regulatory
+            landscape allows developers to take however much time is needed=
+ to make early AGI systems demonstrably safe.
+        </p>
+        <h3 id=3D"ceil">Hitting the Capability Ceiling</h3>
+        <p>As AI capabilities move beyond the =E2=80=98early AGI=E2=80=99 r=
+egime I contemplate here, the two key assumptions behind the
+            bumpers strategy are likely to start to fail.</p>
+        <p>With systems that are substantially superhuman at reasoning, ali=
+gnment will likely become less tractable with
+            existing methods, as the challenges motivating <a href=3D"https=
+://www.anthropic.com/research/measuring-progress-on-scalable-oversight-for-=
+large-language-models">scalable
+                oversight</a>&nbsp;research start to bite. This should make=
+ us less confident that the core loop of this
+            process will terminate: It may take deeper new research to work=
+ out how to align these systems. </p>
+        <p>Similarly, with systems that are substantially superhuman at rea=
+soning <span style=3D"font-style: italic;">about AI safety</span>, it becom=
+es more plausible that they discover exotic
+            ways of evading bumpers that no human adversarial evaluation co=
+uld have caught. This should make us less
+            confident that if the core loop of this process <span style=3D"=
+font-style: italic;">does </span>terminate,
+            that this means that the resulting model is in fact aligned. Es=
+timating when we have reached this point is
+            not trivial, but ordinary capability assessments, red-teaming e=
+xercises, and warning signs from earlier
+            model generations will all give us substantial evidence with wh=
+ich to make this determination.</p>
+        <p>Fortunately, once we=E2=80=99re in this higher-capability regime=
+, we will likely already have access to early AGI
+            systems that should (with some preparation) be able to automate=
+ significant parts of AI safety R&amp;D at the
+            level of human experts. If we use these agents well, as in the =
+<a href=3D"https://openai.com/index/introducing-superalignment/">automated =
+alignment researcher</a>&nbsp;strategy,
+            it becomes much more plausible that we=E2=80=99re able to accel=
+erate progress on safety across the board, giving us
+            a wider range of options with which to address these challenges=
+.</p><br><br><br>
+
+        <h2><span style=3D"font-weight: 600;">Conclusion</span></h2>
+        <p>To get through the transition to superhuman AI, we=E2=80=99ll li=
+kely need to delegate important tasks to
+            circa-human-level automated researchers. If those automated res=
+earchers are misaligned in a way that leads
+            them to sabotage our work=E2=80=94or do any of the other harmfu=
+l things that models at this capability level could
+            do=E2=80=94the outlook is poor. So, we need to be able to align=
+ these automated researchers.</p>
+        <p>But it seems unlikely that we=E2=80=99ll have a robust understan=
+ding of how to align models with these capabilities
+            in time: Our depth of understanding will probably&nbsp;look mor=
+e like today=E2=80=99s ML engineering than today=E2=80=99s
+            aerospace engineering, which is to say that we won=E2=80=99t be=
+ very confident in what we're doing. Given the
+            potential stakes, this is a humbling and disconcerting state of=
+ affairs, but it=E2=80=99s one that we shouldn=E2=80=99t look
+            away from.</p>
+        <p>Instead of aiming to get toward the aerospace end of the spectru=
+m=E2=80=94a project that has little hope of paying
+            out if things move quickly=E2=80=94I propose that we accept tha=
+t our&nbsp;early AGI alignment work is very likely to
+            depend critically on trial and error, and put up as many mechan=
+isms as possible=E2=80=94the bumpers=E2=80=94to help us
+            identify and respond to those errors. With an ambitious but fea=
+sible effort there, I think we=E2=80=99ll be able to
+            muddle through.</p><br><br><br>
+
+        <h3><span style=3D"font-weight: 600;">Come Help</span></h3>
+        <p>Anthropic is committed to investing seriously in the kinds of me=
+asures described here, and we=E2=80=99re eagerly
+            hiring. The more excellent engineers and researchers there are =
+who can contribute to this work, the
+            faster
+            we can move, the more we can publish, and the less likely we ar=
+e to have to triage away more ambitious
+            bets.
+            If you think you=E2=80=99d be able to contribute, have a look a=
+t <a href=3D"https://www.anthropic.com/jobs">our
+                jobs
+                page</a>.</p>
+        <p>Within the Alignment Science umbrella, I=E2=80=99m setting up a =
+new team&nbsp;to productionize and professionalize the
+            hands-on work of testing models for AGI-relevant forms of misal=
+ignment.&nbsp;Elsewhere in Alignment Science,
+            we
+            recently founded a new Cognitive Oversight research team under =
+Sam Marks that=E2=80=99s aiming to improve upon,
+            test, and better understand the sorts of assessment methods we =
+used in our recent <a href=3D"https://www.anthropic.com/research/auditing-h=
+idden-objectives">Auditing paper</a>. We are
+            continuing to hire for our Model Organisms and Control teams to=
+ continue to advance the related agendas
+            described above.</p>
+        <p>Beyond Alignment Science, Anthropic=E2=80=99s implementation of =
+the agenda laid out here also depends directly on
+            work that=E2=80=99s happening on Interpretability, Safeguards, =
+Finetuning, and the Frontier Red Team. All of
+            these
+            teams are actively hiring.</p>
+    </d-article><d-appendix style=3D"background: hsla(40,20%,30%,0.05);" id=
+=3D"appendix">
+
+
+
+        <h2><span style=3D"font-weight: 600;">Acknowledgments</span></h2>
+        <p>I'm grateful to the following for discussions that informed this=
+ essay: Holden Karnofsky, Sam Marks, Fabien
+            Roger, Evan Hubinger, Hoagy Cunningham, Akbir Khan, Chris
+            Olah, Stuart Ritchie, Misha Wagner, Jan Leike, Joe Carlsmith, B=
+uck Shlegeris, Ryan Greenblatt, Rohin
+            Shah, and participants at the Summit for Existential Security. =
+These opinions are my own.</p>
+
+        <h2><span style=3D"font-weight: 600;">Notes</span></h2>
+        <div>
+            <p><a href=3D"https://alignment.anthropic.com/2025/bumpers/#ftn=
+t_ref1" id=3D"ftnt1">[1]</a>&nbsp;In the language of <a href=3D"https://sle=
+epinyourhat.github.io/checklist/">The
+                    Checklist</a>, we need to be well prepared for Chapter =
+2 before it starts. In the language of <a href=3D"https://ai-2027.com/">AI =
+2027</a>, we need to adequately align the first model with the
+                capabilities of Agent-3.</p>
+        </div>
+        <div>
+            <p><a href=3D"https://alignment.anthropic.com/2025/bumpers/#ftn=
+t_ref2" id=3D"ftnt2">[2]</a>&nbsp;These delays can be costly even from a po=
+int of view that is
+                focused
+                very
+                heavily on catastrophic misalignment risk: If we are slow t=
+o trust early AGI systems and aren=E2=80=99t willing
+                to
+                use them in important R&amp;D contexts, we may miss opportu=
+nities to better prepare for to align future,
+                much
+                more superhuman, AI systems for which alignment could be no=
+ntrivial. </p>
+        </div>
+        <div>
+            <p><a href=3D"https://alignment.anthropic.com/2025/bumpers/#ftn=
+t_ref3" id=3D"ftnt3">[3]</a>&nbsp;See, for example, Ryan Greenblatt=E2=80=
+=99s discussion of Debate in =E2=80=9C<a href=3D"https://redwoodresearch.su=
+bstack.com/p/notes-on-handling-non-concentrated">Notes on handling
+                    non-concentrated failures</a>=E2=80=9D.</p>
+        </div>
+        <div>
+            <p><a href=3D"https://alignment.anthropic.com/2025/bumpers/#ftn=
+t_ref4" id=3D"ftnt4">[4]</a>&nbsp;See, for example, the Execute/Replace/Aud=
+it protocol from Buck
+                Shelgeris <a href=3D"https://www.alignmentforum.org/posts/j=
+g3PuE3fYL9jq9zHB/win-continue-lose-scenarios-and-execute-replace-audit">her=
+e</a>.
+            </p>
+        </div>
+        <div>
+            <p><a href=3D"https://alignment.anthropic.com/2025/bumpers/#ftn=
+t_ref5" id=3D"ftnt5">[5]</a>&nbsp;Evidence that might call a suite of bumpe=
+rs into question could
+                include: Finding
+                via white-box methods that the model is reasoning pretty ca=
+refully about how to evade multiple of our
+                black
+                box methods. Finding models that clearly defect in some hon=
+eypot environments but look benign to our
+                white-box methods even as they're doing so, suggesting that=
+ they're evading those methods. Finding
+                warning
+                signs for phenomena like Paul Christiano's <a href=3D"https=
+://ai-alignment.com/training-robust-corrigibility-ce0e0a3b9b4d">RSA-2048 pr=
+oblem</a>,
+                wherein
+                models are sensitive to evidence about the date or other at=
+tributes of their situation that we aren=E2=80=99t
+                able
+                to spoof.</p>
+        </div>
+        <div>
+            <p><a href=3D"https://alignment.anthropic.com/2025/bumpers/#ftn=
+t_ref6" id=3D"ftnt6">[6]</a>&nbsp;Claude 3.7 can nonetheless be frustrating=
+ to use as a coding
+                agent
+                because of
+                related forms of shortcut-seeking behavior. We deemed it wo=
+rth releasing on net, but we see ways to
+                mitigate
+                these issues significantly better in future releases.</p>
+        </div>
+        <div>
+            <p><a href=3D"https://alignment.anthropic.com/2025/bumpers/#ftn=
+t_ref7" id=3D"ftnt7">[7]</a>&nbsp;To be clear, it is crucially important th=
+at we be very good at
+                eliciting
+                excellent behavior <span style=3D"font-style: italic;">at o=
+r slightly above the level of human experts
+                </span>on tasks related to AGI safety R&amp;D. My expectati=
+on is that ordinary R&amp;D incentives will lead to a
+                great deal of progress on this kind of elicitation in gener=
+al, such that applying it to AGI safety will
+                be,
+                while not trivial, fairly straightforward. If this is not t=
+he direction the field takes=E2=80=94if, for example,
+                it
+                turns out that capabilities progress is increasingly driven=
+ by narrow domain-specific investment rather
+                than
+                general improvements=E2=80=94then AGI safety R&amp;D capabi=
+lities elicitation could become a top priority on par
+                with
+                anything else here.</p>
+        </div>
+        <div>
+            <p><a href=3D"https://alignment.anthropic.com/2025/bumpers/#ftn=
+t_ref8" id=3D"ftnt8">[8]</a>&nbsp;Though, of course, it will be hard to be =
+highly confident in
+                this.
+                Realistically, the more iterations we need to make, the mor=
+e desirable it is to <span style=3D"font-style: italic;">find new bumpers <=
+/span>that we can introduce late in the process as
+                additional checks.</p>
+        </div>
+    </d-appendix>
+
+
+</body></html>
+------MultipartBoundary--b0t8oB1GKooVebEJuWpnLNVnPi9FRS0HNJQzVmNb5F----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-1fb5e490-03c3-4e6e-a4ab-1dcba6992108@mhtml.blink
+
+@charset "utf-8";
+
+d-appendix { contain: layout style; font-size: 0.8em; line-height: 1.7em; m=
+argin-top: 60px; margin-bottom: 0px; border-top: 1px solid rgba(0, 0, 0, 0.=
+1); color: rgba(0, 0, 0, 0.5); padding-top: 60px; padding-bottom: 48px; }
+
+d-appendix h3 { grid-column: page-start / text-start; font-size: 15px; font=
+-weight: 500; margin-top: 1em; margin-bottom: 0px; color: rgba(0, 0, 0, 0.6=
+5); }
+
+d-appendix h3 + * { margin-top: 1em; }
+
+d-appendix ol { padding: 0px 0px 0px 15px; }
+
+@media (min-width: 768px) {
+  d-appendix ol { padding: 0px 0px 0px 30px; margin-left: -30px; }
+}
+
+d-appendix li { margin-bottom: 1em; }
+
+d-appendix a { color: rgba(0, 0, 0, 0.6); }
+
+d-appendix > * { grid-column: text; }
+
+d-appendix > d-footnote-list, d-appendix > d-citation-list, d-appendix > di=
+still-appendix { grid-column: screen; }
+------MultipartBoundary--b0t8oB1GKooVebEJuWpnLNVnPi9FRS0HNJQzVmNb5F----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-cc23aff3-a12a-4c90-a574-80c88ae9e3a4@mhtml.blink
+
+@charset "utf-8";
+
+d-article { padding-top: 60px !important; }
+
+d-article li:last-child { margin-bottom: 0.5em !important; }
+
+d-article li { margin-bottom: 0.5em !important; }
+
+ul { padding-left: 0em !important; margin-bottom: 0.2em !important; }
+
+ol { padding-left: 0em !important; margin-bottom: 0.2em !important; }
+
+d-byline { display: none; }
+
+.d-byline-container { border-top: 1px solid rgba(0, 0, 0, 0.1); border-bott=
+om: 1px solid rgba(0, 0, 0, 0.1); padding-top: 20px; padding-bottom: 20px; =
+}
+
+.d-byline { grid-column: text; display: grid; grid-template-columns: [autho=
+rs info] 5fr [affiliations published] 1fr; grid-template-rows: [authors aff=
+iliations] auto [published info] auto; font-size: 0.8rem; line-height: 1.8e=
+m; gap: 20px; }
+
+.d-byline h3 { font-size: 0.6rem; font-weight: 400; color: rgba(0, 0, 0, 0.=
+5); margin: 0px 0px 4px; text-transform: uppercase; }
+
+.d-byline .info { color: rgba(0, 0, 0, 0.5); font-size: 80%; line-height: 1=
+.5; }
+
+.d-byline .authors div { line-height: 1.5; }
+
+.d-byline .authors sup { font-size: 80%; margin-right: -4px; }
+
+.d-byline .author { margin-right: 6px; white-space: nowrap; }
+
+.d-byline a { color: inherit; text-decoration: none; }
+
+@media screen and (min-width: 900px) {
+  .offset-gdoc-image { margin-left: -65px; }
+}
+
+.section-authors { color: rgb(119, 119, 119); font-style: italic; margin-to=
+p: -24px; margin-bottom: 32px; line-height: 1.3; display: flex; flex-wrap: =
+wrap; justify-content: space-between; gap: 0.5em; }
+
+.section-authors::before { content: attr(data-author); }
+
+.section-authors::after { content: attr(data-published); }
+
+.tldr { position: absolute; right: calc(100% + 10px); top: 0px; text-align:=
+ right; color: rgb(119, 119, 119); }
+
+@media (max-width: 768px) {
+  .tldr { position: static; display: inline-block; margin-right: 10px; }
+}
+
+h3 { margin-top: 0.75em !important; }
+------MultipartBoundary--b0t8oB1GKooVebEJuWpnLNVnPi9FRS0HNJQzVmNb5F----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-93b227a5-121d-4a78-b357-5edafc7cc55b@mhtml.blink
+
+@charset "utf-8";
+
+.article-header { width: 100%; padding: 36px 36px 20px; box-sizing: border-=
+box; display: flex; align-items: center; gap: 12px; }
+
+.home-link { color: rgb(51, 51, 51); text-decoration: none; cursor: pointer=
+; font-weight: 700; font-size: 1.3em; }
+
+a.logo { display: flex; text-decoration: none; }
+
+span.commentary { color: rgb(128, 70, 51); }
+------MultipartBoundary--b0t8oB1GKooVebEJuWpnLNVnPi9FRS0HNJQzVmNb5F----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-c2e12d3c-d206-41c8-b09b-0d949084f2e9@mhtml.blink
+
+@charset "utf-8";
+
+:is([id*=3D"google_ads_iframe"], [id*=3D"taboola-"], .taboolaHeight, .taboo=
+la-placeholder, #top-ad, #credential_picker_container, #credentials-picker-=
+container, #credential_picker_iframe, [id*=3D"google-one-tap-iframe"], #goo=
+gle-one-tap-popup-container, .google-one-tap__module, .google-one-tap-modal=
+-div, #amp_floatingAdDiv, #ez-content-blocker-container) { display: none !i=
+mportant; min-height: 0px !important; height: 0px !important; }
+------MultipartBoundary--b0t8oB1GKooVebEJuWpnLNVnPi9FRS0HNJQzVmNb5F----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-2d80db88-4acd-4f26-b7ee-349946528101@mhtml.blink
+
+@charset "utf-8";
+
+html { font-size: 14px; line-height: 1.6em; font-family: -apple-system, Bli=
+nkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans"=
+, "Droid Sans", "Helvetica Neue", Arial, sans-serif; text-size-adjust: 100%=
+; }
+
+@media (min-width: 768px) {
+  html { font-size: 16px; }
+}
+
+body { margin: 0px; }
+
+a { color: rgb(0, 66, 118); }
+
+figure { margin: 0px; }
+
+table { border-collapse: collapse; border-spacing: 0px; }
+
+table th { text-align: left; }
+
+table thead { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+table thead th { padding-bottom: 0.5em; }
+
+table tbody :first-child td { padding-top: 0.5em; }
+
+pre { overflow: auto; max-width: 100%; }
+
+p { margin-top: 0px; margin-bottom: 1em; }
+
+sup, sub { vertical-align: baseline; position: relative; top: -0.4em; line-=
+height: 1em; }
+
+sub { top: 0.4em; }
+
+.kicker, .marker { font-size: 15px; font-weight: 600; color: rgba(0, 0, 0, =
+0.5); }
+
+@media (min-width: 1024px) {
+  d-title h1 span { display: block; }
+}
+
+figure { position: relative; margin-bottom: 2.5em; margin-top: 1.5em; }
+
+figcaption + figure { }
+
+figure img { width: 100%; }
+
+figure svg text, figure svg tspan { }
+
+figcaption, .figcaption { color: rgba(0, 0, 0, 0.6); font-size: 12px; line-=
+height: 1.5em; }
+
+@media (min-width: 1024px) {
+  figcaption, .figcaption { font-size: 13px; }
+}
+
+figure.external img { background: white; border: 1px solid rgba(0, 0, 0, 0.=
+1); box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 8px; padding: 18px; box-sizing: =
+border-box; }
+
+figcaption a { color: rgba(0, 0, 0, 0.6); }
+
+@supports not (display: grid) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { display: block; padding: 8px; }
+}
+
+.base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, dis=
+till-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer {=
+ display: grid; justify-items: stretch; grid-template-columns: [screen-star=
+t] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1=
+fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-=
+end] 8px [screen-end]; column-gap: 8px; }
+
+.grid { display: grid; column-gap: 8px; }
+
+@media (min-width: 768px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start middl=
+e-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [kicker-end tex=
+t-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [scree=
+n-end]; column-gap: 16px; }
+  .grid { column-gap: 16px; }
+}
+
+@media (min-width: 1000px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px=
+ [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px =
+50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-e=
+nd] 1fr [screen-end]; column-gap: 16px; }
+  .grid { column-gap: 16px; }
+}
+
+@media (min-width: 1180px) {
+  .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix, d=
+istill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer=
+ { grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px=
+ [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px =
+60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-e=
+nd] 1fr [screen-end]; column-gap: 32px; }
+  .grid { column-gap: 32px; }
+}
+
+.base-grid { grid-column: screen; }
+
+.l-gutter { grid-column: gutter; }
+
+.l-text, .l-body { grid-column: text; }
+
+.l-page { grid-column: page; }
+
+.l-body-outset { grid-column: middle; }
+
+.l-page-outset { grid-column: page; }
+
+.l-screen { grid-column: screen; }
+
+.l-screen-inset { grid-column: screen; padding-left: 16px; }
+
+d-article aside { grid-column: gutter; font-size: 12px; line-height: 1.6em;=
+ color: rgba(0, 0, 0, 0.6); }
+
+@media (min-width: 768px) {
+  aside { grid-column: gutter; }
+  .side { grid-column: gutter; }
+}
+
+d-title { padding: 2rem 0px 1.5rem; contain: layout style; overflow-x: hidd=
+en; }
+
+@media (min-width: 768px) {
+  d-title { padding: 4rem 0px 1.5rem; }
+}
+
+d-title h1 { grid-column: text; font-size: 40px; font-weight: 700; line-hei=
+ght: 1.1em; margin: 0px 0px 0.5rem; }
+
+@media (min-width: 768px) {
+  d-title h1 { font-size: 50px; }
+}
+
+d-title p { font-weight: 300; font-size: 1.2rem; line-height: 1.55em; grid-=
+column: text; }
+
+d-title .status { margin-top: 0px; font-size: 12px; color: rgb(0, 150, 136)=
+; opacity: 0.8; grid-column: kicker; }
+
+d-title .status span { line-height: 1; display: inline-block; padding: 6px =
+0px; border-bottom: 1px solid rgb(128, 203, 196); font-size: 11px; text-tra=
+nsform: uppercase; }
+
+d-byline { contain: style; overflow: hidden; border-top: 1px solid rgba(0, =
+0, 0, 0.1); font-size: 0.8rem; line-height: 1.8em; padding: 1.5rem 0px; min=
+-height: 1.8em; }
+
+d-byline .byline { grid-template-columns: 1fr 1fr; grid-column: text; }
+
+@media (min-width: 768px) {
+  d-byline .byline { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
+
+d-byline .authors-affiliations { grid-column-end: span 2; grid-template-col=
+umns: 1fr 1fr; margin-bottom: 1em; }
+
+@media (min-width: 768px) {
+  d-byline .authors-affiliations { margin-bottom: 0px; }
+}
+
+d-byline h3 { font-size: 0.6rem; font-weight: 400; color: rgba(0, 0, 0, 0.5=
+); margin: 0px; text-transform: uppercase; }
+
+d-byline p { margin: 0px; }
+
+d-byline a, d-article d-byline a { color: rgba(0, 0, 0, 0.8); text-decorati=
+on: none; border-bottom: none; }
+
+d-article d-byline a:hover { text-decoration: underline; border-bottom: non=
+e; }
+
+d-byline p.author { font-weight: 500; }
+
+d-byline .affiliations { }
+
+d-article { contain: layout style; overflow-x: hidden; border-top: 1px soli=
+d rgba(0, 0, 0, 0.1); padding-top: 2rem; color: rgba(0, 0, 0, 0.8); }
+
+d-article > * { grid-column: text; }
+
+@media (min-width: 768px) {
+  d-article { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  d-article { font-size: 1.06rem; line-height: 1.7em; }
+}
+
+d-article .marker { text-decoration: none; border: none; counter-reset: sec=
+tion 0; grid-column: kicker; line-height: 1.7em; }
+
+d-article .marker:hover { border: none; }
+
+d-article .marker span { padding: 0px 3px 4px; border-bottom: 1px solid rgb=
+a(0, 0, 0, 0.2); position: relative; top: 4px; }
+
+d-article .marker:hover span { color: rgba(0, 0, 0, 0.7); border-bottom: 1p=
+x solid rgba(0, 0, 0, 0.7); }
+
+d-article h2 { font-weight: 600; font-size: 24px; line-height: 1.25em; marg=
+in: 2rem 0px 1.5rem; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-b=
+ottom: 1rem; }
+
+@media (min-width: 1024px) {
+  d-article h2 { font-size: 36px; }
+}
+
+d-article h3 { font-weight: 700; font-size: 18px; line-height: 1.4em; margi=
+n-bottom: 1em; margin-top: 2em; }
+
+@media (min-width: 1024px) {
+  d-article h3 { font-size: 20px; }
+}
+
+d-article h4 { font-weight: 600; text-transform: uppercase; font-size: 14px=
+; line-height: 1.4em; }
+
+d-article a { color: inherit; }
+
+d-article p, d-article ul, d-article ol, d-article blockquote { margin: 0px=
+ 0px 1em; }
+
+d-article blockquote { border-left: 2px solid rgba(0, 0, 0, 0.2); padding-l=
+eft: 2em; font-style: italic; color: rgba(0, 0, 0, 0.6); }
+
+d-article a { border-bottom: 1px solid rgba(0, 0, 0, 0.4); text-decoration:=
+ none; }
+
+d-article a:hover { border-bottom: 1px solid rgba(0, 0, 0, 0.8); }
+
+d-article .link { text-decoration: underline; cursor: pointer; }
+
+d-article ul, d-article ol { padding-left: 24px; }
+
+d-article li { margin-bottom: 1em; margin-left: 0px; padding-left: 0px; }
+
+d-article li:last-child { margin-bottom: 0px; }
+
+d-article pre { font-size: 14px; margin-bottom: 20px; }
+
+d-article hr { grid-column: screen; width: 100%; border-top: none; border-r=
+ight: none; border-left: none; border-image: initial; border-bottom: 1px so=
+lid rgba(0, 0, 0, 0.1); margin-top: 60px; margin-bottom: 60px; }
+
+d-article section { margin-top: 60px; margin-bottom: 60px; }
+
+d-article span.equation-mimic { font-family: georgia; font-size: 115%; font=
+-style: italic; }
+
+d-article > d-code, d-article section > d-code { display: block; }
+
+d-article > d-math[block], d-article section > d-math[block] { display: blo=
+ck; }
+
+@media (max-width: 768px) {
+  d-article > d-code, d-article section > d-code, d-article > d-math[block]=
+, d-article section > d-math[block] { overflow-x: scroll; }
+  d-article > d-code::-webkit-scrollbar, d-article section > d-code::-webki=
+t-scrollbar, d-article > d-math[block]::-webkit-scrollbar, d-article sectio=
+n > d-math[block]::-webkit-scrollbar { display: none; }
+}
+
+d-article .citation { color: rgb(102, 102, 136); cursor: pointer; }
+
+d-include { width: auto; display: block; }
+
+d-figure { contain: layout style; }
+
+.katex, .katex-prerendered { contain: style; display: inline-block; }
+
+d-article table { border-collapse: collapse; margin-bottom: 1.5rem; border-=
+bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+d-article table th { border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+d-article table td { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+d-article table tr:last-of-type td { border-bottom: none; }
+
+d-article table th, d-article table td { font-size: 15px; padding: 2px 8px;=
+ }
+
+d-article table tbody :first-child td { padding-top: 2px; }
+
+span.katex-display { text-align: left; padding: 8px 0px; margin: 0.5em 0px =
+0.5em 1em; }
+
+span.katex { -webkit-font-smoothing: antialiased; color: rgba(0, 0, 0, 0.8)=
+; font-size: 1.18em; }
+
+@media print {
+  @page { size: 8in 11in; @bottom-right { content: counter(page) " of " cou=
+nter(pages); } }
+  html { }
+  p, code { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  d-header { visibility: hidden; }
+  d-footer { display: none !important; }
+}
+------MultipartBoundary--b0t8oB1GKooVebEJuWpnLNVnPi9FRS0HNJQzVmNb5F------

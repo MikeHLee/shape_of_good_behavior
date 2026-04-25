@@ -1,0 +1,47 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{schulman2017proximal}
+\citation{achiam2017constrained}
+\citation{condorcet1785}
+\@writefile{toc}{\contentsline {section}{\numberline {1}The Preference Aggregation Problem}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}What Existing Methods Implicitly Compute}{1}{subsection.1.1}\protected@file@percent }
+\citation{jiang2011statistical}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Topological Features as Safety Diagnostics}{2}{subsection.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Sheaf structure over the reward manifold. Local sections (human feedback patches) must satisfy compatibility conditions to glue into global sections (consistent value functions). Non-trivial $H^1$ indicates sections that cannot be glued.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:sheaf_structure}{{1}{2}{Sheaf structure over the reward manifold. Local sections (human feedback patches) must satisfy compatibility conditions to glue into global sections (consistent value functions). Non-trivial $H^1$ indicates sections that cannot be glued}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Hodge Decomposition for Preference Analysis}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}The Preference Graph}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Matrix Formulation with Color-Coded Components}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Computing the Decomposition}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Unifying Diverse Feedback Types}{3}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Schwarzschild Detection: Identifying Black Holes}{4}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Topological Ranking via Hodge Gradients}{4}{subsection.2.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Hodge decomposition separates preference flow into $\textcolor {gradcolor}{\text  {gradient}}$ (consistent), $\textcolor {curlcolor}{\text  {curl}}$ (local cycles), and $\textcolor {harmcolor}{\text  {harmonic}}$ (global cycles) components. Standard RLHF conflates all three; we extract only the gradient.}}{4}{figure.2}\protected@file@percent }
+\newlabel{fig:hodge_decomp}{{2}{4}{Hodge decomposition separates preference flow into $\textcolor {gradcolor}{\text {gradient}}$ (consistent), $\textcolor {curlcolor}{\text {curl}}$ (local cycles), and $\textcolor {harmcolor}{\text {harmonic}}$ (global cycles) components. Standard RLHF conflates all three; we extract only the gradient}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Geometric Safety via Black Holes}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Semantic Failure Clusters}{4}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Generalized Safety Metric}{5}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Intuition: The Supermassive Black Hole}{5}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Geometric safety: ``Black hole'' regions have infinite geodesic distance, creating hard safety guarantees without explicit constraints. Unlike CPO's soft penalties, this barrier cannot be overcome by high reward.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:geometric_safety}{{3}{6}{Geometric safety: ``Black hole'' regions have infinite geodesic distance, creating hard safety guarantees without explicit constraints. Unlike CPO's soft penalties, this barrier cannot be overcome by high reward}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Geodesic Policy Optimization (GPO)}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Algorithm Overview}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Geodesic DPO Loss}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Embedding Representations}{7}{section.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces State representation tradeoffs. Structured formats reduce embedding inconsistencies ($H^1$) at the cost of flexibility.}}{7}{table.1}\protected@file@percent }
+\newlabel{tab:representations}{{1}{7}{State representation tradeoffs. Structured formats reduce embedding inconsistencies ($H^1$) at the cost of flexibility}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Preliminary Results}{7}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Condorcet Cycle Detection}{7}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces GPO recovers 71\% of the true cycle magnitude; PPO has no mechanism to detect cycles.}}{7}{table.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Safety Benchmark}{7}{subsection.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces GPO achieves positive return while reducing violations by 79\% vs.\ PPO.}}{7}{table.3}\protected@file@percent }
+\bibstyle{plainnat}
+\bibcite{schulman2017proximal}{{1}{2017}{{Schulman et al.}}{{}}}
+\bibcite{achiam2017constrained}{{2}{2017}{{Achiam et al.}}{{}}}
+\bibcite{condorcet1785}{{3}{1785}{{Condorcet}}{{}}}
+\bibcite{jiang2011statistical}{{4}{2011}{{Jiang et al.}}{{}}}
+\bibcite{ouyang2022training}{{5}{2022}{{Ouyang et al.}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{8}{section.7}\protected@file@percent }
+\gdef \@abspage@last{8}

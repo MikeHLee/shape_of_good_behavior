@@ -1,0 +1,423 @@
+{
+  "method_stats": {
+    "DPO": {
+      "mean": 0.9296,
+      "std": 0.014518953130305195,
+      "se": 0.006493073232299155,
+      "ci95": 0.018027661393507803,
+      "n": 5
+    },
+    "GRPO": {
+      "mean": 1.0,
+      "std": 0.0,
+      "se": 0.0,
+      "ci95": 0.0,
+      "n": 5
+    },
+    "ORPO": {
+      "mean": 0.6708000000000001,
+      "std": 0.12168483882554966,
+      "se": 0.05441911428900694,
+      "ci95": 0.15109168349691263,
+      "n": 5
+    },
+    "KTO": {
+      "mean": 0.8028000000000001,
+      "std": 0.003033150177620623,
+      "se": 0.001356465996625055,
+      "ci95": 0.0037661533766968802,
+      "n": 5
+    },
+    "Hodge-DPO": {
+      "mean": 0.9296,
+      "std": 0.014518953130305195,
+      "se": 0.006493073232299155,
+      "ci95": 0.018027661393507803,
+      "n": 5
+    },
+    "Hodge-GRPO": {
+      "mean": 1.0,
+      "std": 0.0,
+      "se": 0.0,
+      "ci95": 0.0,
+      "n": 5
+    },
+    "Hodge-KTO": {
+      "mean": 0.8028000000000001,
+      "std": 0.003033150177620623,
+      "se": 0.001356465996625055,
+      "ci95": 0.0037661533766968802,
+      "n": 5
+    }
+  },
+  "pairwise_tests": {
+    "DPO vs GRPO": {
+      "t_stat": -10.842323423953102,
+      "p_value": 0.00041060626540820143,
+      "cohens_d": -6.857287429577445,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs Hodge-DPO": {
+      "t_stat": 0.0,
+      "p_value": 1.0,
+      "cohens_d": 0.0,
+      "effect_size": "negligible",
+      "significant_005": false
+    },
+    "DPO vs Hodge-GRPO": {
+      "t_stat": -10.842323423953102,
+      "p_value": 0.00041060626540820143,
+      "cohens_d": -6.857287429577445,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs Hodge-KTO": {
+      "t_stat": 19.11581924623024,
+      "p_value": 2.3141075259956532e-05,
+      "cohens_d": 12.089905631634128,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs KTO": {
+      "t_stat": 19.11581924623024,
+      "p_value": 2.3141075259956532e-05,
+      "cohens_d": 12.089905631634128,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "DPO vs ORPO": {
+      "t_stat": 4.722187466415512,
+      "p_value": 0.008547911018000504,
+      "cohens_d": 2.9865735864345786,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "GRPO vs Hodge-DPO": {
+      "t_stat": 10.842323423953102,
+      "p_value": 0.00041060626540820143,
+      "cohens_d": 6.857287429577445,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "GRPO vs Hodge-GRPO": {
+      "t_stat": NaN,
+      "p_value": NaN,
+      "cohens_d": 0.0,
+      "effect_size": "negligible",
+      "significant_005": false
+    },
+    "GRPO vs Hodge-KTO": {
+      "t_stat": 145.37776876872837,
+      "p_value": 1.3428338297852475e-08,
+      "cohens_d": 91.94497409249482,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "GRPO vs KTO": {
+      "t_stat": 145.37776876872837,
+      "p_value": 1.3428338297852475e-08,
+      "cohens_d": 91.94497409249482,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "GRPO vs ORPO": {
+      "t_stat": 6.049345056439126,
+      "p_value": 0.0037676395005897577,
+      "cohens_d": 3.825941746125494,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-DPO vs Hodge-GRPO": {
+      "t_stat": -10.842323423953102,
+      "p_value": 0.00041060626540820143,
+      "cohens_d": -6.857287429577445,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-DPO vs Hodge-KTO": {
+      "t_stat": 19.11581924623024,
+      "p_value": 2.3141075259956532e-05,
+      "cohens_d": 12.089905631634128,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-DPO vs KTO": {
+      "t_stat": 19.11581924623024,
+      "p_value": 2.3141075259956532e-05,
+      "cohens_d": 12.089905631634128,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-DPO vs ORPO": {
+      "t_stat": 4.722187466415512,
+      "p_value": 0.008547911018000504,
+      "cohens_d": 2.9865735864345786,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-GRPO vs Hodge-KTO": {
+      "t_stat": 145.37776876872837,
+      "p_value": 1.3428338297852475e-08,
+      "cohens_d": 91.94497409249482,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-GRPO vs KTO": {
+      "t_stat": 145.37776876872837,
+      "p_value": 1.3428338297852475e-08,
+      "cohens_d": 91.94497409249482,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-GRPO vs ORPO": {
+      "t_stat": 6.049345056439126,
+      "p_value": 0.0037676395005897577,
+      "cohens_d": 3.825941746125494,
+      "effect_size": "large",
+      "significant_005": true
+    },
+    "Hodge-KTO vs KTO": {
+      "t_stat": 0.0,
+      "p_value": 1.0,
+      "cohens_d": 0.0,
+      "effect_size": "negligible",
+      "significant_005": false
+    },
+    "Hodge-KTO vs ORPO": {
+      "t_stat": 2.424865118541604,
+      "p_value": 0.07230232352966352,
+      "cohens_d": 1.5336193586571325,
+      "effect_size": "large",
+      "significant_005": false
+    },
+    "KTO vs ORPO": {
+      "t_stat": 2.424865118541604,
+      "p_value": 0.07230232352966352,
+      "cohens_d": 1.5336193586571325,
+      "effect_size": "large",
+      "significant_005": false
+    }
+  },
+  "all_results": [
+    {
+      "method": "DPO",
+      "seed": 0,
+      "exploit_resistance": 0.932,
+      "final_loss": 0.6120889782905579
+    },
+    {
+      "method": "DPO",
+      "seed": 1,
+      "exploit_resistance": 0.922,
+      "final_loss": 0.6119253039360046
+    },
+    {
+      "method": "DPO",
+      "seed": 2,
+      "exploit_resistance": 0.92,
+      "final_loss": 0.6123950332403183
+    },
+    {
+      "method": "DPO",
+      "seed": 3,
+      "exploit_resistance": 0.954,
+      "final_loss": 0.6090424954891205
+    },
+    {
+      "method": "DPO",
+      "seed": 4,
+      "exploit_resistance": 0.92,
+      "final_loss": 0.6123838499188423
+    },
+    {
+      "method": "GRPO",
+      "seed": 0,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40431587770581245
+    },
+    {
+      "method": "GRPO",
+      "seed": 1,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40355897694826126
+    },
+    {
+      "method": "GRPO",
+      "seed": 2,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40249667316675186
+    },
+    {
+      "method": "GRPO",
+      "seed": 3,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4064747020602226
+    },
+    {
+      "method": "GRPO",
+      "seed": 4,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40308091416954994
+    },
+    {
+      "method": "ORPO",
+      "seed": 0,
+      "exploit_resistance": 0.816,
+      "final_loss": -0.6676909700036049
+    },
+    {
+      "method": "ORPO",
+      "seed": 1,
+      "exploit_resistance": 0.548,
+      "final_loss": -0.6541111394762993
+    },
+    {
+      "method": "ORPO",
+      "seed": 2,
+      "exploit_resistance": 0.626,
+      "final_loss": -0.6533554717898369
+    },
+    {
+      "method": "ORPO",
+      "seed": 3,
+      "exploit_resistance": 0.784,
+      "final_loss": -0.6685713604092598
+    },
+    {
+      "method": "ORPO",
+      "seed": 4,
+      "exploit_resistance": 0.58,
+      "final_loss": -0.6538812071084976
+    },
+    {
+      "method": "KTO",
+      "seed": 0,
+      "exploit_resistance": 0.804,
+      "final_loss": 1.126711055636406
+    },
+    {
+      "method": "KTO",
+      "seed": 1,
+      "exploit_resistance": 0.806,
+      "final_loss": 1.1273172348737717
+    },
+    {
+      "method": "KTO",
+      "seed": 2,
+      "exploit_resistance": 0.798,
+      "final_loss": 1.12697072327137
+    },
+    {
+      "method": "KTO",
+      "seed": 3,
+      "exploit_resistance": 0.802,
+      "final_loss": 1.1263196915388107
+    },
+    {
+      "method": "KTO",
+      "seed": 4,
+      "exploit_resistance": 0.804,
+      "final_loss": 1.1272406578063965
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 0,
+      "exploit_resistance": 0.932,
+      "final_loss": 0.6120889782905579
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 1,
+      "exploit_resistance": 0.922,
+      "final_loss": 0.6119253039360046
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 2,
+      "exploit_resistance": 0.92,
+      "final_loss": 0.6123950332403183
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 3,
+      "exploit_resistance": 0.954,
+      "final_loss": 0.6090424954891205
+    },
+    {
+      "method": "Hodge-DPO",
+      "seed": 4,
+      "exploit_resistance": 0.92,
+      "final_loss": 0.6123838499188423
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 0,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40431587770581245
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 1,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40355897694826126
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 2,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40249667316675186
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 3,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.4064747020602226
+    },
+    {
+      "method": "Hodge-GRPO",
+      "seed": 4,
+      "exploit_resistance": 1.0,
+      "final_loss": -0.40308091416954994
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 0,
+      "exploit_resistance": 0.804,
+      "final_loss": 1.126711055636406
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 1,
+      "exploit_resistance": 0.806,
+      "final_loss": 1.1273172348737717
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 2,
+      "exploit_resistance": 0.798,
+      "final_loss": 1.12697072327137
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 3,
+      "exploit_resistance": 0.802,
+      "final_loss": 1.1263196915388107
+    },
+    {
+      "method": "Hodge-KTO",
+      "seed": 4,
+      "exploit_resistance": 0.804,
+      "final_loss": 1.1272406578063965
+    }
+  ],
+  "config": {
+    "num_seeds": 5,
+    "embed_dim": 384,
+    "hidden_dim": 64,
+    "lr": 0.001,
+    "epochs": 50,
+    "n_samples": 500,
+    "diagnosis_exploit_fraction": 0.9911694125019803
+  }
+}

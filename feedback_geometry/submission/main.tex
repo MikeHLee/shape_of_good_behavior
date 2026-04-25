@@ -1,0 +1,73 @@
+% ICML 2026 Submission
+% Feedback Geometry: Topological Inconsistency Detection in Human Preference Data
+
+\documentclass{article}
+
+% For blind submission (comment out for camera-ready):
+\usepackage{icml2026}
+% For camera-ready, use:
+% \usepackage[accepted]{icml2026}
+
+% Standard packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{microtype}
+\usepackage{xcolor}
+
+% Theorem environments
+
+ewtheorem{theorem}{Theorem}[section]
+
+ewtheorem{proposition}[theorem]{Proposition}
+
+ewtheorem{corollary}[theorem]{Corollary}
+
+ewtheorem{lemma}[theorem]{Lemma}
+
+ewtheorem{definition}[theorem]{Definition}
+
+ewtheorem{remark}[theorem]{Remark}
+
+% Running title
+\icmltitlerunning{Feedback Geometry: Topological Inconsistency in RLHF}
+
+\begin{document}
+
+	wocolumn[
+\icmltitle{Feedback Geometry: Topological Inconsistency Detection in Human Preference Data}
+
+\icmlkeywords{Reinforcement Learning, Human Feedback, Sheaf Theory, Algebraic Topology, Hodge Theory, RLHF}
+
+\begin{abstract}
+Current Reinforcement Learning from Human Feedback (RLHF) strategies rely on an implicit ``scalar hypothesis'' that collapses complex, multidimensional human preferences into a single scalar value. This assumption fails when human preferences exhibit cyclic contradictions ($A \succ B \succ C \succ A$) or transitive inconsistencies. In this paper, we introduce a topological framework for analyzing preference data using Hodge decomposition on graph-based preference manifolds. By analyzing 160,800 Anthropic HH-RLHF prompt pairs, we identify that approximately 30\% of the data exhibits strong topological inconsistencies ($H^1 
+eq 0$), making it mathematically impossible to represent within a standard scalar reward model without introducing significant bias or instability. We present a discrete Hodge-filtering approach that isolates the consistent gradient component from the inconsistent cyclic components. Our results demonstrate that Hodge-filtered reward models provide more stable training signals and prevent the generalization of cyclic biases that are otherwise exploitable by RL agents.
+\end{abstract}
+
+\vskip 0.3in
+]
+
+\printAffiliationsAndNotice{}
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/method}
+\input{sections/experiments}
+\input{sections/related_work}
+\input{sections/conclusion}
+
+\section*{Impact Statement}
+This work provides tools for identifying and quantifying inconsistencies in human preference datasets used for AI alignment. By providing a rigorous mathematical framework for filtering non-transitive data, we enable the development of more stable and predictable RLHF systems.
+
+\bibliography{references}
+\bibliographystyle{icml2026}
+
+
+ewpage
+\appendix
+\input{sections/appendix}
+
+\end{document}

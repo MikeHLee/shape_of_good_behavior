@@ -1,0 +1,25 @@
+# Local (CPU/MPS) dependencies for the shared cross-track pipeline
+# Install: pip install -r shared/requirements-local.txt
+
+# Core scientific stack
+torch>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+
+# Embedding & NLP
+sentence-transformers>=2.2.0
+transformers>=4.36.0
+datasets>=2.0.0
+
+# LLM API (counterfactual generation)
+anthropic>=0.40.0
+
+# Visualization
+plotly>=5.10.0
+matplotlib>=3.7.0
+
+# Utilities
+pandas>=2.0.0
+tqdm>=4.65.0
+pyyaml>=6.0
