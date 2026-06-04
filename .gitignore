@@ -86,3 +86,6 @@ notebooks/legacy/
 # Large src/ generated outputs (keep source, not run artifacts)
 src/results/
 src/__pycache__/
+
+# internal coordination trail — keep private
+.swarm/
