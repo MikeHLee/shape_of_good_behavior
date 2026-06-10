@@ -56,7 +56,12 @@ import modal
 # added via add_local_dir below).
 import sys as _sys
 
-_AI_RESEARCH_ROOT = Path(__file__).resolve().parents[3]
+# Locally this file is at <root>/topics/shape_of_good_behavior/shared/, so the
+# ai_research root is parents[3]. Inside the Modal container the file is copied
+# to /root/ (only 2 parents), and shared_modal is mounted at /app/shared_modal —
+# so guard the parents[] access and rely on "/app" being on sys.path there.
+_resolved = Path(__file__).resolve()
+_AI_RESEARCH_ROOT = _resolved.parents[3] if len(_resolved.parents) > 3 else _resolved.parent
 for _p in (str(_AI_RESEARCH_ROOT), "/app"):
     if _p not in _sys.path:
         _sys.path.insert(0, _p)
@@ -323,7 +328,11 @@ def _embed_panel_impl(
 @app.function(
     image=image,
     gpu=None,
-    timeout=60 * 30,
+    # The Hodge decomposition on the full panel coboundary (D_E≈23.5k) runs well
+    # past 30 min; a hard Modal timeout kills the container mid-numpy so the
+    # track() __exit__ never writes FAILED (manifest strands at "running"). Give
+    # it real headroom. (ORG-002 validation 2026-06-09 hit the old 1800s cap.)
+    timeout=60 * 60 * 3,
     volumes={"/results": results_vol},
 )
 def fit_and_summarize(n_pairs: int = 2000, seed: int = 0, ridge: float = 1e-3) -> dict:
