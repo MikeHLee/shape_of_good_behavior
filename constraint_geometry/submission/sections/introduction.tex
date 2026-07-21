@@ -17,7 +17,7 @@ Our key contributions are:
     
     \item \textbf{Sheaf-Geodesic Policy Optimization (SGPO)}: We present a new algorithm that incorporates the safety metric into the policy gradient update. This ensures that the policy never moves toward unsafe regions, regardless of the potential reward.
     
-    \item \textbf{Evaluation on Deceptive Traps}: We evaluate SGPO against PPO \citep{schulman2017proximal} and CPO on our ``Murky Drone'' and ``Agentic Shortcut'' scenarios. We demonstrate that while baselines violate safety constraints 100\% of the time in the presence of deceptive rewards, SGPO achieves 0\% safety violations.
+    \item \textbf{Evaluation on Deceptive Traps}: We evaluate SGPO against PPO \citep{schulman2017proximal} and CPO on our ``Murky Drone'' and ``Agentic Shortcut'' scenarios. \textbf{[WITHDRAWN 2026-07-21]} The claim that baselines violate 100\% of the time while SGPO achieves 0\% is refuted by a 50-seed multi-step re-run: CPO is safest, and SGPO's advantage$/\sqrt{g}$ formulation does not differ from unconstrained PPO ($p=0.68$).
 \end{enumerate}
 
 This work bridges the gap between differential geometry and practical AI safety, offering a mathematically rigorous way to enforce guardrails that are robust to reward hacking and deceptive alignment.

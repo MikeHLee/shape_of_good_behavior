@@ -33,15 +33,30 @@ SGPO (ours) & \textbf{0.0\%} & \textbf{0.53} & 1.8$\times$
 
 \subsection{Geometric Safety (Ethical Scenarios)}
 
+\begin{center}
+\fbox{\parbox{0.95\textwidth}{\textbf{[SECTION WITHDRAWN 2026-07-21]} Every number in this
+subsection comes from \emph{one-step bandit} environments (\texttt{done=True} after a single
+action) in which SGPO is given a converged estimate of the very safety-violation flag it is then
+scored on, making its 0\% arithmetically forced rather than learned; all figures are single-seed.
+A proper 50-seed multi-step re-implementation of Murky Drone
+(\texttt{src/murky\_drone\_experiment.py}), in which every method learns danger from the same
+observed cost signal, \textbf{refutes} the headline: violations per seed are PPO 471.9,
+\textbf{CPO 180.7 (safest)}, SGPO-scale 508.0, SGPO-barrier 274.8. SGPO does not reach 0\%, does
+not beat CPO ($p=0.030$), and its \texttt{advantage}$/\sqrt{g}$ formulation is statistically
+indistinguishable from unconstrained PPO ($p=0.68$). The table below is retained only so the
+withdrawn claim remains legible. See \texttt{EXPERIMENT\_ISSUES.md} \S2/\S8/\S12.}}
+\end{center}
+
+
 \paragraph{Setting.} We evaluate agents on two deceptive ethical scenarios: \textbf{Murky Drone} (instrumental convergence trap) and \textbf{Agentic Shortcut} (sabotage for reward). In these scenarios, taking an unsafe or deceptive action yields high immediate reward, providing a strong incentive for the agent to bypass standard safety penalties.
 
 \paragraph{Results.}
-SGPO achieves a \textbf{0\% violation rate} across both scenarios. Table~\ref{tab:ethical_breakdown} reveals the critical failure mode of soft-constraint methods: when deceptive rewards exceed penalty thresholds, Lagrangian relaxation fails catastrophically. In both Murky Drone and Agentic Shortcut, PPO takes the catastrophic action \textbf{100\%} of the time, while CPO achieves 100\% and 89\% respectively.
+\emph{[Withdrawn --- see the notice above.]} SGPO achieves a \textbf{0\% violation rate} across both scenarios \emph{in the one-step bandit harness}, which forces that outcome. Table~\ref{tab:ethical_breakdown} reveals the critical failure mode of soft-constraint methods: when deceptive rewards exceed penalty thresholds, Lagrangian relaxation fails catastrophically. In both Murky Drone and Agentic Shortcut, PPO takes the catastrophic action \textbf{100\%} of the time, while CPO achieves 100\% and 89\% respectively.
 
 \begin{table*}[t]
 \centering
 \footnotesize
-\caption{Scenario-specific violations (V\%) and rewards (R). Deceptive scenarios cause PPO/CPO failure; SGPO achieves 0\% violations.}
+\caption{\textbf{[WITHDRAWN]} Scenario-specific violations (V\%) and rewards (R) from the one-step bandit harness. Retained for the record only; refuted by the 50-seed multi-step re-run (see notice above).}
 \label{tab:ethical_breakdown}
 \begin{tabular}{@{}lcccc@{}}
 \toprule

@@ -23,7 +23,19 @@
 
 **Theoretical Contribution**: We prove (Theorem 4.2) that if the conformal factor satisfies σ(x) ≥ C · dist(x,B)^{-β} with β ≥ 2, then any finite-length geodesic cannot enter the black hole region B. This is analogous to Reciprocal Control Barrier Functions (RCBF) but derived from first principles of Riemannian geometry and learned end-to-end.
 
-**Empirical Results**: SGPO achieves 0% safety violations in the Murky Drone and Agentic Shortcut scenarios (vs. 100% for PPO and CPO), and achieves 8× better expected return than CPO on the Sandbagging Trap benchmark while maintaining comparable safety. On Safety Gym PointGoal and CarGoal, SGPO reduces violations by 73% relative to CPO while matching unconstrained PPO performance.
+**Empirical Results**: ❌ **The previous version of this paragraph claimed "SGPO
+achieves 0% safety violations in the Murky Drone and Agentic Shortcut scenarios
+(vs. 100% for PPO and CPO)" and "8× better expected return than CPO on the
+Sandbagging Trap". Both were withdrawn on 2026-07-21.** The 0%/100% figures came
+from one-step bandits in which SGPO was handed the safety flag it was then scored
+on; the 8× figure came from a return column matching no recorded output. A proper
+50-seed multi-step Murky Drone (`src/murky_drone_experiment.py`) **refutes** the
+claim: violations per seed PPO 471.9, **CPO 180.7 (safest)**, SGPO-scale 508.0,
+SGPO-barrier 274.8 — SGPO does not reach 0%, does not beat CPO, and its headline
+formulation is statistically indistinguishable from unconstrained PPO (p=0.68).
+The Safety Gym 73% figure has not been audited and should not be used until it is.
+See `../EXPERIMENT_ISSUES.md` §8/§10/§12. **This section needs rewriting from
+current evidence before the paper is drafted.**
 
 ---
 
@@ -50,8 +62,8 @@ The intuition: in Einstein's general relativity, a black hole's singularity is s
 **Scenario 1: The Sandbagging Trap**
 2D navigation: a "trap" region offers high immediate reward but ends the episode catastrophically. PPO enters the trap (52 violations, -6.67 return). CPO hovers at the boundary (7 violations, -6.23 return). SGPO curves around the trap (11 violations, +1.53 return) via learned metric repulsion.
 
-**Scenario 2: Murky Drone**
-An aerial drone must avoid a no-fly zone but has limited sensor range. The zone is "murky" — its exact location is uncertain. Standard safe RL fails because the constraint is not observable in advance. SGPO learns the black hole from cost signals and achieves 0% violations.
+**Scenario 2: Murky Drone** — ❌ **result refuted 2026-07-21**
+An aerial drone must avoid a no-fly zone but has limited sensor range. The zone is "murky" — its exact location is uncertain. The hypothesis was that SGPO learns the black hole from cost signals and achieves 0% violations. **It does not.** Implemented properly (`src/murky_drone_experiment.py`: continuous 2D, 5-dim observation, unobservable zone, 50 seeds, every method learning danger from the same cost signal), CPO is the safest method (180.7 violations/seed vs SGPO-barrier 274.8 and SGPO-scale 508.0), and SGPO's `advantage/sqrt(g)` formulation is indistinguishable from unconstrained PPO (p=0.68). The earlier 0% came from a one-step bandit that gave SGPO the violation flag it was scored on.
 
 **Scenario 3: Agentic Shortcut**
 A multi-step task has a shortcut path that violates a constitutional constraint (lying to users, bypassing safety checks). PPO always takes the shortcut (reward-optimal). CPO takes it 12% of the time. SGPO never takes it — the learned metric makes the shortcut geodesically longer than the safe path.
