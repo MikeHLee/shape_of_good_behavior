@@ -177,6 +177,7 @@ This document records issues discovered during experiment verification and their
 | Track 3: every p is split-seed 0 only | **HIGH** | — | ✅ **DISCLOSED** 2026-07-21 — range 8.1e−8…1.6e−2 (§13B) |
 | Track 3: no multiple-comparison correction | MEDIUM | — | ✅ **DISCLOSED** 2026-07-21 — af-output fails Bonferroni (§13C) |
 | Track 3: hardcoded figure constants | MEDIUM | — | ✅ **FIXED** in `72cab45` — same class as §7 (§13D) |
+| Repo-wide figure-provenance sweep | MEDIUM | — | ✅ **COMPLETE** 2026-07-21 — 44 scripts swept, 1 real instance found + fixed (§14) |
 
 ---
 
@@ -693,6 +694,40 @@ the corrections above — all surfaces still do this.
 
 **Status: ⚠️ OPEN → corrections applied in `alignment_research`; not blocking
 distribution. The strong positives and the sign-flip are unaffected.**
+
+---
+
+## §14 — Repo-wide figure-provenance sweep ✅ COMPLETE (2026-07-21)
+
+§7 (Figure 2 hand-typed) and §13D (small-panel AUCs hardcoded) were the same
+defect in two independent tracks, which made it a pipeline question rather than
+two coincidences. Swept **all 44 figure-generating scripts** across both repos
+(every `.py` containing `savefig`/`write_image`), classifying each by whether it
+loads from disk and whether it assigns literal numeric arrays with non-cosmetic
+names.
+
+**Result: one genuine remaining instance, now fixed.**
+
+`scripts/generate_paper_figures.py::create_murky_drone_explainer()` hardcoded
+`violations = [100, 100, 0]` — the "SGPO 0% vs 100% PPO/CPO" claim — and
+`rewards = [2.7, 1.2, -0.5]`. This was doubly wrong: hardcoded *and* depicting a
+result §12 has since **refuted**. Panel C now calls `load_murky_drone_violations()`,
+which reads `results/safety/murky_drone_multistep.json` and plots the real 50-seed
+figures with error bars (PPO 471.9, CPO 180.7, SGPO-scale 508.0, SGPO-barrier
+274.8). It raises rather than falling back to constants.
+
+**Everything else is clean.** The other flagged literals are **sweep inputs, not
+results** — `h1_magnitudes=[0.0, 0.25, 0.5, 0.75, 1.0]` (a default argument in
+`h1_reward_hacking_experiment.py:713`), `thresholds`, `clip_ratios`, `horizons`,
+`cycle_strengths` — or synthetic geometry for conceptual diagrams (`points_z`,
+`key_states`, `test_states`). Those are legitimately literal: they are the
+experiment's configuration or an illustration, not measurements presented as
+measurements.
+
+**Standing rule this establishes**: a figure panel that displays a *measured*
+quantity must load it, and must fail loudly when the data is missing. A panel
+displaying a *design constant* or a schematic may hardcode it. The distinction is
+whether re-running the experiment should be able to change the picture.
 
 ---
 

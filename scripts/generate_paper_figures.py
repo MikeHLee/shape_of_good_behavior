@@ -96,6 +96,31 @@ def load_ethical_violation_rates():
     )
 
 
+MURKY_DRONE_RESULTS = Path(__file__).parent.parent / "results" / "safety" / "murky_drone_multistep.json"
+
+
+def load_murky_drone_violations():
+    """Load per-method violation counts from the 50-seed multi-step Murky Drone run.
+
+    Returns (method_names, means, stds). Raises if the results file is absent —
+    this panel must never fall back to constants. The figure it feeds previously
+    carried the hardcoded, and now refuted, "SGPO 0% vs 100% PPO/CPO" claim.
+    """
+    import json
+    if not MURKY_DRONE_RESULTS.exists():
+        raise FileNotFoundError(
+            f"{MURKY_DRONE_RESULTS} not found. Generate it with:\n"
+            f"  ./venv/bin/python3 src/murky_drone_experiment.py --seeds 50"
+        )
+    with open(MURKY_DRONE_RESULTS) as f:
+        summary = json.load(f)["summary"]
+    names = list(summary.keys())
+    means = [summary[m]["violations_total"]["mean"] for m in names]
+    stds = [summary[m]["violations_total"]["std"] for m in names]
+    print(f"  [Murky Drone] violations loaded from {MURKY_DRONE_RESULTS.name}")
+    return names, means, stds
+
+
 def create_reward_manifold_with_black_hole():
     """
     Figure 1: 3D visualization of reward manifold with a "black hole" singularity.
@@ -552,27 +577,31 @@ def create_murky_drone_explainer():
     
     ax.set_title('(B) Reward Values', fontsize=12, fontweight='bold', pad=5)
     
-    # === Panel C: Algorithm Responses (clean bar chart) ===
+    # === Panel C: Algorithm Responses ===
+    # Loaded from the 50-seed multi-step experiment, NOT hardcoded. This panel
+    # previously showed literals [100, 100, 0] ("SGPO 0% vs 100% PPO/CPO"), which
+    # came from a one-step bandit that handed SGPO the violation flag it was
+    # scored on. That claim is refuted — see EXPERIMENT_ISSUES.md §8/§12.
     ax = fig.add_subplot(gs[2])
-    
-    algorithms = ['PPO', 'CPO', 'SGPO']
-    violations = [100, 100, 0]
-    colors = ['#ff7f0e', '#1f77b4', '#2ca02c']
-    
+
+    algorithms, violations, errs = load_murky_drone_violations()
+    colors = ['#ff7f0e', '#1f77b4', '#2ca02c', '#9467bd'][:len(algorithms)]
+
     x_pos = np.arange(len(algorithms))
-    bars = ax.bar(x_pos, violations, color=colors, edgecolor='black', linewidth=1.5, width=0.6)
-    
+    bars = ax.bar(x_pos, violations, yerr=errs, capsize=4, color=colors,
+                  edgecolor='black', linewidth=1.5, width=0.6)
+
     ax.set_xticks(x_pos)
-    ax.set_xticklabels(algorithms, fontsize=10)
-    ax.set_ylabel('Violations (%)', fontsize=11)
-    ax.set_ylim(0, 120)
-    
-    # Add percentage labels on top
+    ax.set_xticklabels(algorithms, fontsize=8, rotation=15)
+    ax.set_ylabel('Violations per seed', fontsize=11)
+    ax.set_ylim(0, max(v + e for v, e in zip(violations, errs)) * 1.25)
+
     for bar, v in zip(bars, violations):
-        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 3,
-                f'{v}%', ha='center', fontsize=10, fontweight='bold')
-    
-    ax.set_title('(C) Safety Violations', fontsize=12, fontweight='bold', pad=5)
+        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 5,
+                f'{v:.0f}', ha='center', fontsize=9, fontweight='bold')
+
+    ax.set_title('(C) Safety Violations\n(50 seeds, multi-step)',
+                 fontsize=11, fontweight='bold', pad=5)
     
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / 'murky_drone_explainer.png', bbox_inches='tight', dpi=300)
