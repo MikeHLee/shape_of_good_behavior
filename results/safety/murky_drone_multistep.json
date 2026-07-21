@@ -1,0 +1,3099 @@
+{
+  "experiment": "murky_drone_multistep",
+  "config": {
+    "seeds": 50,
+    "episodes": 200,
+    "phase1_episodes": 20,
+    "zone_radius": 0.15,
+    "sensor_range": 0.3,
+    "sensor_noise": 0.05,
+    "zone_centers": [
+      [
+        0.3,
+        0.7
+      ],
+      [
+        0.7,
+        0.3
+      ],
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "obs_dim": 5,
+    "act_dim": 2,
+    "fairness": "all methods observe only (pos, vel, noisy sensor) + scalar cost; SGPO's metric is trained on observed cost, never on ground-truth zone distance"
+  },
+  "summary": {
+    "PPO": {
+      "violations_total": {
+        "mean": 471.92,
+        "std": 346.56753265976533,
+        "n": 50
+      },
+      "violations_phase1": {
+        "mean": 67.06,
+        "std": 64.56776538281785,
+        "n": 50
+      },
+      "violations_phase2": {
+        "mean": 404.86,
+        "std": 320.0508256830595,
+        "n": 50
+      },
+      "violation_free_episodes": {
+        "mean": 0.6535,
+        "std": 0.2844368765380007,
+        "n": 50
+      },
+      "violation_free_phase2": {
+        "mean": 0.6441111111111111,
+        "std": 0.3037939530932175,
+        "n": 50
+      },
+      "return_final50": {
+        "mean": 17.504521334388038,
+        "std": 9.046081182753333,
+        "n": 50
+      },
+      "goal_rate_final50": {
+        "mean": 0.3788,
+        "std": 0.3542721195548381,
+        "n": 50
+      }
+    },
+    "CPO": {
+      "violations_total": {
+        "mean": 180.66,
+        "std": 173.44017494719697,
+        "n": 50
+      },
+      "violations_phase1": {
+        "mean": 58.46,
+        "std": 65.1385368241553,
+        "n": 50
+      },
+      "violations_phase2": {
+        "mean": 122.2,
+        "std": 139.0819755337382,
+        "n": 50
+      },
+      "violation_free_episodes": {
+        "mean": 0.8879,
+        "std": 0.1038645605525557,
+        "n": 50
+      },
+      "violation_free_phase2": {
+        "mean": 0.8961111111111112,
+        "std": 0.10771598621405748,
+        "n": 50
+      },
+      "return_final50": {
+        "mean": 16.75540949445354,
+        "std": 8.248084626359166,
+        "n": 50
+      },
+      "goal_rate_final50": {
+        "mean": 0.35240000000000005,
+        "std": 0.3168696377801742,
+        "n": 50
+      }
+    },
+    "SGPO-scale": {
+      "violations_total": {
+        "mean": 508.0,
+        "std": 522.0985519604355,
+        "n": 50
+      },
+      "violations_phase1": {
+        "mean": 78.54,
+        "std": 61.321571262002216,
+        "n": 50
+      },
+      "violations_phase2": {
+        "mean": 429.46,
+        "std": 506.7584945876435,
+        "n": 50
+      },
+      "violation_free_episodes": {
+        "mean": 0.7059000000000001,
+        "std": 0.23259338699427673,
+        "n": 50
+      },
+      "violation_free_phase2": {
+        "mean": 0.7071111111111111,
+        "std": 0.25199391307081553,
+        "n": 50
+      },
+      "return_final50": {
+        "mean": 18.702790123459565,
+        "std": 8.865709481714472,
+        "n": 50
+      },
+      "goal_rate_final50": {
+        "mean": 0.4236000000000001,
+        "std": 0.34576599377176986,
+        "n": 50
+      },
+      "zone_center_error": {
+        "mean": 0.2194463075193645,
+        "std": 0.13089204049169806,
+        "n": 50
+      }
+    },
+    "SGPO-barrier": {
+      "violations_total": {
+        "mean": 274.8,
+        "std": 247.71247321795303,
+        "n": 50
+      },
+      "violations_phase1": {
+        "mean": 78.54,
+        "std": 61.321571262002216,
+        "n": 50
+      },
+      "violations_phase2": {
+        "mean": 196.26,
+        "std": 220.74547260016317,
+        "n": 50
+      },
+      "violation_free_episodes": {
+        "mean": 0.8126000000000001,
+        "std": 0.18957858744153183,
+        "n": 50
+      },
+      "violation_free_phase2": {
+        "mean": 0.8256666666666667,
+        "std": 0.19911270169635176,
+        "n": 50
+      },
+      "return_final50": {
+        "mean": 17.23705027434852,
+        "std": 9.360247243941199,
+        "n": 50
+      },
+      "goal_rate_final50": {
+        "mean": 0.37799999999999995,
+        "std": 0.3570685637012498,
+        "n": 50
+      },
+      "zone_center_error": {
+        "mean": 0.3298190092055881,
+        "std": 0.11327965651808462,
+        "n": 49
+      }
+    }
+  },
+  "per_seed": {
+    "PPO": [
+      {
+        "seed": 0,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 4.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 4.0,
+        "violation_free_episodes": 0.995,
+        "violation_free_phase2": 0.9944444444444445,
+        "return_final50": 33.48156646147395,
+        "goal_rate_final50": 1.0
+      },
+      {
+        "seed": 1,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 109.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 109.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9555555555555556,
+        "return_final50": 18.885039855902388,
+        "goal_rate_final50": 0.38
+      },
+      {
+        "seed": 2,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 897.0,
+        "violations_phase1": 18.0,
+        "violations_phase2": 879.0,
+        "violation_free_episodes": 0.35,
+        "violation_free_phase2": 0.29444444444444445,
+        "return_final50": 9.44299285838377,
+        "goal_rate_final50": 0.18
+      },
+      {
+        "seed": 3,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 649.0,
+        "violations_phase1": 89.0,
+        "violations_phase2": 560.0,
+        "violation_free_episodes": 0.475,
+        "violation_free_phase2": 0.48333333333333334,
+        "return_final50": 10.887372471522506,
+        "goal_rate_final50": 0.14
+      },
+      {
+        "seed": 4,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 373.0,
+        "violations_phase1": 161.0,
+        "violations_phase2": 212.0,
+        "violation_free_episodes": 0.84,
+        "violation_free_phase2": 0.8777777777777778,
+        "return_final50": 13.35539752604815,
+        "goal_rate_final50": 0.24
+      },
+      {
+        "seed": 5,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 949.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 949.0,
+        "violation_free_episodes": 0.19,
+        "violation_free_phase2": 0.1,
+        "return_final50": 33.56497460181209,
+        "goal_rate_final50": 1.0
+      },
+      {
+        "seed": 6,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 198.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 198.0,
+        "violation_free_episodes": 0.87,
+        "violation_free_phase2": 0.8555555555555555,
+        "return_final50": 20.627892850069134,
+        "goal_rate_final50": 0.5
+      },
+      {
+        "seed": 7,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 298.0,
+        "violations_phase1": 143.0,
+        "violations_phase2": 155.0,
+        "violation_free_episodes": 0.835,
+        "violation_free_phase2": 0.8722222222222222,
+        "return_final50": 8.641692830675211,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 8,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 799.0,
+        "violations_phase1": 41.0,
+        "violations_phase2": 758.0,
+        "violation_free_episodes": 0.405,
+        "violation_free_phase2": 0.35555555555555557,
+        "return_final50": 14.361214069801,
+        "goal_rate_final50": 0.26
+      },
+      {
+        "seed": 9,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 115.0,
+        "violations_phase1": 45.0,
+        "violations_phase2": 70.0,
+        "violation_free_episodes": 0.905,
+        "violation_free_phase2": 0.9277777777777778,
+        "return_final50": 9.216114639094036,
+        "goal_rate_final50": 0.04
+      },
+      {
+        "seed": 10,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 146.0,
+        "violations_phase1": 141.0,
+        "violations_phase2": 5.0,
+        "violation_free_episodes": 0.945,
+        "violation_free_phase2": 0.9944444444444445,
+        "return_final50": 28.117898748686684,
+        "goal_rate_final50": 0.8
+      },
+      {
+        "seed": 11,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 569.0,
+        "violations_phase1": 185.0,
+        "violations_phase2": 384.0,
+        "violation_free_episodes": 0.58,
+        "violation_free_phase2": 0.5777777777777777,
+        "return_final50": 8.115771168324814,
+        "goal_rate_final50": 0.04
+      },
+      {
+        "seed": 12,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 61.0,
+        "violations_phase1": 61.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.975,
+        "violation_free_phase2": 1.0,
+        "return_final50": 24.920389979913462,
+        "goal_rate_final50": 0.68
+      },
+      {
+        "seed": 13,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 689.0,
+        "violations_phase1": 87.0,
+        "violations_phase2": 602.0,
+        "violation_free_episodes": 0.745,
+        "violation_free_phase2": 0.7444444444444445,
+        "return_final50": 28.083984305029524,
+        "goal_rate_final50": 0.8
+      },
+      {
+        "seed": 14,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 850.0,
+        "violations_phase1": 125.0,
+        "violations_phase2": 725.0,
+        "violation_free_episodes": 0.19,
+        "violation_free_phase2": 0.14444444444444443,
+        "return_final50": 8.617622800054257,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 15,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 483.0,
+        "violations_phase1": 76.0,
+        "violations_phase2": 407.0,
+        "violation_free_episodes": 0.735,
+        "violation_free_phase2": 0.7388888888888889,
+        "return_final50": 8.803281114425182,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 16,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 213.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 213.0,
+        "violation_free_episodes": 0.87,
+        "violation_free_phase2": 0.8555555555555555,
+        "return_final50": 14.94845007957472,
+        "goal_rate_final50": 0.3
+      },
+      {
+        "seed": 17,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 921.0,
+        "violations_phase1": 43.0,
+        "violations_phase2": 878.0,
+        "violation_free_episodes": 0.165,
+        "violation_free_phase2": 0.10555555555555556,
+        "return_final50": 22.819684177846852,
+        "goal_rate_final50": 0.6
+      },
+      {
+        "seed": 18,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 72.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 72.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9555555555555556,
+        "return_final50": 11.35780046096606,
+        "goal_rate_final50": 0.08
+      },
+      {
+        "seed": 19,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 31.862517666816448,
+        "goal_rate_final50": 0.94
+      },
+      {
+        "seed": 20,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 975.0,
+        "violations_phase1": 204.0,
+        "violations_phase2": 771.0,
+        "violation_free_episodes": 0.18,
+        "violation_free_phase2": 0.17777777777777778,
+        "return_final50": 33.6211802765234,
+        "goal_rate_final50": 1.0
+      },
+      {
+        "seed": 21,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 672.0,
+        "violations_phase1": 152.0,
+        "violations_phase2": 520.0,
+        "violation_free_episodes": 0.495,
+        "violation_free_phase2": 0.5166666666666667,
+        "return_final50": 18.419084031374467,
+        "goal_rate_final50": 0.4
+      },
+      {
+        "seed": 22,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 63.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 63.0,
+        "violation_free_episodes": 0.965,
+        "violation_free_phase2": 0.9611111111111111,
+        "return_final50": 15.686598408464839,
+        "goal_rate_final50": 0.32
+      },
+      {
+        "seed": 23,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 546.0,
+        "violations_phase1": 49.0,
+        "violations_phase2": 497.0,
+        "violation_free_episodes": 0.66,
+        "violation_free_phase2": 0.65,
+        "return_final50": 11.322622589583561,
+        "goal_rate_final50": 0.16
+      },
+      {
+        "seed": 24,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 32.90043407756289,
+        "goal_rate_final50": 0.98
+      },
+      {
+        "seed": 25,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 906.0,
+        "violations_phase1": 42.0,
+        "violations_phase2": 864.0,
+        "violation_free_episodes": 0.205,
+        "violation_free_phase2": 0.14444444444444443,
+        "return_final50": 7.138269897593412,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 26,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 1153.0,
+        "violations_phase1": 211.0,
+        "violations_phase2": 942.0,
+        "violation_free_episodes": 0.25,
+        "violation_free_phase2": 0.25,
+        "return_final50": 14.84982416130915,
+        "goal_rate_final50": 0.24
+      },
+      {
+        "seed": 27,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 41.0,
+        "violations_phase1": 13.0,
+        "violations_phase2": 28.0,
+        "violation_free_episodes": 0.945,
+        "violation_free_phase2": 0.9555555555555556,
+        "return_final50": 32.386902140066084,
+        "goal_rate_final50": 0.96
+      },
+      {
+        "seed": 28,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 249.0,
+        "violations_phase1": 58.0,
+        "violations_phase2": 191.0,
+        "violation_free_episodes": 0.9,
+        "violation_free_phase2": 0.9055555555555556,
+        "return_final50": 30.81658589448481,
+        "goal_rate_final50": 0.9
+      },
+      {
+        "seed": 29,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 1180.0,
+        "violations_phase1": 146.0,
+        "violations_phase2": 1034.0,
+        "violation_free_episodes": 0.225,
+        "violation_free_phase2": 0.20555555555555555,
+        "return_final50": 15.981865204445807,
+        "goal_rate_final50": 0.32
+      },
+      {
+        "seed": 30,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 610.0,
+        "violations_phase1": 59.0,
+        "violations_phase2": 551.0,
+        "violation_free_episodes": 0.555,
+        "violation_free_phase2": 0.5333333333333333,
+        "return_final50": 16.097409345935105,
+        "goal_rate_final50": 0.34
+      },
+      {
+        "seed": 31,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 508.0,
+        "violations_phase1": 34.0,
+        "violations_phase2": 474.0,
+        "violation_free_episodes": 0.65,
+        "violation_free_phase2": 0.6222222222222222,
+        "return_final50": 25.976537610300582,
+        "goal_rate_final50": 0.72
+      },
+      {
+        "seed": 32,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 374.0,
+        "violations_phase1": 201.0,
+        "violations_phase2": 173.0,
+        "violation_free_episodes": 0.745,
+        "violation_free_phase2": 0.7944444444444444,
+        "return_final50": 12.586942945926538,
+        "goal_rate_final50": 0.16
+      },
+      {
+        "seed": 33,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 20.943838138226717,
+        "goal_rate_final50": 0.5
+      },
+      {
+        "seed": 34,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 587.0,
+        "violations_phase1": 61.0,
+        "violations_phase2": 526.0,
+        "violation_free_episodes": 0.435,
+        "violation_free_phase2": 0.4222222222222222,
+        "return_final50": 8.120619489852238,
+        "goal_rate_final50": 0.04
+      },
+      {
+        "seed": 35,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 547.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 547.0,
+        "violation_free_episodes": 0.65,
+        "violation_free_phase2": 0.6111111111111112,
+        "return_final50": 9.194056252183207,
+        "goal_rate_final50": 0.06
+      },
+      {
+        "seed": 36,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 16.0,
+        "violations_phase1": 16.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.995,
+        "violation_free_phase2": 1.0,
+        "return_final50": 8.340497909935896,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 37,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 561.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 561.0,
+        "violation_free_episodes": 0.77,
+        "violation_free_phase2": 0.7444444444444445,
+        "return_final50": 16.860621904186885,
+        "goal_rate_final50": 0.34
+      },
+      {
+        "seed": 38,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 617.0,
+        "violations_phase1": 103.0,
+        "violations_phase2": 514.0,
+        "violation_free_episodes": 0.66,
+        "violation_free_phase2": 0.6611111111111111,
+        "return_final50": 9.348261559854864,
+        "goal_rate_final50": 0.04
+      },
+      {
+        "seed": 39,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 121.0,
+        "violations_phase1": 24.0,
+        "violations_phase2": 97.0,
+        "violation_free_episodes": 0.885,
+        "violation_free_phase2": 0.8833333333333333,
+        "return_final50": 19.41727736008246,
+        "goal_rate_final50": 0.46
+      },
+      {
+        "seed": 40,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 272.0,
+        "violations_phase1": 11.0,
+        "violations_phase2": 261.0,
+        "violation_free_episodes": 0.675,
+        "violation_free_phase2": 0.6444444444444445,
+        "return_final50": 7.593715356760795,
+        "goal_rate_final50": 0.02
+      },
+      {
+        "seed": 41,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 1079.0,
+        "violations_phase1": 143.0,
+        "violations_phase2": 936.0,
+        "violation_free_episodes": 0.095,
+        "violation_free_phase2": 0.06111111111111111,
+        "return_final50": 33.54871800063408,
+        "goal_rate_final50": 1.0
+      },
+      {
+        "seed": 42,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 710.0,
+        "violations_phase1": 68.0,
+        "violations_phase2": 642.0,
+        "violation_free_episodes": 0.41,
+        "violation_free_phase2": 0.36666666666666664,
+        "return_final50": 7.638812902962332,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 43,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 588.0,
+        "violations_phase1": 104.0,
+        "violations_phase2": 484.0,
+        "violation_free_episodes": 0.49,
+        "violation_free_phase2": 0.48333333333333334,
+        "return_final50": 7.541105453472916,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 44,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 760.0,
+        "violations_phase1": 57.0,
+        "violations_phase2": 703.0,
+        "violation_free_episodes": 0.41,
+        "violation_free_phase2": 0.36666666666666664,
+        "return_final50": 24.41862529737703,
+        "goal_rate_final50": 0.66
+      },
+      {
+        "seed": 45,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 746.0,
+        "violations_phase1": 60.0,
+        "violations_phase2": 686.0,
+        "violation_free_episodes": 0.355,
+        "violation_free_phase2": 0.3111111111111111,
+        "return_final50": 8.852443352240085,
+        "goal_rate_final50": 0.02
+      },
+      {
+        "seed": 46,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 388.0,
+        "violations_phase1": 156.0,
+        "violations_phase2": 232.0,
+        "violation_free_episodes": 0.835,
+        "violation_free_phase2": 0.8722222222222222,
+        "return_final50": 24.94730537112821,
+        "goal_rate_final50": 0.68
+      },
+      {
+        "seed": 47,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 614.0,
+        "violations_phase1": 120.0,
+        "violations_phase2": 494.0,
+        "violation_free_episodes": 0.52,
+        "violation_free_phase2": 0.5111111111111111,
+        "return_final50": 9.409118050471681,
+        "goal_rate_final50": 0.02
+      },
+      {
+        "seed": 48,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 23.36402135699897,
+        "goal_rate_final50": 0.62
+      },
+      {
+        "seed": 49,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 318.0,
+        "violations_phase1": 46.0,
+        "violations_phase2": 272.0,
+        "violation_free_episodes": 0.725,
+        "violation_free_phase2": 0.7166666666666667,
+        "return_final50": 7.791113713042692,
+        "goal_rate_final50": 0.0
+      }
+    ],
+    "CPO": [
+      {
+        "seed": 0,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 30.221238284957295,
+        "goal_rate_final50": 0.88
+      },
+      {
+        "seed": 1,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 102.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 102.0,
+        "violation_free_episodes": 0.875,
+        "violation_free_phase2": 0.8611111111111112,
+        "return_final50": 9.705412472150558,
+        "goal_rate_final50": 0.1
+      },
+      {
+        "seed": 2,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 185.0,
+        "violations_phase1": 81.0,
+        "violations_phase2": 104.0,
+        "violation_free_episodes": 0.825,
+        "violation_free_phase2": 0.8444444444444444,
+        "return_final50": 13.766110179120329,
+        "goal_rate_final50": 0.22
+      },
+      {
+        "seed": 3,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 625.0,
+        "violations_phase1": 59.0,
+        "violations_phase2": 566.0,
+        "violation_free_episodes": 0.44,
+        "violation_free_phase2": 0.4166666666666667,
+        "return_final50": 7.935248531890755,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 4,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 86.0,
+        "violations_phase1": 86.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.97,
+        "violation_free_phase2": 1.0,
+        "return_final50": 8.549841850086445,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 5,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 177.0,
+        "violations_phase1": 46.0,
+        "violations_phase2": 131.0,
+        "violation_free_episodes": 0.88,
+        "violation_free_phase2": 0.8888888888888888,
+        "return_final50": 8.116728074260653,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 6,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 8.653628954571326,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 7,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 66.0,
+        "violations_phase1": 36.0,
+        "violations_phase2": 30.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9611111111111111,
+        "return_final50": 20.234538420229413,
+        "goal_rate_final50": 0.42
+      },
+      {
+        "seed": 8,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 94.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 94.0,
+        "violation_free_episodes": 0.91,
+        "violation_free_phase2": 0.9,
+        "return_final50": 18.329773871358444,
+        "goal_rate_final50": 0.4
+      },
+      {
+        "seed": 9,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 210.0,
+        "violations_phase1": 34.0,
+        "violations_phase2": 176.0,
+        "violation_free_episodes": 0.89,
+        "violation_free_phase2": 0.8833333333333333,
+        "return_final50": 16.40750796746657,
+        "goal_rate_final50": 0.28
+      },
+      {
+        "seed": 10,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 14.0,
+        "violations_phase1": 14.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.99,
+        "violation_free_phase2": 1.0,
+        "return_final50": 10.775747792103946,
+        "goal_rate_final50": 0.12
+      },
+      {
+        "seed": 11,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 281.0,
+        "violations_phase1": 216.0,
+        "violations_phase2": 65.0,
+        "violation_free_episodes": 0.885,
+        "violation_free_phase2": 0.9222222222222223,
+        "return_final50": 8.91090630682272,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 12,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 58.0,
+        "violations_phase1": 52.0,
+        "violations_phase2": 6.0,
+        "violation_free_episodes": 0.975,
+        "violation_free_phase2": 0.9833333333333333,
+        "return_final50": 21.253738535739558,
+        "goal_rate_final50": 0.54
+      },
+      {
+        "seed": 13,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 85.0,
+        "violations_phase1": 76.0,
+        "violations_phase2": 9.0,
+        "violation_free_episodes": 0.975,
+        "violation_free_phase2": 0.9944444444444445,
+        "return_final50": 26.027936795172906,
+        "goal_rate_final50": 0.72
+      },
+      {
+        "seed": 14,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 391.0,
+        "violations_phase1": 88.0,
+        "violations_phase2": 303.0,
+        "violation_free_episodes": 0.835,
+        "violation_free_phase2": 0.8555555555555555,
+        "return_final50": 19.809890199099367,
+        "goal_rate_final50": 0.44
+      },
+      {
+        "seed": 15,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 81.0,
+        "violations_phase1": 57.0,
+        "violations_phase2": 24.0,
+        "violation_free_episodes": 0.965,
+        "violation_free_phase2": 0.9833333333333333,
+        "return_final50": 26.563022559484363,
+        "goal_rate_final50": 0.74
+      },
+      {
+        "seed": 16,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 59.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 59.0,
+        "violation_free_episodes": 0.945,
+        "violation_free_phase2": 0.9388888888888889,
+        "return_final50": 19.68006779626877,
+        "goal_rate_final50": 0.58
+      },
+      {
+        "seed": 17,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 278.0,
+        "violations_phase1": 19.0,
+        "violations_phase2": 259.0,
+        "violation_free_episodes": 0.81,
+        "violation_free_phase2": 0.8,
+        "return_final50": 21.502400729823893,
+        "goal_rate_final50": 0.52
+      },
+      {
+        "seed": 18,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 21.0,
+        "violations_phase1": 10.0,
+        "violations_phase2": 11.0,
+        "violation_free_episodes": 0.98,
+        "violation_free_phase2": 0.9833333333333333,
+        "return_final50": 19.750002281739174,
+        "goal_rate_final50": 0.5
+      },
+      {
+        "seed": 19,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 85.0,
+        "violations_phase1": 64.0,
+        "violations_phase2": 21.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9777777777777777,
+        "return_final50": 32.404983771342,
+        "goal_rate_final50": 0.96
+      },
+      {
+        "seed": 20,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 717.0,
+        "violations_phase1": 125.0,
+        "violations_phase2": 592.0,
+        "violation_free_episodes": 0.67,
+        "violation_free_phase2": 0.6888888888888889,
+        "return_final50": 13.906839058524394,
+        "goal_rate_final50": 0.22
+      },
+      {
+        "seed": 21,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 177.0,
+        "violations_phase1": 7.0,
+        "violations_phase2": 170.0,
+        "violation_free_episodes": 0.825,
+        "violation_free_phase2": 0.8111111111111111,
+        "return_final50": 11.500370404360988,
+        "goal_rate_final50": 0.16
+      },
+      {
+        "seed": 22,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 35.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 35.0,
+        "violation_free_episodes": 0.955,
+        "violation_free_phase2": 0.95,
+        "return_final50": 17.453256586841096,
+        "goal_rate_final50": 0.36
+      },
+      {
+        "seed": 23,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 119.0,
+        "violations_phase1": 62.0,
+        "violations_phase2": 57.0,
+        "violation_free_episodes": 0.93,
+        "violation_free_phase2": 0.95,
+        "return_final50": 8.848033739627601,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 24,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 134.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 134.0,
+        "violation_free_episodes": 0.91,
+        "violation_free_phase2": 0.9,
+        "return_final50": 26.006279577874107,
+        "goal_rate_final50": 0.72
+      },
+      {
+        "seed": 25,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 157.0,
+        "violations_phase1": 90.0,
+        "violations_phase2": 67.0,
+        "violation_free_episodes": 0.91,
+        "violation_free_phase2": 0.9388888888888889,
+        "return_final50": 32.915920841288546,
+        "goal_rate_final50": 0.98
+      },
+      {
+        "seed": 26,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 447.0,
+        "violations_phase1": 260.0,
+        "violations_phase2": 187.0,
+        "violation_free_episodes": 0.85,
+        "violation_free_phase2": 0.9,
+        "return_final50": 20.20756515557735,
+        "goal_rate_final50": 0.46
+      },
+      {
+        "seed": 27,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 85.0,
+        "violations_phase1": 71.0,
+        "violations_phase2": 14.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9888888888888889,
+        "return_final50": 12.831661953749181,
+        "goal_rate_final50": 0.18
+      },
+      {
+        "seed": 28,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 70.0,
+        "violations_phase1": 29.0,
+        "violations_phase2": 41.0,
+        "violation_free_episodes": 0.91,
+        "violation_free_phase2": 0.9111111111111111,
+        "return_final50": 29.748904987821692,
+        "goal_rate_final50": 0.86
+      },
+      {
+        "seed": 29,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 315.0,
+        "violations_phase1": 128.0,
+        "violations_phase2": 187.0,
+        "violation_free_episodes": 0.83,
+        "violation_free_phase2": 0.85,
+        "return_final50": 8.319271401299382,
+        "goal_rate_final50": 0.04
+      },
+      {
+        "seed": 30,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 189.0,
+        "violations_phase1": 139.0,
+        "violations_phase2": 50.0,
+        "violation_free_episodes": 0.915,
+        "violation_free_phase2": 0.9388888888888889,
+        "return_final50": 25.978688320814612,
+        "goal_rate_final50": 0.72
+      },
+      {
+        "seed": 31,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 146.0,
+        "violations_phase1": 124.0,
+        "violations_phase2": 22.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9777777777777777,
+        "return_final50": 8.745728425514464,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 32,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 405.0,
+        "violations_phase1": 116.0,
+        "violations_phase2": 289.0,
+        "violation_free_episodes": 0.77,
+        "violation_free_phase2": 0.7944444444444444,
+        "return_final50": 17.863323311701766,
+        "goal_rate_final50": 0.4
+      },
+      {
+        "seed": 33,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 21.125810223060185,
+        "goal_rate_final50": 0.46
+      },
+      {
+        "seed": 34,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 23.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 23.0,
+        "violation_free_episodes": 0.97,
+        "violation_free_phase2": 0.9666666666666667,
+        "return_final50": 33.60817806520188,
+        "goal_rate_final50": 1.0
+      },
+      {
+        "seed": 35,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 206.0,
+        "violations_phase1": 54.0,
+        "violations_phase2": 152.0,
+        "violation_free_episodes": 0.88,
+        "violation_free_phase2": 0.8944444444444445,
+        "return_final50": 8.65362993853176,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 36,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 46.0,
+        "violations_phase1": 13.0,
+        "violations_phase2": 33.0,
+        "violation_free_episodes": 0.95,
+        "violation_free_phase2": 0.9555555555555556,
+        "return_final50": 17.043197560493653,
+        "goal_rate_final50": 0.38
+      },
+      {
+        "seed": 37,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 247.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 247.0,
+        "violation_free_episodes": 0.755,
+        "violation_free_phase2": 0.7277777777777777,
+        "return_final50": 17.424440261934272,
+        "goal_rate_final50": 0.4
+      },
+      {
+        "seed": 38,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 199.0,
+        "violations_phase1": 6.0,
+        "violations_phase2": 193.0,
+        "violation_free_episodes": 0.775,
+        "violation_free_phase2": 0.7555555555555555,
+        "return_final50": 10.753022552025179,
+        "goal_rate_final50": 0.14
+      },
+      {
+        "seed": 39,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 571.0,
+        "violations_phase1": 197.0,
+        "violations_phase2": 374.0,
+        "violation_free_episodes": 0.745,
+        "violation_free_phase2": 0.7777777777777778,
+        "return_final50": 18.301215320231453,
+        "goal_rate_final50": 0.44
+      },
+      {
+        "seed": 40,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 72.0,
+        "violations_phase1": 5.0,
+        "violations_phase2": 67.0,
+        "violation_free_episodes": 0.94,
+        "violation_free_phase2": 0.9388888888888889,
+        "return_final50": 26.17123210955609,
+        "goal_rate_final50": 0.72
+      },
+      {
+        "seed": 41,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 250.0,
+        "violations_phase1": 105.0,
+        "violations_phase2": 145.0,
+        "violation_free_episodes": 0.82,
+        "violation_free_phase2": 0.8611111111111112,
+        "return_final50": 9.776685182218344,
+        "goal_rate_final50": 0.08
+      },
+      {
+        "seed": 42,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 36.0,
+        "violations_phase1": 36.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.985,
+        "violation_free_phase2": 1.0,
+        "return_final50": 8.320869217666477,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 43,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 211.0,
+        "violations_phase1": 69.0,
+        "violations_phase2": 142.0,
+        "violation_free_episodes": 0.825,
+        "violation_free_phase2": 0.8555555555555555,
+        "return_final50": 13.305612101330292,
+        "goal_rate_final50": 0.18
+      },
+      {
+        "seed": 44,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 262.0,
+        "violations_phase1": 10.0,
+        "violations_phase2": 252.0,
+        "violation_free_episodes": 0.84,
+        "violation_free_phase2": 0.8277777777777777,
+        "return_final50": 8.5001664314959,
+        "goal_rate_final50": 0.0
+      },
+      {
+        "seed": 45,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 9.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 9.0,
+        "violation_free_episodes": 0.99,
+        "violation_free_phase2": 0.9888888888888889,
+        "return_final50": 6.725128236230895,
+        "goal_rate_final50": 0.06
+      },
+      {
+        "seed": 46,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 60.0,
+        "violations_phase1": 60.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.985,
+        "violation_free_phase2": 1.0,
+        "return_final50": 13.939404356800384,
+        "goal_rate_final50": 0.22
+      },
+      {
+        "seed": 47,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 626.0,
+        "violations_phase1": 238.0,
+        "violations_phase2": 388.0,
+        "violation_free_episodes": 0.74,
+        "violation_free_phase2": 0.7444444444444445,
+        "return_final50": 9.314240177355146,
+        "goal_rate_final50": 0.08
+      },
+      {
+        "seed": 48,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 175.0,
+        "violations_phase1": 16.0,
+        "violations_phase2": 159.0,
+        "violation_free_episodes": 0.86,
+        "violation_free_phase2": 0.85,
+        "return_final50": 0.5349720275549249,
+        "goal_rate_final50": 0.02
+      },
+      {
+        "seed": 49,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 146.0,
+        "violations_phase1": 25.0,
+        "violations_phase2": 121.0,
+        "violation_free_episodes": 0.87,
+        "violation_free_phase2": 0.8666666666666667,
+        "return_final50": 31.348101822306734,
+        "goal_rate_final50": 0.92
+      }
+    ],
+    "SGPO-scale": [
+      {
+        "seed": 0,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 326.0,
+        "violations_phase1": 203.0,
+        "violations_phase2": 123.0,
+        "violation_free_episodes": 0.855,
+        "violation_free_phase2": 0.9111111111111111,
+        "return_final50": 33.66440025703771,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.34291907596813276
+      },
+      {
+        "seed": 1,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 264.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 264.0,
+        "violation_free_episodes": 0.855,
+        "violation_free_phase2": 0.8388888888888889,
+        "return_final50": 33.0559267914815,
+        "goal_rate_final50": 0.98,
+        "zone_center_error": 0.3830611492394075
+      },
+      {
+        "seed": 2,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 864.0,
+        "violations_phase1": 17.0,
+        "violations_phase2": 847.0,
+        "violation_free_episodes": 0.34,
+        "violation_free_phase2": 0.2777777777777778,
+        "return_final50": 10.048938009554888,
+        "goal_rate_final50": 0.1,
+        "zone_center_error": 0.07833085278984804
+      },
+      {
+        "seed": 3,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 55.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 55.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9555555555555556,
+        "return_final50": 19.04174857491031,
+        "goal_rate_final50": 0.42,
+        "zone_center_error": 0.23125329390366006
+      },
+      {
+        "seed": 4,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 228.0,
+        "violations_phase1": 10.0,
+        "violations_phase2": 218.0,
+        "violation_free_episodes": 0.805,
+        "violation_free_phase2": 0.7888888888888889,
+        "return_final50": 13.169540832257058,
+        "goal_rate_final50": 0.18,
+        "zone_center_error": 0.3096209170643509
+      },
+      {
+        "seed": 5,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 2816.0,
+        "violations_phase1": 142.0,
+        "violations_phase2": 2674.0,
+        "violation_free_episodes": 0.32,
+        "violation_free_phase2": 0.29444444444444445,
+        "return_final50": 9.790655179545604,
+        "goal_rate_final50": 0.08,
+        "zone_center_error": 0.025763863463308938
+      },
+      {
+        "seed": 6,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 206.0,
+        "violations_phase1": 48.0,
+        "violations_phase2": 158.0,
+        "violation_free_episodes": 0.845,
+        "violation_free_phase2": 0.85,
+        "return_final50": 15.275253629381128,
+        "goal_rate_final50": 0.28,
+        "zone_center_error": 0.36935307110629273
+      },
+      {
+        "seed": 7,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 130.0,
+        "violations_phase1": 94.0,
+        "violations_phase2": 36.0,
+        "violation_free_episodes": 0.92,
+        "violation_free_phase2": 0.95,
+        "return_final50": 15.968506186399491,
+        "goal_rate_final50": 0.34,
+        "zone_center_error": 0.2813154203201887
+      },
+      {
+        "seed": 8,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 762.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 762.0,
+        "violation_free_episodes": 0.525,
+        "violation_free_phase2": 0.4722222222222222,
+        "return_final50": 14.366600506657903,
+        "goal_rate_final50": 0.24,
+        "zone_center_error": 0.06113458591000054
+      },
+      {
+        "seed": 9,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 185.0,
+        "violations_phase1": 103.0,
+        "violations_phase2": 82.0,
+        "violation_free_episodes": 0.925,
+        "violation_free_phase2": 0.95,
+        "return_final50": 31.26489330165275,
+        "goal_rate_final50": 0.92,
+        "zone_center_error": 0.3366218514677559
+      },
+      {
+        "seed": 10,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 436.0,
+        "violations_phase1": 141.0,
+        "violations_phase2": 295.0,
+        "violation_free_episodes": 0.71,
+        "violation_free_phase2": 0.7611111111111111,
+        "return_final50": 18.435468487843742,
+        "goal_rate_final50": 0.4,
+        "zone_center_error": 0.2340089773037706
+      },
+      {
+        "seed": 11,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 790.0,
+        "violations_phase1": 74.0,
+        "violations_phase2": 716.0,
+        "violation_free_episodes": 0.36,
+        "violation_free_phase2": 0.32222222222222224,
+        "return_final50": 25.98890362793894,
+        "goal_rate_final50": 0.72,
+        "zone_center_error": 0.08602531187939984
+      },
+      {
+        "seed": 12,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 544.0,
+        "violations_phase1": 150.0,
+        "violations_phase2": 394.0,
+        "violation_free_episodes": 0.665,
+        "violation_free_phase2": 0.6888888888888889,
+        "return_final50": 33.74448620228679,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.13041257585602542
+      },
+      {
+        "seed": 13,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 565.0,
+        "violations_phase1": 122.0,
+        "violations_phase2": 443.0,
+        "violation_free_episodes": 0.665,
+        "violation_free_phase2": 0.6777777777777778,
+        "return_final50": 23.831891330014926,
+        "goal_rate_final50": 0.62,
+        "zone_center_error": 0.26871651895425236
+      },
+      {
+        "seed": 14,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 926.0,
+        "violations_phase1": 122.0,
+        "violations_phase2": 804.0,
+        "violation_free_episodes": 0.165,
+        "violation_free_phase2": 0.1388888888888889,
+        "return_final50": 29.73450930304837,
+        "goal_rate_final50": 0.86,
+        "zone_center_error": 0.540191298702937
+      },
+      {
+        "seed": 15,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 74.0,
+        "violations_phase1": 60.0,
+        "violations_phase2": 14.0,
+        "violation_free_episodes": 0.955,
+        "violation_free_phase2": 0.9777777777777777,
+        "return_final50": 25.476411387933112,
+        "goal_rate_final50": 0.7,
+        "zone_center_error": 0.2920116525970888
+      },
+      {
+        "seed": 16,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 157.0,
+        "violations_phase1": 134.0,
+        "violations_phase2": 23.0,
+        "violation_free_episodes": 0.935,
+        "violation_free_phase2": 0.9722222222222222,
+        "return_final50": 30.259524344940957,
+        "goal_rate_final50": 0.88,
+        "zone_center_error": 0.3345873992278739
+      },
+      {
+        "seed": 17,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 1568.0,
+        "violations_phase1": 48.0,
+        "violations_phase2": 1520.0,
+        "violation_free_episodes": 0.375,
+        "violation_free_phase2": 0.3388888888888889,
+        "return_final50": 19.47249688451732,
+        "goal_rate_final50": 0.4,
+        "zone_center_error": 0.028186812197537284
+      },
+      {
+        "seed": 18,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 84.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 84.0,
+        "violation_free_episodes": 0.885,
+        "violation_free_phase2": 0.8722222222222222,
+        "return_final50": 8.643844206074668,
+        "goal_rate_final50": 0.06,
+        "zone_center_error": 0.10147411740271074
+      },
+      {
+        "seed": 19,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 50.0,
+        "violations_phase1": 15.0,
+        "violations_phase2": 35.0,
+        "violation_free_episodes": 0.97,
+        "violation_free_phase2": 0.9722222222222222,
+        "return_final50": 33.461227774590164,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.34655413070372404
+      },
+      {
+        "seed": 20,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 1651.0,
+        "violations_phase1": 169.0,
+        "violations_phase2": 1482.0,
+        "violation_free_episodes": 0.335,
+        "violation_free_phase2": 0.32222222222222224,
+        "return_final50": 19.675222896306053,
+        "goal_rate_final50": 0.48,
+        "zone_center_error": 0.02583668738106779
+      },
+      {
+        "seed": 21,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 261.0,
+        "violations_phase1": 164.0,
+        "violations_phase2": 97.0,
+        "violation_free_episodes": 0.9,
+        "violation_free_phase2": 0.9444444444444444,
+        "return_final50": 18.06795467698684,
+        "goal_rate_final50": 0.38,
+        "zone_center_error": 0.322741170910943
+      },
+      {
+        "seed": 22,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 531.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 531.0,
+        "violation_free_episodes": 0.54,
+        "violation_free_phase2": 0.4888888888888889,
+        "return_final50": 8.861916886433903,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.22365805388011337
+      },
+      {
+        "seed": 23,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 496.0,
+        "violations_phase1": 113.0,
+        "violations_phase2": 383.0,
+        "violation_free_episodes": 0.555,
+        "violation_free_phase2": 0.5722222222222222,
+        "return_final50": 11.120053139659536,
+        "goal_rate_final50": 0.14,
+        "zone_center_error": 0.09575426392423972
+      },
+      {
+        "seed": 24,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 889.0,
+        "violations_phase1": 16.0,
+        "violations_phase2": 873.0,
+        "violation_free_episodes": 0.445,
+        "violation_free_phase2": 0.39444444444444443,
+        "return_final50": 12.485519712539656,
+        "goal_rate_final50": 0.24,
+        "zone_center_error": 0.09942374379881902
+      },
+      {
+        "seed": 25,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 12.0,
+        "violations_phase1": 12.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.99,
+        "violation_free_phase2": 1.0,
+        "return_final50": 7.405963729080563,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.26771328521615956
+      },
+      {
+        "seed": 26,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 764.0,
+        "violations_phase1": 135.0,
+        "violations_phase2": 629.0,
+        "violation_free_episodes": 0.51,
+        "violation_free_phase2": 0.5055555555555555,
+        "return_final50": 7.311652023965373,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.03039189459256003
+      },
+      {
+        "seed": 27,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 756.0,
+        "violations_phase1": 125.0,
+        "violations_phase2": 631.0,
+        "violation_free_episodes": 0.65,
+        "violation_free_phase2": 0.6611111111111111,
+        "return_final50": 18.63512332715901,
+        "goal_rate_final50": 0.44,
+        "zone_center_error": 0.34634443408442384
+      },
+      {
+        "seed": 28,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 421.0,
+        "violations_phase1": 156.0,
+        "violations_phase2": 265.0,
+        "violation_free_episodes": 0.67,
+        "violation_free_phase2": 0.7166666666666667,
+        "return_final50": 33.60289074952549,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.09367919992720017
+      },
+      {
+        "seed": 29,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 212.0,
+        "violations_phase1": 62.0,
+        "violations_phase2": 150.0,
+        "violation_free_episodes": 0.79,
+        "violation_free_phase2": 0.7888888888888889,
+        "return_final50": 7.074601404170321,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.38903441520900794
+      },
+      {
+        "seed": 30,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 33.45181992281489,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.2832164277702688
+      },
+      {
+        "seed": 31,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 182.0,
+        "violations_phase1": 104.0,
+        "violations_phase2": 78.0,
+        "violation_free_episodes": 0.93,
+        "violation_free_phase2": 0.9333333333333333,
+        "return_final50": 12.68219101263194,
+        "goal_rate_final50": 0.16,
+        "zone_center_error": 0.31334612447659904
+      },
+      {
+        "seed": 32,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 1019.0,
+        "violations_phase1": 100.0,
+        "violations_phase2": 919.0,
+        "violation_free_episodes": 0.485,
+        "violation_free_phase2": 0.4666666666666667,
+        "return_final50": 12.267487690860657,
+        "goal_rate_final50": 0.12,
+        "zone_center_error": 0.054001677251863035
+      },
+      {
+        "seed": 33,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 25.0,
+        "violations_phase1": 21.0,
+        "violations_phase2": 4.0,
+        "violation_free_episodes": 0.985,
+        "violation_free_phase2": 0.9944444444444445,
+        "return_final50": 33.005625493656574,
+        "goal_rate_final50": 0.98,
+        "zone_center_error": 0.2512652348879546
+      },
+      {
+        "seed": 34,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 1089.0,
+        "violations_phase1": 108.0,
+        "violations_phase2": 981.0,
+        "violation_free_episodes": 0.39,
+        "violation_free_phase2": 0.37222222222222223,
+        "return_final50": 15.098761949194566,
+        "goal_rate_final50": 0.3,
+        "zone_center_error": 0.06500497987265443
+      },
+      {
+        "seed": 35,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 465.0,
+        "violations_phase1": 7.0,
+        "violations_phase2": 458.0,
+        "violation_free_episodes": 0.67,
+        "violation_free_phase2": 0.6388888888888888,
+        "return_final50": 7.704281031437871,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.31281308651100254
+      },
+      {
+        "seed": 36,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 198.0,
+        "violations_phase1": 106.0,
+        "violations_phase2": 92.0,
+        "violation_free_episodes": 0.83,
+        "violation_free_phase2": 0.8833333333333333,
+        "return_final50": 17.555985480827395,
+        "goal_rate_final50": 0.4,
+        "zone_center_error": 0.3737162473507689
+      },
+      {
+        "seed": 37,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 8.563983493045168,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.28424919434367213
+      },
+      {
+        "seed": 38,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 539.0,
+        "violations_phase1": 96.0,
+        "violations_phase2": 443.0,
+        "violation_free_episodes": 0.655,
+        "violation_free_phase2": 0.6555555555555556,
+        "return_final50": 7.795745435518879,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.035724752208905614
+      },
+      {
+        "seed": 39,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 42.0,
+        "violations_phase1": 42.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.975,
+        "violation_free_phase2": 1.0,
+        "return_final50": 7.076585360242194,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.21285574773721863
+      },
+      {
+        "seed": 40,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 292.0,
+        "violations_phase1": 13.0,
+        "violations_phase2": 279.0,
+        "violation_free_episodes": 0.685,
+        "violation_free_phase2": 0.6611111111111111,
+        "return_final50": 15.020944738493295,
+        "goal_rate_final50": 0.28,
+        "zone_center_error": 0.3436890795004085
+      },
+      {
+        "seed": 41,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 1361.0,
+        "violations_phase1": 107.0,
+        "violations_phase2": 1254.0,
+        "violation_free_episodes": 0.31,
+        "violation_free_phase2": 0.28888888888888886,
+        "return_final50": 23.601248684794385,
+        "goal_rate_final50": 0.6,
+        "zone_center_error": 0.07251586037227915
+      },
+      {
+        "seed": 42,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 316.0,
+        "violations_phase1": 105.0,
+        "violations_phase2": 211.0,
+        "violation_free_episodes": 0.845,
+        "violation_free_phase2": 0.8833333333333333,
+        "return_final50": 22.83789055126781,
+        "goal_rate_final50": 0.6,
+        "zone_center_error": 0.23357040366833576
+      },
+      {
+        "seed": 43,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 309.0,
+        "violations_phase1": 180.0,
+        "violations_phase2": 129.0,
+        "violation_free_episodes": 0.82,
+        "violation_free_phase2": 0.8611111111111112,
+        "return_final50": 19.279691938003957,
+        "goal_rate_final50": 0.44,
+        "zone_center_error": 0.3452475595812564
+      },
+      {
+        "seed": 44,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 608.0,
+        "violations_phase1": 67.0,
+        "violations_phase2": 541.0,
+        "violation_free_episodes": 0.475,
+        "violation_free_phase2": 0.45555555555555555,
+        "return_final50": 21.273337127102963,
+        "goal_rate_final50": 0.54,
+        "zone_center_error": 0.07702872225023712
+      },
+      {
+        "seed": 45,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 89.0,
+        "violations_phase1": 8.0,
+        "violations_phase2": 81.0,
+        "violation_free_episodes": 0.915,
+        "violation_free_phase2": 0.9111111111111111,
+        "return_final50": 13.011244886450347,
+        "goal_rate_final50": 0.2,
+        "zone_center_error": 0.33172270381232194
+      },
+      {
+        "seed": 46,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 118.0,
+        "violations_phase1": 118.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 1.0,
+        "return_final50": 15.340875456472986,
+        "goal_rate_final50": 0.28,
+        "zone_center_error": 0.14050183686058285
+      },
+      {
+        "seed": 47,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 800.0,
+        "violations_phase1": 150.0,
+        "violations_phase2": 650.0,
+        "violation_free_episodes": 0.52,
+        "violation_free_phase2": 0.5222222222222223,
+        "return_final50": 8.785179450309355,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.09181343561621862
+      },
+      {
+        "seed": 48,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 410.0,
+        "violations_phase1": 160.0,
+        "violations_phase2": 250.0,
+        "violation_free_episodes": 0.785,
+        "violation_free_phase2": 0.8222222222222222,
+        "return_final50": 27.562576833488915,
+        "goal_rate_final50": 0.78,
+        "zone_center_error": 0.3572449667702355
+      },
+      {
+        "seed": 49,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 515.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 515.0,
+        "violation_free_episodes": 0.64,
+        "violation_free_phase2": 0.6,
+        "return_final50": 24.28792427246984,
+        "goal_rate_final50": 0.64,
+        "zone_center_error": 0.11666731014264207
+      }
+    ],
+    "SGPO-barrier": [
+      {
+        "seed": 0,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 518.0,
+        "violations_phase1": 203.0,
+        "violations_phase2": 315.0,
+        "violation_free_episodes": 0.62,
+        "violation_free_phase2": 0.65,
+        "return_final50": 16.52455248176108,
+        "goal_rate_final50": 0.36,
+        "zone_center_error": 0.3396940952779469
+      },
+      {
+        "seed": 1,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 43.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 43.0,
+        "violation_free_episodes": 0.99,
+        "violation_free_phase2": 0.9888888888888889,
+        "return_final50": 17.561033906341024,
+        "goal_rate_final50": 0.4,
+        "zone_center_error": 0.22211719763279886
+      },
+      {
+        "seed": 2,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 326.0,
+        "violations_phase1": 17.0,
+        "violations_phase2": 309.0,
+        "violation_free_episodes": 0.73,
+        "violation_free_phase2": 0.7111111111111111,
+        "return_final50": 8.315428995447565,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.4586974083102096
+      },
+      {
+        "seed": 3,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 171.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 171.0,
+        "violation_free_episodes": 0.845,
+        "violation_free_phase2": 0.8277777777777777,
+        "return_final50": 22.31332705912467,
+        "goal_rate_final50": 0.58,
+        "zone_center_error": 0.30948346432375823
+      },
+      {
+        "seed": 4,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 137.0,
+        "violations_phase1": 10.0,
+        "violations_phase2": 127.0,
+        "violation_free_episodes": 0.87,
+        "violation_free_phase2": 0.8611111111111112,
+        "return_final50": 22.060954451523017,
+        "goal_rate_final50": 0.56,
+        "zone_center_error": 0.3459800322257174
+      },
+      {
+        "seed": 5,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 902.0,
+        "violations_phase1": 142.0,
+        "violations_phase2": 760.0,
+        "violation_free_episodes": 0.375,
+        "violation_free_phase2": 0.35555555555555557,
+        "return_final50": 21.02760430528593,
+        "goal_rate_final50": 0.56,
+        "zone_center_error": 0.308962973149908
+      },
+      {
+        "seed": 6,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 104.0,
+        "violations_phase1": 48.0,
+        "violations_phase2": 56.0,
+        "violation_free_episodes": 0.93,
+        "violation_free_phase2": 0.9444444444444444,
+        "return_final50": 33.69821139640603,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.37632016461327267
+      },
+      {
+        "seed": 7,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 141.0,
+        "violations_phase1": 94.0,
+        "violations_phase2": 47.0,
+        "violation_free_episodes": 0.91,
+        "violation_free_phase2": 0.9388888888888889,
+        "return_final50": 32.38696628300975,
+        "goal_rate_final50": 0.96,
+        "zone_center_error": 0.29670120798746036
+      },
+      {
+        "seed": 8,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 258.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 258.0,
+        "violation_free_episodes": 0.815,
+        "violation_free_phase2": 0.7944444444444444,
+        "return_final50": 7.47381013388621,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": null
+      },
+      {
+        "seed": 9,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 157.0,
+        "violations_phase1": 103.0,
+        "violations_phase2": 54.0,
+        "violation_free_episodes": 0.925,
+        "violation_free_phase2": 0.95,
+        "return_final50": 17.062899951867816,
+        "goal_rate_final50": 0.38,
+        "zone_center_error": 0.3604933371202809
+      },
+      {
+        "seed": 10,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 591.0,
+        "violations_phase1": 141.0,
+        "violations_phase2": 450.0,
+        "violation_free_episodes": 0.68,
+        "violation_free_phase2": 0.7277777777777777,
+        "return_final50": 8.644571352596548,
+        "goal_rate_final50": 0.06,
+        "zone_center_error": 0.05484663525130637
+      },
+      {
+        "seed": 11,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 273.0,
+        "violations_phase1": 74.0,
+        "violations_phase2": 199.0,
+        "violation_free_episodes": 0.775,
+        "violation_free_phase2": 0.7833333333333333,
+        "return_final50": 8.738035491701988,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.5831931956202391
+      },
+      {
+        "seed": 12,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 515.0,
+        "violations_phase1": 150.0,
+        "violations_phase2": 365.0,
+        "violation_free_episodes": 0.715,
+        "violation_free_phase2": 0.7444444444444445,
+        "return_final50": 1.032317346343994,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.18761922746321077
+      },
+      {
+        "seed": 13,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 282.0,
+        "violations_phase1": 122.0,
+        "violations_phase2": 160.0,
+        "violation_free_episodes": 0.835,
+        "violation_free_phase2": 0.8666666666666667,
+        "return_final50": 32.51635028613016,
+        "goal_rate_final50": 0.96,
+        "zone_center_error": 0.3096369207693331
+      },
+      {
+        "seed": 14,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 913.0,
+        "violations_phase1": 122.0,
+        "violations_phase2": 791.0,
+        "violation_free_episodes": 0.11,
+        "violation_free_phase2": 0.07777777777777778,
+        "return_final50": 32.46936806386742,
+        "goal_rate_final50": 0.96,
+        "zone_center_error": 0.4164896281075151
+      },
+      {
+        "seed": 15,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 68.0,
+        "violations_phase1": 60.0,
+        "violations_phase2": 8.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9833333333333333,
+        "return_final50": 33.7593056355947,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.25464974821335834
+      },
+      {
+        "seed": 16,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 150.0,
+        "violations_phase1": 134.0,
+        "violations_phase2": 16.0,
+        "violation_free_episodes": 0.95,
+        "violation_free_phase2": 0.9888888888888889,
+        "return_final50": 22.900952460368757,
+        "goal_rate_final50": 0.6,
+        "zone_center_error": 0.2612620178089896
+      },
+      {
+        "seed": 17,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 830.0,
+        "violations_phase1": 48.0,
+        "violations_phase2": 782.0,
+        "violation_free_episodes": 0.665,
+        "violation_free_phase2": 0.6611111111111111,
+        "return_final50": 13.615789863488244,
+        "goal_rate_final50": 0.22,
+        "zone_center_error": 0.09427388812350629
+      },
+      {
+        "seed": 18,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 11.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 11.0,
+        "violation_free_episodes": 0.985,
+        "violation_free_phase2": 0.9833333333333333,
+        "return_final50": 22.002864913263256,
+        "goal_rate_final50": 0.56,
+        "zone_center_error": 0.2555597455955856
+      },
+      {
+        "seed": 19,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 32.0,
+        "violations_phase1": 15.0,
+        "violations_phase2": 17.0,
+        "violation_free_episodes": 0.985,
+        "violation_free_phase2": 0.9888888888888889,
+        "return_final50": 7.793786986123778,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.2036034487180763
+      },
+      {
+        "seed": 20,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 544.0,
+        "violations_phase1": 169.0,
+        "violations_phase2": 375.0,
+        "violation_free_episodes": 0.7,
+        "violation_free_phase2": 0.7277777777777777,
+        "return_final50": 14.418185763361944,
+        "goal_rate_final50": 0.28,
+        "zone_center_error": 0.50133644579371
+      },
+      {
+        "seed": 21,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 189.0,
+        "violations_phase1": 164.0,
+        "violations_phase2": 25.0,
+        "violation_free_episodes": 0.915,
+        "violation_free_phase2": 0.9611111111111111,
+        "return_final50": 30.223333418078024,
+        "goal_rate_final50": 0.88,
+        "zone_center_error": 0.33879515005561045
+      },
+      {
+        "seed": 22,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 128.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 128.0,
+        "violation_free_episodes": 0.9,
+        "violation_free_phase2": 0.8888888888888888,
+        "return_final50": 8.072919637113607,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.3519122477881634
+      },
+      {
+        "seed": 23,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 209.0,
+        "violations_phase1": 113.0,
+        "violations_phase2": 96.0,
+        "violation_free_episodes": 0.825,
+        "violation_free_phase2": 0.8722222222222222,
+        "return_final50": 12.762808180475583,
+        "goal_rate_final50": 0.16,
+        "zone_center_error": 0.37961941251170456
+      },
+      {
+        "seed": 24,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 43.0,
+        "violations_phase1": 16.0,
+        "violations_phase2": 27.0,
+        "violation_free_episodes": 0.96,
+        "violation_free_phase2": 0.9666666666666667,
+        "return_final50": 33.732423820727035,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.30099070165062664
+      },
+      {
+        "seed": 25,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 12.0,
+        "violations_phase1": 12.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.99,
+        "violation_free_phase2": 1.0,
+        "return_final50": 7.108859705382202,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.26767378327052443
+      },
+      {
+        "seed": 26,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 468.0,
+        "violations_phase1": 135.0,
+        "violations_phase2": 333.0,
+        "violation_free_episodes": 0.635,
+        "violation_free_phase2": 0.6444444444444445,
+        "return_final50": 7.082834251004782,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.5430988337705314
+      },
+      {
+        "seed": 27,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 234.0,
+        "violations_phase1": 125.0,
+        "violations_phase2": 109.0,
+        "violation_free_episodes": 0.875,
+        "violation_free_phase2": 0.9111111111111111,
+        "return_final50": 17.555450706705354,
+        "goal_rate_final50": 0.4,
+        "zone_center_error": 0.24606927396146294
+      },
+      {
+        "seed": 28,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 476.0,
+        "violations_phase1": 156.0,
+        "violations_phase2": 320.0,
+        "violation_free_episodes": 0.715,
+        "violation_free_phase2": 0.7666666666666667,
+        "return_final50": 8.90859459124162,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.43054807673444634
+      },
+      {
+        "seed": 29,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 157.0,
+        "violations_phase1": 62.0,
+        "violations_phase2": 95.0,
+        "violation_free_episodes": 0.88,
+        "violation_free_phase2": 0.8888888888888888,
+        "return_final50": 7.550354546751674,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.375032224121489
+      },
+      {
+        "seed": 30,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 33.45181992281489,
+        "goal_rate_final50": 1.0,
+        "zone_center_error": 0.2832164277702688
+      },
+      {
+        "seed": 31,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 198.0,
+        "violations_phase1": 104.0,
+        "violations_phase2": 94.0,
+        "violation_free_episodes": 0.915,
+        "violation_free_phase2": 0.9166666666666666,
+        "return_final50": 17.141363836370825,
+        "goal_rate_final50": 0.36,
+        "zone_center_error": 0.36378565872934016
+      },
+      {
+        "seed": 32,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 149.0,
+        "violations_phase1": 100.0,
+        "violations_phase2": 49.0,
+        "violation_free_episodes": 0.9,
+        "violation_free_phase2": 0.9277777777777778,
+        "return_final50": 8.685035321274263,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.5217134153864108
+      },
+      {
+        "seed": 33,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 33.0,
+        "violations_phase1": 21.0,
+        "violations_phase2": 12.0,
+        "violation_free_episodes": 0.975,
+        "violation_free_phase2": 0.9833333333333333,
+        "return_final50": 27.57524523924935,
+        "goal_rate_final50": 0.78,
+        "zone_center_error": 0.17323122139037078
+      },
+      {
+        "seed": 34,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 209.0,
+        "violations_phase1": 108.0,
+        "violations_phase2": 101.0,
+        "violation_free_episodes": 0.865,
+        "violation_free_phase2": 0.9,
+        "return_final50": 23.432039242021265,
+        "goal_rate_final50": 0.62,
+        "zone_center_error": 0.2527197338482647
+      },
+      {
+        "seed": 35,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 370.0,
+        "violations_phase1": 7.0,
+        "violations_phase2": 363.0,
+        "violation_free_episodes": 0.75,
+        "violation_free_phase2": 0.7277777777777777,
+        "return_final50": 12.492584860030979,
+        "goal_rate_final50": 0.24,
+        "zone_center_error": 0.3497391235464349
+      },
+      {
+        "seed": 36,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 240.0,
+        "violations_phase1": 106.0,
+        "violations_phase2": 134.0,
+        "violation_free_episodes": 0.76,
+        "violation_free_phase2": 0.8055555555555556,
+        "return_final50": 13.392667236780888,
+        "goal_rate_final50": 0.24,
+        "zone_center_error": 0.35372237339933194
+      },
+      {
+        "seed": 37,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 0.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 1.0,
+        "violation_free_phase2": 1.0,
+        "return_final50": 8.563983493045168,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.28424919434367213
+      },
+      {
+        "seed": 38,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 268.0,
+        "violations_phase1": 96.0,
+        "violations_phase2": 172.0,
+        "violation_free_episodes": 0.83,
+        "violation_free_phase2": 0.85,
+        "return_final50": 10.21853936068161,
+        "goal_rate_final50": 0.12,
+        "zone_center_error": 0.5612412858189407
+      },
+      {
+        "seed": 39,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 42.0,
+        "violations_phase1": 42.0,
+        "violations_phase2": 0.0,
+        "violation_free_episodes": 0.975,
+        "violation_free_phase2": 1.0,
+        "return_final50": 8.596958926743701,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.21229661059575025
+      },
+      {
+        "seed": 40,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 202.0,
+        "violations_phase1": 13.0,
+        "violations_phase2": 189.0,
+        "violation_free_episodes": 0.795,
+        "violation_free_phase2": 0.7833333333333333,
+        "return_final50": 9.400970100322734,
+        "goal_rate_final50": 0.12,
+        "zone_center_error": 0.3114482589600149
+      },
+      {
+        "seed": 41,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 634.0,
+        "violations_phase1": 107.0,
+        "violations_phase2": 527.0,
+        "violation_free_episodes": 0.58,
+        "violation_free_phase2": 0.5888888888888889,
+        "return_final50": 7.254713551888974,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.2916221918053802
+      },
+      {
+        "seed": 42,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 276.0,
+        "violations_phase1": 105.0,
+        "violations_phase2": 171.0,
+        "violation_free_episodes": 0.855,
+        "violation_free_phase2": 0.8944444444444445,
+        "return_final50": 14.097506061748927,
+        "goal_rate_final50": 0.22,
+        "zone_center_error": 0.3028074174684795
+      },
+      {
+        "seed": 43,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 243.0,
+        "violations_phase1": 180.0,
+        "violations_phase2": 63.0,
+        "violation_free_episodes": 0.895,
+        "violation_free_phase2": 0.9444444444444444,
+        "return_final50": 24.4184775013663,
+        "goal_rate_final50": 0.66,
+        "zone_center_error": 0.32974283223495127
+      },
+      {
+        "seed": 44,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 228.0,
+        "violations_phase1": 67.0,
+        "violations_phase2": 161.0,
+        "violation_free_episodes": 0.8,
+        "violation_free_phase2": 0.8166666666666667,
+        "return_final50": 7.071067811865478,
+        "goal_rate_final50": 0.0,
+        "zone_center_error": 0.612009301320816
+      },
+      {
+        "seed": 45,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 89.0,
+        "violations_phase1": 8.0,
+        "violations_phase2": 81.0,
+        "violation_free_episodes": 0.9,
+        "violation_free_phase2": 0.8944444444444445,
+        "return_final50": 17.626328682689934,
+        "goal_rate_final50": 0.38,
+        "zone_center_error": 0.31663351749214685
+      },
+      {
+        "seed": 46,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 154.0,
+        "violations_phase1": 118.0,
+        "violations_phase2": 36.0,
+        "violation_free_episodes": 0.925,
+        "violation_free_phase2": 0.9611111111111111,
+        "return_final50": 15.59736412839967,
+        "goal_rate_final50": 0.3,
+        "zone_center_error": 0.3079398219874877
+      },
+      {
+        "seed": 47,
+        "zone_center": [
+          0.5,
+          0.5
+        ],
+        "violations_total": 1005.0,
+        "violations_phase1": 150.0,
+        "violations_phase2": 855.0,
+        "violation_free_episodes": 0.15,
+        "violation_free_phase2": 0.1111111111111111,
+        "return_final50": 15.460536149074972,
+        "goal_rate_final50": 0.32,
+        "zone_center_error": 0.3039234755359392
+      },
+      {
+        "seed": 48,
+        "zone_center": [
+          0.3,
+          0.7
+        ],
+        "violations_total": 306.0,
+        "violations_phase1": 160.0,
+        "violations_phase2": 146.0,
+        "violation_free_episodes": 0.845,
+        "violation_free_phase2": 0.8888888888888888,
+        "return_final50": 28.938075916752354,
+        "goal_rate_final50": 0.82,
+        "zone_center_error": 0.30804216515106625
+      },
+      {
+        "seed": 49,
+        "zone_center": [
+          0.7,
+          0.3
+        ],
+        "violations_total": 212.0,
+        "violations_phase1": 0.0,
+        "violations_phase2": 212.0,
+        "violation_free_episodes": 0.85,
+        "violation_free_phase2": 0.8333333333333334,
+        "return_final50": 29.12334038932979,
+        "goal_rate_final50": 0.84,
+        "zone_center_error": 0.3463869383180093
+      }
+    ]
+  },
+  "elapsed_seconds": 376.91640996932983
+}

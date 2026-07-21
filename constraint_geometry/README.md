@@ -53,15 +53,18 @@ The Hodge-augmented critic developed in the Feedback Geometry track is used here
 
 ## Key Experiments
 
-> ⚠️ **Experiments 2 and 3 are UNVERIFIED as of 2026-07-21.** The quoted numbers are
-> real output, but the only implementation is a **one-step bandit** at a single seed,
-> in which SGPO is given the violation flag it is then scored on. They are not yet
-> evidence about PPO/CPO as algorithms. See `VENUE_TRACKER.md` and
-> `../EXPERIMENT_ISSUES.md` §2/§8. A real multi-step re-run at 50+ seeds is pending.
+> ❌ **The Murky Drone claim was REFUTED on 2026-07-21.** It has been re-run
+> properly and the result went the other way. The old "SGPO 0% vs 100% PPO/CPO"
+> figure came from a **one-step bandit at a single seed** in which SGPO was handed
+> the violation flag it was then scored on. A real multi-step implementation
+> (`src/murky_drone_experiment.py`, 50 seeds, all methods learning danger from the
+> same cost signal) shows **CPO is the safest method and SGPO's headline
+> formulation is statistically indistinguishable from unconstrained PPO**
+> (p=0.68). See `../EXPERIMENT_ISSUES.md` §8/§12. Experiment 3 remains unverified.
 
-1. **Sandbagging Trap** — deceptive 2D navigation: SGPO (+1.53 return) vs PPO (-6.67) vs CPO (-6.23)
-2. **Murky Drone** *(UNVERIFIED)* — hard no-go zone with false-positive rewards: SGPO 0% violations vs 100% for PPO/CPO
-3. **Agentic Shortcut** *(UNVERIFIED)* — multi-step task with forbidden shortcut: tests whether SGPO avoids the shortcut even when it's reward-advantaged
+1. **Sandbagging Trap** — deceptive 2D navigation: SGPO (+1.53 return) vs PPO (-6.67) vs CPO (-6.23), **single seed**
+2. **Murky Drone** — ❌ **claim withdrawn.** 50-seed multi-step result: violations/seed PPO 471.9, **CPO 180.7 (safest)**, SGPO-scale 508.0, SGPO-barrier 274.8. SGPO does not reach 0% and does not beat CPO.
+3. **Agentic Shortcut** *(UNVERIFIED)* — multi-step task with forbidden shortcut: only implementation is a one-step bandit; no multi-step re-run yet
 4. **Safety Gym Benchmarks** — PointGoal, CarGoal, DoggoGoal; comparison to SOTA safe RL methods
 5. **Metric Learning Ablations** — sharpness β, event horizon radius, severity σ; validates theoretical requirement β ≥ 2
 

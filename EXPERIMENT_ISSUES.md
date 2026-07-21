@@ -39,8 +39,19 @@ This document records issues discovered during experiment verification and their
 > figures. It was, however, committed to the **public** repo
 > `github.com/MikeHLee/shape_of_good_behavior`. Table 1 has been regenerated from
 > the data, the other three items corrected or withdrawn, a dated erratum added to
-> page 1, and the corrected PDF pushed. `alignment_research` (also public) was
-> checked and carries none of these claims.
+> page 1, and the corrected PDF pushed.
+>
+> **§12** closes the implementation half of §8: a real multi-step Murky Drone now
+> exists (`src/murky_drone_experiment.py`, 50 seeds), built so that SGPO learns
+> danger from the observed cost signal rather than from ground truth.
+>
+> **§13 extends the audit to Track 3** (peer-consistency ‖δ¹c‖, in
+> `alignment_research`). Track 3 is **materially cleaner than Tracks 1–2** — it
+> genuinely seeds and aggregates, every number reconciles to a committed JSON, and
+> its figures regenerate. Its defects are reporting-convention only, now corrected:
+> two estimators were published as one, and every `p` was a single split's. Note
+> that Track 3 **is** live to a general audience (blog), so the "no reviewer saw
+> it" mitigation that softens §10 does not apply there.
 
 ---
 
@@ -157,11 +168,15 @@ This document records issues discovered during experiment verification and their
 | Clipped-SGPO 0% claim | MEDIUM | ✅ **FIXED** - updated to 1.1% | not audited |
 | Reaching benchmark 100% | MEDIUM | ⚠️ **PARTIAL** - recommend exclude | not audited |
 | Figure 2 data hand-typed | MEDIUM | — | ✅ **FIXED** 2026-07-21 — now loaded from CSV; transcription had been accurate (§7) |
-| Murky Drone has no real impl | **HIGH** | — | ❌ **OPEN** (§8 audit) |
+| Murky Drone has no real impl | **HIGH** | — | ✅ **IMPLEMENTED + RUN** 2026-07-21 — 50 seeds; claim **refuted**, SGPO loses to CPO (§8, §12) |
 | paper1 Agentic Shortcut + ablation table unsourced | **HIGH** | — | ✅ **WITHDRAWN** 2026-07-21 (§11) |
 | paper1 topology text contradicted its own figure | **HIGH** | — | ✅ **CORRECTED** 2026-07-21 (§11) |
 | LaTeX submission sources corrupted | **HIGH** | — | ✅ **FIXED** 2026-07-21 (§9) |
 | **paper1 Table 1 misstates seeds + unsourced returns** | **CRITICAL** | — | ✅ **CORRECTED + ERRATUM** 2026-07-21, pushed public (§10) |
+| Track 3: two estimators published as one | MEDIUM | — | ✅ **FIXED** 2026-07-21 — aggregate now canonical (§13A) |
+| Track 3: every p is split-seed 0 only | **HIGH** | — | ✅ **DISCLOSED** 2026-07-21 — range 8.1e−8…1.6e−2 (§13B) |
+| Track 3: no multiple-comparison correction | MEDIUM | — | ✅ **DISCLOSED** 2026-07-21 — af-output fails Bonferroni (§13C) |
+| Track 3: hardcoded figure constants | MEDIUM | — | ✅ **FIXED** in `72cab45` — same class as §7 (§13D) |
 
 ---
 
@@ -422,11 +437,14 @@ problem is not honesty of reporting — it is that the code producing it is a
 one-step bandit scored by the circular procedure in the §2 audit, at **one seed**,
 which cannot support a claim about PPO and CPO as algorithms.
 
-**Status: ❌ OPEN — blocking.** Decision (2026-07-21, Mike): implement for real
-rather than strike. Target: wire a multi-step Murky Drone into the existing
-`safety_experiment_hard.py` trainers (`train_cpo` **188**, `train_gpo` **279**,
-`Actor` **119**, `Critic` **136**, `LearnedRiemannianMetric` **154**) and run 50+
-seeds. Until that lands, the number must not be cited as evidence about PPO/CPO.
+**Status: ✅ RESOLVED (2026-07-21) — and the claim is refuted, not merely
+unsupported.** A real multi-step Murky Drone was implemented and run at 50 seeds
+(§12). SGPO does not reach 0% violations and does not beat CPO; its headline
+formulation is statistically indistinguishable from unconstrained PPO (p=0.68).
+**The "SGPO 0% vs 100% PPO/CPO" claim must be removed from
+`constraint_geometry/README.md:57`, `PAPER_OUTLINE.md:26`, and the
+`constraint_geometry/submission/` sources — it is now contradicted by evidence in
+this repository, not just unbacked.**
 
 ---
 
@@ -557,6 +575,234 @@ from ICML 2026 on length, never submitted elsewhere, but it had been committed t
 the public repo `github.com/MikeHLee/shape_of_good_behavior` — the corrected
 version is now what is published there. See also §11 for three further corrections
 made in the same pass.
+
+---
+
+## §13 — Track 3 (peer-consistency ‖δ¹c‖) ⚠️ reporting-convention defects only
+
+Extends the audit boundary to Track 3, which §1–§11 did not cover. Track 3 lives
+in `alignment_research/peer_consistency_geometry/` and is the material with the
+widest **live** public distribution.
+
+**Track 3 is in materially better shape than Tracks 1–2, and the difference is
+structural, not cosmetic.** No fabricated data, no circular metric, no phantom
+environment, and — unlike Tracks 1–2 — it genuinely seeds and aggregates
+(5 cal/eval split-seeds × 4 subsample seeds, `E6_7B_panel.py --split-seeds`).
+Every headline number reconciles against a committed JSON; `fig1`/`fig3`
+regenerate pixel-identically. **The defects below are reporting-convention
+defects, not result defects.** The central selectivity claim is unaffected by
+every correction made.
+
+### (A) The same quantity was published as two different numbers ✅ FIXED
+
+Two correct estimators were both in public, unlabelled as different. Verified by
+recomputing from the committed JSONs:
+
+| estimator | convincing-game | insider-trading |
+|---|---|---|
+| split-seed (5 splits, subsample seed 0) | 0.6616 ± 0.0328 | **0.6369 ± 0.0059** |
+| subsample aggregate (4 subsample seeds) | 0.6614 ± 0.0123 | **0.6255 ± 0.0140** |
+
+Insider-trading was published as **0.637** in the writeup and **0.625** in the
+repo README — a 0.012 gap with a 2× difference in the quoted ±, and nothing
+telling a reader they were different estimators.
+
+Fixed by adopting the **subsample aggregate** as canonical everywhere (the more
+conservative choice; it varies over both nuisance axes) and stating the convention
+next to the numbers. This *weakened* a public headline from 0.637 to 0.625.
+`alignment-faking-reasoning` has no subsample sweep, so it keeps the split-seed
+value and is now labelled as such rather than silently mixed in.
+
+### (B) Every published p-value is one split's p ✅ FIXED (disclosed)
+
+`experiments/E6_7B_panel.py:100` stores `"p_seed0": runs[0][0]["p"]` — split-seed
+0 at subsample seed 0 — and it was printed beside an AUC that *is* a multi-seed
+mean. Nothing in prose disclosed this; only the variable name did.
+
+**This is more consequential than a labelling slip.** The per-subsample-seed
+p-values for insider-trading span five orders of magnitude:
+
+| subsample seed | AUC | p |
+|---|---|---|
+| 0 (**published**) | 0.6369 | **8.1e−8** |
+| 1 | 0.6347 | 8.1e−5 |
+| 2 | 0.6063 | **0.0155** |
+| 3 | 0.6239 | 2.8e−3 |
+
+The published `p=8e−8` is the most favourable of the four by a wide margin. To be
+fair to the authors: `runs[0]` is taken *structurally*, so this is an
+unrepresentative default, **not** a cherry-pick. But a reader was shown 8e−8 when
+the range is `[8.1e−8, 1.6e−2]`. Now disclosed with the full range; p removed from
+the top-level README rather than printed next to an aggregate it does not match.
+Aggregating p across seeds remains the better fix and has not been done.
+
+### (C) No multiple-comparison correction across 9 configs ✅ FIXED (disclosed)
+
+Nine configurations have committed results. At Bonferroni α = 0.05/9 = 5.6e−3 the
+strong positives all survive comfortably (insider-trading 8.1e−8,
+alignment-faking-reasoning 5.9e−8, convincing-game 2.5e−6,
+insider-trading-action 3.8e−6, redacted 8.9e−5). **`alignment-faking-output`
+(p=0.045) does not survive** and is now stated as such rather than as a weak
+positive. The nulls (instructed-deception 0.32, gender-secret 0.91,
+insider-trading-reasoning 0.92) are unaffected.
+
+Disclosing this *strengthens* the paper: the selectivity claim is a claim about
+nulls, and nulls are more credible once the number of tests is on the record.
+
+**Compound caveat (not in the source handoff).** (B) and (C) interact: if
+insider-trading's *worst* subsample seed (p=0.0155) is used instead of the
+published seed-0 value, it no longer clears the corrected threshold. The AUC is
+robust across all four seeds (0.606–0.637, all well above chance), but the
+result's *significance under correction* depends on which seed is quoted. Recorded
+in the writeup.
+
+### (D) Hardcoded figure constants ✅ FIXED before this audit
+
+`figures/make_figures.py` hardcoded three small-panel AUCs as literals with a
+comment noting the source JSONs "are not vendored". The values were **correct**
+(matching upstream to 3dp), but a published figure carried numbers unverifiable
+from the public repo. Fixed in `alignment_research` commit `72cab45` by vendoring
+the JSONs and replacing the dict with `load_small_auc()`.
+
+**Process note**: this is the same defect class as §7 (Figure 2 hand-typed), in a
+track that otherwise loads everything from disk. Two independent tracks producing
+the same pattern makes it a **pipeline issue**, not a one-off — figure generators
+should be checked for literal data across the repo.
+
+### Distribution — the §10 mitigation does not apply here
+
+§10 was softened by paper1 having been desk-rejected with no reviewer exposure.
+Track 3 is live in four places: `oasis-main/alignment_research` (public),
+`MikeHLee/shape_of_good_behavior` (public), the venue-track submission plans, and
+**Blog Part 4 "The Shape of a Lie", live on Ghost since 2026-06-04** — a general
+audience, not reviewers.
+
+**The live blog post does not currently misstate anything.** Its rounded figures
+("0.66 ± 0.01", "0.63 ± 0.01") are correct under the now-canonical aggregate
+convention, and it already carries the resolved cue-redaction framing. Only the
+cosmetic `p` relabel from (B) would apply there. Blog edits need explicit
+approval and dev/prod share one Ghost CMS, so no blog change has been made.
+
+### Framing invariant — verified intact after every edit
+
+Every surface must describe a **selective** detector, never a lie detector:
+divergence tracks deception that involves a behavioural *strategy*, is blind to
+flat falsehoods, and runs *backwards* on alignment-faking reasoning. The nulls are
+part of the claim's shape and must stay adjacent to the positives. Checked after
+the corrections above — all surfaces still do this.
+
+**Status: ⚠️ OPEN → corrections applied in `alignment_research`; not blocking
+distribution. The strong positives and the sign-flip are unaffected.**
+
+---
+
+## §12 — Murky Drone implemented for real (2026-07-21)
+
+Closes the implementation half of §8. New file:
+`src/murky_drone_experiment.py`, implementing the environment that
+`constraint_geometry/docs/EXPERIMENTAL_DESIGN.md` specified but that was never
+built: continuous 2D drone navigation, 5-dim observation `(x, y, vx, vy, sensor)`,
+zone radius 0.15, sensor range 0.3 with σ=0.05 noise, three zone placements,
+150-step episodes, 50 seeds.
+
+**The fairness contract is the point of the rewrite.** All methods observe only
+position, velocity, the noisy sensor, and the scalar cost signal. None is told
+where the zone is. Critically, SGPO's metric is trained **as a classifier
+predicting observed cost from observation** — it never sees `dist_to_zone` or the
+zone centre. The existing `safety_experiment_hard.train_gpo` regresses its metric
+onto ground-truth `dist_to_closest_trap` (`g_target = 1 + 5/safe_dist`, line 337);
+carrying that over would have handed SGPO the answer and reproduced exactly the
+circularity documented in §2. Ground-truth distance is retained in `info` for
+logging only and is never passed to a learner.
+
+**Two SGPO variants are run, deliberately.** `safety_experiment_hard.train_gpo`
+implements SGPO as `advantage / sqrt(g)`. That formulation only *damps* the
+learning signal inside dangerous regions — it applies no directional pressure away
+from them, and with the metric no longer fed ground truth there is no other
+mechanism by which it could avoid the zone. Testing only that would be a
+strawman, so a second variant subtracts a discounted metric-derived barrier cost
+from the advantage, which is closer to the "geodesically unreachable" mechanism the
+papers describe.
+
+Environment calibration was checked before running: a greedy straight-line
+controller reaches the goal in 36 steps and takes 7 violations through the centred
+zone, and a hand-written detour reaches the goal in 52 of the 150-step budget with
+zero violations. So the safety/return trade-off is real and a safe policy exists.
+For the two off-diagonal zone placements the direct path misses the zone entirely
+(centre-to-diagonal distance 0.283 > radius 0.15); those seeds function as
+false-positive controls — they test whether a method needlessly avoids safe space.
+
+Results are written to `results/safety/murky_drone_multistep.json` with per-seed
+records.
+
+### Results — 50 seeds, 200 episodes, 4 methods
+
+Total violations per seed (mean ± sd across 50 seeds):
+
+| method | violations | phase-2 violations | violation-free eps | return | goal rate |
+|---|---|---|---|---|---|
+| PPO | 471.9 ± 346.6 | 404.9 | 65.3% | 17.50 | 37.9% |
+| **CPO** | **180.7 ± 173.4** | **122.2** | **88.8%** | 16.76 | 35.2% |
+| SGPO-scale | 508.0 ± 522.1 | 429.5 | 70.6% | 18.70 | 42.4% |
+| SGPO-barrier | 274.8 ± 247.7 | 196.3 | 81.3% | 17.24 | 37.8% |
+
+Welch tests on total violations across all 50 seeds:
+
+| comparison | p | Cohen's d | |
+|---|---|---|---|
+| CPO vs SGPO-scale | 0.0001 | −0.84 | CPO safer |
+| CPO vs SGPO-barrier | 0.030 | −0.44 | CPO safer |
+| PPO vs SGPO-barrier | 0.0015 | +0.65 | SGPO-barrier safer |
+| **PPO vs SGPO-scale** | **0.68** | **−0.08** | **no difference** |
+| PPO vs CPO | <0.0001 | +1.06 | CPO safer |
+
+Restricting to the 16 seeds where the zone actually sits on the direct path — the
+only placement that poses a real conflict — sharpens it: PPO 801.9, CPO 309.5,
+**SGPO-scale 977.6**, SGPO-barrier 470.9.
+
+### What this establishes
+
+**The claim "Murky Drone — SGPO 0% violations vs 100% for PPO/CPO" is not merely
+unsupported; under a fair multi-step test it is contradicted.** SGPO does not
+achieve zero violations, and it does not beat CPO. CPO is the safest method here
+by a significant margin against both SGPO variants.
+
+**The repo's actual SGPO formulation is statistically indistinguishable from
+unconstrained PPO** (p=0.68, d=−0.08). Once its metric is no longer fed
+ground-truth trap distance, `advantage / sqrt(g)` confers no measurable safety
+benefit — consistent with the mechanical reading in §12 above, since scaling a
+scalar advantage by a positive number cannot reverse the sign of the incentive to
+cross the zone.
+
+The barrier variant *does* beat PPO significantly (p=0.0015, d=0.65), so the cost
+signal is usable. But it still loses to CPO's Lagrangian. **The geometry is not
+adding anything over a soft penalty on the same signal** — which is the honest
+version of the result the papers claim.
+
+Zone localisation was weak: implied-centre error 0.219 (scale) and 0.330
+(barrier) against a zone radius of 0.15, i.e. 1.5–2.2 radii.
+
+### Limitations — this is one experiment, not a refutation of the idea
+
+- **Goal rates are low for every method (18–42%)**, so none of these policies
+  solves the task well. This is a weak-training regime and the comparison is
+  between four mediocre policies.
+- **200 episodes is short.** A longer horizon might separate the methods
+  differently, particularly for SGPO whose metric needs cost observations before
+  it can act.
+- **No per-method hyperparameter tuning.** CPO's `cost_limit=1.0` and
+  SGPO-barrier's `barrier=3.0` are single unswept choices. This does not
+  systematically favour either, but a tuned SGPO might do better.
+- **Off-path zone placements still accumulate violations** (PPO 264.6 / 368.7),
+  meaning the learned policies wander rather than converging on a tight
+  trajectory. Some of the measured violations are exploration noise rather than
+  trap-seeking.
+
+A fair summary: *as implemented in this repository*, SGPO's geometric mechanism
+does not deliver the safety advantage claimed for it, and its headline formulation
+performs no better than the unconstrained baseline. Whether a better
+implementation of the geodesic idea would is an open question this experiment does
+not settle.
 
 ---
 
