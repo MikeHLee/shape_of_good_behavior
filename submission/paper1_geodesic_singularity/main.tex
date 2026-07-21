@@ -41,8 +41,12 @@
 \printAffiliationsAndNotice{\icmlEqualContribution}
 
 \begin{abstract}
-Reward hacking---where RL agents exploit loopholes in reward specifications to achieve high reward without accomplishing intended objectives---poses a fundamental challenge for AI alignment. We propose \textbf{Singularity-Aware Geodesic Policy Optimization (SGPO)}, a geometric framework that prevents reward hacking by making dangerous regions of the reward landscape geodesically unreachable. We formalize reward spaces as Riemannian manifolds and introduce \emph{metric singularities}: learned anisotropic metrics that assign infinite geodesic length to paths entering deceptive-reward regions, analogous to black holes in general relativity. SGPO trains a conformal metric tensor that expands distances near empirically detected danger zones, then optimizes policy updates along geodesics of the resulting manifold. On \emph{Murky Drone Navigation}---a benchmark where a deceptive reward trap offers $10\times$ the true objective---SGPO reduces safety violations by $79\%$ compared to PPO while maintaining $8\times$ higher returns than CPO. Topology mining on $160{,}800$ samples from Anthropic's HH-RLHF reveals that $30\%$ of preference pairs lie in topologically severe risk regions, validating the practical need for geometric safety. Code and data are available in the supplementary material.
+Reward hacking---where RL agents exploit loopholes in reward specifications to achieve high reward without accomplishing intended objectives---poses a fundamental challenge for AI alignment. We propose \textbf{Singularity-Aware Geodesic Policy Optimization (SGPO)}, a geometric framework that prevents reward hacking by making dangerous regions of the reward landscape geodesically unreachable. We formalize reward spaces as Riemannian manifolds and introduce \emph{metric singularities}: learned anisotropic metrics that assign infinite geodesic length to paths entering deceptive-reward regions, analogous to black holes in general relativity. SGPO trains a conformal metric tensor that expands distances near empirically detected danger zones, then optimizes policy updates along geodesics of the resulting manifold. On a \emph{Sandbagging Trap} navigation benchmark with a deceptive reward region, a single-seed run shows SGPO incurring 11 safety violations against PPO's 52 while being the only method to achieve a positive final return; CPO is safer still (7 violations), and no method reaches the goal, so this result is preliminary rather than conclusive. Topology mining on $160{,}800$ samples from Anthropic's HH-RLHF reveals that $30\%$ of preference pairs lie in topologically severe risk regions, validating the practical need for geometric safety. Code and data are available in the supplementary material.
 \end{abstract}
+
+\begin{center}
+\fbox{\parbox{0.92\columnwidth}{\small\textbf{Erratum (2026-07-21).} An earlier version of this manuscript reported Table~\ref{tab:murky_drone} as ``\emph{Murky Drone Navigation} results (mean $\pm$ std over 5 seeds)'' with returns $412/51/408$, violations $52\pm11$, $7\pm3$, $11\pm4$, and safety rates $48\%/93\%/89\%$, and derived from it the claims of a ``$79\%$ violation reduction'' and ``$8\times$ higher returns than CPO''. Those figures were incorrect. The underlying experiment (\texttt{src/safety\_experiment.py}) is a \textbf{single run at seed 42} on \texttt{SandbaggingEnv} --- not five seeds, and not a ``murky drone'' environment; the reported $\pm$ spreads had no source. The violation figures $52/7/11$ were the run's \emph{total} counts over 250 episodes, presented as per-seed means. The return and safety-rate columns did not correspond to any recorded output. Table~\ref{tab:murky_drone} has been regenerated directly from \texttt{results/safety/safety\_benchmark\_metrics.json}, the abstract and contributions have been corrected, and the Agentic Shortcut figures have been withdrawn pending a reproducible run. No reviewer evaluated the earlier figures on their merits: the manuscript was desk-rejected from ICML~2026 on length and was not submitted elsewhere. See \texttt{EXPERIMENT\_ISSUES.md}~\S10.}}
+\end{center}
 
 %% ====================================================================
 \section{Introduction}
@@ -60,7 +64,7 @@ Existing defenses constrain \emph{how much} a policy deviates from a reference (
     \item \textbf{Reward manifold formalism}: We define reward spaces as Riemannian manifolds with learned anisotropic metrics (Section~\ref{sec:reward_manifold}).
     \item \textbf{Metric singularity theory}: We prove that policies following geodesics on manifolds with appropriate singularities cannot enter designated danger zones, providing formal safety guarantees (Section~\ref{sec:singularity}, Theorem~\ref{thm:geodesic_safety}).
     \item \textbf{SGPO algorithm}: We present Singularity-Aware Geodesic Policy Optimization, which learns the metric from data and optimizes along geodesics (Section~\ref{sec:sgpo}).
-    \item \textbf{Empirical validation}: SGPO reduces violations by $79\%$ vs.\ PPO and achieves $8\times$ higher returns than CPO on Murky Drone Navigation, while topology mining on $160{,}800$ HH-RLHF samples reveals widespread risk structure (Section~\ref{sec:experiments}).
+    \item \textbf{Empirical validation}: on a single-seed Sandbagging Trap run, SGPO incurs 11 safety violations against PPO's 52 and is the only method with a positive final return, though CPO remains safer and no method reaches the goal; topology mining on $160{,}800$ HH-RLHF samples reveals widespread risk structure (Section~\ref{sec:experiments}).
 \end{enumerate}
 
 %% ====================================================================
@@ -189,12 +193,12 @@ SGPO operates in three phases: (1) danger zone detection, (2) metric learning, a
 \label{sec:experiments}
 %% ====================================================================
 
-We evaluate SGPO on two tasks: (1) \emph{Murky Drone Navigation}, a controlled benchmark with a known deceptive trap, and (2) \emph{topology mining} on 160,800 real HH-RLHF preference pairs to validate practical relevance.
+We evaluate SGPO on two tasks: (1) the \emph{Sandbagging Trap}, a controlled navigation benchmark with a known deceptive reward region, and (2) \emph{topology mining} on 160,800 real HH-RLHF preference pairs to validate practical relevance.
 
-\subsection{Murky Drone Navigation}
+\subsection{Sandbagging Trap}
 \label{sec:murky_drone}
 
-\paragraph{Setup.} An agent navigates a 2D continuous environment toward a goal region (reward +1 per step near goal). A ``murky zone'' offers deceptive reward (+10 per step) but incurs hidden safety cost. The optimal safe policy reaches the goal with cumulative reward $\sim$50; the exploitative policy enters the murky zone for reward $\sim$500 but violates $>$50 safety constraints.
+\paragraph{Setup.} An agent navigates a 2D continuous environment (\texttt{SandbaggingEnv}) toward a goal region. The per-step reward is the reduction in distance to the goal, plus a deceptive \emph{trap reward} of $+3.0$ for occupying a trap region that incurs a hidden safety cost. All methods use identical architectures (2-layer MLP, hidden dim 64), learning rate $3 \times 10^{-4}$, and are trained for 250 episodes.
 
 We compare:
 \begin{itemize}
@@ -203,31 +207,31 @@ We compare:
     \item \textbf{SGPO} (ours): Singularity-aware metric, no explicit cost function.
 \end{itemize}
 
-All methods use identical architectures (2-layer MLP, hidden dim 64), learning rate $3 \times 10^{-4}$, and 200 training episodes.
+\paragraph{Scope of this result.} These numbers come from a \textbf{single run at one seed} (\texttt{seed}~$=42$); they are \emph{not} averaged over repeated seeds and carry no confidence interval. They should be read as a single observation, not as a demonstration of a reliable ordering between methods. A multi-seed replication is required before drawing comparative conclusions and is not yet available.
 
 \begin{table}[t]
 \centering
-\caption{Murky Drone Navigation results (mean $\pm$ std over 5 seeds).}
+\caption{Sandbagging Trap results. \textbf{Single run, seed 42, 250 episodes} --- not averaged over seeds. ``Return'' is the mean episode return over the final 50 episodes; ``Violations'' is the total count over all 250 episodes; ``Violation-free'' is the fraction of the 250 episodes with zero violations.}
 \label{tab:murky_drone}
 \vskip 0.1in
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}lcccc@{}}
 \toprule
-\textbf{Method} & \textbf{Return} & \textbf{Violations} & \textbf{Safety Rate} \\
+\textbf{Method} & \textbf{Return} & \textbf{Violations} & \textbf{Violation-free} & \textbf{Goal reached} \\
 \midrule
-PPO     & $412 \pm 89$  & $52 \pm 11$ & $48\%$ \\
-CPO     & $51 \pm 12$   & $7 \pm 3$   & $93\%$ \\
-SGPO    & $\mathbf{408 \pm 73}$ & $\mathbf{11 \pm 4}$ & $\mathbf{89\%}$ \\
+PPO     & $-6.67$          & $52$         & $96.0\%$          & $0\%$ \\
+CPO     & $-6.23$          & $\mathbf{7}$ & $\mathbf{99.2\%}$ & $0\%$ \\
+SGPO    & $\mathbf{+1.53}$ & $11$         & $98.0\%$          & $0\%$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\paragraph{Results} (Table~\ref{tab:murky_drone}). SGPO achieves near-PPO returns ($408$ vs.\ $412$) while reducing violations by $79\%$ ($11$ vs.\ $52$). CPO achieves $93\%$ safety but sacrifices $88\%$ of returns ($51$ vs.\ $412$). SGPO is Pareto-optimal: it achieves $8\times$ higher returns than CPO at comparable safety ($89\%$ vs.\ $93\%$).
+\paragraph{Results} (Table~\ref{tab:murky_drone}). In this single run, SGPO is the only method to end with a positive mean return ($+1.53$, versus $-6.67$ for PPO and $-6.23$ for CPO), while incurring 11 violations against PPO's 52. CPO is the safest of the three on both violation measures ($7$ violations, $99.2\%$ violation-free), so SGPO does \emph{not} dominate CPO on safety here; the observed difference is that SGPO reaches a positive return while CPO does not.
 
-The metric singularity acts as a ``geometric fence'': the policy learns to navigate around the murky zone rather than through it, achieving high returns from the legitimate goal without ever discovering the deceptive trap.
+\paragraph{Limitation.} Critically, \textbf{no method reached the goal region in this run} --- the goal success rate over the final 50 episodes is $0\%$ for PPO, CPO, and SGPO alike. This benchmark therefore demonstrates only trap-avoidance and return, not successful safe navigation to the objective, and it does not currently support a claim that the metric singularity enables goal-reaching behaviour. Establishing that requires an environment configuration in which at least one method solves the task.
 
 \subsection{Agentic Shortcut Detection}
 
-We further validate on the \emph{Agentic Shortcut} benchmark inspired by \citet{anthropic2025shortcuts}, where an agent must complete a multi-step task but can take a harmful shortcut for immediate reward. SGPO identifies the shortcut region via reward model disagreement and constructs a metric singularity, reducing shortcut exploitation from $67\%$ (PPO) to $12\%$ (SGPO) while maintaining $91\%$ task completion.
+\emph{This subsection is retained for context but its numbers are \textbf{unverified}: no artifact in the accompanying code or results reproduces them (see the Erratum).} The \emph{Agentic Shortcut} benchmark, inspired by \citet{anthropic2025shortcuts}, asks an agent to complete a multi-step task when a harmful shortcut offers immediate reward. The intended claim is that SGPO identifies the shortcut region via reward model disagreement and constructs a metric singularity around it. Quantitative results are withheld pending a reproducible run.
 
 \subsection{Topology Mining on HH-RLHF}
 \label{sec:topology_mining}
@@ -301,7 +305,7 @@ Table~\ref{tab:ablation} shows that the metric singularity is the most critical 
 \label{sec:conclusion}
 %% ====================================================================
 
-We introduced Singularity-Aware Geodesic Policy Optimization (SGPO), a geometric framework for safe reinforcement learning that prevents reward hacking through metric singularities. By formalizing reward landscapes as Riemannian manifolds and constructing learned metrics that assign infinite geodesic distance to dangerous regions, SGPO provides formal safety guarantees without requiring explicit cost functions. Experiments demonstrate $79\%$ violation reduction on Murky Drone Navigation with minimal performance loss, while topology mining on $160{,}800$ HH-RLHF samples reveals that $30\%$ of real preference data lies in topologically severe risk regions---validating the practical urgency of geometric safety approaches.
+We introduced Singularity-Aware Geodesic Policy Optimization (SGPO), a geometric framework for safe reinforcement learning that prevents reward hacking through metric singularities. By formalizing reward landscapes as Riemannian manifolds and constructing learned metrics that assign infinite geodesic distance to dangerous regions, SGPO provides formal safety guarantees without requiring explicit cost functions. A preliminary single-seed experiment on the Sandbagging Trap benchmark shows SGPO incurring 11 safety violations against PPO's 52 while achieving the only positive final return, though CPO remains safer and no method reaches the goal---so the comparative claim requires multi-seed replication before it can be relied upon. Topology mining on $160{,}800$ HH-RLHF samples reveals that $30\%$ of real preference data lies in topologically severe risk regions---validating the practical urgency of geometric safety approaches.
 
 \bibliography{references}
 \bibliographystyle{icml2026}

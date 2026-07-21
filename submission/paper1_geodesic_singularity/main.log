@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.23)  25 MAR 2026 14:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.23)  21 JUL 2026 16:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -541,30 +541,58 @@ Underfull \hbox (badness 2020) in paragraph at lines 44--45
 \OT1/ptm/m/n/10 high re-ward with-out ac-com-plish-ing in-tended
  []
 
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
+8.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
+8.
 
-Underfull \hbox (badness 5756) in paragraph at lines 60--61
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Underfull \hbox (badness 4001) in paragraph at lines 48--48
+[]\OT1/ptm/b/n/9 Erratum (2026-07-21). \OT1/ptm/m/n/9 An ear-lier ver-sion of t
+his
+ []
+
+
+Underfull \hbox (badness 1571) in paragraph at lines 48--48
+\OT1/ptm/m/it/9 tion \OT1/ptm/m/n/9 re-sults (mean $\OMS/cmsy/m/n/9 ^^F$ \OT1/p
+tm/m/n/9 std over 5 seeds)'' with re-turns
+ []
+
+
+Overfull \hbox (19.44289pt too wide) in paragraph at lines 48--48
+\OT1/pcr/m/n/9 results/safety/safety[]benchmark[]metrics.json\OT1/ptm/m/n/9 ,
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 6995) has occurred while \output is active []
+
+ [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/
+local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+
+
+]
+Underfull \hbox (badness 5756) in paragraph at lines 64--65
 []\OT1/ptm/b/n/10 Reward man-i-fold for-mal-ism\OT1/ptm/m/n/10 : We de-fine re-
 
  []
 
 
-Underfull \hbox (badness 1097) in paragraph at lines 62--63
+Underfull \hbox (badness 1097) in paragraph at lines 66--67
 []\OT1/ptm/b/n/10 SGPO al-go-rithm\OT1/ptm/m/n/10 : We present Singularity-Awar
 e
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 63--64
-\OT1/ptm/m/n/10 CPO on Murky Drone Nav-i-ga-tion, while topol-
- []
-
-[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
-ocal/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
-
-
-
-]
-Overfull \hbox (18.16524pt too wide) detected at line 108
+Overfull \hbox (18.16524pt too wide) detected at line 112
 [][][]\OMS/cmsy/m/n/10 L[] \OT1/cmr/m/n/10 = [] [] [] + \OML/cmm/m/it/10 ^^U[] 
 [] \OMS/cmsy/m/n/10 k\OT1/cmr/m/n/10 ^^C[](\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) 
 \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 I\OMS/cmsy/m/n/10 k[]
@@ -572,43 +600,37 @@ Overfull \hbox (18.16524pt too wide) detected at line 108
 
 [2]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 161.
+put line 165.
 
-Underfull \hbox (badness 1810) in paragraph at lines 185--186
+Underfull \hbox (badness 1810) in paragraph at lines 189--190
  \OT1/ptm/b/n/10 Com-par-i-son with CPO.[] \OT1/ptm/m/n/10 While CPO solves a c
 on-
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
-01.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [3]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
-35.
+[3]
+Overfull \hbox (35.46031pt too wide) in paragraph at lines 217--226
+ [][] 
+ []
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-<figures/harmonic_risk_distribution.pdf, id=184, 705.93019pt x 344.08487pt>
+<figures/harmonic_risk_distribution.pdf, id=186, 705.93019pt x 344.08487pt>
 File: figures/harmonic_risk_distribution.pdf Graphic file (type pdf)
 <use figures/harmonic_risk_distribution.pdf>
 Package pdftex.def Info: figures/harmonic_risk_distribution.pdf  used on input 
-line 239.
+line 243.
 (pdftex.def)             Requested size: 223.1329pt x 108.76007pt.
-
-Underfull \hbox (badness 6493) in paragraph at lines 282--283
+[4 <./figures/harmonic_risk_distribution.pdf>]
+Underfull \hbox (badness 6493) in paragraph at lines 286--287
  \OT1/ptm/b/n/10 Safe RL.[] \OT1/ptm/m/n/10 Con-strained MDPs ([]Alt-man[], []1
 999[]) and
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 284--285
+Underfull \hbox (badness 1917) in paragraph at lines 288--289
  \OT1/ptm/b/n/10 Re-ward hack-ing mit-i-ga-tion.[] \OT1/ptm/m/n/10 Re-ward mode
 l en-sem-
  []
 
-[4 <./figures/harmonic_risk_distribution.pdf>] (./main.bbl
+(./main.bbl
 Underfull \hbox (badness 7344) in paragraph at lines 27--33
 []\OT1/ptm/m/n/10 Anthropic.  From short-cuts to sab-o-tage: Nat-u-
  []
@@ -629,26 +651,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--33
 []$\OT1/pcr/m/n/10 https : / / www . anthropic . com / research /
  []
 
-) [5]
+[5])
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6] (./main.aux)
+[6] [7
+
+] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 098D28AE79B9B33B65D42C6042D88159;3571.
+(rerunfilecheck)             Checksum: C6C2D8EF295E722E25E8FB9BD4978705;3538.
  ) 
 Here is how much of TeX's memory you used:
- 13297 strings out of 474116
- 208473 string characters out of 5743682
- 1949187 words of memory out of 5000000
- 35388 multiletter control sequences out of 15000+600000
- 585795 words of font info for 93 fonts, out of 8000000 for 9000
+ 13306 strings out of 474116
+ 208573 string characters out of 5743682
+ 1950187 words of memory out of 5000000
+ 35393 multiletter control sequences out of 15000+600000
+ 588253 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1341b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1459b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -668,12 +692,13 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/
 texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
-ype1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on main.pdf (6 pages, 291355 bytes).
+ype1/urw/times/utmbi8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on main.pdf (7 pages, 306454 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 297 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 500000)
+ 438 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
  182 words of extra memory for PDF output out of 10000 (max. 10000000)
 

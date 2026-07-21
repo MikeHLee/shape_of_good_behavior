@@ -36,7 +36,7 @@ The Hodge-augmented critic developed in the Feedback Geometry track is used here
 
 ---
 
-## Source Code References (from `../high_dimensional_reward_spaces/`)
+## Source Code References (from `topics/shape_of_good_behavior/`)
 
 - `src/semantic_mdp_rl.py` — core PPO/CPO/SGPO algorithm implementations (~900 lines)
 - `src/learned_danger_boundary.py` — black hole learning from cost signals (~550 lines)
@@ -53,9 +53,15 @@ The Hodge-augmented critic developed in the Feedback Geometry track is used here
 
 ## Key Experiments
 
+> ⚠️ **Experiments 2 and 3 are UNVERIFIED as of 2026-07-21.** The quoted numbers are
+> real output, but the only implementation is a **one-step bandit** at a single seed,
+> in which SGPO is given the violation flag it is then scored on. They are not yet
+> evidence about PPO/CPO as algorithms. See `VENUE_TRACKER.md` and
+> `../EXPERIMENT_ISSUES.md` §2/§8. A real multi-step re-run at 50+ seeds is pending.
+
 1. **Sandbagging Trap** — deceptive 2D navigation: SGPO (+1.53 return) vs PPO (-6.67) vs CPO (-6.23)
-2. **Murky Drone** — hard no-go zone with false-positive rewards: SGPO 0% violations vs 100% for PPO/CPO
-3. **Agentic Shortcut** — multi-step task with forbidden shortcut: tests whether SGPO avoids the shortcut even when it's reward-advantaged
+2. **Murky Drone** *(UNVERIFIED)* — hard no-go zone with false-positive rewards: SGPO 0% violations vs 100% for PPO/CPO
+3. **Agentic Shortcut** *(UNVERIFIED)* — multi-step task with forbidden shortcut: tests whether SGPO avoids the shortcut even when it's reward-advantaged
 4. **Safety Gym Benchmarks** — PointGoal, CarGoal, DoggoGoal; comparison to SOTA safe RL methods
 5. **Metric Learning Ablations** — sharpness β, event horizon radius, severity σ; validates theoretical requirement β ≥ 2
 

@@ -8,6 +8,32 @@
 
 ---
 
+## ⚠️ UNVERIFIED CLAIMS — do not submit until resolved
+
+Audit of 2026-07-21 (see `../EXPERIMENT_ISSUES.md`, "Independent Audit"). The
+numbers below are **real experiment output, not fabricated**, but they cannot be
+re-derived as evidence for the claims they are attached to. Each must be either
+re-run properly or removed before this paper goes to any venue.
+
+| Claim | Appears in | Why UNVERIFIED |
+|-------|-----------|----------------|
+| "Murky Drone — SGPO 0% violations vs 100% PPO/CPO" | `README.md:57`, `PAPER_OUTLINE.md:26`, `submission/main.tex:46`, `submission/sections/introduction.tex:20`, `submission/sections/experiments.tex:36-61` | Only implementation is a **one-step bandit** with tabular action-selection rules, not PPO/CPO/SGPO. SGPO is handed a converged oracle for the exact violation flag it is then scored on, so 0% is arithmetically forced. **1 seed.** (§2, §8) |
+| "Agentic Shortcut — SGPO 0% vs PPO 100% / CPO 89%" | `submission/sections/experiments.tex:48-56` | Same harness, same circularity, same single seed. (§2) |
+| "SGPO detects 94% of cyclic preferences vs 0% for PPO/CPO" | `geodpo_experiments.py:3855` | The 0% baseline is a hardcoded branch — PPO/CPO have no harmonic head and cannot register detection. The function can only ever emit 0% or 100%, never 94%. (§1) |
+| "Clipped-SGPO matches SGPO safety with 2.1× faster convergence" | `geodpo_experiments.py:4634` | `ablation_study` sweeps Clipped-SGPO hyperparameters only — there is no SGPO/PPO/CPO arm, so no ratio is computable from it. (§3) |
+| Ethical-scenarios table (all cells) | `submission/sections/experiments.tex:48-56` | Faithfully transcribed from real output, but every environment sets `done=True` after one step. (§2, §7) |
+
+**Also**: `submission/` is a skeleton — 5 of 7 section files do not exist and
+`icml2026.sty` is missing, so it cannot build end-to-end. Its LaTeX sources were
+separately found corrupted (escape sequences expanded to control characters) and
+were repaired 2026-07-21; see §9.
+
+**Blocking action**: implement a genuine multi-step Murky Drone against the
+existing `src/safety_experiment_hard.py` trainers and re-run at 50+ seeds
+(decision of 2026-07-21). Until then, treat every row above as unciteable.
+
+---
+
 ## Primary Targets
 
 ### NeurIPS 2026
