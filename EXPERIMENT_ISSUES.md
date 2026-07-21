@@ -23,14 +23,24 @@ This document records issues discovered during experiment verification and their
 > are one-step bandits and the safety metric is handed to the algorithm being
 > scored on it, so favourable results are structural rather than misreported.
 >
-> **§10 is the exception and is CRITICAL.** Table 1 of the compiled paper
-> `submission/paper1_geodesic_singularity/main.pdf` states "mean ± std over 5
-> seeds" for a **single-seed run**, reports violation counts that are that run's
-> 250-episode *sums*, carries a Return column matching no artifact in the repo, and
-> describes an environment (+10 murky zone) that is not the one in the code
-> (`SandbaggingEnv`, trap reward 3.0). Its own data shows `goal_success_rate = 0.0`
-> for every method, contradicting the paper's narrative. **Read §10 first, and
-> establish whether that PDF was sent anywhere before doing anything else.**
+> **§10 was the exception and was CRITICAL — now corrected.** Table 1 of the
+> compiled paper `submission/paper1_geodesic_singularity/main.pdf` stated
+> "mean ± std over 5 seeds" for a **single-seed run**, reported violation counts
+> that were that run's 250-episode *sums*, carried a Return column matching no
+> artifact in the repo, and described an environment (+10 murky zone) that is not
+> the one in the code (`SandbaggingEnv`, trap reward 3.0). Its own data shows
+> `goal_success_rate = 0.0` for every method, contradicting the paper's narrative.
+> §11 then found the same pattern in three more places (Agentic Shortcut figures,
+> the component-ablation table, and topology-mining statistics that disagreed with
+> the paper's own figure).
+>
+> **Exposure, established 2026-07-21**: the manuscript was **desk-rejected from
+> ICML 2026 on length and never submitted elsewhere**, so no reviewer assessed the
+> figures. It was, however, committed to the **public** repo
+> `github.com/MikeHLee/shape_of_good_behavior`. Table 1 has been regenerated from
+> the data, the other three items corrected or withdrawn, a dated erratum added to
+> page 1, and the corrected PDF pushed. `alignment_research` (also public) was
+> checked and carries none of these claims.
 
 ---
 
@@ -148,8 +158,10 @@ This document records issues discovered during experiment verification and their
 | Reaching benchmark 100% | MEDIUM | ⚠️ **PARTIAL** - recommend exclude | not audited |
 | Figure 2 data hand-typed | MEDIUM | — | ✅ **FIXED** 2026-07-21 — now loaded from CSV; transcription had been accurate (§7) |
 | Murky Drone has no real impl | **HIGH** | — | ❌ **OPEN** (§8 audit) |
+| paper1 Agentic Shortcut + ablation table unsourced | **HIGH** | — | ✅ **WITHDRAWN** 2026-07-21 (§11) |
+| paper1 topology text contradicted its own figure | **HIGH** | — | ✅ **CORRECTED** 2026-07-21 (§11) |
 | LaTeX submission sources corrupted | **HIGH** | — | ✅ **FIXED** 2026-07-21 (§9) |
-| **paper1 Table 1 misstates seeds + unsourced returns** | **CRITICAL** | — | ❌ **OPEN — blocking distribution** (§10) |
+| **paper1 Table 1 misstates seeds + unsourced returns** | **CRITICAL** | — | ✅ **CORRECTED + ERRATUM** 2026-07-21, pushed public (§10) |
 
 ---
 
@@ -537,15 +549,86 @@ Jan 2026, Pending" submission; this PDF was built 2026-03-25, after that date.
    (SGPO), 91% task completion") were not traced to any artifact either and should
    be audited the same way.
 
-**Status: ❌ OPEN — CRITICAL, blocking any further distribution of this paper.**
+**Status: ✅ CORRECTED (2026-07-21).** Table 1 regenerated from
+`results/safety/safety_benchmark_metrics.json` and relabelled as a single-seed
+`SandbaggingEnv` result; abstract, contributions and conclusion corrected; dated
+erratum added to page 1; PDF rebuilt and pushed. Exposure resolved: desk-rejected
+from ICML 2026 on length, never submitted elsewhere, but it had been committed to
+the public repo `github.com/MikeHLee/shape_of_good_behavior` — the corrected
+version is now what is published there. See also §11 for three further corrections
+made in the same pass.
 
 ---
 
-## Cross-cutting: reproducibility
+## §11 — Remaining `paper1` numbers traced ✅ CORRECTED (2026-07-21)
+
+Follow-up pass over every other number in `paper1_geodesic_singularity`. All three
+findings are now corrected in the manuscript and covered by the page-1 erratum.
+
+**(a) Agentic Shortcut — unsourced, withdrawn.** The paper claimed shortcut
+exploitation falling from "67% (PPO) to 12% (SGPO) while maintaining 91% task
+completion". The only run of that scenario
+(`notebooks/modal_runner/results/ethical_scenarios_per_scenario_updated.csv`)
+gives `agentic_shortcut`: **ppo 1.0, cpo 0.89, gpo 0.0** — i.e. 100% / 89% / 0%,
+and no task-completion metric at all. The paper's three numbers match nothing.
+Withdrawn pending a reproducible run.
+
+**(b) Component-ablation table — unsourced, withdrawn.** Table 2 reported
+violations/returns for "− Metric singularity", "− Geodesic projection",
+"− Advantage scaling" and "Isotropic metric only", on the same fabricated scale as
+the withdrawn Table 1 (Full SGPO listed as `11 ± 4` / `408 ± 73`). The only
+ablation ever run (`results/modal_exports/ablation_study.csv`, 15 rows) sweeps
+**hyperparameters** — `geometric_threshold`, `clip_ratio`, `black_hole_strength` —
+and reports different quantities (`convergence_steps`, `final_safety_violation`,
+`final_reward`). No component ablation exists. Withdrawn.
+
+*Incidental*: that CSV's `time_seconds` column contains values around `7e-05` —
+74 microseconds for a nominal 50-episode × 50-step training run. Whatever it
+timed, it was not training. Consistent with the §3 finding that the timing
+instrumentation is measuring the wrong thing.
+
+**(c) Topology mining — the paper contradicted its own figure.** The text claimed
+**160,800** samples, mean harmonic risk **0.758 ± 0.093**, and severity bands of
+97% (≥0.6) / 81% (≥0.7) / **30%** (≥0.8).
+
+The artifact the figure is actually drawn from is `data/topology_metadata.parquet`,
+which contains **50,000** rows:
+
+| statistic | paper text | actual parquet |
+|---|---|---|
+| n | 160,800 | **50,000** |
+| mean ± std | 0.758 ± 0.093 | **0.754 ± 0.093** |
+| ≥ 0.6 | 97% | **94.0%** |
+| ≥ 0.7 | 81% | **76.6%** |
+| ≥ 0.8 | 30% | **33.3%** |
+
+Decisively: `plot_harmonic_risk_distribution()` in
+`notebooks/modal_runner/generate_paper_figures.py:89` is **correctly data-driven** —
+it computes the percentage at render time — and the shipped
+`figures/harmonic_risk_distribution.pdf` has the title *"(33.3% samples > 0.8)"*
+baked into it. So the paper's own figure said 33.3% while its caption and body text
+said 30% of 160,800. The honest figure caught the text out.
+
+A genuine 160,800-sample run is *plausible but unverifiable*:
+`geodpo_experiments.py::full_hh_rlhf_mining` writes `full_160k_topology.parquet`
+and `full_160k_stats.json` to the Modal volume, and **neither was ever downloaded**;
+under Starter-tier retention they are likely gone. This is therefore a
+*cannot-re-derive*, not a *contradicted* — but the text must match the artifact that
+exists, so it has been changed to 50,000 / 33.3% / 0.754 throughout.
+
+---
+
+## Cross-cutting: reproducibility (Tracks 1–2 only)
 
 None of `condorcet_ring_benchmark`, `ethical_scenario_evaluation`, or
-`ablation_study` seeds NumPy or Torch. Every reported number is single-seed and
-non-reproducible. Separately, `shared/src/hodge_diagnostic.py` derives context IDs
+`ablation_study` seeds NumPy or Torch, and `src/safety_experiment.py` runs a single
+fixed seed (42) with no repetition. Every number reported from **these** harnesses
+is single-seed.
+
+**This does not generalise to the whole repo.** The Track 3 peer-consistency work
+(`shared/results/peer_sheaf_e*.json`) does seed properly — 5 split-seeds × 4
+subsample seeds — and its figures regenerate deterministically. Scope this caveat
+to Tracks 1–2; applying it to Track 3 would be wrong. Separately, `shared/src/hodge_diagnostic.py` derives context IDs
 via `hash(cat) % 10000` (**lines 124, 191**); Python string hashing is randomised
 per process unless `PYTHONHASHSEED` is fixed, so those IDs are not stable across
 runs and are exposed to collisions mod 10000. Grouping behaviour is preserved

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.23)  21 JUL 2026 16:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.23)  21 JUL 2026 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -572,7 +572,7 @@ Overfull \hbox (19.44289pt too wide) in paragraph at lines 48--48
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \vbox (badness 6995) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/
 local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
@@ -612,20 +612,49 @@ Overfull \hbox (35.46031pt too wide) in paragraph at lines 217--226
  [][] 
  []
 
-<figures/harmonic_risk_distribution.pdf, id=186, 705.93019pt x 344.08487pt>
+<figures/harmonic_risk_distribution.pdf, id=188, 705.93019pt x 344.08487pt>
 File: figures/harmonic_risk_distribution.pdf Graphic file (type pdf)
 <use figures/harmonic_risk_distribution.pdf>
 Package pdftex.def Info: figures/harmonic_risk_distribution.pdf  used on input 
 line 243.
 (pdftex.def)             Requested size: 223.1329pt x 108.76007pt.
 [4 <./figures/harmonic_risk_distribution.pdf>]
-Underfull \hbox (badness 6493) in paragraph at lines 286--287
+Underfull \hbox (badness 1603) in paragraph at lines 261--262
+\OT1/ptm/m/it/10 has been with-drawn (see the Er-ra-tum). \OT1/ptm/m/n/10 It re
+-ported
+ []
+
+
+Underfull \hbox (badness 1286) in paragraph at lines 261--262
+\OMS/cmsy/m/n/10 ^^F$ \OT1/ptm/m/n/10 scale as the with-drawn Ta-ble 1, and no 
+recorded
+ []
+
+
+Overfull \hbox (6.98242pt too wide) in paragraph at lines 261--262
+\OT1/ptm/m/n/10 (\OT1/pcr/m/n/10 results/modal[]exports/ablation[]study.csv\OT1
+/ptm/m/n/10 )
+ []
+
+
+Underfull \hbox (badness 1430) in paragraph at lines 261--262
+\OT1/ptm/m/n/10 sweeps three \OT1/ptm/m/it/10 hy-per-pa-ram-e-ters \OT1/ptm/m/n
+/10 --- ge-o-met-ric thresh-old
+ []
+
+
+Underfull \hbox (badness 1112) in paragraph at lines 261--262
+\OT1/ptm/m/n/10 ent quan-ti-ties en-tirely (con-ver-gence steps, fi-nal safety
+ []
+
+
+Underfull \hbox (badness 6493) in paragraph at lines 270--271
  \OT1/ptm/b/n/10 Safe RL.[] \OT1/ptm/m/n/10 Con-strained MDPs ([]Alt-man[], []1
 999[]) and
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 288--289
+Underfull \hbox (badness 1917) in paragraph at lines 272--273
  \OT1/ptm/b/n/10 Re-ward hack-ing mit-i-ga-tion.[] \OT1/ptm/m/n/10 Re-ward mode
 l en-sem-
  []
@@ -666,13 +695,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C6C2D8EF295E722E25E8FB9BD4978705;3538.
  ) 
 Here is how much of TeX's memory you used:
- 13306 strings out of 474116
- 208573 string characters out of 5743682
- 1950187 words of memory out of 5000000
- 35393 multiletter control sequences out of 15000+600000
+ 13304 strings out of 474116
+ 208544 string characters out of 5743682
+ 1951187 words of memory out of 5000000
+ 35392 multiletter control sequences out of 15000+600000
  588253 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1459b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,2163b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -695,10 +724,10 @@ st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
 ype1/urw/times/utmbi8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on main.pdf (7 pages, 306454 bytes).
+Output written on main.pdf (7 pages, 308840 bytes).
 PDF statistics:
- 438 PDF objects out of 1000 (max. 8388607)
- 308 compressed objects within 4 object streams
- 67 named destinations out of 1000 (max. 500000)
+ 436 PDF objects out of 1000 (max. 8388607)
+ 306 compressed objects within 4 object streams
+ 66 named destinations out of 1000 (max. 500000)
  182 words of extra memory for PDF output out of 10000 (max. 10000000)
 
