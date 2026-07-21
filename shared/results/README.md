@@ -58,17 +58,24 @@ optimizer_comparison_hodge_v3_30seed.json
 
 ### Caveats that must travel with file 4
 
-1. **v3 is not a clean A/B of the loss function.** The recorded
-   `diagnosis_exploit_fraction` — an output of `HodgeDiagnosticCritic`, written into
-   `config` at [`optimizer_comparison.py:202`](../src/optimizer_comparison.py#L202)
-   — is **0.094** in v3 versus **0.99–1.00** in files 1–3. The graph construction
-   changed at the same time as the loss (cross-pair k-NN edges are now preserved
-   under subsampling; without them H¹ is zero). The baselines moved too
-   (DPO 0.9107 → 0.9403, KTO 0.8218 → 0.8004), which they would not have done had
-   only the Hodge term changed. The v3 effect size is therefore confounded between
-   "new regulariser" and "different preference graph". A clean ablation — v3
-   regulariser on the *old* graph, and the old penalty on the *new* graph — has
-   not been run.
+1. **The v3 effect size itself is valid; the cross-version story is what's
+   confounded.** *(This item was overstated when first written on 2026-07-21 and
+   is corrected here.)* Within file 4, DPO and Hodge-DPO run on **the same 30
+   seeds and the same preference graph**, and all 30 paired differences are
+   positive (mean +0.0596, sd 0.0130). That is a legitimate paired A/B of the loss
+   function, and `d = 6.52` stands as a within-run measurement.
+
+   What is *not* established is the **explanation** for why files 1–3 showed
+   nothing and file 4 shows a large effect. Two things changed together: the
+   regulariser, and the graph construction (cross-pair k-NN edges are now
+   preserved under subsampling; without them H¹ is zero). The recorded
+   `diagnosis_exploit_fraction` — an output of `HodgeDiagnosticCritic`, written
+   into `config` at [`optimizer_comparison.py:202`](../src/optimizer_comparison.py#L202)
+   — moved from **0.99–1.00** to **0.094**, and the baselines shifted too
+   (DPO 0.9107 → 0.9403, KTO 0.8218 → 0.8004). So "the potential-alignment
+   regulariser is what made Hodge variants work" is a plausible but unproven
+   attribution. The clean ablation — v3 regulariser on the *old* graph, old
+   penalty on the *new* graph — has not been run.
 
 2. **GRPO is at the metric ceiling in all four files** (mean exactly 1.0, std
    exactly 0.0). Hodge-DPO at 0.9999 is effectively there too. A metric that

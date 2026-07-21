@@ -697,6 +697,37 @@ distribution. The strong positives and the sign-flip are unaffected.**
 
 ---
 
+## §15 — Correction to this audit: the v3 Hodge effect size is valid
+
+*Self-correction, 2026-07-21. Recorded because an audit that will not correct
+itself is not worth much.*
+
+When `shared/results/README.md` was first written earlier the same day, it stated
+that "the v3 effect size is confounded between 'new regulariser' and 'different
+preference graph'." **That was wrong and has been corrected in place.**
+
+Checked directly: within `optimizer_comparison_hodge_v3_30seed.json`, DPO and
+Hodge-DPO run on **the same 30 seeds and the same preference graph**, and all 30
+paired differences are positive (mean +0.0596, sd 0.0130). That is a legitimate
+paired A/B of the loss function; `d = 6.52` stands as a within-run measurement.
+
+What *is* unresolved is narrower: why files 1–3 measured a null and file 4 measures
+a large effect. The regulariser and the graph construction changed in the same
+revision (`diagnosis_exploit_fraction` moved 0.99–1.00 → 0.094; the baselines
+shifted too), so attributing the difference to the regulariser alone is plausible
+but unproven. The clean ablation has not been run.
+
+**Also corrected in the same pass**: the public `alignment_research` READMEs
+summarised this result without the scope caveat the paper itself already carries.
+`hodge_preference_geometry/paper/main.tex` states in its Limitations that the
+metric "measures reward model accuracy, not downstream generation quality" — the
+README summaries dropped that. Both now carry it, plus the ceiling effect, the
+annotation-label basis of the genuine/exploitable split, and the method history
+(the original batch harmonic penalty is identically zero for scalar reward models).
+The paper was already honest; the summaries were the gap.
+
+---
+
 ## §14 — Repo-wide figure-provenance sweep ✅ COMPLETE (2026-07-21)
 
 §7 (Figure 2 hand-typed) and §13D (small-panel AUCs hardcoded) were the same
