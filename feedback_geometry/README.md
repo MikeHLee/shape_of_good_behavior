@@ -36,7 +36,7 @@ The SGPO algorithm (Constraint Geometry paper) uses the Hodge critic developed h
 
 ---
 
-## Source Code References (from `../high_dimensional_reward_spaces/`)
+## Source Code References (from `topics/shape_of_good_behavior/`)
 
 - `src/hodge_critic.py` — core Hodge decomposition and Condorcet cycle detection
 - `src/mine_preference_cycles.py` — preference graph construction and cycle mining

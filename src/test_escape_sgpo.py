@@ -14,7 +14,7 @@ import torch
 import torch.nn as nn
 
 import sys
-sys.path.insert(0, '/Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/src')
+sys.path.insert(0, '/Users/Michaellee/Documents/Runes/ai_research/topics/shape_of_good_behavior/src')
 
 from gpo_escape import (
     EscapeSGPO,

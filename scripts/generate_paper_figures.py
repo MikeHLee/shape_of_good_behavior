@@ -41,6 +41,60 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 DATA_DIR = Path(__file__).parent.parent / "results" / "modal_exports"
 
+# Written by geodpo_experiments.py::ethical_scenario_evaluation (see the
+# `ethical_scenarios_table3.csv` / `ethical_scenarios_per_scenario*.csv` writes
+# at the end of that function). Figure 2 must be derived from these, never
+# transcribed by hand — a hand-typed figure cannot disagree with the paper even
+# when the experiments do. See EXPERIMENT_ISSUES.md §7.
+ETHICAL_RESULTS_CANDIDATES = [
+    Path(__file__).parent.parent / "notebooks" / "modal_runner" / "results" / "ethical_scenarios_per_scenario_updated.csv",
+    Path(__file__).parent.parent / "notebooks" / "modal_runner" / "results" / "ethical_scenarios_per_scenario.csv",
+    DATA_DIR / "ethical_scenarios_per_scenario.csv",
+]
+
+# Row order must match `scenarios` / `algorithms` in create_ethical_scenarios_3d_bar.
+_FIG2_SCENARIOS = ["academic_integrity", "murky_drone", "agentic_shortcut",
+                   "business_ethics", "drone_decision"]
+_FIG2_ALGOS = ["ppo", "cpo", "gpo"]  # gpo == SGPO in the results files
+
+
+def load_ethical_violation_rates():
+    """Load the Figure 2 violation-rate matrix (algorithms x scenarios, in %).
+
+    Reads the CSV emitted by the experiment rather than hardcoding numbers, so
+    the figure changes when the experiment is re-run. Raises if no results file
+    is present: a missing-data figure must fail loudly, not silently fall back
+    to stale constants.
+    """
+    for path in ETHICAL_RESULTS_CANDIDATES:
+        if not path.exists():
+            continue
+        df = pd.read_csv(path)
+        matrix = np.full((len(_FIG2_ALGOS), len(_FIG2_SCENARIOS)), np.nan)
+        for i, algo in enumerate(_FIG2_ALGOS):
+            for j, scen in enumerate(_FIG2_SCENARIOS):
+                sel = df[(df["algorithm"] == algo) & (df["scenario"] == scen)]
+                if len(sel):
+                    matrix[i, j] = float(sel["safety_violation_rate"].iloc[0]) * 100.0
+
+        missing = [(_FIG2_ALGOS[i], _FIG2_SCENARIOS[j])
+                   for i in range(matrix.shape[0])
+                   for j in range(matrix.shape[1]) if np.isnan(matrix[i, j])]
+        if missing:
+            raise ValueError(
+                f"{path} is missing cells required by Figure 2: {missing}. "
+                f"Re-run geodpo_experiments.py::ethical_scenario_evaluation."
+            )
+        print(f"  [Figure 2] violation rates loaded from {path}")
+        return matrix
+
+    raise FileNotFoundError(
+        "No ethical-scenario results found. Figure 2 cannot be generated from "
+        "hardcoded values. Looked in:\n  "
+        + "\n  ".join(str(p) for p in ETHICAL_RESULTS_CANDIDATES)
+        + "\nRun geodpo_experiments.py::ethical_scenario_evaluation and export results first."
+    )
+
 
 def create_reward_manifold_with_black_hole():
     """
@@ -186,20 +240,9 @@ def create_ethical_scenarios_3d_bar():
     # Data from experiments (5 scenarios)
     scenarios = ['Academic\nIntegrity', 'Murky\nDrone', 'Agentic\nShortcut', 'Business\nEthics', 'Drone\nDecision']
     algorithms = ['PPO', 'CPO', 'SGPO']
-    
-    # Violation rates (%) from updated results
-    # Academic: PPO 0, CPO 0, SGPO 0 (Actually PPO/CPO are 0 in trained, Random is 27)
-    # Wait, looking at the table in experiments.tex:
-    # PPO: Academic 0, Murky 100, Shortcut 100, Business 0, Drone 0
-    # CPO: Academic 0, Murky 100, Shortcut 89, Business 0, Drone 0
-    # SGPO: 0 all
-    
-    violations = np.array([
-        [0, 100, 100, 0, 0],   # PPO
-        [0, 100, 89, 0, 0],    # CPO
-        [0, 0, 0, 0, 0],       # SGPO
-    ])
-    
+
+    violations = load_ethical_violation_rates()
+
     # Colors
     colors = ['#ff7f0e', '#1f77b4', '#2ca02c']  # orange, blue, green
     
@@ -223,15 +266,14 @@ def create_ethical_scenarios_3d_bar():
         ax.bar3d(xs, ys, zs, dx, dy, dzs, color=color, alpha=0.85, 
                  label=alg, edgecolor='black', linewidth=0.5)
     
-    # Annotations for Deceptive Traps
-    # Murky Drone (Index 1)
-    ax.text(1, 0, 105, '100%', fontsize=10, ha='center', color='red', fontweight='bold')
-    ax.text(1, 1, 105, '100%', fontsize=10, ha='center', color='darkblue')
-    
-    # Agentic Shortcut (Index 2)
-    ax.text(2, 0, 105, '100%', fontsize=10, ha='center', color='red', fontweight='bold')
-    ax.text(2, 1, 95, '89%', fontsize=10, ha='center', color='darkblue')
-    
+    # Annotations for Deceptive Traps — labels read from the loaded matrix so
+    # they cannot drift from the bars they sit on.
+    for scen_idx in (1, 2):  # Murky Drone, Agentic Shortcut
+        for algo_idx, color, weight in ((0, 'red', 'bold'), (1, 'darkblue', 'normal')):
+            rate = violations[algo_idx, scen_idx]
+            ax.text(scen_idx, algo_idx, rate + 5, f'{rate:.0f}%', fontsize=10,
+                    ha='center', color=color, fontweight=weight)
+
     # SGPO Success
     ax.text(1.5, 2, 5, '0% Violations (SGPO)', fontsize=12, ha='center', color='green', fontweight='bold')
     

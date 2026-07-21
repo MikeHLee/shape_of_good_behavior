@@ -194,7 +194,7 @@ class HighDimSafetyDemo:
         plt.title(f"SGPO Safety in {self.embed_dim}-Dim Reward Space (t-SNE Projection)")
         plt.legend()
         plt.tight_layout()
-        output_path = '/Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/gpo_high_dim_demo.png'
+        output_path = '/Users/Michaellee/Documents/Runes/ai_research/topics/shape_of_good_behavior/gpo_high_dim_demo.png'
         plt.savefig(output_path)
         print(f"Visualization saved to {output_path}")
 

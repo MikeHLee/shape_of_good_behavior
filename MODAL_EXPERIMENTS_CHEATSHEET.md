@@ -2,7 +2,7 @@
 **The Shape of Good Behavior**
 
 **Last Updated**: 2026-01-24  
-**Location**: `/Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/`
+**Location**: `/Users/Michaellee/Documents/Runes/ai_research/topics/shape_of_good_behavior/`
 
 ---
 
@@ -29,7 +29,7 @@ pip install modal
 modal token new
 
 # Navigate to project
-cd /Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/notebooks/modal_runner
+cd /Users/Michaellee/Documents/Runes/ai_research/topics/shape_of_good_behavior/notebooks/modal_runner
 ```
 
 ### Run Full Pipeline (Recommended for First Time)

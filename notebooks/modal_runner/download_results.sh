@@ -19,7 +19,17 @@ echo ""
 
 mkdir -p "$OUTPUT_DIR"
 
-MODAL_CMD="/Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/safety_gym_venv/.venv/bin/modal"
+# Resolve modal from the topic venv (topics/shape_of_good_behavior/venv), falling
+# back to whatever is on PATH. The previous hardcoded path pointed at
+# safety_gym_venv/ under the pre-rename topic directory; neither still exists.
+TOPIC_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+MODAL_CMD="$TOPIC_ROOT/venv/bin/modal"
+if [ ! -x "$MODAL_CMD" ]; then
+    MODAL_CMD="$(command -v modal)" || {
+        echo "❌ modal not found in $TOPIC_ROOT/venv/bin or on PATH"
+        exit 1
+    }
+fi
 
 echo "Listing available files..."
 $MODAL_CMD volume ls "$VOLUME_NAME" "$VOLUME_PATH" || {

@@ -8,7 +8,10 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
 # Use the project's virtual environment
-VENV_PYTHON="/Users/Michaellee/Documents/Runes/ai_research/topics/high_dimensional_reward_spaces/safety_gym_venv/.venv/bin/python"
+# Topic venv lives at topics/shape_of_good_behavior/venv. The previous hardcoded
+# path pointed at safety_gym_venv/ under the pre-rename topic directory; neither
+# still exists.
+VENV_PYTHON="$(cd "$SCRIPT_DIR/../.." && pwd)/venv/bin/python3"
 
 if [ ! -f "$VENV_PYTHON" ]; then
     echo "Warning: Virtual environment not found at $VENV_PYTHON"

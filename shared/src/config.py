@@ -12,7 +12,7 @@ PKU_SAFE_RLHF_DATASET_ID = "PKU-Alignment/PKU-SafeRLHF"
 BEAVER_TAILS_DATASET_ID = "PKU-Alignment/BeaverTails"
 ADV_BENCH_DATASET_ID = "walledai/AdvBench"
 
-# Project root (high_dimensional_reward_spaces/)
+# Project root (shape_of_good_behavior/)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 SHARED_ROOT = Path(__file__).resolve().parent.parent
 
