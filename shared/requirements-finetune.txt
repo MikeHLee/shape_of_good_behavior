@@ -15,8 +15,10 @@ transformers>=4.40.0
 datasets>=2.0.0
 tokenizers>=0.15.0
 
-# Fine-tuning stack — TRL 1.x: stable SFTTrainer + RewardTrainer APIs
-trl>=1.0.0
+# Fine-tuning stack — pin to TRL 0.11.x for stable pre-tokenized RewardTrainer
+# API (chosen/rejected are pre-tokenized into input_ids_chosen / _rejected).
+# TRL >=0.13 changed the schema and breaks our HodgeRewardTrainer subclass.
+trl>=0.11.0,<0.13.0
 peft>=0.10.0
 accelerate>=0.28.0
 bitsandbytes>=0.43.0

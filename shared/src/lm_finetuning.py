@@ -149,6 +149,11 @@ def build_rm_dataset(
         tok_r = tokenizer(text_rejected, truncation=True, max_length=config.rm_max_length, padding=False)
 
         rows.append({
+            # Text columns required by TRL 1.x RewardTrainer format validation.
+            # The custom collator (_RewardCollator / HodgeRewardDataCollator)
+            # ignores these and uses the pre-tokenized fields below.
+            "chosen":                  text_chosen,
+            "rejected":                text_rejected,
             "input_ids_chosen":        tok_c["input_ids"],
             "attention_mask_chosen":   tok_c["attention_mask"],
             "input_ids_rejected":      tok_r["input_ids"],
@@ -207,8 +212,17 @@ def compute_hodge_weights(pairs, pipeline_config, ft_config: FineTuneConfig) -> 
     ideal_embs   = embedder.encode([p.ideal_text   for p in pairs], normalize_embeddings=True, show_progress_bar=False)
 
     n = len(pairs)
-    # Direct edges: ideal > exploit for each pair
-    preference_edges = [(2*i, 2*i+1, 1.0) for i in range(n)]
+    # hodge_diagnostic interprets the third tuple element as a probability
+    # P(i > j) and applies log-odds: log(p / (1-p)). Inputs MUST be in
+    # (0, 1) — values ≤0, ≥1, or NaN produce NaN edge weights and zero
+    # the per-sample weights downstream. Use 1−eps for "definite preference"
+    # and map cosine similarity ([-1,1]) to (0,1) via (s+1)/2 with clamp.
+    EPS = 1e-3
+    def _as_prob(x: float) -> float:
+        return float(np.clip(x, EPS, 1.0 - EPS))
+
+    # Direct edges: ideal > exploit for each pair (definite preference)
+    preference_edges = [(2*i, 2*i+1, 1.0 - EPS) for i in range(n)]
 
     # Cross-pair k-NN edges (critical for non-trivial Hodge H1)
     k = min(5, n - 1)
@@ -217,15 +231,20 @@ def compute_hodge_weights(pairs, pipeline_config, ft_config: FineTuneConfig) -> 
     for a in range(len(all_embs)):
         s = sim[a].copy(); s[a] = -1.0
         for b in np.argsort(s)[-k:]:
-            preference_edges.append((int(a), int(b), float(s[b])))
+            # Map cosine similarity [-1, 1] → probability (0, 1)
+            preference_edges.append((int(a), int(b), _as_prob((s[b] + 1.0) / 2.0)))
+
+    # Context embeddings (needed by EmbeddingPair schema)
+    context_embs = embedder.encode(
+        [p.context_text for p in pairs], normalize_embeddings=True, show_progress_bar=False
+    )
 
     fake_pairs = [
         EmbeddingPair(
-            exploit_embedding=exploit_embs[i],
-            ideal_embedding=ideal_embs[i],
-            exploit_text=pairs[i].exploit_text,
-            ideal_text=pairs[i].ideal_text,
-            context_text=pairs[i].context_text,
+            exploit_embed=exploit_embs[i],
+            ideal_embed=ideal_embs[i],
+            context_embed=context_embs[i],
+            constitutional_gradient=ideal_embs[i] - exploit_embs[i],
             category=getattr(pairs[i], "exploit_category", "default"),
         )
         for i in range(n)
@@ -245,10 +264,23 @@ def compute_hodge_weights(pairs, pipeline_config, ft_config: FineTuneConfig) -> 
     else:
         weights = np.array(weights, dtype=np.float32)
 
-    logger.info(
+    # Hodge log-odds inside hodge_diagnostic can produce NaN/inf when
+    # probabilities saturate at 0/1 (RuntimeWarning: invalid value in log).
+    # Replace non-finite values with 1.0 (uniform), then clip to a sane range
+    # so the Bradley-Terry loss isn't zeroed out by all-zero weights.
+    nonfinite = ~np.isfinite(weights)
+    if nonfinite.any():
+        logger.warning(f"Hodge weights had {nonfinite.sum()}/{len(weights)} non-finite entries; replaced with 1.0.")
+        weights[nonfinite] = 1.0
+    weights = np.clip(weights, 0.01, 10.0)
+
+    # Loud print so it survives whatever logger config Modal runs under.
+    msg = (
         f"Hodge weights — min={weights.min():.3f}  mean={weights.mean():.3f}  "
         f"max={weights.max():.3f}  exploit_fraction={diagnosis.exploit_fraction:.2%}"
     )
+    logger.info(msg)
+    print(msg, flush=True)
     return weights
 
 
@@ -328,14 +360,38 @@ class HodgeRewardTrainer(RewardTrainer):
 # ---------------------------------------------------------------------------
 
 def load_policy_model(config: FineTuneConfig, checkpoint: Optional[str] = None):
-    """Load Qwen2.5-1.5B-Instruct with LoRA for SFT / PPO policy."""
-    model_path = checkpoint or config.model_name
+    """Load Qwen2.5-1.5B-Instruct with LoRA for SFT / PPO policy.
+
+    When `checkpoint` points to a PEFT adapter directory (contains
+    `adapter_config.json`), loads the base model + adapter via
+    PeftModel.from_pretrained(..., is_trainable=True) so PPO can update
+    the LoRA params. transformers' own adapter auto-loading freezes
+    the adapter (inference mode), which produced the "optimizer got an
+    empty parameter list" error in run_ppo.
+    """
     tokenizer  = AutoTokenizer.from_pretrained(config.model_name, trust_remote_code=True)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
+    is_adapter_ckpt = (
+        checkpoint is not None
+        and os.path.isfile(os.path.join(checkpoint, "adapter_config.json"))
+    )
+
+    if is_adapter_ckpt:
+        from peft import PeftModel
+        base = AutoModelForCausalLM.from_pretrained(
+            config.model_name, torch_dtype=torch.bfloat16,
+            device_map="auto", trust_remote_code=True,
+        )
+        model = PeftModel.from_pretrained(base, checkpoint, is_trainable=True)
+        model.print_trainable_parameters()
+        return model, tokenizer
+
+    # Fresh base model — apply a new LoRA adapter for SFT
     model = AutoModelForCausalLM.from_pretrained(
-        model_path, torch_dtype=torch.bfloat16, device_map="auto", trust_remote_code=True,
+        checkpoint or config.model_name,
+        torch_dtype=torch.bfloat16, device_map="auto", trust_remote_code=True,
     )
 
     if checkpoint is None:
@@ -362,6 +418,10 @@ def load_reward_model(config: FineTuneConfig, checkpoint: Optional[str] = None):
         model_path, num_labels=1, torch_dtype=torch.bfloat16,
         device_map="auto", trust_remote_code=True,
     )
+    # AutoModelForSequenceClassification needs pad_token_id on the config
+    # to handle batches > 1; Qwen2.5 ships with no pad token by default.
+    if model.config.pad_token_id is None:
+        model.config.pad_token_id = tokenizer.pad_token_id
 
     if checkpoint is None:
         lora_cfg = LoraConfig(
@@ -395,7 +455,7 @@ def run_sft(pairs, config: FineTuneConfig, output_dir: str) -> str:
         bf16=True,
         logging_steps=10,
         save_strategy="epoch",
-        max_seq_length=config.sft_max_seq_length,
+        max_length=config.sft_max_seq_length,
         dataset_text_field="text",
         report_to="none",
     )
@@ -470,9 +530,13 @@ def run_reward_model_training(
 # ---------------------------------------------------------------------------
 
 def _compute_log_probs(model, input_ids: torch.Tensor, response_mask: torch.Tensor) -> torch.Tensor:
-    """Sum log-probs of response tokens under the model."""
-    with torch.no_grad():
-        logits = model(input_ids=input_ids).logits  # (B, T, V)
+    """Sum log-probs of response tokens under the model.
+
+    Caller controls gradient context: wrap in `torch.no_grad()` for the
+    reference policy / old log-probs; leave grads enabled for the trainable
+    policy so PPO loss has a `grad_fn`.
+    """
+    logits = model(input_ids=input_ids).logits           # (B, T, V)
     log_probs = F.log_softmax(logits[:, :-1, :], dim=-1)
     token_ids  = input_ids[:, 1:]
     token_lp   = log_probs.gather(2, token_ids.unsqueeze(-1)).squeeze(-1)
@@ -512,8 +576,13 @@ def run_ppo(
     )
 
     dataset = build_ppo_dataset(records, tokenizer, config)
-    # Simple list-based dataloader — queries are variable length tensors
-    queries  = [dataset[i]["input_ids"] for i in range(len(dataset))]
+    # Simple list-based dataloader — queries are variable length tensors.
+    # HF `Dataset.from_list` round-trips tensors as Python lists, so coerce
+    # back to torch.long tensors here.
+    queries  = [
+        torch.as_tensor(dataset[i]["input_ids"], dtype=torch.long)
+        for i in range(len(dataset))
+    ]
 
     gen_kwargs = dict(
         max_new_tokens=config.ppo_max_new_tokens,
