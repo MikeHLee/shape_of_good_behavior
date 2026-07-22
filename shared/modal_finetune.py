@@ -24,6 +24,7 @@ Usage:
     modal run shared/modal_finetune.py --hodge --detach
 """
 
+import sys
 from pathlib import Path
 
 import modal
@@ -43,6 +44,13 @@ except FileNotFoundError:
     _requirements = []
 
 _project_root = Path(__file__).parent.parent
+# _project_root = .../ai_research/topics/shape_of_good_behavior; the parent's
+# parent is the ai_research root shared_modal/ lives at.
+_ai_research_root = _project_root.parent.parent
+# So the local_entrypoint (runs on this machine, not in a container) can pull
+# the manifest back off the volume after Stage 3 dispatch — see main().
+if str(_ai_research_root) not in sys.path:
+    sys.path.insert(0, str(_ai_research_root))
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
@@ -51,6 +59,9 @@ image = (
     .add_local_dir(str(_project_root / "shared"),                    remote_path="/app/shared")
     .add_local_dir(str(_project_root / "feedback_geometry" / "src"), remote_path="/app/feedback_geometry/src")
     .add_local_dir(str(_project_root / "src"),                       remote_path="/app/src")
+    # shared_modal.manifest — the run-manifest ORG-002/003 built specifically so
+    # Stage 3 PPO (this file) never again vanishes without a trail. See train_ppo.
+    .add_local_dir(str(_ai_research_root / "shared_modal"),          remote_path="/app/shared_modal")
 )
 
 app = modal.App("reward-hacking-finetune")
@@ -228,13 +239,17 @@ def train_reward_model(hodge: bool = False) -> str:
 
 @app.function(
     image=image,
-    gpu="L4",
+    # PPO holds policy + frozen ref + frozen RM on the same device. Three
+    # Qwen2.5-1.5B in bf16 + autograd + KV cache OOMs on L4 (24 GB), so
+    # bump to A100-40GB which has real headroom for the rollout buffers
+    # and ppo-epoch autograd graph.
+    gpu="A100-40GB",
     timeout=14400,
     memory=32768,
     volumes={"/checkpoints": ckpt_vol, "/results": results_vol},
     secrets=_SECRETS,
 )
-def train_ppo(hodge: bool = False) -> dict:
+def train_ppo(hodge: bool = False, experiment_id: str = "") -> dict:
     """PPO policy optimization against the reward model.
 
     Loads the SFT checkpoint as the initial policy and frozen reference.
@@ -242,6 +257,14 @@ def train_ppo(hodge: bool = False) -> dict:
 
     Args:
         hodge: If True, uses the Hodge-RM for reward scoring (Hodge-PPO).
+        experiment_id: manifest id minted by the local entrypoint (`main()`),
+            so it knows exactly where on the volume to pull the manifest from
+            afterward via `mirror_from_volume`. SGB-003 is the reason this
+            exists: the April 25 PPO runs left no checkpoint dir and no
+            surviving App-dashboard entry under Starter-tier retention, so a
+            dead run was indistinguishable from one that never launched. A
+            manifest written to the volume before/during/after this function
+            body makes that observable even if this container is killed.
 
     Returns:
         Dict with training stats saved to /results/finetune/.
@@ -254,43 +277,58 @@ def train_ppo(hodge: bool = False) -> dict:
     import json
     from pathlib import Path as P
 
+    from shared_modal.manifest import track
+
     from shared.src.config import PipelineConfig
     from shared.src.lm_finetuning import FineTuneConfig, run_ppo
 
-    config   = PipelineConfig()
-    config.trace_max_samples   = 517
-    config.hh_rlhf_max_samples = 0
-    config.cache_dir           = "/app/shared/data/cache"
-
-    ft_config = FineTuneConfig()
-    ft_config.checkpoint_dir = "/checkpoints"
-
-    _, hacked_records = _load_pairs(config)
-    print(f"PPO: {len(hacked_records)} exploit prompts as queries  hodge={hodge}")
-
-    sft_ckpt = "/checkpoints/sft"
-    rm_ckpt  = "/checkpoints/rm_hodge" if hodge else "/checkpoints/rm"
-    out_dir  = "/checkpoints/ppo_hodge" if hodge else "/checkpoints/ppo"
-
-    stats = run_ppo(
-        records       = hacked_records,
-        sft_checkpoint= sft_ckpt,
-        rm_checkpoint = rm_ckpt,
-        config        = ft_config,
-        output_dir    = out_dir,
-    )
-    stats["hodge"] = hodge
-
-    # Persist stats
-    P("/results/finetune").mkdir(parents=True, exist_ok=True)
     tag = "hodge_ppo" if hodge else "ppo"
-    stats_path = f"/results/finetune/{tag}_stats.json"
-    with open(stats_path, "w") as f:
-        json.dump(stats, f, indent=2)
 
-    ckpt_vol.commit()
-    results_vol.commit()
-    print(f"PPO complete → {out_dir}  mean_reward={stats['mean_reward_final']:.4f}")
+    with track(
+        division="SGB", inquiry_id="SGB-003", experiment_class=f"train_ppo[{tag}]",
+        paths=[f"/checkpoints/_manifests/{experiment_id}.json",
+               f"/results/_manifests/{experiment_id}.json"],
+        kwargs={"hodge": hodge}, modal={"gpu": "A100-40GB", "hodge": hodge},
+        git_root=str(_ai_research_root), volume_commit=results_vol.commit,
+        experiment_id=experiment_id,
+    ) as m:
+        config   = PipelineConfig()
+        config.trace_max_samples   = 517
+        config.hh_rlhf_max_samples = 0
+        config.cache_dir           = "/app/shared/data/cache"
+
+        ft_config = FineTuneConfig()
+        ft_config.checkpoint_dir = "/checkpoints"
+
+        _, hacked_records = _load_pairs(config)
+        print(f"PPO: {len(hacked_records)} exploit prompts as queries  hodge={hodge}")
+
+        sft_ckpt = "/checkpoints/sft"
+        rm_ckpt  = "/checkpoints/rm_hodge" if hodge else "/checkpoints/rm"
+        out_dir  = "/checkpoints/ppo_hodge" if hodge else "/checkpoints/ppo"
+
+        stats = run_ppo(
+            records       = hacked_records,
+            sft_checkpoint= sft_ckpt,
+            rm_checkpoint = rm_ckpt,
+            config        = ft_config,
+            output_dir    = out_dir,
+        )
+        stats["hodge"] = hodge
+
+        # Persist stats
+        P("/results/finetune").mkdir(parents=True, exist_ok=True)
+        stats_path = f"/results/finetune/{tag}_stats.json"
+        with open(stats_path, "w") as f:
+            json.dump(stats, f, indent=2)
+
+        ckpt_vol.commit()
+        results_vol.commit()
+        m.add_checkpoint(tag, ckpt_vol.name, out_dir)
+        m.add_result_file(f"{tag}_stats", results_vol.name, stats_path)
+        m.results = stats
+        print(f"PPO complete → {out_dir}  mean_reward={stats['mean_reward_final']:.4f}")
+
     return stats
 
 
@@ -429,8 +467,18 @@ def main(
 
     if stage in ("ppo", "all"):
         print(f"--- Stage 3: PPO (hodge={hodge}) ---")
-        result = _run(train_ppo, hodge=hodge)
-        print(f"  → {result}")
+        from shared_modal import mirror_from_volume, new_experiment_id
+        exp_id = new_experiment_id()
+        print(f"  manifest id: {exp_id}  (SGB-003 regression target — see modal_finetune.py train_ppo)")
+        try:
+            result = _run(train_ppo, hodge=hodge, experiment_id=exp_id)
+            print(f"  → {result}")
+        finally:
+            dest = mirror_from_volume(
+                "reward-hacking-results", "/results", exp_id,
+                division="SGB", inquiry_id="SGB-003",
+            )
+            print(f"  manifest mirrored to: {dest}")
 
     if stage in ("eval", "all"):
         print("--- Stage 4: Evaluation ---")
