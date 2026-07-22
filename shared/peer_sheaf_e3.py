@@ -233,6 +233,45 @@ class _SmokeCrash(_SmokeOK):
         raise RuntimeError("intentional smoke-test crash after partial work")
 
 
+class _SmokeDeps(PeerSheafE3):
+    """CPU smoke on the REAL `inference_base` image — catches missing deps,
+    including ones only surfaced by loading a specific model's tokenizer.
+
+    `_SmokeOK` swaps to `analysis_base` to dodge A100 cost, but that also
+    swaps away from the image `run()` actually ships on, so it can't catch a
+    package missing from `inference_base`. Two real A100 dispatches on
+    2026-07-22 found exactly this class of bug: (1) `ModuleNotFoundError: No
+    module named 'datasets'` — a plain top-level import; (2) `Cannot
+    instantiate this tokenizer from a slow version ... sentencepiece
+    installed` — `sentencepiece` is never imported by `run()` directly, it's
+    an indirect dependency `transformers` reaches for only when it loads a
+    Llama-family tokenizer (Yi-1.5-9B-Chat), so a plain "import the packages"
+    check would have missed it too. So this smoke does the thing that
+    actually failed: `AutoTokenizer.from_pretrained` for every panel model
+    (tokenizer files only — KBs, not the multi-GB weights — so still cheap
+    and CPU-only). Downgrades `gpu` to CPU; keeps the real `image`.
+    """
+    gpu = GPU.CPU
+    timeout_seconds = 600
+
+    def run(self, n: int = 8, seed: int = 0) -> dict:
+        import accelerate  # noqa: F401
+        import datasets  # noqa: F401
+        import scipy  # noqa: F401
+        import sentence_transformers  # noqa: F401
+        import torch  # noqa: F401
+        import transformers  # noqa: F401
+        from transformers import AutoTokenizer
+
+        tokenizer_ok = {}
+        for name, hf_id in PANEL:
+            tok = AutoTokenizer.from_pretrained(hf_id)
+            tokenizer_ok[name] = type(tok).__name__
+        return {"deps_ok": True, "tokenizers_ok": tokenizer_ok,
+                "torch": torch.__version__, "transformers": transformers.__version__,
+                "datasets": datasets.__version__}
+
+
 def _cli() -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
@@ -250,7 +289,18 @@ def _cli() -> int:
                     help="dispatch the CPU smoke to Modal — validates the real "
                          "launch_remote path (dispatch + volume manifest pull) "
                          "without a GPU")
+    ap.add_argument("--remote-smoke-deps", action="store_true",
+                    help="dispatch a CPU container on the REAL inference_base "
+                         "image — validates every top-level import run() makes, "
+                         "without GPU cost")
     a = ap.parse_args()
+
+    if a.remote_smoke_deps:
+        exp = _SmokeDeps()
+        m = exp.launch_remote(n=8, seed=0)
+        print(f"[remote-smoke-deps] status={m.status.value} results={m.results}")
+        print(f"[remote-smoke-deps] workspace mirror: {exp.manifest_path}")
+        return 0 if m.status.value == "success" else 1
 
     if a.remote_smoke:
         exp = _SmokeOK()
