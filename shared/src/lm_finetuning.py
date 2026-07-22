@@ -588,6 +588,13 @@ def run_ppo(
         max_new_tokens=config.ppo_max_new_tokens,
         do_sample=True, temperature=0.7, top_p=0.9,
         pad_token_id=tokenizer.eos_token_id,
+        # bf16 + chained temperature/top-p logits processors can drift enough
+        # that the resulting distribution doesn't sum to 1, and
+        # torch.multinomial throws "probability tensor contains inf, nan or
+        # element < 0" (hit on 2026-07-22's SGB-003 re-run, poisoning the CUDA
+        # context for the rest of the container). renormalize_logits applies a
+        # log-softmax after each processor specifically to prevent this.
+        renormalize_logits=True,
     )
 
     all_rewards, steps_done = [], 0
