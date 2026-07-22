@@ -345,9 +345,10 @@ def _cli() -> int:
         print(f"[smoke] manifest mirrored to: {exp.manifest_path}")
         return 0
 
-    m = PeerSheafE3().launch_remote(n=a.n, seed=a.seed)
+    exp = PeerSheafE3()
+    m = exp.launch_remote(n=a.n, seed=a.seed)
     print(f"[e3] status={m.status.value}")
-    print(f"[e3] manifest: {PeerSheafE3().manifest_path}")
+    print(f"[e3] manifest: {exp.manifest_path}")
     return 0 if m.status.value == "success" else 1
 
 
