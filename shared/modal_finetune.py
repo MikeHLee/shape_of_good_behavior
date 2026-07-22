@@ -55,6 +55,10 @@ if str(_ai_research_root) not in sys.path:
 image = (
     modal.Image.debian_slim(python_version="3.11")
     .pip_install(*_requirements)
+    # PYTHONUNBUFFERED belt-and-braces: run_ppo now prints with flush=True, but
+    # any other print() without explicit flush (from HF, TRL, etc.) will also
+    # land per-line in Modal's log capture instead of sitting in a 4KB buffer.
+    .env({"PYTHONUNBUFFERED": "1"})
     # Embed shared pipeline code + track-1 Hodge utilities
     .add_local_dir(str(_project_root / "shared"),                    remote_path="/app/shared")
     .add_local_dir(str(_project_root / "feedback_geometry" / "src"), remote_path="/app/feedback_geometry/src")
@@ -249,7 +253,8 @@ def train_reward_model(hodge: bool = False) -> str:
     volumes={"/checkpoints": ckpt_vol, "/results": results_vol},
     secrets=_SECRETS,
 )
-def train_ppo(hodge: bool = False, experiment_id: str = "") -> dict:
+def train_ppo(hodge: bool = False, experiment_id: str = "",
+              ppo_steps: int = 0) -> dict:
     """PPO policy optimization against the reward model.
 
     Loads the SFT checkpoint as the initial policy and frozen reference.
@@ -265,6 +270,14 @@ def train_ppo(hodge: bool = False, experiment_id: str = "") -> dict:
             dead run was indistinguishable from one that never launched. A
             manifest written to the volume before/during/after this function
             body makes that observable even if this container is killed.
+        ppo_steps: If > 0, overrides FineTuneConfig.ppo_steps (default 256).
+            Purpose is the SGB-003 regression-target run: FineTuneConfig's
+            default × ppo_batch_size × ppo_max_new_tokens realistically needs
+            6+ hours per variant on A100-40GB and can exceed the 4h Modal
+            timeout, so the manifest-observability re-run defaults to a
+            smaller step count to actually finish. Full training is
+            recoverable by launching without this override once the manifest
+            path is proven.
 
     Returns:
         Dict with training stats saved to /results/finetune/.
@@ -299,9 +312,12 @@ def train_ppo(hodge: bool = False, experiment_id: str = "") -> dict:
 
         ft_config = FineTuneConfig()
         ft_config.checkpoint_dir = "/checkpoints"
+        if ppo_steps > 0:
+            ft_config.ppo_steps = ppo_steps
 
         _, hacked_records = _load_pairs(config)
-        print(f"PPO: {len(hacked_records)} exploit prompts as queries  hodge={hodge}")
+        print(f"PPO: {len(hacked_records)} exploit prompts as queries  "
+              f"hodge={hodge}  ppo_steps={ft_config.ppo_steps}", flush=True)
 
         sft_ckpt = "/checkpoints/sft"
         rm_ckpt  = "/checkpoints/rm_hodge" if hodge else "/checkpoints/rm"
@@ -431,6 +447,7 @@ def main(
     hodge:  bool = False,
     detach: bool = False,
     n_eval: int  = 50,
+    ppo_steps: int = 0,     # override FineTuneConfig.ppo_steps (default 256)
 ):
     """Orchestrate the fine-tuning pipeline on Modal GPU.
 
@@ -471,7 +488,8 @@ def main(
         exp_id = new_experiment_id()
         print(f"  manifest id: {exp_id}  (SGB-003 regression target — see modal_finetune.py train_ppo)")
         try:
-            result = _run(train_ppo, hodge=hodge, experiment_id=exp_id)
+            result = _run(train_ppo, hodge=hodge, experiment_id=exp_id,
+                          ppo_steps=ppo_steps)
             print(f"  → {result}")
         finally:
             dest = mirror_from_volume(

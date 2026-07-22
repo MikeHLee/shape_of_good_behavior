@@ -664,10 +664,17 @@ def run_ppo(
             optimizer.step()
 
         steps_done += 1
-        if steps_done % 20 == 0:
-            logger.info(
-                f"  step={steps_done}  mean_reward={np.mean(all_rewards[-20:]):.4f}  "
-                f"ppo_loss={ppo_loss.item():.4f}"
+        # Every 5 steps + always step 1: `logger.info` at line 668 was invisible
+        # (no basicConfig anywhere, default level = WARNING), so PPO ran silently
+        # for hours during the SGB-003 re-run — masked "is it stuck vs training".
+        # Print + flush unconditionally so Modal captures per-step progress.
+        if steps_done == 1 or steps_done % 5 == 0:
+            recent = all_rewards[-config.ppo_batch_size:]
+            print(
+                f"  step={steps_done}/{config.ppo_steps}  "
+                f"mean_reward={np.mean(recent):.4f}  "
+                f"ppo_loss={ppo_loss.item():.4f}",
+                flush=True,
             )
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
