@@ -84,8 +84,12 @@ class PeerSheafE3(ModalExperiment):
 
     mount = "/results"
     entry_module = "peer_sheaf_e3"
+    # /app/shared MUST be on sys.path: `entry_module="peer_sheaf_e3"` resolves to
+    # /app/shared/peer_sheaf_e3.py, so the container shim cannot import this class
+    # without it. /app/shared/src is also needed because peer_hodge imports
+    # `peer_sheaf` directly rather than as a package member.
     source_dirs = [
-        SourceDir(str(_HERE.parent), "/app/shared", sys_path=False),
+        SourceDir(str(_HERE.parent), "/app/shared"),
         SourceDir(str(_HERE.parent / "src"), "/app/shared/src"),
     ]
 
@@ -203,14 +207,19 @@ class PeerSheafE3(ModalExperiment):
 # ---- framework smoke experiments (no GPU, no Modal) ------------------------
 
 
-class _SmokeOK(ModalExperiment):
-    """Trivial local experiment to validate the manifest + workspace mirror."""
-    division = "SGB"
-    inquiry_id = "SGB-012"
+class _SmokeOK(PeerSheafE3):
+    """CPU-only smoke sharing PeerSheafE3's EXACT wiring.
+
+    Inherits source_dirs / entry_module / mount / volumes from PeerSheafE3 and
+    only swaps the image, GPU and body — so running this remotely validates the
+    real dispatch path (image build, source mounts, container import of
+    `peer_sheaf_e3`, volume manifest, workspace pull-back) for the cost of a
+    CPU container rather than an A100.
+    """
     image = images.analysis_base
     gpu = GPU.CPU
-    volumes = [volumes.sgb_panel_cache]
-    entry_module = "peer_sheaf_e3"
+    secrets: list = []           # no HF token needed for the smoke
+    timeout_seconds = 600
 
     def run(self, n: int = 8, seed: int = 0) -> dict:
         import numpy as np
@@ -233,7 +242,44 @@ def _cli() -> int:
                     help="run the CPU smoke experiment locally (no Modal)")
     ap.add_argument("--smoke-crash", action="store_true",
                     help="run the crashing smoke experiment locally (no Modal)")
+    ap.add_argument("--remote-smoke-crash", action="store_true",
+                    help="dispatch a CRASHING CPU experiment to Modal — validates "
+                         "that a dead remote run still lands a FAILED manifest in "
+                         "the workspace mirror")
+    ap.add_argument("--remote-smoke", action="store_true",
+                    help="dispatch the CPU smoke to Modal — validates the real "
+                         "launch_remote path (dispatch + volume manifest pull) "
+                         "without a GPU")
     a = ap.parse_args()
+
+    if a.remote_smoke:
+        exp = _SmokeOK()
+        m = exp.launch_remote(n=8, seed=0)
+        print(f"[remote-smoke] status={m.status.value} results={m.results}")
+        print(f"[remote-smoke] workspace mirror: {exp.manifest_path}")
+        return 0 if m.status.value == "success" else 1
+
+    if a.remote_smoke_crash:
+        # The scenario the whole module exists for: a remote run dies and must
+        # still leave an auditable record in the workspace (cf. 2026-04-25).
+        exp = _SmokeCrash()
+        try:
+            exp.launch_remote(n=8, seed=0)
+            print("[remote-smoke-crash] ERROR: expected the remote run to raise")
+            return 1
+        except Exception as e:
+            print(f"[remote-smoke-crash] remote raised as expected: {type(e).__name__}")
+        import json as _json
+        p = Path(exp.manifest_path)
+        if not p.exists():
+            print("[remote-smoke-crash] FAIL: no workspace mirror written")
+            return 1
+        d = _json.loads(p.read_text())
+        ok = d.get("status") == "failed" and bool(d.get("error", {}).get("traceback"))
+        print(f"[remote-smoke-crash] mirror status={d.get('status')} "
+              f"has_traceback={bool(d.get('error', {}).get('traceback'))}")
+        print(f"[remote-smoke-crash] workspace mirror: {p}")
+        return 0 if ok else 1
 
     if a.smoke or a.smoke_crash:
         # Local execution path (base ResearchExperiment.launch): run() in-process,
