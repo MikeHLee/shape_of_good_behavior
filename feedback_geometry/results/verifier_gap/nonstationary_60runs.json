@@ -1,0 +1,7164 @@
+{
+  "rows": [
+    {
+      "seed": 0,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.6075,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9850852489471436,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.65,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.7439614534378052,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.4425,
+          "trap_vs_safe_acc": 0.033,
+          "trap_reward_gap": 0.6217015981674194,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.35,
+          "trap_vs_safe_acc": 0.0555,
+          "trap_reward_gap": 0.463011771440506,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.31,
+          "trap_vs_safe_acc": 0.0635,
+          "trap_reward_gap": 0.4074302911758423,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.2425,
+          "trap_vs_safe_acc": 0.137,
+          "trap_reward_gap": 0.31406766176223755,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.16,
+          "trap_vs_safe_acc": 0.1575,
+          "trap_reward_gap": 0.25513243675231934,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.1175,
+          "trap_vs_safe_acc": 0.2075,
+          "trap_reward_gap": 0.22963443398475647,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.1425,
+          "trap_vs_safe_acc": 0.1755,
+          "trap_reward_gap": 0.2485615611076355,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.135,
+          "trap_vs_safe_acc": 0.169,
+          "trap_reward_gap": 0.23040947318077087,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.14,
+          "trap_vs_safe_acc": 0.1905,
+          "trap_reward_gap": 0.2081414759159088,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.1175,
+          "trap_vs_safe_acc": 0.1855,
+          "trap_reward_gap": 0.19455718994140625,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.74,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.941651463508606,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.5825,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.7341973781585693,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.535,
+          "trap_vs_safe_acc": 0.039,
+          "trap_reward_gap": 0.5924299359321594,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.4175,
+          "trap_vs_safe_acc": 0.0785,
+          "trap_reward_gap": 0.4858096241950989,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.3725,
+          "trap_vs_safe_acc": 0.086,
+          "trap_reward_gap": 0.4152912497520447,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.355,
+          "trap_vs_safe_acc": 0.098,
+          "trap_reward_gap": 0.3324670195579529,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.2925,
+          "trap_vs_safe_acc": 0.1225,
+          "trap_reward_gap": 0.294971227645874,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.2225,
+          "trap_vs_safe_acc": 0.17,
+          "trap_reward_gap": 0.24407321214675903,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.2075,
+          "trap_vs_safe_acc": 0.179,
+          "trap_reward_gap": 0.2370309829711914,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.22,
+          "trap_vs_safe_acc": 0.1705,
+          "trap_reward_gap": 0.22187741100788116,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0875,
+          "trap_vs_safe_acc": 0.221,
+          "trap_reward_gap": 0.18463122844696045,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.12,
+          "trap_vs_safe_acc": 0.229,
+          "trap_reward_gap": 0.166340172290802,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.675,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8872482776641846,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.475,
+          "trap_vs_safe_acc": 0.0425,
+          "trap_reward_gap": 0.6361275315284729,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.38,
+          "trap_vs_safe_acc": 0.064,
+          "trap_reward_gap": 0.5202587842941284,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.29,
+          "trap_vs_safe_acc": 0.0925,
+          "trap_reward_gap": 0.4257175922393799,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.1675,
+          "trap_vs_safe_acc": 0.1145,
+          "trap_reward_gap": 0.3560560941696167,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.2325,
+          "trap_vs_safe_acc": 0.1625,
+          "trap_reward_gap": 0.34454911947250366,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.155,
+          "trap_vs_safe_acc": 0.1505,
+          "trap_reward_gap": 0.2985883951187134,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.11,
+          "trap_vs_safe_acc": 0.1515,
+          "trap_reward_gap": 0.276099294424057,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.135,
+          "trap_vs_safe_acc": 0.192,
+          "trap_reward_gap": 0.2545134723186493,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1125,
+          "trap_vs_safe_acc": 0.182,
+          "trap_reward_gap": 0.22524285316467285,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.16,
+          "trap_vs_safe_acc": 0.201,
+          "trap_reward_gap": 0.20044398307800293,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.11,
+          "trap_vs_safe_acc": 0.244,
+          "trap_reward_gap": 0.16293391585350037,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.4625,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.8261615633964539,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.53,
+          "trap_vs_safe_acc": 0.0255,
+          "trap_reward_gap": 0.689907431602478,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.36,
+          "trap_vs_safe_acc": 0.0415,
+          "trap_reward_gap": 0.5804300308227539,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.325,
+          "trap_vs_safe_acc": 0.0645,
+          "trap_reward_gap": 0.47367775440216064,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.2225,
+          "trap_vs_safe_acc": 0.11,
+          "trap_reward_gap": 0.4153164029121399,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.24,
+          "trap_vs_safe_acc": 0.124,
+          "trap_reward_gap": 0.3548121452331543,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.145,
+          "trap_vs_safe_acc": 0.1095,
+          "trap_reward_gap": 0.3019465506076813,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.165,
+          "trap_vs_safe_acc": 0.129,
+          "trap_reward_gap": 0.2946816086769104,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.17,
+          "trap_vs_safe_acc": 0.1215,
+          "trap_reward_gap": 0.28071334958076477,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1375,
+          "trap_vs_safe_acc": 0.1385,
+          "trap_reward_gap": 0.27011722326278687,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.095,
+          "trap_vs_safe_acc": 0.1425,
+          "trap_reward_gap": 0.2527620792388916,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.1225,
+          "trap_vs_safe_acc": 0.137,
+          "trap_reward_gap": 0.23150426149368286,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.7625,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0849063396453857,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.5125,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.7932220101356506,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.43,
+          "trap_vs_safe_acc": 0.0665,
+          "trap_reward_gap": 0.6345678567886353,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.3275,
+          "trap_vs_safe_acc": 0.081,
+          "trap_reward_gap": 0.5469999313354492,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.295,
+          "trap_vs_safe_acc": 0.1015,
+          "trap_reward_gap": 0.46189233660697937,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.2925,
+          "trap_vs_safe_acc": 0.092,
+          "trap_reward_gap": 0.41547107696533203,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.29,
+          "trap_vs_safe_acc": 0.109,
+          "trap_reward_gap": 0.35066747665405273,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.2175,
+          "trap_vs_safe_acc": 0.134,
+          "trap_reward_gap": 0.31022489070892334,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.215,
+          "trap_vs_safe_acc": 0.163,
+          "trap_reward_gap": 0.28030431270599365,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.225,
+          "trap_vs_safe_acc": 0.1905,
+          "trap_reward_gap": 0.2537779211997986,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.21,
+          "trap_vs_safe_acc": 0.188,
+          "trap_reward_gap": 0.2156461626291275,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.185,
+          "trap_vs_safe_acc": 0.218,
+          "trap_reward_gap": 0.18892675638198853,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.5625,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8603614568710327,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.5125,
+          "trap_vs_safe_acc": 0.0385,
+          "trap_reward_gap": 0.6370136141777039,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.3925,
+          "trap_vs_safe_acc": 0.0805,
+          "trap_reward_gap": 0.5067634582519531,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.365,
+          "trap_vs_safe_acc": 0.098,
+          "trap_reward_gap": 0.40287917852401733,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.23,
+          "trap_vs_safe_acc": 0.172,
+          "trap_reward_gap": 0.31049224734306335,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.2125,
+          "trap_vs_safe_acc": 0.168,
+          "trap_reward_gap": 0.2754211127758026,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.2475,
+          "trap_vs_safe_acc": 0.166,
+          "trap_reward_gap": 0.24813705682754517,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.15,
+          "trap_vs_safe_acc": 0.2175,
+          "trap_reward_gap": 0.22331906855106354,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.1225,
+          "trap_vs_safe_acc": 0.2225,
+          "trap_reward_gap": 0.1811569333076477,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1025,
+          "trap_vs_safe_acc": 0.257,
+          "trap_reward_gap": 0.16580596566200256,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.1075,
+          "trap_vs_safe_acc": 0.2755,
+          "trap_reward_gap": 0.14301857352256775,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.1425,
+          "trap_vs_safe_acc": 0.2645,
+          "trap_reward_gap": 0.1355515718460083,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.695,
+          "trap_vs_safe_acc": 0.0175,
+          "trap_reward_gap": 1.044281005859375,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.575,
+          "trap_vs_safe_acc": 0.05,
+          "trap_reward_gap": 0.7885937690734863,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.435,
+          "trap_vs_safe_acc": 0.08,
+          "trap_reward_gap": 0.5876002907752991,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.4375,
+          "trap_vs_safe_acc": 0.0905,
+          "trap_reward_gap": 0.5071430206298828,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.3775,
+          "trap_vs_safe_acc": 0.116,
+          "trap_reward_gap": 0.41057702898979187,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.3825,
+          "trap_vs_safe_acc": 0.1485,
+          "trap_reward_gap": 0.34704840183258057,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.3275,
+          "trap_vs_safe_acc": 0.183,
+          "trap_reward_gap": 0.28661954402923584,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.305,
+          "trap_vs_safe_acc": 0.235,
+          "trap_reward_gap": 0.2349480390548706,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.235,
+          "trap_vs_safe_acc": 0.264,
+          "trap_reward_gap": 0.19633078575134277,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.23,
+          "trap_vs_safe_acc": 0.2535,
+          "trap_reward_gap": 0.18259428441524506,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.1825,
+          "trap_vs_safe_acc": 0.269,
+          "trap_reward_gap": 0.13362854719161987,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.2625,
+          "trap_vs_safe_acc": 0.3035,
+          "trap_reward_gap": 0.13090741634368896,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.5375,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 1.016201138496399,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.53,
+          "trap_vs_safe_acc": 0.0375,
+          "trap_reward_gap": 0.7536836862564087,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.395,
+          "trap_vs_safe_acc": 0.0505,
+          "trap_reward_gap": 0.6140844821929932,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.3725,
+          "trap_vs_safe_acc": 0.0815,
+          "trap_reward_gap": 0.5035635232925415,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.31,
+          "trap_vs_safe_acc": 0.1,
+          "trap_reward_gap": 0.4170551300048828,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.31,
+          "trap_vs_safe_acc": 0.1005,
+          "trap_reward_gap": 0.368674635887146,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.2175,
+          "trap_vs_safe_acc": 0.127,
+          "trap_reward_gap": 0.33821940422058105,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.2425,
+          "trap_vs_safe_acc": 0.1505,
+          "trap_reward_gap": 0.2775590717792511,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.225,
+          "trap_vs_safe_acc": 0.167,
+          "trap_reward_gap": 0.2668062448501587,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1675,
+          "trap_vs_safe_acc": 0.164,
+          "trap_reward_gap": 0.22499537467956543,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.1975,
+          "trap_vs_safe_acc": 0.1835,
+          "trap_reward_gap": 0.19576296210289001,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.185,
+          "trap_vs_safe_acc": 0.1775,
+          "trap_reward_gap": 0.17070361971855164,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.6775,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.9356579780578613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.505,
+          "trap_vs_safe_acc": 0.042,
+          "trap_reward_gap": 0.6801597476005554,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.4075,
+          "trap_vs_safe_acc": 0.094,
+          "trap_reward_gap": 0.4934225082397461,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.3275,
+          "trap_vs_safe_acc": 0.1105,
+          "trap_reward_gap": 0.40631693601608276,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.2175,
+          "trap_vs_safe_acc": 0.1695,
+          "trap_reward_gap": 0.3541128635406494,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.1875,
+          "trap_vs_safe_acc": 0.177,
+          "trap_reward_gap": 0.29718881845474243,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.1825,
+          "trap_vs_safe_acc": 0.173,
+          "trap_reward_gap": 0.2773329019546509,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.1875,
+          "trap_vs_safe_acc": 0.1915,
+          "trap_reward_gap": 0.26124128699302673,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.185,
+          "trap_vs_safe_acc": 0.1695,
+          "trap_reward_gap": 0.24505147337913513,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.12,
+          "trap_vs_safe_acc": 0.2165,
+          "trap_reward_gap": 0.21954292058944702,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.17,
+          "trap_vs_safe_acc": 0.238,
+          "trap_reward_gap": 0.20272402465343475,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.0825,
+          "trap_vs_safe_acc": 0.2435,
+          "trap_reward_gap": 0.18610486388206482,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.5875,
+          "trap_vs_safe_acc": 0.0335,
+          "trap_reward_gap": 0.8235241174697876,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.42,
+          "trap_vs_safe_acc": 0.0525,
+          "trap_reward_gap": 0.5725963115692139,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.385,
+          "trap_vs_safe_acc": 0.1015,
+          "trap_reward_gap": 0.4881240129470825,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.3675,
+          "trap_vs_safe_acc": 0.0875,
+          "trap_reward_gap": 0.3770456314086914,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.2525,
+          "trap_vs_safe_acc": 0.1415,
+          "trap_reward_gap": 0.2900142967700958,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.225,
+          "trap_vs_safe_acc": 0.1765,
+          "trap_reward_gap": 0.27524369955062866,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.25,
+          "trap_vs_safe_acc": 0.1925,
+          "trap_reward_gap": 0.24066901206970215,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.1725,
+          "trap_vs_safe_acc": 0.2545,
+          "trap_reward_gap": 0.1792907416820526,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.1575,
+          "trap_vs_safe_acc": 0.284,
+          "trap_reward_gap": 0.16483187675476074,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.2325,
+          "trap_vs_safe_acc": 0.2685,
+          "trap_reward_gap": 0.13887840509414673,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.1325,
+          "trap_vs_safe_acc": 0.304,
+          "trap_reward_gap": 0.1010393500328064,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.19,
+          "trap_vs_safe_acc": 0.322,
+          "trap_reward_gap": 0.09193485975265503,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 0,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.6075,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9850852489471436,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.655,
+          "trap_vs_safe_acc": 0.021,
+          "trap_reward_gap": 0.8860903978347778,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.625,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8599246740341187,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.5775,
+          "trap_vs_safe_acc": 0.016,
+          "trap_reward_gap": 0.7892704010009766,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.6725,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.7507987022399902,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.605,
+          "trap_vs_safe_acc": 0.014,
+          "trap_reward_gap": 0.6781119108200073,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.5425,
+          "trap_vs_safe_acc": 0.0185,
+          "trap_reward_gap": 0.6118542551994324,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.545,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.5854387283325195,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.5525,
+          "trap_vs_safe_acc": 0.0235,
+          "trap_reward_gap": 0.5420746803283691,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.545,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.5172009468078613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.5225,
+          "trap_vs_safe_acc": 0.044,
+          "trap_reward_gap": 0.4954495131969452,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.4575,
+          "trap_vs_safe_acc": 0.0565,
+          "trap_reward_gap": 0.46806085109710693,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.74,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.941651463508606,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.655,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.9332399368286133,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.69,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.8273908495903015,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.68,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.7895025014877319,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.66,
+          "trap_vs_safe_acc": 0.021,
+          "trap_reward_gap": 0.7606343030929565,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.68,
+          "trap_vs_safe_acc": 0.0275,
+          "trap_reward_gap": 0.6987169981002808,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.6425,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.6779606938362122,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.595,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.6605352759361267,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.5875,
+          "trap_vs_safe_acc": 0.0355,
+          "trap_reward_gap": 0.6134335398674011,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.52,
+          "trap_vs_safe_acc": 0.053,
+          "trap_reward_gap": 0.5655162334442139,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.5,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.5298942923545837,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.505,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.49632078409194946,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.675,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8872482776641846,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.605,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.805492103099823,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.665,
+          "trap_vs_safe_acc": 0.0105,
+          "trap_reward_gap": 0.7754489183425903,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.6675,
+          "trap_vs_safe_acc": 0.008,
+          "trap_reward_gap": 0.7645913362503052,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.625,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.7235479354858398,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.6175,
+          "trap_vs_safe_acc": 0.0165,
+          "trap_reward_gap": 0.6985150575637817,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.605,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.6484863758087158,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.5975,
+          "trap_vs_safe_acc": 0.018,
+          "trap_reward_gap": 0.6190158128738403,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.5775,
+          "trap_vs_safe_acc": 0.0165,
+          "trap_reward_gap": 0.6129049062728882,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.5775,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.5554687976837158,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.555,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.5148023962974548,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.5425,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.48832353949546814,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.4625,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.8261615633964539,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.5925,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.7783570289611816,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.5375,
+          "trap_vs_safe_acc": 0.02,
+          "trap_reward_gap": 0.7621086835861206,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.5225,
+          "trap_vs_safe_acc": 0.04,
+          "trap_reward_gap": 0.6748007535934448,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.4875,
+          "trap_vs_safe_acc": 0.029,
+          "trap_reward_gap": 0.6471009850502014,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.535,
+          "trap_vs_safe_acc": 0.0255,
+          "trap_reward_gap": 0.5968811511993408,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.5275,
+          "trap_vs_safe_acc": 0.0265,
+          "trap_reward_gap": 0.5626645088195801,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.4925,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.5408734083175659,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.4525,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.5219813585281372,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.4625,
+          "trap_vs_safe_acc": 0.0375,
+          "trap_reward_gap": 0.48662787675857544,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.425,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.45244717597961426,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.3925,
+          "trap_vs_safe_acc": 0.031,
+          "trap_reward_gap": 0.41968071460723877,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.7625,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0849063396453857,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.7125,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0083283185958862,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.69,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.9626502990722656,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.67,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9314090013504028,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.7275,
+          "trap_vs_safe_acc": 0.0065,
+          "trap_reward_gap": 0.8574371933937073,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.6825,
+          "trap_vs_safe_acc": 0.013,
+          "trap_reward_gap": 0.8117578029632568,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.67,
+          "trap_vs_safe_acc": 0.0105,
+          "trap_reward_gap": 0.7715879678726196,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.655,
+          "trap_vs_safe_acc": 0.011,
+          "trap_reward_gap": 0.7553104162216187,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.65,
+          "trap_vs_safe_acc": 0.0115,
+          "trap_reward_gap": 0.7105321884155273,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.6575,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.6702521443367004,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.6325,
+          "trap_vs_safe_acc": 0.013,
+          "trap_reward_gap": 0.6284393072128296,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.6325,
+          "trap_vs_safe_acc": 0.0085,
+          "trap_reward_gap": 0.6125689744949341,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.5625,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8603614568710327,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.55,
+          "trap_vs_safe_acc": 0.033,
+          "trap_reward_gap": 0.7717308402061462,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.54,
+          "trap_vs_safe_acc": 0.0585,
+          "trap_reward_gap": 0.7499232292175293,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.545,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.7262502312660217,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.54,
+          "trap_vs_safe_acc": 0.0375,
+          "trap_reward_gap": 0.6909871697425842,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.485,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.6401280760765076,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.465,
+          "trap_vs_safe_acc": 0.0505,
+          "trap_reward_gap": 0.6082027554512024,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.495,
+          "trap_vs_safe_acc": 0.037,
+          "trap_reward_gap": 0.581412672996521,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.54,
+          "trap_vs_safe_acc": 0.0495,
+          "trap_reward_gap": 0.5541045665740967,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.4725,
+          "trap_vs_safe_acc": 0.0505,
+          "trap_reward_gap": 0.5307665467262268,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.47,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.5023120641708374,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.4825,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.44998234510421753,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.695,
+          "trap_vs_safe_acc": 0.0175,
+          "trap_reward_gap": 1.044281005859375,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.69,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.9825236201286316,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.73,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.9108325242996216,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.6775,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8427695035934448,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.67,
+          "trap_vs_safe_acc": 0.032,
+          "trap_reward_gap": 0.8054510354995728,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.6625,
+          "trap_vs_safe_acc": 0.027,
+          "trap_reward_gap": 0.7748650908470154,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.6425,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.7664989233016968,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.6525,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.702775239944458,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.615,
+          "trap_vs_safe_acc": 0.034,
+          "trap_reward_gap": 0.6975746750831604,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.6,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.6573717594146729,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.6375,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.6186758279800415,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.5725,
+          "trap_vs_safe_acc": 0.0365,
+          "trap_reward_gap": 0.6094242334365845,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.5375,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 1.016201138496399,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.6,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.9389369487762451,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.605,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.8610880970954895,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.5975,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.8301156759262085,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.555,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.7756797671318054,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.525,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.7484146356582642,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.545,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.6974081993103027,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.57,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 0.6948825716972351,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.5475,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.6764776110649109,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.6175,
+          "trap_vs_safe_acc": 0.015,
+          "trap_reward_gap": 0.6308871507644653,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.57,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.5911879539489746,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.6,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.5579628348350525,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.6775,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.9356579780578613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.6975,
+          "trap_vs_safe_acc": 0.0155,
+          "trap_reward_gap": 0.8803067207336426,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.6625,
+          "trap_vs_safe_acc": 0.016,
+          "trap_reward_gap": 0.8008050322532654,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.5825,
+          "trap_vs_safe_acc": 0.0115,
+          "trap_reward_gap": 0.7280805706977844,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.5625,
+          "trap_vs_safe_acc": 0.028,
+          "trap_reward_gap": 0.6871277689933777,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.535,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.6341879367828369,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.5925,
+          "trap_vs_safe_acc": 0.0185,
+          "trap_reward_gap": 0.621248185634613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.515,
+          "trap_vs_safe_acc": 0.027,
+          "trap_reward_gap": 0.5870224833488464,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.5275,
+          "trap_vs_safe_acc": 0.0475,
+          "trap_reward_gap": 0.548880934715271,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.475,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.5271666646003723,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.5225,
+          "trap_vs_safe_acc": 0.044,
+          "trap_reward_gap": 0.4996102452278137,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.4625,
+          "trap_vs_safe_acc": 0.03,
+          "trap_reward_gap": 0.4953824579715729,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 16,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.5875,
+          "trap_vs_safe_acc": 0.0335,
+          "trap_reward_gap": 0.8235241174697876,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.6425,
+          "trap_vs_safe_acc": 0.0255,
+          "trap_reward_gap": 0.7786166667938232,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.56,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.6950806379318237,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.58,
+          "trap_vs_safe_acc": 0.017,
+          "trap_reward_gap": 0.6317353248596191,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.5975,
+          "trap_vs_safe_acc": 0.01,
+          "trap_reward_gap": 0.5838187336921692,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.57,
+          "trap_vs_safe_acc": 0.019,
+          "trap_reward_gap": 0.5763440132141113,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.5625,
+          "trap_vs_safe_acc": 0.01,
+          "trap_reward_gap": 0.5496581792831421,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.525,
+          "trap_vs_safe_acc": 0.0385,
+          "trap_reward_gap": 0.5134304165840149,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.525,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.4666785001754761,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.505,
+          "trap_vs_safe_acc": 0.0145,
+          "trap_reward_gap": 0.45232269167900085,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.4275,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.3932545781135559,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.465,
+          "trap_vs_safe_acc": 0.0385,
+          "trap_reward_gap": 0.3833055794239044,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 0,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.735,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9850852489471436,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.745,
+          "trap_vs_safe_acc": 0.027,
+          "trap_reward_gap": 0.7036615610122681,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.39,
+          "trap_vs_safe_acc": 0.0405,
+          "trap_reward_gap": 0.5349611043930054,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.5375,
+          "trap_vs_safe_acc": 0.028,
+          "trap_reward_gap": 0.4244999289512634,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.035,
+          "trap_vs_safe_acc": 0.099,
+          "trap_reward_gap": 0.3292607069015503,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.1175,
+          "trap_vs_safe_acc": 0.0975,
+          "trap_reward_gap": 0.3094687759876251,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.1425,
+          "trap_vs_safe_acc": 0.1025,
+          "trap_reward_gap": 0.2895752191543579,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.16,
+          "trap_vs_safe_acc": 0.1445,
+          "trap_reward_gap": 0.2446402609348297,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.43,
+          "trap_vs_safe_acc": 0.0705,
+          "trap_reward_gap": 0.2902083098888397,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.0225,
+          "trap_vs_safe_acc": 0.161,
+          "trap_reward_gap": 0.1927260458469391,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0575,
+          "trap_vs_safe_acc": 0.162,
+          "trap_reward_gap": 0.18158696591854095,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.1,
+          "trap_vs_safe_acc": 0.145,
+          "trap_reward_gap": 0.17424285411834717,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.91,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.941651463508606,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.5325,
+          "trap_vs_safe_acc": 0.038,
+          "trap_reward_gap": 0.703563928604126,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.775,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.5475084781646729,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.28,
+          "trap_vs_safe_acc": 0.135,
+          "trap_reward_gap": 0.38093847036361694,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.1975,
+          "trap_vs_safe_acc": 0.1185,
+          "trap_reward_gap": 0.3488920032978058,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.1875,
+          "trap_vs_safe_acc": 0.124,
+          "trap_reward_gap": 0.29443442821502686,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.16,
+          "trap_vs_safe_acc": 0.1965,
+          "trap_reward_gap": 0.25553637742996216,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.0975,
+          "trap_vs_safe_acc": 0.173,
+          "trap_reward_gap": 0.222809299826622,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.0725,
+          "trap_vs_safe_acc": 0.2105,
+          "trap_reward_gap": 0.22694242000579834,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1275,
+          "trap_vs_safe_acc": 0.1665,
+          "trap_reward_gap": 0.2203376591205597,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.1475,
+          "trap_vs_safe_acc": 0.179,
+          "trap_reward_gap": 0.19701352715492249,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.04,
+          "trap_vs_safe_acc": 0.1725,
+          "trap_reward_gap": 0.1830967366695404,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.8575,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8872482776641846,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.435,
+          "trap_vs_safe_acc": 0.083,
+          "trap_reward_gap": 0.6115520596504211,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.425,
+          "trap_vs_safe_acc": 0.079,
+          "trap_reward_gap": 0.520864725112915,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.35,
+          "trap_vs_safe_acc": 0.09,
+          "trap_reward_gap": 0.41252970695495605,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.065,
+          "trap_vs_safe_acc": 0.1385,
+          "trap_reward_gap": 0.3175518214702606,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.075,
+          "trap_vs_safe_acc": 0.15,
+          "trap_reward_gap": 0.3424791693687439,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.12,
+          "trap_vs_safe_acc": 0.1395,
+          "trap_reward_gap": 0.29802176356315613,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.0875,
+          "trap_vs_safe_acc": 0.119,
+          "trap_reward_gap": 0.28296545147895813,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.0325,
+          "trap_vs_safe_acc": 0.1705,
+          "trap_reward_gap": 0.2533089816570282,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1375,
+          "trap_vs_safe_acc": 0.142,
+          "trap_reward_gap": 0.24701349437236786,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0625,
+          "trap_vs_safe_acc": 0.174,
+          "trap_reward_gap": 0.20951521396636963,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.19,
+          "trap_vs_safe_acc": 0.191,
+          "trap_reward_gap": 0.2078111618757248,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.2425,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.8261615633964539,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.62,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.7525477409362793,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.44,
+          "trap_vs_safe_acc": 0.028,
+          "trap_reward_gap": 0.6287304162979126,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.6825,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.5184215307235718,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.0325,
+          "trap_vs_safe_acc": 0.119,
+          "trap_reward_gap": 0.4148133099079132,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.095,
+          "trap_vs_safe_acc": 0.1075,
+          "trap_reward_gap": 0.3662472367286682,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.0375,
+          "trap_vs_safe_acc": 0.1075,
+          "trap_reward_gap": 0.33922281861305237,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.2175,
+          "trap_vs_safe_acc": 0.126,
+          "trap_reward_gap": 0.33389291167259216,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.035,
+          "trap_vs_safe_acc": 0.138,
+          "trap_reward_gap": 0.28479987382888794,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1175,
+          "trap_vs_safe_acc": 0.165,
+          "trap_reward_gap": 0.2777530550956726,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.01,
+          "trap_vs_safe_acc": 0.161,
+          "trap_reward_gap": 0.27016979455947876,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.01,
+          "trap_vs_safe_acc": 0.1395,
+          "trap_reward_gap": 0.24956780672073364,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9675,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0849063396453857,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.7275,
+          "trap_vs_safe_acc": 0.0385,
+          "trap_reward_gap": 0.7384363412857056,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.46,
+          "trap_vs_safe_acc": 0.0925,
+          "trap_reward_gap": 0.5346173048019409,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.4825,
+          "trap_vs_safe_acc": 0.0975,
+          "trap_reward_gap": 0.46913599967956543,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.44,
+          "trap_vs_safe_acc": 0.1275,
+          "trap_reward_gap": 0.3547208905220032,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.2525,
+          "trap_vs_safe_acc": 0.1815,
+          "trap_reward_gap": 0.23647089302539825,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.21,
+          "trap_vs_safe_acc": 0.2315,
+          "trap_reward_gap": 0.21068817377090454,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.155,
+          "trap_vs_safe_acc": 0.2315,
+          "trap_reward_gap": 0.20339107513427734,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.1925,
+          "trap_vs_safe_acc": 0.27,
+          "trap_reward_gap": 0.19574415683746338,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.0775,
+          "trap_vs_safe_acc": 0.2765,
+          "trap_reward_gap": 0.17585265636444092,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0825,
+          "trap_vs_safe_acc": 0.289,
+          "trap_reward_gap": 0.11919423937797546,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.2775,
+          "trap_vs_safe_acc": 0.2485,
+          "trap_reward_gap": 0.11724084615707397,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.625,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8603614568710327,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.8775,
+          "trap_vs_safe_acc": 0.043,
+          "trap_reward_gap": 0.6197553873062134,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.285,
+          "trap_vs_safe_acc": 0.131,
+          "trap_reward_gap": 0.4089156985282898,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.3625,
+          "trap_vs_safe_acc": 0.1575,
+          "trap_reward_gap": 0.3462163209915161,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.11,
+          "trap_vs_safe_acc": 0.157,
+          "trap_reward_gap": 0.2943885326385498,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.165,
+          "trap_vs_safe_acc": 0.1725,
+          "trap_reward_gap": 0.2643161416053772,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.435,
+          "trap_vs_safe_acc": 0.1835,
+          "trap_reward_gap": 0.24714994430541992,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.2925,
+          "trap_vs_safe_acc": 0.226,
+          "trap_reward_gap": 0.17627933621406555,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.225,
+          "trap_vs_safe_acc": 0.2835,
+          "trap_reward_gap": 0.1323195993900299,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.0775,
+          "trap_vs_safe_acc": 0.349,
+          "trap_reward_gap": 0.10163936018943787,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.075,
+          "trap_vs_safe_acc": 0.36,
+          "trap_reward_gap": 0.08780524879693985,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.04,
+          "trap_vs_safe_acc": 0.36,
+          "trap_reward_gap": 0.0889938473701477,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9475,
+          "trap_vs_safe_acc": 0.0175,
+          "trap_reward_gap": 1.044281005859375,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.7775,
+          "trap_vs_safe_acc": 0.063,
+          "trap_reward_gap": 0.710296630859375,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.49,
+          "trap_vs_safe_acc": 0.1255,
+          "trap_reward_gap": 0.5076689720153809,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.43,
+          "trap_vs_safe_acc": 0.168,
+          "trap_reward_gap": 0.3878096640110016,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.1925,
+          "trap_vs_safe_acc": 0.198,
+          "trap_reward_gap": 0.31304726004600525,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.73,
+          "trap_vs_safe_acc": 0.1915,
+          "trap_reward_gap": 0.3027013838291168,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.14,
+          "trap_vs_safe_acc": 0.2825,
+          "trap_reward_gap": 0.19837598502635956,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.29,
+          "trap_vs_safe_acc": 0.296,
+          "trap_reward_gap": 0.17241770029067993,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.165,
+          "trap_vs_safe_acc": 0.3155,
+          "trap_reward_gap": 0.1548938751220703,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.08,
+          "trap_vs_safe_acc": 0.3385,
+          "trap_reward_gap": 0.11502209305763245,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.2425,
+          "trap_vs_safe_acc": 0.309,
+          "trap_reward_gap": 0.11737139523029327,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.2025,
+          "trap_vs_safe_acc": 0.366,
+          "trap_reward_gap": 0.10161077976226807,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.74,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 1.016201138496399,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.385,
+          "trap_vs_safe_acc": 0.0485,
+          "trap_reward_gap": 0.715018093585968,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.5825,
+          "trap_vs_safe_acc": 0.051,
+          "trap_reward_gap": 0.6172598600387573,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.5075,
+          "trap_vs_safe_acc": 0.0725,
+          "trap_reward_gap": 0.4590378999710083,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.15,
+          "trap_vs_safe_acc": 0.138,
+          "trap_reward_gap": 0.3190368413925171,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.11,
+          "trap_vs_safe_acc": 0.128,
+          "trap_reward_gap": 0.29453203082084656,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.17,
+          "trap_vs_safe_acc": 0.1485,
+          "trap_reward_gap": 0.28958913683891296,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.255,
+          "trap_vs_safe_acc": 0.148,
+          "trap_reward_gap": 0.23052597045898438,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.0425,
+          "trap_vs_safe_acc": 0.2325,
+          "trap_reward_gap": 0.18437884747982025,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.28,
+          "trap_vs_safe_acc": 0.206,
+          "trap_reward_gap": 0.1754099577665329,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.015,
+          "trap_vs_safe_acc": 0.2205,
+          "trap_reward_gap": 0.1515795886516571,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.13,
+          "trap_vs_safe_acc": 0.166,
+          "trap_reward_gap": 0.1416163593530655,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.895,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.9356579780578613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.4925,
+          "trap_vs_safe_acc": 0.065,
+          "trap_reward_gap": 0.6259562969207764,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.565,
+          "trap_vs_safe_acc": 0.1035,
+          "trap_reward_gap": 0.5145275592803955,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.325,
+          "trap_vs_safe_acc": 0.134,
+          "trap_reward_gap": 0.4146963059902191,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.1975,
+          "trap_vs_safe_acc": 0.147,
+          "trap_reward_gap": 0.3410988450050354,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.155,
+          "trap_vs_safe_acc": 0.213,
+          "trap_reward_gap": 0.29151421785354614,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.285,
+          "trap_vs_safe_acc": 0.1615,
+          "trap_reward_gap": 0.2828909754753113,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.15,
+          "trap_vs_safe_acc": 0.2585,
+          "trap_reward_gap": 0.21553891897201538,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.11,
+          "trap_vs_safe_acc": 0.2515,
+          "trap_reward_gap": 0.19229266047477722,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.015,
+          "trap_vs_safe_acc": 0.3075,
+          "trap_reward_gap": 0.18341070413589478,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0875,
+          "trap_vs_safe_acc": 0.2955,
+          "trap_reward_gap": 0.18224307894706726,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.0625,
+          "trap_vs_safe_acc": 0.26,
+          "trap_reward_gap": 0.17462345957756042,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.8175,
+          "trap_vs_safe_acc": 0.0335,
+          "trap_reward_gap": 0.8235241174697876,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.4525,
+          "trap_vs_safe_acc": 0.071,
+          "trap_reward_gap": 0.5377932190895081,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.235,
+          "trap_vs_safe_acc": 0.15,
+          "trap_reward_gap": 0.4240596890449524,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.5625,
+          "trap_vs_safe_acc": 0.1025,
+          "trap_reward_gap": 0.35833925008773804,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.185,
+          "trap_vs_safe_acc": 0.182,
+          "trap_reward_gap": 0.24616166949272156,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.205,
+          "trap_vs_safe_acc": 0.239,
+          "trap_reward_gap": 0.21432900428771973,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.2025,
+          "trap_vs_safe_acc": 0.2105,
+          "trap_reward_gap": 0.1786665916442871,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.005,
+          "trap_vs_safe_acc": 0.332,
+          "trap_reward_gap": 0.11135134100914001,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.0675,
+          "trap_vs_safe_acc": 0.3525,
+          "trap_reward_gap": 0.1003982424736023,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.0275,
+          "trap_vs_safe_acc": 0.317,
+          "trap_reward_gap": 0.09090042114257812,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.06,
+          "trap_vs_safe_acc": 0.299,
+          "trap_reward_gap": 0.10075470805168152,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.03,
+          "trap_vs_safe_acc": 0.325,
+          "trap_reward_gap": 0.07256673276424408,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 0,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.735,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9850852489471436,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.75,
+          "trap_vs_safe_acc": 0.021,
+          "trap_reward_gap": 0.8860903978347778,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.8075,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8599246740341187,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.725,
+          "trap_vs_safe_acc": 0.016,
+          "trap_reward_gap": 0.7892704010009766,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9325,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.7507987022399902,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.795,
+          "trap_vs_safe_acc": 0.014,
+          "trap_reward_gap": 0.6781119108200073,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.8725,
+          "trap_vs_safe_acc": 0.0185,
+          "trap_reward_gap": 0.6118542551994324,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.85,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.5854387283325195,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.81,
+          "trap_vs_safe_acc": 0.0235,
+          "trap_reward_gap": 0.5420746803283691,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.8375,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.5172009468078613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.775,
+          "trap_vs_safe_acc": 0.044,
+          "trap_reward_gap": 0.4954495131969452,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.77,
+          "trap_vs_safe_acc": 0.0565,
+          "trap_reward_gap": 0.46806085109710693,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.91,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.941651463508606,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.76,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.9332399368286133,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.8625,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.8273908495903015,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.94,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.7895025014877319,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.94,
+          "trap_vs_safe_acc": 0.021,
+          "trap_reward_gap": 0.7606343030929565,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.9275,
+          "trap_vs_safe_acc": 0.0275,
+          "trap_reward_gap": 0.6987169981002808,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.8975,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.6779606938362122,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.835,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.6605352759361267,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.7575,
+          "trap_vs_safe_acc": 0.0355,
+          "trap_reward_gap": 0.6134335398674011,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.6775,
+          "trap_vs_safe_acc": 0.053,
+          "trap_reward_gap": 0.5655162334442139,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.79,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.5298942923545837,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.705,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.49632078409194946,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.8575,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8872482776641846,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.8025,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.805492103099823,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.93,
+          "trap_vs_safe_acc": 0.0105,
+          "trap_reward_gap": 0.7754489183425903,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.92,
+          "trap_vs_safe_acc": 0.008,
+          "trap_reward_gap": 0.7645913362503052,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.93,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.7235479354858398,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.9225,
+          "trap_vs_safe_acc": 0.0165,
+          "trap_reward_gap": 0.6985150575637817,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.8525,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.6484863758087158,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.875,
+          "trap_vs_safe_acc": 0.018,
+          "trap_reward_gap": 0.6190158128738403,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.8975,
+          "trap_vs_safe_acc": 0.0165,
+          "trap_reward_gap": 0.6129049062728882,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.875,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.5554687976837158,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.8325,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.5148023962974548,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.86,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.48832353949546814,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.2425,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.8261615633964539,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.5275,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.7783570289611816,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.535,
+          "trap_vs_safe_acc": 0.02,
+          "trap_reward_gap": 0.7621086835861206,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.43,
+          "trap_vs_safe_acc": 0.04,
+          "trap_reward_gap": 0.6748007535934448,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.4025,
+          "trap_vs_safe_acc": 0.029,
+          "trap_reward_gap": 0.6471009850502014,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.465,
+          "trap_vs_safe_acc": 0.0255,
+          "trap_reward_gap": 0.5968811511993408,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.595,
+          "trap_vs_safe_acc": 0.0265,
+          "trap_reward_gap": 0.5626645088195801,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.5625,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.5408734083175659,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.51,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.5219813585281372,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.5225,
+          "trap_vs_safe_acc": 0.0375,
+          "trap_reward_gap": 0.48662787675857544,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.3775,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.45244717597961426,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.4625,
+          "trap_vs_safe_acc": 0.031,
+          "trap_reward_gap": 0.41968071460723877,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9675,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0849063396453857,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.96,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0083283185958862,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.9425,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.9626502990722656,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.9525,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9314090013504028,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9425,
+          "trap_vs_safe_acc": 0.0065,
+          "trap_reward_gap": 0.8574371933937073,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.915,
+          "trap_vs_safe_acc": 0.013,
+          "trap_reward_gap": 0.8117578029632568,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.9125,
+          "trap_vs_safe_acc": 0.0105,
+          "trap_reward_gap": 0.7715879678726196,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.9175,
+          "trap_vs_safe_acc": 0.011,
+          "trap_reward_gap": 0.7553104162216187,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.945,
+          "trap_vs_safe_acc": 0.0115,
+          "trap_reward_gap": 0.7105321884155273,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.8725,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.6702521443367004,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.8775,
+          "trap_vs_safe_acc": 0.013,
+          "trap_reward_gap": 0.6284393072128296,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.865,
+          "trap_vs_safe_acc": 0.0085,
+          "trap_reward_gap": 0.6125689744949341,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.625,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8603614568710327,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.71,
+          "trap_vs_safe_acc": 0.033,
+          "trap_reward_gap": 0.7717308402061462,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.8325,
+          "trap_vs_safe_acc": 0.0585,
+          "trap_reward_gap": 0.7499232292175293,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.83,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.7262502312660217,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.8725,
+          "trap_vs_safe_acc": 0.0375,
+          "trap_reward_gap": 0.6909871697425842,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.8075,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.6401280760765076,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.775,
+          "trap_vs_safe_acc": 0.0505,
+          "trap_reward_gap": 0.6082027554512024,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.825,
+          "trap_vs_safe_acc": 0.037,
+          "trap_reward_gap": 0.581412672996521,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.8925,
+          "trap_vs_safe_acc": 0.0495,
+          "trap_reward_gap": 0.5541045665740967,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.805,
+          "trap_vs_safe_acc": 0.0505,
+          "trap_reward_gap": 0.5307665467262268,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.795,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.5023120641708374,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.8125,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.44998234510421753,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9475,
+          "trap_vs_safe_acc": 0.0175,
+          "trap_reward_gap": 1.044281005859375,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.975,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.9825236201286316,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.9675,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.9108325242996216,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.9475,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8427695035934448,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9525,
+          "trap_vs_safe_acc": 0.032,
+          "trap_reward_gap": 0.8054510354995728,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.94,
+          "trap_vs_safe_acc": 0.027,
+          "trap_reward_gap": 0.7748650908470154,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.9375,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.7664989233016968,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.965,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.702775239944458,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.9725,
+          "trap_vs_safe_acc": 0.034,
+          "trap_reward_gap": 0.6975746750831604,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.845,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.6573717594146729,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.885,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.6186758279800415,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.815,
+          "trap_vs_safe_acc": 0.0365,
+          "trap_reward_gap": 0.6094242334365845,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.74,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 1.016201138496399,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.65,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.9389369487762451,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.65,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.8610880970954895,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.705,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.8301156759262085,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.7475,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.7756797671318054,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.5,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.7484146356582642,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.6175,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.6974081993103027,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.6975,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 0.6948825716972351,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.73,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.6764776110649109,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.7925,
+          "trap_vs_safe_acc": 0.015,
+          "trap_reward_gap": 0.6308871507644653,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.865,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.5911879539489746,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.8675,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.5579628348350525,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.895,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.9356579780578613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.875,
+          "trap_vs_safe_acc": 0.0155,
+          "trap_reward_gap": 0.8803067207336426,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.855,
+          "trap_vs_safe_acc": 0.016,
+          "trap_reward_gap": 0.8008050322532654,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.825,
+          "trap_vs_safe_acc": 0.0115,
+          "trap_reward_gap": 0.7280805706977844,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.83,
+          "trap_vs_safe_acc": 0.028,
+          "trap_reward_gap": 0.6871277689933777,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.81,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.6341879367828369,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.82,
+          "trap_vs_safe_acc": 0.0185,
+          "trap_reward_gap": 0.621248185634613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.685,
+          "trap_vs_safe_acc": 0.027,
+          "trap_reward_gap": 0.5870224833488464,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.7625,
+          "trap_vs_safe_acc": 0.0475,
+          "trap_reward_gap": 0.548880934715271,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.7375,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.5271666646003723,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.7475,
+          "trap_vs_safe_acc": 0.044,
+          "trap_reward_gap": 0.4996102452278137,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.6675,
+          "trap_vs_safe_acc": 0.03,
+          "trap_reward_gap": 0.4953824579715729,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 64,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.8175,
+          "trap_vs_safe_acc": 0.0335,
+          "trap_reward_gap": 0.8235241174697876,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.865,
+          "trap_vs_safe_acc": 0.0255,
+          "trap_reward_gap": 0.7786166667938232,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.825,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.6950806379318237,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.8025,
+          "trap_vs_safe_acc": 0.017,
+          "trap_reward_gap": 0.6317353248596191,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9,
+          "trap_vs_safe_acc": 0.01,
+          "trap_reward_gap": 0.5838187336921692,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.835,
+          "trap_vs_safe_acc": 0.019,
+          "trap_reward_gap": 0.5763440132141113,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.7975,
+          "trap_vs_safe_acc": 0.01,
+          "trap_reward_gap": 0.5496581792831421,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.7875,
+          "trap_vs_safe_acc": 0.0385,
+          "trap_reward_gap": 0.5134304165840149,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.83,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.4666785001754761,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.8225,
+          "trap_vs_safe_acc": 0.0145,
+          "trap_reward_gap": 0.45232269167900085,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.7125,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.3932545781135559,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.7525,
+          "trap_vs_safe_acc": 0.0385,
+          "trap_reward_gap": 0.3833055794239044,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 0,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9225,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9850852489471436,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.5875,
+          "trap_vs_safe_acc": 0.0735,
+          "trap_reward_gap": 0.7296823263168335,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.7275,
+          "trap_vs_safe_acc": 0.0995,
+          "trap_reward_gap": 0.6278576850891113,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.0325,
+          "trap_vs_safe_acc": 0.1075,
+          "trap_reward_gap": 0.4007805585861206,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.475,
+          "trap_vs_safe_acc": 0.108,
+          "trap_reward_gap": 0.39481908082962036,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.025,
+          "trap_vs_safe_acc": 0.1675,
+          "trap_reward_gap": 0.2982717752456665,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.08,
+          "trap_vs_safe_acc": 0.1195,
+          "trap_reward_gap": 0.28519976139068604,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.035,
+          "trap_vs_safe_acc": 0.152,
+          "trap_reward_gap": 0.26971307396888733,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.6875,
+          "trap_vs_safe_acc": 0.118,
+          "trap_reward_gap": 0.30294328927993774,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1525,
+          "trap_vs_safe_acc": 0.187,
+          "trap_reward_gap": 0.19737094640731812,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0,
+          "trap_vs_safe_acc": 0.2835,
+          "trap_reward_gap": 0.14754462242126465,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.0,
+          "trap_vs_safe_acc": 0.2655,
+          "trap_reward_gap": 0.15044641494750977,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.785,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.941651463508606,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.8225,
+          "trap_vs_safe_acc": 0.036,
+          "trap_reward_gap": 0.7256430387496948,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.36,
+          "trap_vs_safe_acc": 0.0995,
+          "trap_reward_gap": 0.5229119062423706,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.3325,
+          "trap_vs_safe_acc": 0.107,
+          "trap_reward_gap": 0.4663044214248657,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.3675,
+          "trap_vs_safe_acc": 0.1115,
+          "trap_reward_gap": 0.3794735074043274,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.0575,
+          "trap_vs_safe_acc": 0.145,
+          "trap_reward_gap": 0.33356088399887085,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.3725,
+          "trap_vs_safe_acc": 0.1575,
+          "trap_reward_gap": 0.3243274688720703,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.0675,
+          "trap_vs_safe_acc": 0.1775,
+          "trap_reward_gap": 0.24414587020874023,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.255,
+          "trap_vs_safe_acc": 0.2085,
+          "trap_reward_gap": 0.22810354828834534,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.0225,
+          "trap_vs_safe_acc": 0.1835,
+          "trap_reward_gap": 0.20101460814476013,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.17,
+          "trap_vs_safe_acc": 0.187,
+          "trap_reward_gap": 0.1853250116109848,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.04,
+          "trap_vs_safe_acc": 0.2305,
+          "trap_reward_gap": 0.16746938228607178,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.8725,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8872482776641846,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.2575,
+          "trap_vs_safe_acc": 0.04,
+          "trap_reward_gap": 0.5963807106018066,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.1825,
+          "trap_vs_safe_acc": 0.0585,
+          "trap_reward_gap": 0.547225832939148,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.6325,
+          "trap_vs_safe_acc": 0.041,
+          "trap_reward_gap": 0.5107583403587341,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.1225,
+          "trap_vs_safe_acc": 0.0825,
+          "trap_reward_gap": 0.348392516374588,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.07,
+          "trap_vs_safe_acc": 0.123,
+          "trap_reward_gap": 0.34643620252609253,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.1525,
+          "trap_vs_safe_acc": 0.078,
+          "trap_reward_gap": 0.3289377987384796,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.2925,
+          "trap_vs_safe_acc": 0.0485,
+          "trap_reward_gap": 0.3030188977718353,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.0025,
+          "trap_vs_safe_acc": 0.134,
+          "trap_reward_gap": 0.25297415256500244,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.3775,
+          "trap_vs_safe_acc": 0.111,
+          "trap_reward_gap": 0.25276076793670654,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.1775,
+          "trap_vs_safe_acc": 0.167,
+          "trap_reward_gap": 0.20760224759578705,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.0,
+          "trap_vs_safe_acc": 0.2205,
+          "trap_reward_gap": 0.17267540097236633,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.045,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.8261615633964539,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.43,
+          "trap_vs_safe_acc": 0.0215,
+          "trap_reward_gap": 0.7866566181182861,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.5975,
+          "trap_vs_safe_acc": 0.0155,
+          "trap_reward_gap": 0.6669891476631165,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.7475,
+          "trap_vs_safe_acc": 0.0745,
+          "trap_reward_gap": 0.5060381293296814,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.4125,
+          "trap_vs_safe_acc": 0.1535,
+          "trap_reward_gap": 0.3881208598613739,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.0975,
+          "trap_vs_safe_acc": 0.1875,
+          "trap_reward_gap": 0.35782551765441895,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.005,
+          "trap_vs_safe_acc": 0.192,
+          "trap_reward_gap": 0.29346737265586853,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.0475,
+          "trap_vs_safe_acc": 0.163,
+          "trap_reward_gap": 0.31041932106018066,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.0075,
+          "trap_vs_safe_acc": 0.1295,
+          "trap_reward_gap": 0.28955820202827454,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.085,
+          "trap_vs_safe_acc": 0.1395,
+          "trap_reward_gap": 0.29292750358581543,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0575,
+          "trap_vs_safe_acc": 0.145,
+          "trap_reward_gap": 0.27431720495224,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.095,
+          "trap_vs_safe_acc": 0.137,
+          "trap_reward_gap": 0.27328062057495117,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0849063396453857,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.051,
+          "trap_reward_gap": 0.7629203796386719,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.125,
+          "trap_vs_safe_acc": 0.158,
+          "trap_reward_gap": 0.4507509469985962,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.1925,
+          "trap_vs_safe_acc": 0.0925,
+          "trap_reward_gap": 0.46651947498321533,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9575,
+          "trap_vs_safe_acc": 0.1075,
+          "trap_reward_gap": 0.38580209016799927,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.1,
+          "trap_vs_safe_acc": 0.223,
+          "trap_reward_gap": 0.21284928917884827,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.045,
+          "trap_vs_safe_acc": 0.2085,
+          "trap_reward_gap": 0.20077049732208252,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.0425,
+          "trap_vs_safe_acc": 0.2275,
+          "trap_reward_gap": 0.20753812789916992,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.2075,
+          "trap_vs_safe_acc": 0.2205,
+          "trap_reward_gap": 0.20655560493469238,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.0275,
+          "trap_vs_safe_acc": 0.2645,
+          "trap_reward_gap": 0.16141879558563232,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0475,
+          "trap_vs_safe_acc": 0.2605,
+          "trap_reward_gap": 0.15526466071605682,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.88,
+          "trap_vs_safe_acc": 0.226,
+          "trap_reward_gap": 0.1341962218284607,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.4025,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8603614568710327,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.0365,
+          "trap_reward_gap": 0.6292104125022888,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.85,
+          "trap_vs_safe_acc": 0.1245,
+          "trap_reward_gap": 0.4224245548248291,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.0025,
+          "trap_vs_safe_acc": 0.2295,
+          "trap_reward_gap": 0.27120327949523926,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.37,
+          "trap_vs_safe_acc": 0.2015,
+          "trap_reward_gap": 0.28134334087371826,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.145,
+          "trap_vs_safe_acc": 0.263,
+          "trap_reward_gap": 0.22191467881202698,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.1375,
+          "trap_vs_safe_acc": 0.242,
+          "trap_reward_gap": 0.1937352418899536,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.7925,
+          "trap_vs_safe_acc": 0.2225,
+          "trap_reward_gap": 0.18851792812347412,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.0,
+          "trap_vs_safe_acc": 0.413,
+          "trap_reward_gap": 0.07174484431743622,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.06,
+          "trap_vs_safe_acc": 0.4005,
+          "trap_reward_gap": 0.08275644481182098,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0025,
+          "trap_vs_safe_acc": 0.384,
+          "trap_reward_gap": 0.08108304440975189,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.0125,
+          "trap_vs_safe_acc": 0.405,
+          "trap_reward_gap": 0.060948461294174194,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0175,
+          "trap_reward_gap": 1.044281005859375,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.98,
+          "trap_vs_safe_acc": 0.0795,
+          "trap_reward_gap": 0.7087279558181763,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.025,
+          "trap_vs_safe_acc": 0.179,
+          "trap_reward_gap": 0.42979326844215393,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.82,
+          "trap_vs_safe_acc": 0.1795,
+          "trap_reward_gap": 0.44329726696014404,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.16,
+          "trap_vs_safe_acc": 0.2285,
+          "trap_reward_gap": 0.31001973152160645,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.0375,
+          "trap_vs_safe_acc": 0.238,
+          "trap_reward_gap": 0.2719767689704895,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.88,
+          "trap_vs_safe_acc": 0.215,
+          "trap_reward_gap": 0.26041340827941895,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.0675,
+          "trap_vs_safe_acc": 0.3705,
+          "trap_reward_gap": 0.10900792479515076,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.0,
+          "trap_vs_safe_acc": 0.3665,
+          "trap_reward_gap": 0.11193037033081055,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.02,
+          "trap_vs_safe_acc": 0.314,
+          "trap_reward_gap": 0.12361258268356323,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0075,
+          "trap_vs_safe_acc": 0.327,
+          "trap_reward_gap": 0.10879944264888763,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.3825,
+          "trap_vs_safe_acc": 0.3285,
+          "trap_reward_gap": 0.112210214138031,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9475,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 1.016201138496399,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.115,
+          "trap_vs_safe_acc": 0.0815,
+          "trap_reward_gap": 0.6534024477005005,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.8625,
+          "trap_vs_safe_acc": 0.054,
+          "trap_reward_gap": 0.6078832149505615,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.075,
+          "trap_vs_safe_acc": 0.1285,
+          "trap_reward_gap": 0.4038435220718384,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.38,
+          "trap_vs_safe_acc": 0.108,
+          "trap_reward_gap": 0.3656172752380371,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.6025,
+          "trap_vs_safe_acc": 0.1065,
+          "trap_reward_gap": 0.33104532957077026,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.0325,
+          "trap_vs_safe_acc": 0.232,
+          "trap_reward_gap": 0.20867879688739777,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.0975,
+          "trap_vs_safe_acc": 0.256,
+          "trap_reward_gap": 0.17726895213127136,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.015,
+          "trap_vs_safe_acc": 0.246,
+          "trap_reward_gap": 0.1757691204547882,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.175,
+          "trap_vs_safe_acc": 0.1955,
+          "trap_reward_gap": 0.17415978014469147,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.005,
+          "trap_vs_safe_acc": 0.188,
+          "trap_reward_gap": 0.15574927628040314,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.1725,
+          "trap_vs_safe_acc": 0.1435,
+          "trap_reward_gap": 0.1565348207950592,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.9356579780578613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.3,
+          "trap_vs_safe_acc": 0.0805,
+          "trap_reward_gap": 0.5877178907394409,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.265,
+          "trap_vs_safe_acc": 0.0855,
+          "trap_reward_gap": 0.5299113392829895,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.64,
+          "trap_vs_safe_acc": 0.1015,
+          "trap_reward_gap": 0.4969978332519531,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.0375,
+          "trap_vs_safe_acc": 0.175,
+          "trap_reward_gap": 0.35061416029930115,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.1625,
+          "trap_vs_safe_acc": 0.163,
+          "trap_reward_gap": 0.33152490854263306,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.4075,
+          "trap_vs_safe_acc": 0.146,
+          "trap_reward_gap": 0.3288511037826538,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.015,
+          "trap_vs_safe_acc": 0.1785,
+          "trap_reward_gap": 0.3037012219429016,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.065,
+          "trap_vs_safe_acc": 0.187,
+          "trap_reward_gap": 0.2943214774131775,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.0375,
+          "trap_vs_safe_acc": 0.1765,
+          "trap_reward_gap": 0.2935129404067993,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.085,
+          "trap_vs_safe_acc": 0.1775,
+          "trap_reward_gap": 0.3017675280570984,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.0975,
+          "trap_vs_safe_acc": 0.172,
+          "trap_reward_gap": 0.29124900698661804,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "config": {
+        "arm": "adaptive",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9475,
+          "trap_vs_safe_acc": 0.0335,
+          "trap_reward_gap": 0.8235241174697876,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.24,
+          "trap_vs_safe_acc": 0.0695,
+          "trap_reward_gap": 0.5301833748817444,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.2775,
+          "trap_vs_safe_acc": 0.123,
+          "trap_reward_gap": 0.4759829342365265,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.9075,
+          "trap_vs_safe_acc": 0.047,
+          "trap_reward_gap": 0.4298716187477112,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.0,
+          "trap_vs_safe_acc": 0.226,
+          "trap_reward_gap": 0.23395369946956635,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.16,
+          "trap_vs_safe_acc": 0.2335,
+          "trap_reward_gap": 0.24221743643283844,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.25,
+          "trap_vs_safe_acc": 0.173,
+          "trap_reward_gap": 0.23649349808692932,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.0625,
+          "trap_vs_safe_acc": 0.2525,
+          "trap_reward_gap": 0.18075521290302277,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.01,
+          "trap_vs_safe_acc": 0.2795,
+          "trap_reward_gap": 0.15889249742031097,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.1975,
+          "trap_vs_safe_acc": 0.2415,
+          "trap_reward_gap": 0.1591612696647644,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.0,
+          "trap_vs_safe_acc": 0.304,
+          "trap_reward_gap": 0.11607392132282257,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.0,
+          "trap_vs_safe_acc": 0.2745,
+          "trap_reward_gap": 0.11258837580680847,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 0,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9225,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9850852489471436,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.9,
+          "trap_vs_safe_acc": 0.021,
+          "trap_reward_gap": 0.8860903978347778,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.9775,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8599246740341187,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.965,
+          "trap_vs_safe_acc": 0.016,
+          "trap_reward_gap": 0.7892704010009766,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.7507987022399902,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.9425,
+          "trap_vs_safe_acc": 0.014,
+          "trap_reward_gap": 0.6781119108200073,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.0185,
+          "trap_reward_gap": 0.6118542551994324,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.9875,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.5854387283325195,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.965,
+          "trap_vs_safe_acc": 0.0235,
+          "trap_reward_gap": 0.5420746803283691,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.5172009468078613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.9625,
+          "trap_vs_safe_acc": 0.044,
+          "trap_reward_gap": 0.4954495131969452,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.96,
+          "trap_vs_safe_acc": 0.0565,
+          "trap_reward_gap": 0.46806085109710693,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.785,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.941651463508606,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.5825,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.9332399368286133,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.8375,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.8273908495903015,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.9775,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.7895025014877319,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.021,
+          "trap_reward_gap": 0.7606343030929565,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.955,
+          "trap_vs_safe_acc": 0.0275,
+          "trap_reward_gap": 0.6987169981002808,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.8675,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.6779606938362122,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.855,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.6605352759361267,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.605,
+          "trap_vs_safe_acc": 0.0355,
+          "trap_reward_gap": 0.6134335398674011,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.4675,
+          "trap_vs_safe_acc": 0.053,
+          "trap_reward_gap": 0.5655162334442139,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.7625,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.5298942923545837,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.76,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.49632078409194946,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.8725,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.8872482776641846,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.7025,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.805492103099823,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.0105,
+          "trap_reward_gap": 0.7754489183425903,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.008,
+          "trap_reward_gap": 0.7645913362503052,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.7235479354858398,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.9925,
+          "trap_vs_safe_acc": 0.0165,
+          "trap_reward_gap": 0.6985150575637817,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.9775,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.6484863758087158,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.96,
+          "trap_vs_safe_acc": 0.018,
+          "trap_reward_gap": 0.6190158128738403,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.0165,
+          "trap_reward_gap": 0.6129049062728882,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.96,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.5554687976837158,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.9875,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.5148023962974548,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.98,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.48832353949546814,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.045,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.8261615633964539,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.22,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.7783570289611816,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.2975,
+          "trap_vs_safe_acc": 0.02,
+          "trap_reward_gap": 0.7621086835861206,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.245,
+          "trap_vs_safe_acc": 0.04,
+          "trap_reward_gap": 0.6748007535934448,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.2125,
+          "trap_vs_safe_acc": 0.029,
+          "trap_reward_gap": 0.6471009850502014,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.3475,
+          "trap_vs_safe_acc": 0.0255,
+          "trap_reward_gap": 0.5968811511993408,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.6425,
+          "trap_vs_safe_acc": 0.0265,
+          "trap_reward_gap": 0.5626645088195801,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.5375,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.5408734083175659,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.3475,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.5219813585281372,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.4275,
+          "trap_vs_safe_acc": 0.0375,
+          "trap_reward_gap": 0.48662787675857544,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.235,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.45244717597961426,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.5075,
+          "trap_vs_safe_acc": 0.031,
+          "trap_reward_gap": 0.41968071460723877,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0849063396453857,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.0095,
+          "trap_reward_gap": 1.0083283185958862,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.9626502990722656,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0125,
+          "trap_reward_gap": 0.9314090013504028,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0065,
+          "trap_reward_gap": 0.8574371933937073,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.84,
+          "trap_vs_safe_acc": 0.013,
+          "trap_reward_gap": 0.8117578029632568,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.94,
+          "trap_vs_safe_acc": 0.0105,
+          "trap_reward_gap": 0.7715879678726196,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.9625,
+          "trap_vs_safe_acc": 0.011,
+          "trap_reward_gap": 0.7553104162216187,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0115,
+          "trap_reward_gap": 0.7105321884155273,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.8025,
+          "trap_vs_safe_acc": 0.0135,
+          "trap_reward_gap": 0.6702521443367004,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.8575,
+          "trap_vs_safe_acc": 0.013,
+          "trap_reward_gap": 0.6284393072128296,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.9,
+          "trap_vs_safe_acc": 0.0085,
+          "trap_reward_gap": 0.6125689744949341,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.4025,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8603614568710327,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.56,
+          "trap_vs_safe_acc": 0.033,
+          "trap_reward_gap": 0.7717308402061462,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.935,
+          "trap_vs_safe_acc": 0.0585,
+          "trap_reward_gap": 0.7499232292175293,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.9875,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.7262502312660217,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.0375,
+          "trap_reward_gap": 0.6909871697425842,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.98,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.6401280760765076,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.98,
+          "trap_vs_safe_acc": 0.0505,
+          "trap_reward_gap": 0.6082027554512024,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.99,
+          "trap_vs_safe_acc": 0.037,
+          "trap_reward_gap": 0.581412672996521,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.0495,
+          "trap_reward_gap": 0.5541045665740967,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.9625,
+          "trap_vs_safe_acc": 0.0505,
+          "trap_reward_gap": 0.5307665467262268,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.96,
+          "trap_vs_safe_acc": 0.046,
+          "trap_reward_gap": 0.5023120641708374,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.9875,
+          "trap_vs_safe_acc": 0.0535,
+          "trap_reward_gap": 0.44998234510421753,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0175,
+          "trap_reward_gap": 1.044281005859375,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.9825236201286316,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.9108325242996216,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.8427695035934448,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.032,
+          "trap_reward_gap": 0.8054510354995728,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.027,
+          "trap_reward_gap": 0.7748650908470154,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.7664989233016968,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 1.0,
+          "trap_vs_safe_acc": 0.0325,
+          "trap_reward_gap": 0.702775239944458,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.034,
+          "trap_reward_gap": 0.6975746750831604,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.745,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.6573717594146729,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.83,
+          "trap_vs_safe_acc": 0.0245,
+          "trap_reward_gap": 0.6186758279800415,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.77,
+          "trap_vs_safe_acc": 0.0365,
+          "trap_reward_gap": 0.6094242334365845,
+          "argmax_in_trap": false
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9475,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 1.016201138496399,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.2825,
+          "trap_vs_safe_acc": 0.0205,
+          "trap_reward_gap": 0.9389369487762451,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.385,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.8610880970954895,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.4425,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.8301156759262085,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.8725,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.7756797671318054,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.2175,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.7484146356582642,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.305,
+          "trap_vs_safe_acc": 0.022,
+          "trap_reward_gap": 0.6974081993103027,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.5125,
+          "trap_vs_safe_acc": 0.024,
+          "trap_reward_gap": 0.6948825716972351,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.82,
+          "trap_vs_safe_acc": 0.0195,
+          "trap_reward_gap": 0.6764776110649109,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.915,
+          "trap_vs_safe_acc": 0.015,
+          "trap_reward_gap": 0.6308871507644653,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.99,
+          "trap_vs_safe_acc": 0.026,
+          "trap_reward_gap": 0.5911879539489746,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.012,
+          "trap_reward_gap": 0.5579628348350525,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.009,
+          "trap_reward_gap": 0.9356579780578613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.965,
+          "trap_vs_safe_acc": 0.0155,
+          "trap_reward_gap": 0.8803067207336426,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.99,
+          "trap_vs_safe_acc": 0.016,
+          "trap_reward_gap": 0.8008050322532654,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.96,
+          "trap_vs_safe_acc": 0.0115,
+          "trap_reward_gap": 0.7280805706977844,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.028,
+          "trap_reward_gap": 0.6871277689933777,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.92,
+          "trap_vs_safe_acc": 0.0285,
+          "trap_reward_gap": 0.6341879367828369,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.9625,
+          "trap_vs_safe_acc": 0.0185,
+          "trap_reward_gap": 0.621248185634613,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.8925,
+          "trap_vs_safe_acc": 0.027,
+          "trap_reward_gap": 0.5870224833488464,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.895,
+          "trap_vs_safe_acc": 0.0475,
+          "trap_reward_gap": 0.548880934715271,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.8875,
+          "trap_vs_safe_acc": 0.0455,
+          "trap_reward_gap": 0.5271666646003723,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.8875,
+          "trap_vs_safe_acc": 0.044,
+          "trap_reward_gap": 0.4996102452278137,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.7625,
+          "trap_vs_safe_acc": 0.03,
+          "trap_reward_gap": 0.4953824579715729,
+          "argmax_in_trap": true
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "config": {
+        "arm": "stationary",
+        "gen_budget": 256,
+        "rounds": 12,
+        "labels_per_round": 60,
+        "init_pairs": 800,
+        "init_oracle_fraction": 0.25,
+        "trap_appeal": 2.0,
+        "rm_hidden": 64,
+        "rm_epochs": 300,
+        "eval_trials": 400
+      },
+      "history": [
+        {
+          "round": 0,
+          "n_pairs": 800,
+          "hack_rate": 0.9475,
+          "trap_vs_safe_acc": 0.0335,
+          "trap_reward_gap": 0.8235241174697876,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 1,
+          "n_pairs": 860,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.0255,
+          "trap_reward_gap": 0.7786166667938232,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 2,
+          "n_pairs": 920,
+          "hack_rate": 0.985,
+          "trap_vs_safe_acc": 0.0225,
+          "trap_reward_gap": 0.6950806379318237,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 3,
+          "n_pairs": 980,
+          "hack_rate": 0.9725,
+          "trap_vs_safe_acc": 0.017,
+          "trap_reward_gap": 0.6317353248596191,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 4,
+          "n_pairs": 1040,
+          "hack_rate": 0.9975,
+          "trap_vs_safe_acc": 0.01,
+          "trap_reward_gap": 0.5838187336921692,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 5,
+          "n_pairs": 1100,
+          "hack_rate": 0.9925,
+          "trap_vs_safe_acc": 0.019,
+          "trap_reward_gap": 0.5763440132141113,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 6,
+          "n_pairs": 1160,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.01,
+          "trap_reward_gap": 0.5496581792831421,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 7,
+          "n_pairs": 1220,
+          "hack_rate": 0.885,
+          "trap_vs_safe_acc": 0.0385,
+          "trap_reward_gap": 0.5134304165840149,
+          "argmax_in_trap": false
+        },
+        {
+          "round": 8,
+          "n_pairs": 1280,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.023,
+          "trap_reward_gap": 0.4666785001754761,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 9,
+          "n_pairs": 1340,
+          "hack_rate": 0.99,
+          "trap_vs_safe_acc": 0.0145,
+          "trap_reward_gap": 0.45232269167900085,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 10,
+          "n_pairs": 1400,
+          "hack_rate": 0.9375,
+          "trap_vs_safe_acc": 0.0305,
+          "trap_reward_gap": 0.3932545781135559,
+          "argmax_in_trap": true
+        },
+        {
+          "round": 11,
+          "n_pairs": 1460,
+          "hack_rate": 0.995,
+          "trap_vs_safe_acc": 0.0385,
+          "trap_reward_gap": 0.3833055794239044,
+          "argmax_in_trap": true
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "arm": "adaptive",
+      "gen_budget": 16,
+      "n_seeds": 10,
+      "hack_by_round": [
+        0.63075,
+        0.52925,
+        0.41624999999999995,
+        0.35800000000000004,
+        0.27549999999999997,
+        0.26799999999999996,
+        0.22675,
+        0.189,
+        0.17950000000000002,
+        0.16825,
+        0.14825000000000002,
+        0.15175
+      ],
+      "hack_std_by_round": [
+        0.0952412871488924,
+        0.06283852763675767,
+        0.04930418620946682,
+        0.04453151193880077,
+        0.06912950809089335,
+        0.0642456224189633,
+        0.06478650836915559,
+        0.0596075125764828,
+        0.0399965276270606,
+        0.05338604166300818,
+        0.042850677422364696,
+        0.05333398437102641
+      ],
+      "competence_by_round": [
+        0.0205,
+        0.036399999999999995,
+        0.06505000000000001,
+        0.08400000000000002,
+        0.11744999999999998,
+        0.1384,
+        0.14905,
+        0.18409999999999999,
+        0.1938,
+        0.201,
+        0.2213,
+        0.23245
+      ],
+      "argmax_in_trap_by_round": [
+        0.6,
+        0.3,
+        0.1,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hack_first": 0.6307500000000001,
+      "hack_last": 0.15175
+    },
+    {
+      "arm": "adaptive",
+      "gen_budget": 64,
+      "n_seeds": 10,
+      "hack_by_round": [
+        0.7737499999999999,
+        0.6044999999999999,
+        0.4647500000000001,
+        0.45199999999999996,
+        0.1605,
+        0.20925000000000002,
+        0.19024999999999997,
+        0.17099999999999999,
+        0.13725,
+        0.09624999999999999,
+        0.084,
+        0.10825000000000003
+      ],
+      "hack_std_by_round": [
+        0.21523001262215583,
+        0.16908577704821892,
+        0.15409435240930944,
+        0.12528744727403635,
+        0.11850808692518273,
+        0.1908426125837146,
+        0.10740273377443528,
+        0.0936245456894481,
+        0.1235721224404778,
+        0.07790886770237819,
+        0.0676818537965187,
+        0.0894042784211136
+      ],
+      "competence_by_round": [
+        0.0205,
+        0.05,
+        0.08470000000000001,
+        0.10305,
+        0.14245,
+        0.16044999999999998,
+        0.1764,
+        0.20545,
+        0.22949999999999998,
+        0.24290000000000003,
+        0.24489999999999995,
+        0.23735
+      ],
+      "argmax_in_trap_by_round": [
+        0.6,
+        0.4,
+        0.1,
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hack_first": 0.7737499999999999,
+      "hack_last": 0.10825
+    },
+    {
+      "arm": "adaptive",
+      "gen_budget": 256,
+      "n_seeds": 10,
+      "hack_by_round": [
+        0.79175,
+        0.57275,
+        0.4272500000000001,
+        0.43825000000000003,
+        0.32825000000000004,
+        0.14575,
+        0.23625,
+        0.15199999999999997,
+        0.12499999999999997,
+        0.11549999999999998,
+        0.05525,
+        0.16799999999999998
+      ],
+      "hack_std_by_round": [
+        0.317870627946514,
+        0.3501893337102723,
+        0.30797377684183147,
+        0.3492910478542373,
+        0.27758394626170696,
+        0.16777982430687086,
+        0.26567327992605255,
+        0.23818993354977128,
+        0.2183524164688309,
+        0.11347295321401972,
+        0.06892477783787192,
+        0.27658834232684343
+      ],
+      "competence_by_round": [
+        0.0205,
+        0.05695,
+        0.09970000000000002,
+        0.11084999999999998,
+        0.15020000000000003,
+        0.185,
+        0.17635,
+        0.20485000000000003,
+        0.23025,
+        0.22135,
+        0.24234999999999998,
+        0.24030000000000004
+      ],
+      "argmax_in_trap_by_round": [
+        0.6,
+        0.4,
+        0.1,
+        0.2,
+        0.2,
+        0.0,
+        0.1,
+        0.1,
+        0.1,
+        0.0,
+        0.1,
+        0.1
+      ],
+      "hack_first": 0.79175,
+      "hack_last": 0.16799999999999998
+    },
+    {
+      "arm": "stationary",
+      "gen_budget": 16,
+      "n_seeds": 10,
+      "hack_by_round": [
+        0.63075,
+        0.64,
+        0.6305,
+        0.61,
+        0.60975,
+        0.5897500000000001,
+        0.5795,
+        0.5642500000000001,
+        0.5575000000000001,
+        0.54325,
+        0.52625,
+        0.51125
+      ],
+      "hack_std_by_round": [
+        0.0952412871488924,
+        0.0523874454850057,
+        0.06805634920172153,
+        0.058795785941208795,
+        0.0740725057704349,
+        0.07039028105261881,
+        0.06290204024248074,
+        0.05998900362196021,
+        0.05433946795633702,
+        0.0676187227524054,
+        0.07475190447220874,
+        0.07429530043459455
+      ],
+      "competence_by_round": [
+        0.0205,
+        0.0218,
+        0.0222,
+        0.02275,
+        0.0214,
+        0.024749999999999998,
+        0.0236,
+        0.027549999999999998,
+        0.0289,
+        0.03205,
+        0.034999999999999996,
+        0.0346
+      ],
+      "argmax_in_trap_by_round": [
+        0.6,
+        0.5,
+        0.7,
+        0.8,
+        0.9,
+        0.6,
+        0.7,
+        0.4,
+        0.7,
+        0.5,
+        0.6,
+        0.6
+      ],
+      "hack_first": 0.6307500000000001,
+      "hack_last": 0.51125
+    },
+    {
+      "arm": "stationary",
+      "gen_budget": 64,
+      "n_seeds": 10,
+      "hack_by_round": [
+        0.7737499999999999,
+        0.7875,
+        0.82075,
+        0.8077500000000001,
+        0.845,
+        0.7917500000000002,
+        0.8077500000000001,
+        0.8,
+        0.8107499999999999,
+        0.7787499999999998,
+        0.76575,
+        0.7577499999999999
+      ],
+      "hack_std_by_round": [
+        0.21523001262215583,
+        0.1388344337691482,
+        0.13430918931083358,
+        0.1603791081573075,
+        0.16808975776848112,
+        0.17225243910545296,
+        0.11777715539667839,
+        0.12078447287995624,
+        0.13370806715461195,
+        0.10868053336882984,
+        0.1477425030998941,
+        0.12407686909510751
+      ],
+      "competence_by_round": [
+        0.0205,
+        0.0218,
+        0.0222,
+        0.02275,
+        0.0214,
+        0.024749999999999998,
+        0.0236,
+        0.027549999999999998,
+        0.0289,
+        0.03205,
+        0.034999999999999996,
+        0.0346
+      ],
+      "argmax_in_trap_by_round": [
+        0.6,
+        0.5,
+        0.7,
+        0.8,
+        0.9,
+        0.6,
+        0.7,
+        0.4,
+        0.7,
+        0.5,
+        0.6,
+        0.6
+      ],
+      "hack_first": 0.7737499999999999,
+      "hack_last": 0.75775
+    },
+    {
+      "arm": "stationary",
+      "gen_budget": 256,
+      "n_seeds": 10,
+      "hack_by_round": [
+        0.79175,
+        0.7205,
+        0.8400000000000001,
+        0.8545,
+        0.9072500000000001,
+        0.8187500000000002,
+        0.86625,
+        0.8582500000000002,
+        0.8614999999999998,
+        0.81525,
+        0.841,
+        0.8620000000000001
+      ],
+      "hack_std_by_round": [
+        0.317870627946514,
+        0.29993934572028247,
+        0.26816765071292414,
+        0.27353346331949147,
+        0.24730056499014405,
+        0.28817252259328574,
+        0.2249606447062834,
+        0.18248306618545307,
+        0.21977008187851432,
+        0.21003455403549412,
+        0.22554932941598388,
+        0.16028100324118266
+      ],
+      "competence_by_round": [
+        0.0205,
+        0.0218,
+        0.0222,
+        0.02275,
+        0.0214,
+        0.024749999999999998,
+        0.0236,
+        0.027549999999999998,
+        0.0289,
+        0.03205,
+        0.034999999999999996,
+        0.0346
+      ],
+      "argmax_in_trap_by_round": [
+        0.6,
+        0.5,
+        0.7,
+        0.8,
+        0.9,
+        0.6,
+        0.7,
+        0.4,
+        0.7,
+        0.5,
+        0.6,
+        0.6
+      ],
+      "hack_first": 0.79175,
+      "hack_last": 0.8619999999999999
+    }
+  ]
+}

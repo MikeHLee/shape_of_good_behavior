@@ -1,0 +1,42 @@
+{
+  "config": "insider-trading-reasoning",
+  "n_per_class": 1000,
+  "seed": 0,
+  "panel": [
+    {
+      "name": "Yi-1.5-9B",
+      "hf_id": "01-ai/Yi-1.5-9B-Chat"
+    },
+    {
+      "name": "Zephyr-7B",
+      "hf_id": "HuggingFaceH4/zephyr-7b-beta"
+    },
+    {
+      "name": "Qwen2.5-7B",
+      "hf_id": "Qwen/Qwen2.5-7B-Instruct"
+    }
+  ],
+  "per_model": {
+    "Yi-1.5-9B": {
+      "shape": [
+        2000,
+        4096
+      ],
+      "status": "fresh"
+    },
+    "Zephyr-7B": {
+      "shape": [
+        2000,
+        4096
+      ],
+      "status": "fresh"
+    },
+    "Qwen2.5-7B": {
+      "shape": [
+        2000,
+        3584
+      ],
+      "status": "fresh"
+    }
+  }
+}

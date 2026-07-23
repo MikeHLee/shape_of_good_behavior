@@ -1,0 +1,54 @@
+{
+  "n_pairs": 2000,
+  "seed": 0,
+  "panel": [
+    {
+      "name": "Yi-1.5-9B",
+      "hf_id": "01-ai/Yi-1.5-9B-Chat"
+    },
+    {
+      "name": "Zephyr-7B",
+      "hf_id": "HuggingFaceH4/zephyr-7b-beta"
+    },
+    {
+      "name": "Qwen2.5-7B",
+      "hf_id": "Qwen/Qwen2.5-7B-Instruct"
+    }
+  ],
+  "text_blob_sha1_16": "4e76af981e7d20eb",
+  "batch_size": 4,
+  "max_length": 512,
+  "feature": "last-real-token hidden state of final layer (no chat template)",
+  "per_model": {
+    "Yi-1.5-9B": {
+      "path": "/results/peer_sheaf_e1_modal/Yi-1.5-9B_n2000_seed0.npy",
+      "shape": [
+        4000,
+        4096
+      ],
+      "load_seconds": 109.41902804374695,
+      "embed_seconds": 169.64072394371033,
+      "status": "fresh"
+    },
+    "Zephyr-7B": {
+      "path": "/results/peer_sheaf_e1_modal/Zephyr-7B_n2000_seed0.npy",
+      "shape": [
+        4000,
+        4096
+      ],
+      "load_seconds": 88.59067749977112,
+      "embed_seconds": 138.29435753822327,
+      "status": "fresh"
+    },
+    "Qwen2.5-7B": {
+      "path": "/results/peer_sheaf_e1_modal/Qwen2.5-7B_n2000_seed0.npy",
+      "shape": [
+        4000,
+        3584
+      ],
+      "load_seconds": 97.00231313705444,
+      "embed_seconds": 115.22211909294128,
+      "status": "fresh"
+    }
+  }
+}
