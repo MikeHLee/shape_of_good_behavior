@@ -470,7 +470,14 @@ def main(
     """
 
     def _run(fn, *args, **kwargs):
-        return fn.remote(*args, **kwargs)
+        # .remote() ties the remote function to the local gRPC stream — Modal
+        # sends InputCancellation when the local process exits (even cleanly,
+        # even with -d). .spawn() submits the function as an independent job;
+        # the remote continues whether or not the local process is alive.
+        # For short stages (SFT, RM) that finish before the client exits,
+        # .spawn().get() behaves identically to .remote(); for PPO (hours)
+        # we just spawn and exit.
+        return fn.spawn(*args, **kwargs).get()
 
     if stage in ("sft", "all"):
         print("--- Stage 1: SFT ---")
@@ -484,19 +491,16 @@ def main(
 
     if stage in ("ppo", "all"):
         print(f"--- Stage 3: PPO (hodge={hodge}) ---")
-        from shared_modal import mirror_from_volume, new_experiment_id
+        from shared_modal import new_experiment_id
         exp_id = new_experiment_id()
         print(f"  manifest id: {exp_id}  (SGB-003 regression target — see modal_finetune.py train_ppo)")
-        try:
-            result = _run(train_ppo, hodge=hodge, experiment_id=exp_id,
-                          ppo_steps=ppo_steps)
-            print(f"  → {result}")
-        finally:
-            dest = mirror_from_volume(
-                "reward-hacking-results", "/results", exp_id,
-                division="SGB", inquiry_id="SGB-003",
-            )
-            print(f"  manifest mirrored to: {dest}")
+        # Spawn fire-and-forget: remote runs independently; track() inside
+        # train_ppo writes SUCCESS/FAILED to the volume. Mirror locally
+        # after the run with:  python modal_finetune.py --stage mirror --exp-id <id>
+        handle = train_ppo.spawn(hodge=hodge, experiment_id=exp_id,
+                                 ppo_steps=ppo_steps)
+        print(f"  spawned → function call id: {handle.object_id}")
+        print(f"  stream logs: modal app logs {handle.object_id}")
 
     if stage in ("eval", "all"):
         print("--- Stage 4: Evaluation ---")
