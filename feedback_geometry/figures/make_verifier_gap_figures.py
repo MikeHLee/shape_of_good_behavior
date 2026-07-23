@@ -1,4 +1,4 @@
-"""Figures for the verifier-generator gap result (SGB-032/033/035).
+"""Figures for the verifier-generator gap result (SGB-032/033/035/036/041).
 
 Every plotted number is loaded from a committed results JSON — nothing is
 hardcoded. This is deliberate: the 2026-07-21 audit found hand-typed figure
@@ -28,16 +28,40 @@ RESULTS = HERE.parent / "results" / "verifier_gap"
 # replication partner (seeds 0-14 vs 100-149).
 MECH = RESULTS / "mechanism_argmax_50seed.json"
 SWEEP15 = RESULTS / "sweep_105cells.json"
+# Three disjoint 50-seed blocks for the scaling law (fig3): in-sample, OOS, and
+# the dense 13-point grid. Confirmed-regime slope reproduces across all three.
+OOS = RESULTS / "mechanism_oos_seed200.json"
+DENSE = RESULTS / "scaling_dense_13pt_50seed.json"
+SCALING_BLOCKS = [
+    (MECH, "seeds 100–149", "#a33b3b"),
+    (OOS, "seeds 200–249 (OOS)", "#c9832b"),
+    (DENSE, "seeds 500–549 (dense)", "#2f6f9f"),
+]
 
-# "Interior peak" = the curve genuinely turns over. Must match the definition in
-# analyze_verifier_gap.py: argmax INDEX alone is wrong, because np.argmax breaks
-# ties by first index and a saturated curve (..., 1.0, 1.0) then reports a
-# spurious turn-over.
-TOL = 0.02
+# Turn-over = the curve genuinely rises then falls. This MUST match the
+# `noise_turn` definition in analyze_verifier_gap.py that the paper's verdict and
+# crosstab rest on -- NOT the looser index/TOL `interior_peak` column. A qualifying
+# earlier budget must beat BOTH the final and the base budget by > 3 combined
+# binomial standard errors (trials/cell = TRIALS), i.e. beyond sampling noise.
+# The looser TOL=0.02 definition over-counts turnovers (it inflated the argmax-
+# outside turnover to 91.7% and Fisher p to 3.96e-42; noise-aware gives 75.7% /
+# 6.7e-27). See queue SGB-035 CORRECTION 2026-07-23.
+TRIALS = 800
 
 C_IN = "#a33b3b"    # argmax inside trap  -> saturating search converges on it
 C_OUT = "#2f6f9f"   # argmax outside trap -> saturating search escapes
 C_ACC = "#2c3e50"
+
+
+def _noise_turn(curve: np.ndarray) -> bool:
+    """Noise-aware turn-over, identical to analyze_verifier_gap.py: some earlier
+    budget beats BOTH the final and the base budget by > 3 combined binomial SEs."""
+    p_hat = np.clip(curve, 0.0, 1.0)
+    se = np.sqrt(p_hat * (1.0 - p_hat) / TRIALS)
+    fin, base = curve[-1], curve[0]
+    tf = 3.0 * np.sqrt(se[:-1] ** 2 + se[-1] ** 2)
+    tb = 3.0 * np.sqrt(se[:-1] ** 2 + se[0] ** 2)
+    return bool((((curve[:-1] - fin) > tf) & ((curve[:-1] - base) > tb)).any())
 
 
 def load(path: Path):
@@ -57,9 +81,7 @@ def load(path: Path):
             "final": float(curve[-1]),
             "base": float(curve[0]),
             "in_trap": r["competence"].get("argmax_in_trap"),
-            "turns": (budgets[i] > budgets[0])
-                     and (curve[i] > curve[-1] + TOL)
-                     and (curve[i] > curve[0] + TOL),
+            "turns": _noise_turn(curve),
         })
     return blob, budgets, rows
 
@@ -180,43 +202,62 @@ def fig2_gap_not_height(rows, budgets, out):
 # Figure 3 — peak-danger budget vs competence, both fits shown honestly
 # ---------------------------------------------------------------------------
 
-def fig3_scaling(rows, out):
-    orcs = sorted({r["orc"] for r in rows})
-    xs, ys, full = fit_scaling(rows, orcs)
-    keep = [o for o in orcs if o != min(orcs)]
-    xk, yk, sub = fit_scaling(rows, keep)
+def regime_points(path):
+    """Per-oracle_fraction (competence, log2 median N*, confirmed?) for one seed
+    block. 'confirmed' uses the pre-specified rule: noise-aware turn-over fraction
+    >= 50% AND median N* > 1 (so N* is a real interior peak, not a floored min)."""
+    _, budgets, rows = load(path)
+    by = {}
+    for r in rows:
+        by.setdefault(r["orc"], []).append(r)
+    pts = []
+    for orc in sorted(by):
+        rs = by[orc]
+        comp = float(np.mean([r["acc"] for r in rs]))
+        med_ns = float(np.median([r["nstar"] for r in rs]))
+        turnf = float(np.mean([r["turns"] for r in rs]))
+        confirmed = (turnf >= 0.5) and (med_ns > 1)
+        pts.append((comp, np.log2(med_ns), confirmed, orc))
+    return pts
 
-    fig, ax = plt.subplots(figsize=(7.0, 4.7))
-    dropped = 0  # min(orcs) is the excluded row; it is first in xs/ys
 
-    ax.scatter(xs[1:], ys[1:], s=62, color=C_ACC, zorder=4, label="verifier (7 total)")
-    ax.scatter(xs[:1], ys[:1], s=110, facecolor="none", edgecolor=C_IN, lw=2.0,
-               zorder=5, label=f"orc={min(orcs)} — excluded from the 6-point fit")
+def fig3_scaling(out):
+    fig, ax = plt.subplots(figsize=(7.4, 4.9))
+    slopes = []
+    for path, label, col in SCALING_BLOCKS:
+        pts = regime_points(path)
+        cx = np.array([p[0] for p in pts if p[2]])
+        cy = np.array([p[1] for p in pts if p[2]])
+        nx = np.array([p[0] for p in pts if not p[2]])
+        ny = np.array([p[1] for p in pts if not p[2]])
+        r = stats.linregress(cx, cy)
+        slopes.append(r.slope)
+        ax.scatter(cx, cy, s=55, color=col, zorder=4, edgecolor="white", lw=0.5,
+                   label=f"{label}: slope {r.slope:.1f}, $r^2$={r.rvalue**2:.2f} ({len(cx)} pts)")
+        if len(nx):
+            ax.scatter(nx, ny, s=42, facecolor="none", edgecolor=col, lw=1.3,
+                       alpha=0.55, zorder=3)
+        gx = np.linspace(cx.min(), cx.max(), 40)
+        ax.plot(gx, r.intercept + r.slope * gx, color=col, lw=1.8, alpha=0.9, zorder=2)
 
-    gx = np.linspace(min(xs) - 0.01, max(xs) + 0.01, 50)
-    ax.plot(gx, full.intercept + full.slope * gx, color=C_ACC, lw=2.2,
-            label=(f"all 7 pts: slope {full.slope:.1f}, "
-                   f"$r^2$={full.rvalue**2:.3f}, p={full.pvalue:.1e}"))
-    ax.plot(gx, sub.intercept + sub.slope * gx, color=C_IN, lw=1.6, ls="--",
-            label=(f"6 pts: slope {sub.slope:.1f}, "
-                   f"$r^2$={sub.rvalue**2:.3f}, p={sub.pvalue:.1e}"))
-
-    # White bbox so the label stays legible where a fit line passes under it.
-    for xx, yy in zip(xs, ys):
-        ax.annotate(f"$N^*$={2**yy:.0f}", (xx, yy), textcoords="offset points",
-                    xytext=(8, 7), fontsize=8, color="#555555",
-                    bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.85))
+    ax.scatter([], [], s=42, facecolor="none", edgecolor="#888", lw=1.3,
+               label="hollow = outside inverted-U regime (no $N^*$)")
+    ax.text(0.02, 0.03,
+            f"confirmed-regime slope $\\approx$ {np.mean(slopes):.0f} across 3 disjoint blocks\n"
+            "(the retracted 6-pt $-14.7$ kept an out-of-regime point)",
+            transform=ax.transAxes, fontsize=8, color="#555", va="bottom",
+            bbox=dict(boxstyle="round,pad=0.3", fc="#f5f5f5", ec="#ccc", lw=0.6))
 
     ax.set_xlabel("verifier competence (trap-vs-safe accuracy, measured against oracle)", fontsize=9.5)
     ax.set_ylabel(r"$\log_2 N^*$  (peak-danger search budget)", fontsize=10)
     ax.set_title("Improving the verifier moves the risk to a smaller generator",
                  fontsize=11.5, pad=8, color=C_ACC)
-    ax.legend(fontsize=8.2, frameon=False, loc="upper right")
+    ax.legend(fontsize=8.0, frameon=False, loc="upper right")
     fig.tight_layout()
     for e in ("png", "pdf"):
         fig.savefig(f"{out}.{e}", dpi=300, bbox_inches="tight")
     plt.close(fig)
-    return full, sub
+    return slopes
 
 
 def main():
@@ -225,12 +266,12 @@ def main():
 
     p = fig1_mechanism(rows, budgets, HERE / "vg_fig1_mechanism")
     fig2_gap_not_height(rows, budgets, HERE / "vg_fig2_gap_not_height")
-    full, sub = fig3_scaling(rows, HERE / "vg_fig3_scaling_law")
+    slopes = fig3_scaling(HERE / "vg_fig3_scaling_law")
 
     print(f"wrote vg_fig1_mechanism      (Fisher p = {p:.3e})")
     print("wrote vg_fig2_gap_not_height")
-    print(f"wrote vg_fig3_scaling_law    (7pt slope {full.slope:.2f} r2={full.rvalue**2:.3f} "
-          f"p={full.pvalue:.2e} | 6pt slope {sub.slope:.2f} r2={sub.rvalue**2:.3f} p={sub.pvalue:.2e})")
+    print("wrote vg_fig3_scaling_law    (confirmed-regime slopes across 3 blocks: "
+          + ", ".join(f"{s:.1f}" for s in slopes) + ")")
 
 
 if __name__ == "__main__":

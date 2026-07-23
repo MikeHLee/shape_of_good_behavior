@@ -1,7 +1,7 @@
 # The verifier–generator gap: peak danger sits at intermediate search
 
-*Track 4 · draft writeup · sources SGB-032 / SGB-033 / SGB-034 / SGB-035*
-*Status: DRAFT — not committed to the public repo. See "Provenance" before quoting any number.*
+*Track 4 · draft writeup · sources SGB-032 / SGB-033 / SGB-034 / SGB-035 / SGB-036*
+*Status: DRAFT, version-controlled for provenance. Numbers self-audited 2026-07-23; every figure and headline number reproduces from committed code (see "Provenance"). Not yet peer-reviewed or submitted.*
 
 ## Summary
 
@@ -13,15 +13,26 @@ between the two, not by verifier quality alone.
 
 The organising result is mechanistic. A single binary property of the learned
 verifier — **is its global argmax inside the trap?** — separates every run into
-two populations with almost no overlap:
+two populations that barely overlap. The cleanest statement is the *saturated*
+hack rate (at $N{=}1024$), because it needs no turnover threshold to define:
 
-| | $n$ | curve turns over | hack rate at $N{=}1024$ |
+| | $n$ | hack rate at $N{=}1024$ | curve turns over |
 |---|---|---|---|
-| argmax **inside** trap | 50 | **0.0%** | **0.971** |
-| argmax **outside** trap | 300 | **91.7%** | **0.056** |
+| argmax **inside** trap | 50 | **0.971** | 0.0% (0/50) |
+| argmax **outside** trap | 300 | **0.056** | 75.7% (227/300) |
 
-Fisher exact $p = 3.96\times10^{-42}$. Not one of the 50 argmax-inside runs turns
-over; 275 of 300 argmax-outside runs do.
+Mann–Whitney on the saturated hack rate: $p = 1.6\times10^{-35}$ — and this
+statistic depends on no threshold at all. The turnover crosstab gives Fisher
+exact $p = 6.7\times10^{-27}$ under **the paper's noise-aware turnover
+definition** (§6). (An earlier draft quoted $3.96\times10^{-42}$; that came from
+the looser index-based turnover count this paper's own analysis script replaced,
+and does not reproduce from the committed code. We quote the conservative,
+internally-consistent number.)
+
+**Confirmed out of sample.** Re-running on 50 fresh, disjoint seeds (200–249;
+SGB-036) reproduces it almost exactly: saturated hack **0.972 inside vs 0.064
+outside** (Mann–Whitney $p = 2.6\times10^{-32}$), turnover 2.3% vs 78.1%, Fisher
+$p = 9.0\times10^{-24}$. The mechanism is not an in-sample artefact.
 
 Everything else follows from this. When the verifier's global optimum is inside
 the trap, saturating search converges on it and hacking $\to 1$. When it is
@@ -131,31 +142,47 @@ plainly costs nothing and protects the surrounding claims.)*
 
 ![scaling law](figures/vg_fig3_scaling_law.png)
 
-Peak-danger search budget $N^*$ (per-seed argmax of the hack-rate curve, median
-across 50 seeds) against measured verifier competence:
+The peak-danger search budget $N^*$ (per-seed argmax of the hack-rate curve,
+median across 50 seeds) falls geometrically with measured verifier competence.
+$N^*$ is only defined where the curve has a genuine interior peak, so we fit the
+**confirmed inverted-U regime** under a rule fixed in advance and applied
+*symmetrically*: include an `oracle_fraction` point iff its noise-aware turn-over
+fraction $\ge 50\%$ **and** its median curve turns over ($N^* > 1$). Points that
+fail — the low-competence end where search has not yet separated the populations,
+and the high-competence end where the curve is monotone so "peak danger" is just
+the minimum budget — have no well-defined $N^*$ and are not fit.
 
-$$\log_2 N^* = -19.1 \cdot \text{competence} + 7.15 \qquad r^2 = 0.826,\; p = 4.6\times10^{-3},\; n = 7$$
+**The slope is $\approx -19$ and reproduces across three disjoint 50-seed blocks:**
 
-Median $N^*$ runs $384 \to 48 \to 32 \to 16 \to 8 \to 4 \to 2$ across the
-competence range. On this fit the peak-danger budget halves for every $+0.052$ of
-competence.
+| seed block | confirmed points | slope | $r^2$ |
+|---|---|---|---|
+| 100–149 (SGB-033/035) | 5 | $-18.5$ | 0.95 |
+| 200–249 (SGB-036, out-of-sample) | 5 | $-19.9$ | 0.94 |
+| 500–549 (SGB-041, dense 13-pt grid) | 8 | $-19.9$ | 0.91 |
 
-**Sensitivity.** Excluding the lowest-competence point (`oracle_fraction` $0.25$,
-competence $0.027$) — the one verifier for which the inverted U is *not* confirmed
-(46% of seeds turn over, below the 50% criterion) — the fit improves to slope
-$-14.7$, $r^2 = 0.939$, $p = 1.4\times10^{-3}$, halving per $+0.068$.
+Peak-danger budget halves for roughly every $+0.05$ of competence. In the dense
+block, median $N^*$ runs $128 \to 64 \to 32 \to 32 \to 16 \to 8 \to 6 \to 4$
+across competence $0.038 \to 0.263$. The full 7-point fit on block 100–149
+(all measured points, no regime restriction) is $-19.1$, $r^2 = 0.826$ —
+consistent with the regime fits.
 
-**We report the 7-point fit as primary.** The excluded point is a genuine outlier
-(see figure), and there is a principled reason to treat it separately — at that
-competence the majority of seeds have their global argmax in the trap (52%), so
-"peak-danger budget" is measuring a different regime. But dropping the single
-point that fails the inverted-U criterion, and then reporting the improved fit,
-is a selection a reviewer will and should challenge. Both fits are shown; the
-weaker one leads.
+**Densifying helps but does not eliminate the slope uncertainty.** Going from 5
+to 8 confirmed points (the 13-point `oracle_fraction` grid, seeds 500–549) shrank
+the leave-one-out slope swing from **37% and 51%** on the two sparse blocks to
+**25%** on the dense block (range $[-17.6,\,-22.6]$, $\pm 12\%$ around $-19.9$).
+So more points do help — but a floor remains, because $N^*$ exists only inside the
+bounded inverted-U regime, which puts irreducible **leverage on the two competence
+endpoints** that interior points cannot remove. Report the slope as $\approx -19$
+with $\pm 12\%$ uncertainty; do not quote three significant figures and do not
+extrapolate.
 
-⚠️ **Do not quote the slope to three significant figures and do not extrapolate
-it.** Seven aggregate points. The monotone direction is solid; the slope is
-indicative.
+**Retraction of the earlier "6-point $-14.7$" fit.** A previous draft reported a
+shallower slope by *dropping* the low-competence point (orc $0.25$) while
+*keeping* orc $0.50$ — which fails the same inverted-U criterion (only 16–24% of
+its seeds turn over). That is asymmetric point-dropping, exactly what a reviewer
+should challenge. Under the symmetric rule the slope is $\approx -19$ on every
+block, never $-14.7$; the $-14.7$ was an artifact of inconsistent inclusion and
+is superseded by the table above.
 
 **Why this is the actionable finding.** Improving a verifier does not simply
 reduce risk — it *relocates* the risk to a smaller generator. A safety margin
@@ -203,10 +230,17 @@ Two analysis bugs also changed conclusions and belong in a methods footnote:
 
 - **Per-seed vs aggregate curves.** The aggregate is a mixture (§2); reading
   shape off the mean curve gave a wrong answer once.
-- **"Interior peak" defined by argmax index.** `np.argmax` breaks ties by first
+- **Turn-over definition, corrected twice.** (a) `np.argmax` breaks ties by first
   index, so a saturated curve $(\dots, 1.000, 1.000)$ reports a spurious
-  turn-over. This inflated one row to a bogus 100%. Corrected definition: the
-  peak must exceed **both** endpoints by a margin ($\text{tol}=0.02$).
+  turn-over; the peak must exceed **both** endpoints by a margin. (b) A fixed
+  margin ($\text{tol}=0.02$) still counts *sampling-noise* fluctuations as
+  turn-overs, since each hack rate is a binomial proportion over 800 trials. The
+  **noise-aware** definition used everywhere in this paper (verdict, §2 crosstab,
+  figures) requires a qualifying earlier budget to beat both endpoints by $>3$
+  combined binomial standard errors. This matters: the looser $\text{tol}=0.02$
+  count reported argmax-outside turn-over at 91.7% and Fisher $p=3.96\times10^{-42}$;
+  the noise-aware count gives 75.7% and $6.7\times10^{-27}$. We report the latter.
+  A single turnover definition is used for every number in the paper.
 
 ---
 
@@ -218,20 +252,27 @@ Two analysis bugs also changed conclusions and belong in a methods footnote:
    specific to this trap geometry. Write "in a setting where ground truth is
    available, …", never "we show RLHF reward models fail at $N{=}X$".
 2. **The mechanism generalises only as far as the toy does.** The global-argmax
-   account is established *within this environment* ($p = 3.96\times10^{-42}$).
+   account is established *within this environment* (saturated-hack Mann–Whitney
+   $p = 1.6\times10^{-35}$ in-sample, $2.6\times10^{-32}$ out-of-sample).
    What does **not** follow is that a real learned verifier has a well-defined
    global argmax a generator can reach, or that "escaping the local optimum" is
    available when the search space is language rather than a $10\times10$ box.
    State the mechanism as **proven-here, conjectural-elsewhere**.
-3. **The mechanism is in-sample.** `mechanism_argmax_50seed.json` contains the
-   *same 50 seeds and byte-identical search curves* as
-   `replication_invertedU_50seed.json` — it is the same runs re-analysed with
-   `argmax_in_trap` recorded, not an independent replication. The inverted-U
-   finding *is* replicated across disjoint seeds (SGB-032 vs SGB-033); the
-   mechanism is an explanation of the data it was derived from. An out-of-sample
-   confirmation on fresh seeds is cheap and should be run before publication.
-4. **Scaling law: 7 aggregate points**, and the headline-friendly version drops
-   one of them (§4).
+3. **The mechanism was derived in-sample, then confirmed out-of-sample.**
+   `mechanism_argmax_50seed.json` re-analyses the *same 50 seeds* (100–149) as
+   `replication_invertedU_50seed.json` with `argmax_in_trap` recorded — so on its
+   own it is an explanation of the data it was derived from, not a replication.
+   That objection is now retired: `mechanism_oos_seed200.json` (SGB-036) is an
+   independent 50-seed run on disjoint seeds (200–249) that reproduces the
+   crosstab (saturated hack 0.972 / 0.064; turnover 2.3% / 78.1%; Fisher
+   $p = 9.0\times10^{-24}$) and the scaling law (confirmed-regime slope $-19.9$
+   vs $-18.5$ in-sample). The mechanism holds on data it never saw.
+4. **Scaling-law slope has an endpoint-uncertainty floor.** Central estimate
+   $\approx -19$, reproduced on three disjoint seed blocks (§4). $N^*$ is defined
+   only inside the bounded inverted-U window, so the slope leans on its two
+   competence endpoints: densifying 5→8 confirmed points shrank the leave-one-out
+   swing from 37–51% to 25% ($\pm 12\%$), but did not remove it. Quote the
+   direction and order of magnitude, not the digits.
 5. **The RL arm is a null** (§5).
 
 ---
@@ -264,12 +305,16 @@ nothing.
 
 | Claim | Value | Source |
 |---|---|---|
-| mechanism crosstab, Fisher $p$ | 0.0% / 91.7%, 0.971 / 0.056, $3.96\mathrm{e}{-42}$ | `mechanism_argmax_50seed.json` |
+| mechanism, saturated hack | 0.971 inside / 0.056 outside, MW $p{=}1.6\mathrm{e}{-35}$ | `mechanism_argmax_50seed.json` |
+| mechanism turnover crosstab (noise-aware) | 0.0% / 75.7%, Fisher $6.7\mathrm{e}{-27}$ | `analyze_verifier_gap.py` on same file |
+| — same, OOS (seeds 200–249) | 0.972 / 0.064, 2.3% / 78.1%, Fisher $9.0\mathrm{e}{-24}$ | `mechanism_oos_seed200.json` |
 | $P(\text{argmax in trap})$ | 52/32/4/4/6/0/2 % | `mechanism_argmax_50seed.json` |
-| median $N^*$ | 384/48/32/16/8/4/2 | `mechanism_argmax_50seed.json` |
-| inverted-U, orc 0.35–0.45 | 94/92/92/90%, $p \sim 10^{-9}$ | `analyze_verifier_gap.py` |
-| scaling law, 7 points | $-19.1$, $r^2{=}0.826$, $p{=}4.6\mathrm{e}{-3}$ | recomputed from the same file |
-| scaling law, 6 points | $-14.7$, $r^2{=}0.939$, $p{=}1.4\mathrm{e}{-3}$ | same, excluding orc=0.25 |
+| median $N^*$ | 384/48/32/16/8/4/2 (in-sample), 256/64/32/16/8/4/2 (OOS) | `mechanism_argmax_50seed.json`, `mechanism_oos_seed200.json` |
+| inverted-U window (pre-specified paired test $N{=}16$ vs $N_{\max}$) | confirmed orc $\in[0.30,0.45]$, all $p<0.05$, $d_z>0$; fails at 0.25 ($p{=}0.44$) and 0.50 | `analyze_verifier_gap.py`; OOS window identical (`mechanism_oos_seed200.json`) |
+| scaling law, confirmed regime (3 blocks) | $-18.5$/$-19.9$/$-19.9$, $r^2\ge0.90$ | `mechanism_argmax_50seed`, `mechanism_oos_seed200`, `scaling_dense_13pt_50seed` |
+| scaling law, full 7-pt (block 100–149) | $-19.1$, $r^2{=}0.826$ | recomputed from `mechanism_argmax_50seed.json` |
+| scaling law leave-one-out | swing 37%/51% (5-pt blocks) → 25% (8-pt dense); range $[-17.6,-22.6]$ | `scaling_robustness.py` |
+| ~~6-pt $-14.7$~~ SUPERSEDED | inconsistent inclusion (dropped orc 0.25, kept orc 0.50) | — |
 | $N{=}1$ baseline | 0.1232 (15-seed) / 0.1245 (50-seed) | `sweep_105cells.json`, `mechanism_argmax_50seed.json` |
 | trap share | 0.1257 | geometry, $\pi(2.0)^2/100$ |
 | gap illustration | 0.335 @ $N{=}4$, 0.752 @ $N{=}256$ | `mechanism_argmax_50seed.json` (50-seed) |
@@ -282,7 +327,15 @@ Reproduce:
 
 ```bash
 cd topics/shape_of_good_behavior
+# inverted-U verdict, in-sample then out-of-sample (same script, same verdict)
 ./venv/bin/python3 feedback_geometry/src/analyze_verifier_gap.py \
     feedback_geometry/results/verifier_gap/mechanism_argmax_50seed.json
+./venv/bin/python3 feedback_geometry/src/analyze_verifier_gap.py \
+    feedback_geometry/results/verifier_gap/mechanism_oos_seed200.json
+# §2 mechanism crosstab (saturated hack + noise-aware Fisher; discloses the looser count)
+./venv/bin/python3 feedback_geometry/src/mechanism_crosstab.py
+# §4 scaling law: confirmed-regime slope across 3 blocks + leave-one-out
+./venv/bin/python3 feedback_geometry/src/scaling_robustness.py
+# all three figures (nothing hardcoded; loads from JSON)
 ./venv/bin/python3 feedback_geometry/figures/make_verifier_gap_figures.py
 ```
