@@ -647,13 +647,22 @@ def run_ppo(
         policy.train()
         for _ in range(config.ppo_ppo_epochs):
             new_lp = _compute_log_probs(policy, padded, resp_mask)
-            ratio  = (new_lp - old_lp).exp()
+            # Clamp log-ratio before exp: greedy decoding drives new_lp→0 while
+            # old_lp can be very negative → log_ratio up to +50 → exp overflows
+            # bf16 (max 65504) → inf → NaN loss at ~step 45 (SGB-003 v4).
+            log_ratio = (new_lp - old_lp).clamp(-5.0, 5.0)
+            ratio  = log_ratio.exp()
             clipped = ratio.clamp(1 - config.ppo_epsilon, 1 + config.ppo_epsilon)
             ppo_loss = -torch.min(ratio * adv, clipped * adv).mean()
 
             # KL penalty: keep policy close to SFT reference
-            kl_loss  = (new_lp - old_lp).mean()
+            kl_loss  = log_ratio.mean()
             loss     = ppo_loss + config.ppo_kl_coeff * kl_loss
+
+            if not loss.isfinite():
+                print(f"  [WARN] non-finite loss={loss.item()} at step={steps_done} — skipping update", flush=True)
+                optimizer.zero_grad()
+                break
 
             optimizer.zero_grad()
             loss.backward()
