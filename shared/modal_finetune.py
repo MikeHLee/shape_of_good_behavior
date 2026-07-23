@@ -491,16 +491,24 @@ def main(
 
     if stage in ("ppo", "all"):
         print(f"--- Stage 3: PPO (hodge={hodge}) ---")
-        from shared_modal import new_experiment_id
+        from shared_modal import mirror_from_volume, new_experiment_id
         exp_id = new_experiment_id()
         print(f"  manifest id: {exp_id}  (SGB-003 regression target — see modal_finetune.py train_ppo)")
-        # Spawn fire-and-forget: remote runs independently; track() inside
-        # train_ppo writes SUCCESS/FAILED to the volume. Mirror locally
-        # after the run with:  python modal_finetune.py --stage mirror --exp-id <id>
-        handle = train_ppo.spawn(hodge=hodge, experiment_id=exp_id,
-                                 ppo_steps=ppo_steps)
-        print(f"  spawned → function call id: {handle.object_id}")
-        print(f"  stream logs: modal app logs {handle.object_id}")
+        # _run uses .spawn().get(): the remote function is committed as an
+        # independent job before .get() blocks. If this process is killed,
+        # Modal does NOT cancel the spawned container (unlike .remote() which
+        # holds a cancellable gRPC stream). Run this entrypoint as a long-lived
+        # background process so it stays connected and mirrors the manifest.
+        try:
+            result = _run(train_ppo, hodge=hodge, experiment_id=exp_id,
+                          ppo_steps=ppo_steps)
+            print(f"  → {result}")
+        finally:
+            dest = mirror_from_volume(
+                "reward-hacking-results", "/results", exp_id,
+                division="SGB", inquiry_id="SGB-003",
+            )
+            print(f"  manifest mirrored to: {dest}")
 
     if stage in ("eval", "all"):
         print("--- Stage 4: Evaluation ---")
