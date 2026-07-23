@@ -180,12 +180,37 @@ The three tracks together give:
 
 ---
 
+## Results Summary (as of 2026-07-23)
+
+### Peer-Consistency Sheaf — Deception Detection (SGB-012)
+
+Treats a panel of independently-trained models as a sheaf over inputs; measures cocycle violation ‖δ¹c‖ as a deception signal. Results at 7–9B panel (Yi-1.5-9B, Zephyr-7B, Qwen2.5-7B); length-matched.
+
+| Config | AUC | p-value | Interpretation |
+|--------|-----|---------|----------------|
+| **convincing-game** (persuasion deception) | **0.661** | 2.5e-6 | Robust; deceptive responses shorter, so confound runs against |
+| **insider-trading** (agentic/strategic) | **0.625** | 8e-8 | Robust across seeds |
+| alignment-faking reasoning | 0.391 | n.s. | Sign-flipped — cue-robust behavior, not strategy |
+| instructed-deception | ~0.54 | n.s. | Overt lies not detected |
+
+Key findings:
+- Signal is **selective**: detects strategy-as-deception but not overt instructed lies
+- **Gated by scale**: effect absent at 0.3–1B, present at 7–9B
+- ‖δ¹c‖ is a relative comparator (cross-model divergence), not a ground-truth deception score
+
+Full writeup: `WRITEUP_PEER_DECEPTION_DIVERGENCE.md`
+
 ## Status and Next Steps
 
-**Immediate next steps** (pre-research, 1-2 months):
-1. Run Experiment A with existing `src/embedding_topology_analyzer.py` on HH-RLHF
-2. Implement constitutional principle vector extraction (Experiment B)
-3. Write up findings as a blog post component of "The Shape of Good Behavior"
+**Completed:**
+- Peer-consistency sheaf experiments (E0–E6) through 7–9B panel
+- Length-matching confound analysis
+- Modal runner for large-scale peer sheaf experiments
+
+**Next steps:**
+1. E3 analysis: pull `.npy` files from Modal volume, run `peer_hodge` pipeline
+2. Extend to larger panels and additional deception configs
+3. Write up Track 3 as standalone paper
 
 **Medium term** (3-6 months, if findings are strong):
 1. Formalize the constitutional gradient as a mathematical object

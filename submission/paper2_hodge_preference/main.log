@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.23)  25 MAR 2026 14:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.23)  6 JUL 2026 15:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -444,7 +444,7 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
 \l__pdf_internal_box=\box58
 )
-No file main.aux.
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
@@ -465,6 +465,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
+
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count315
@@ -491,6 +492,8 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 21.
+
+(./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
@@ -543,60 +546,19 @@ Underfull \hbox (badness 1048) in paragraph at lines 44--45
  []
 
 
-Package natbib Warning: Citation `rafailov2023direct' on page 1 undefined on in
-put line 52.
-
-
-Package natbib Warning: Citation `ethayarajh2024kto' on page 1 undefined on inp
-ut line 52.
-
-
-Package natbib Warning: Citation `shao2024deepseekmath' on page 1 undefined on 
-input line 52.
-
-
-Package natbib Warning: Citation `hong2024orpo' on page 1 undefined on input li
-ne 52.
-
-
-Underfull \hbox (badness 5217) in paragraph at lines 52--53
-\OT1/ptm/m/n/10 ti-miza-tion (DPO) (\OT1/ptm/b/n/10 ?\OT1/ptm/m/n/10 ), Kahnema
-n-Tversky Op-ti-miza-
+Underfull \hbox (badness 1515) in paragraph at lines 52--53
+\OT1/ptm/m/n/10 ti-miza-tion (DPO) ([]Rafailov et al.[], []2023[]), Kahneman-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 52--53
-\OT1/ptm/m/n/10 tion (KTO) (\OT1/ptm/b/n/10 ?\OT1/ptm/m/n/10 ), Group Rel-a-tiv
-e Pol-icy Op-ti-miza-tion
+Underfull \hbox (badness 5802) in paragraph at lines 52--53
+\OT1/ptm/m/n/10 Group Rel-a-tive Pol-icy Op-ti-miza-tion (GRPO) ([]Shao
  []
 
 
-Package natbib Warning: Citation `condorcet1785essai' on page 1 undefined on in
-put line 54.
-
-
-Package natbib Warning: Citation `arrow1950difficulty' on page 1 undefined on i
-nput line 54.
-
-
-Package natbib Warning: Citation `jiang2011statistical' on page 1 undefined on 
-input line 54.
-
-
-Package natbib Warning: Citation `anthropic2025shortcuts' on page 1 undefined o
-n input line 54.
-
-
-Package natbib Warning: Citation `moskovitz2024confronting' on page 1 undefined
- on input line 54.
-
-
-Package natbib Warning: Citation `hodge1941harmonic' on page 1 undefined on inp
-ut line 56.
-
-
-Package natbib Warning: Citation `jiang2011statistical' on page 1 undefined on 
-input line 56.
+Underfull \hbox (badness 1502) in paragraph at lines 54--55
+[]\OT1/ptm/m/n/10 However, hu-man pref-er-ences are not al-ways glob-ally
+ []
 
 
 Underfull \hbox (badness 4981) in paragraph at lines 56--57
@@ -609,21 +571,9 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 5
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-
-LaTeX Warning: Reference `sec:method' on page 1 undefined on input line 65.
-
-
 Underfull \hbox (badness 1286) in paragraph at lines 65--66
 \OT1/ptm/m/n/10 aug-ments any pair-wise pref-er-ence op-ti-mizer with
  []
-
-
-LaTeX Warning: Reference `sec:graph_construction' on page 1 undefined on input 
-line 66.
-
-
-LaTeX Warning: Reference `sec:potential_alignment' on page 1 undefined on input
- line 66.
 
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
 ocal/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
@@ -631,18 +581,9 @@ ocal/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-
-LaTeX Warning: Reference `sec:experiments' on page 2 undefined on input line 67
-.
-
-
 Underfull \hbox (badness 1590) in paragraph at lines 67--68
 []\OT1/ptm/m/n/10 We val-i-date HodgePO across four base meth-ods
  []
-
-
-Package natbib Warning: Citation `rafailov2023direct' on page 2 undefined on in
-put line 77.
 
 
 Overfull \hbox (5.28528pt too wide) detected at line 81
@@ -651,37 +592,23 @@ E []
  []
 
 
-Package natbib Warning: Citation `ethayarajh2024kto' on page 2 undefined on inp
-ut line 82.
+Underfull \hbox (badness 2418) in paragraph at lines 84--85
+[]\OT1/ptm/m/n/10 All these meth-ods as-sume pref-er-ences are gen-er-ated
+ []
 
 
-Package natbib Warning: Citation `shao2024deepseekmath' on page 2 undefined on 
-input line 82.
+Underfull \hbox (badness 5189) in paragraph at lines 84--85
+\OT1/ptm/m/n/10 by a la-tent re-ward func-tion via the Bradley-Terry
+ []
 
 
-Package natbib Warning: Citation `bradley1952rank' on page 2 undefined on input
- line 84.
-
-
-Package natbib Warning: Citation `jiang2011statistical' on page 2 undefined on 
-input line 89.
-
-
-Package natbib Warning: Citation `jiang2011statistical' on page 2 undefined on 
-input line 91.
-
-
-Package natbib Warning: Citation `condorcet1785essai' on page 2 undefined on in
-put line 100.
-
-
-Package natbib Warning: Citation `jiang2011statistical' on page 2 undefined on 
-input line 104.
+Underfull \hbox (badness 1769) in paragraph at lines 84--85
+\OT1/ptm/m/n/10 model ([]Bradley & Terry[], []1952[]): $\OML/cmm/m/it/10 P\OT1/
+cmr/m/n/10 (\OML/cmm/m/it/10 y[] \OMS/cmsy/m/n/10 ^^_ \OML/cmm/m/it/10 y[]\OT1/
+cmr/m/n/10 ) =
+ []
 
 [2]
-
-LaTeX Warning: Reference `eq:weights' on page 3 undefined on input line 177.
-
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 184.
 
@@ -690,46 +617,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 187--188
 e op-ti-mizer
  []
 
-
-LaTeX Warning: Reference `sec:graph_construction' on page 3 undefined on input 
-line 189.
-
-
-LaTeX Warning: Reference `eq:weights' on page 3 undefined on input line 191.
-
-
-LaTeX Warning: Reference `eq:potential_diff' on page 3 undefined on input line 
-192.
-
-
-LaTeX Warning: Reference `eq:hodge_loss' on page 3 undefined on input line 196.
-
-
-
-Package natbib Warning: Citation `bai2022training' on page 3 undefined on input
- line 211.
-
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
 11.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 1565) in paragraph at lines 211--212
- \OT1/ptm/b/n/10 Dataset.[] \OT1/ptm/m/n/10 We use An-thropic's HH-RLHF dataset
- (\OT1/ptm/b/n/10 ?\OT1/ptm/m/n/10 ),
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 211--212
-\OT1/ptm/m/n/10 sam-pling 2,268 pref-er-ence pairs from the
- []
-
-
-Underfull \hbox (badness 4084) in paragraph at lines 211--212
-\OT1/pcr/m/n/10 harmless-base \OT1/ptm/m/n/10 split. Re-sponses are em-bed-ded
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 216--217
 []\OT1/ptm/b/n/10 Hodge-DPO\OT1/ptm/m/n/10 , \OT1/ptm/b/n/10 Hodge-KTO\OT1/ptm/
 m/n/10 , \OT1/ptm/b/n/10 Hodge-GRPO\OT1/ptm/m/n/10 :
@@ -741,151 +633,94 @@ Overfull \hbox (4.37827pt too wide) in paragraph at lines 232--248
  []
 
 
-Overfull \hbox (49.6051pt too wide) in paragraph at lines 255--264
- [][] 
- []
-
-
-LaTeX Warning: Reference `tab:main_results' on page 4 undefined on input line 2
-66.
-
-
-Underfull \hbox (badness 4505) in paragraph at lines 268--269
+Underfull \hbox (badness 4505) in paragraph at lines 270--271
  \OT1/ptm/b/n/10 1. Large, sta-tis-ti-cally sig-nif-i-cant im-prove-ments.[]
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 268--269
+Underfull \hbox (badness 1406) in paragraph at lines 270--271
 \OT1/ptm/m/n/10 Hodge-DPO achieves $\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr
 /m/n/10 9999$ \OT1/ptm/m/n/10 ex-ploit re-sis-tance ver-sus
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 270--271
+Underfull \hbox (badness 1221) in paragraph at lines 272--273
 \OT1/ptm/m/n/10 for Hodge im-prove-ment. This sug-gests HodgePO is
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 270--271
+Underfull \hbox (badness 1215) in paragraph at lines 272--273
 \OT1/ptm/m/n/10 most valu-able for meth-ods with in-ter-me-di-ate base-line
  []
 
 
-Underfull \vbox (badness 1406) has occurred while \output is active []
-
-
-
-Package natbib Warning: Citation `rafailov2023direct' on page 4 undefined on in
-put line 297.
-
-
-Package natbib Warning: Citation `ethayarajh2024kto' on page 4 undefined on inp
-ut line 297.
-
-
-Package natbib Warning: Citation `shao2024deepseekmath' on page 4 undefined on 
-input line 297.
-
-
-Package natbib Warning: Citation `hong2024orpo' on page 4 undefined on input li
-ne 297.
-
-
-Package natbib Warning: Citation `munos2023nash' on page 4 undefined on input l
-ine 297.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4]
-
-Package natbib Warning: Citation `moskovitz2024confronting' on page 5 undefined
- on input line 299.
-
-
-Package natbib Warning: Citation `coste2024reward' on page 5 undefined on input
- line 299.
-
-
-Package natbib Warning: Citation `jiang2011statistical' on page 5 undefined on 
-input line 301.
-
-
-Package natbib Warning: Citation `bodnar2022neural' on page 5 undefined on inpu
-t line 301.
-
-
-Package natbib Warning: Citation `ayzenberg2025sheaf' on page 5 undefined on in
-put line 301.
-
-
-Package natbib Warning: Citation `condorcet1785essai' on page 5 undefined on in
-put line 303.
-
-
-Package natbib Warning: Citation `arrow1950difficulty' on page 5 undefined on i
-nput line 303.
-
-
-Package natbib Warning: Citation `zhu2023principled' on page 5 undefined on inp
-ut line 303.
-
-No file main.bbl.
-[5]
-
-LaTeX Warning: Reference `thm:hodge' on page 6 undefined on input line 330.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 353--354
-[]\OT1/ptm/m/n/10 Embed all re-sponses us-ing
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
+ \OT1/ptm/b/n/10 Pref-er-ence op-ti-miza-tion.[] \OT1/ptm/m/n/10 DPO ([]Rafailo
+v et al.[],
  []
 
 
-Overfull \hbox (13.12253pt too wide) in paragraph at lines 353--354
-\OT1/pcr/m/n/10 sentence-transformers/all-MiniLM-L6-v2
+Underfull \hbox (badness 1917) in paragraph at lines 299--300
+\OT1/ptm/m/n/10 KTO ([]Etha-yarajh et al.[], []2024[]), GRPO ([]Shao et al.[],
+ []
+
+[4]
+Underfull \hbox (badness 1742) in paragraph at lines 301--302
+ \OT1/ptm/b/n/10 Re-ward hack-ing.[] []\OT1/ptm/m/n/10 Moskovitz et al.[] ([]20
+24[]) con-strain
+ []
+
+(./main.bbl
+Underfull \hbox (badness 7344) in paragraph at lines 9--15
+[]\OT1/ptm/m/n/10 Anthropic.  From short-cuts to sab-o-tage: Nat-u-
  []
 
 
-LaTeX Warning: Reference `sec:potential_alignment' on page 6 undefined on input
- line 404.
+Underfull \hbox (badness 10000) in paragraph at lines 9--15
+\OT1/ptm/m/n/10 ral emer-gent mis-align-ment from re-ward hack-
+ []
 
+
+Underfull \hbox (badness 5431) in paragraph at lines 9--15
+\OT1/ptm/m/n/10 ing.  \OT1/ptm/m/it/10 An-thropic Re-search Blog\OT1/ptm/m/n/10
+ , 2025.  URL
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--15
+[]$\OT1/pcr/m/n/10 https : / / www . anthropic . com / research /
+ []
+
+[5])
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
+[]\OT1/ptm/m/n/10 Embed all re-sponses us-ing the
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 355--356
+\OT1/pcr/m/n/10 all-MiniLM-L6-v2 \OT1/ptm/m/n/10 sentence-transformer (384-
+ []
+
+[6]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Package natbib Warning: There were undefined citations.
-
-[6] [7
-
-] (./main.aux)
+[7] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  A0EC874795E6E6A124A9AE18745E9845;3819.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 8D129C35D465646E1A394C66B29527AE;3814.
  ) 
 Here is how much of TeX's memory you used:
- 13192 strings out of 474116
- 205880 string characters out of 5743682
- 1950187 words of memory out of 5000000
- 35300 multiletter control sequences out of 15000+600000
+ 13302 strings out of 474116
+ 208118 string characters out of 5743682
+ 1949187 words of memory out of 5000000
+ 35383 multiletter control sequences out of 15000+600000
  588578 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1430b,676s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1430b,685s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -906,10 +741,10 @@ mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fo
 nts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on main.pdf (7 pages, 252399 bytes).
+Output written on main.pdf (7 pages, 266407 bytes).
 PDF statistics:
- 201 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
- 56 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 379 PDF objects out of 1000 (max. 8388607)
+ 326 compressed objects within 4 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 185 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,115 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Anthropic}(2025)]{anthropic2025shortcuts}
+{Anthropic}.
+\newblock From shortcuts to sabotage: Natural emergent misalignment from reward
+  hacking.
+\newblock \emph{Anthropic Research Blog}, 2025.
+\newblock URL
+  \url{https://www.anthropic.com/research/emergent-misalignment-reward-hacking}.
+
+\bibitem[Arrow(1950)]{arrow1950difficulty}
+Arrow, K.~J.
+\newblock A difficulty in the concept of social welfare.
+\newblock \emph{Journal of Political Economy}, 58\penalty0 (4):\penalty0
+  328--346, 1950.
+
+\bibitem[Ayzenberg et~al.(2025)Ayzenberg, Gebhart, Magai, and
+  Solomadin]{ayzenberg2025sheaf}
+Ayzenberg, A., Gebhart, T., Magai, G., and Solomadin, G.
+\newblock Sheaf theory: from deep geometry to deep learning.
+\newblock \emph{arXiv preprint arXiv:2502.15476}, 2025.
+
+\bibitem[Bai et~al.(2022)Bai, Jones, Ndousse, Askell, Chen, DasSarma, Drain,
+  Fort, Ganguli, Henighan, et~al.]{bai2022training}
+Bai, Y., Jones, A., Ndousse, K., Askell, A., Chen, A., DasSarma, N., Drain, D.,
+  Fort, S., Ganguli, D., Henighan, T., et~al.
+\newblock Training a helpful and harmless assistant with reinforcement learning
+  from human feedback.
+\newblock \emph{arXiv preprint arXiv:2204.05862}, 2022.
+
+\bibitem[Bodnar et~al.(2022)Bodnar, Di~Giovanni, Chamberlain, Lio, and
+  Bronstein]{bodnar2022neural}
+Bodnar, C., Di~Giovanni, F., Chamberlain, B.~P., Lio, P., and Bronstein, M.~M.
+\newblock Neural sheaf diffusion: A topological framework for heterophily and
+  oversmoothing in graph neural networks.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~35, pp.\  18523--18536, 2022.
+
+\bibitem[Bradley \& Terry(1952)Bradley and Terry]{bradley1952rank}
+Bradley, R.~A. and Terry, M.~E.
+\newblock Rank analysis of incomplete block designs: I. the method of paired
+  comparisons.
+\newblock \emph{Biometrika}, 39\penalty0 (3/4):\penalty0 324--345, 1952.
+
+\bibitem[Condorcet(1785)]{condorcet1785essai}
+Condorcet, M. J. A. N. d.~C.
+\newblock \emph{Essai sur l'application de l'analyse {\`a} la probabilit{\'e}
+  des d{\'e}cisions rendues {\`a} la pluralit{\'e} des voix}.
+\newblock Imprimerie Royale, 1785.
+
+\bibitem[Coste et~al.(2024)Coste, Anwar, Kirk, and Krueger]{coste2024reward}
+Coste, T., Anwar, U., Kirk, R., and Krueger, D.
+\newblock Reward model ensembles help mitigate overoptimization.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+
+\bibitem[Ethayarajh et~al.(2024)Ethayarajh, Xu, Muennighoff, Jurafsky, and
+  Kiela]{ethayarajh2024kto}
+Ethayarajh, K., Xu, W., Muennighoff, N., Jurafsky, D., and Kiela, D.
+\newblock {KTO}: Model alignment as prospect theoretic optimization.
+\newblock \emph{arXiv preprint arXiv:2402.01306}, 2024.
+
+\bibitem[Hodge(1941)]{hodge1941harmonic}
+Hodge, W. V.~D.
+\newblock \emph{The Theory and Applications of Harmonic Integrals}.
+\newblock Cambridge University Press, Cambridge, UK, 1941.
+
+\bibitem[Hong et~al.(2024)Hong, Lee, and Thorne]{hong2024orpo}
+Hong, J., Lee, N., and Thorne, J.
+\newblock {ORPO}: Monolithic preference optimization without reference model.
+\newblock \emph{arXiv preprint arXiv:2403.07691}, 2024.
+
+\bibitem[Jiang et~al.(2011)Jiang, Lim, Yao, and Ye]{jiang2011statistical}
+Jiang, X., Lim, L.-H., Yao, Y., and Ye, Y.
+\newblock Statistical ranking and combinatorial {Hodge} theory.
+\newblock \emph{Mathematical Programming}, 127\penalty0 (1):\penalty0 203--244,
+  2011.
+
+\bibitem[Moskovitz et~al.(2024)]{moskovitz2024confronting}
+Moskovitz, T. et~al.
+\newblock Confronting reward model overoptimization with constrained {RLHF}.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+
+\bibitem[Munos et~al.(2023)Munos, Barreto, Krivine, Lazaric, and
+  Valko]{munos2023nash}
+Munos, R., Barreto, M., Krivine, J., Lazaric, A., and Valko, M.
+\newblock Nash learning from human feedback.
+\newblock \emph{arXiv preprint arXiv:2312.00886}, 2023.
+
+\bibitem[Rafailov et~al.(2023)Rafailov, Sharma, Mitchell, Ermon, Manning, and
+  Finn]{rafailov2023direct}
+Rafailov, R., Sharma, A., Mitchell, E., Ermon, S., Manning, C.~D., and Finn, C.
+\newblock Direct preference optimization: Your language model is secretly a
+  reward model.
+\newblock \emph{arXiv preprint arXiv:2305.18290}, 2023.
+
+\bibitem[Shao et~al.(2024)Shao, Wang, Zhu, Xu, Song, Zhang, Li, Wu, and
+  Guo]{shao2024deepseekmath}
+Shao, Z., Wang, P., Zhu, Q., Xu, R., Song, J., Zhang, M., Li, Y., Wu, Y., and
+  Guo, D.
+\newblock {DeepSeekMath}: Pushing the limits of mathematical reasoning in open
+  language models.
+\newblock \emph{arXiv preprint arXiv:2402.03300}, 2024.
+
+\bibitem[Zhu et~al.(2023)Zhu, Jordan, and Jiao]{zhu2023principled}
+Zhu, B., Jordan, M., and Jiao, J.
+\newblock Principled reinforcement learning with human feedback from pairwise
+  or {$K$}-wise comparisons.
+\newblock \emph{arXiv preprint arXiv:2301.11270}, 2023.
+
+\end{thebibliography}

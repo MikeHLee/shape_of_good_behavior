@@ -51,22 +51,44 @@ The Hodge-augmented critic developed in the Feedback Geometry track is used here
 
 ---
 
+## Results Summary (as of 2026-07-23)
+
+### Current Experimental Status
+
+> ❌ **The Murky Drone headline claim was REFUTED on 2026-07-21.** The original
+> "SGPO 0% violations vs PPO/CPO 100%" figure came from a one-step bandit at a
+> single seed. A proper 50-seed multi-step re-run shows **CPO is the safest
+> method**; SGPO's `advantage/sqrt(g)` formulation is **statistically
+> indistinguishable from unconstrained PPO** (p=0.68). See `../EXPERIMENT_ISSUES.md`.
+
+| Experiment | Status | Result |
+|------------|--------|--------|
+| Sandbagging Trap | ⚠️ Single seed | SGPO +1.53 return vs PPO -6.67, CPO -6.23 |
+| Murky Drone | ❌ Claim withdrawn | CPO safest (180.7 violations/seed); SGPO ≈ PPO (p=0.68) |
+| Agentic Shortcut | ❌ Unverified | Only one-step bandit; no multi-step re-run |
+| Safety Gym | Planned | Not yet run |
+| Metric Learning Ablations | Planned | Not yet run |
+
+The geometric theory (conformal metrics, geodesic barriers, Theorem 4.2) is sound. The gap is that the current SGPO implementation does not yet instantiate the full Riemannian policy gradient — it approximates it. The Murky Drone re-run shows the approximation is not yet tight enough to beat CPO.
+
+### PPO Fine-tuning (SGB-003, 2026-07-23, A100-40GB)
+
+The `shared/src/lm_finetuning.py` PPO loop has been verified end-to-end on Modal:
+
+| Run | mean_reward_final | Status |
+|-----|------------------|--------|
+| Standard PPO | 3.6897 | success |
+| Hodge-PPO | -1.2170 | success (exploit suppression) |
+
+This establishes the base fine-tuning infrastructure for future SGPO-on-LM experiments.
+
 ## Key Experiments
 
-> ❌ **The Murky Drone claim was REFUTED on 2026-07-21.** It has been re-run
-> properly and the result went the other way. The old "SGPO 0% vs 100% PPO/CPO"
-> figure came from a **one-step bandit at a single seed** in which SGPO was handed
-> the violation flag it was then scored on. A real multi-step implementation
-> (`src/murky_drone_experiment.py`, 50 seeds, all methods learning danger from the
-> same cost signal) shows **CPO is the safest method and SGPO's headline
-> formulation is statistically indistinguishable from unconstrained PPO**
-> (p=0.68). See `../EXPERIMENT_ISSUES.md` §8/§12. Experiment 3 remains unverified.
-
 1. **Sandbagging Trap** — deceptive 2D navigation: SGPO (+1.53 return) vs PPO (-6.67) vs CPO (-6.23), **single seed**
-2. **Murky Drone** — ❌ **claim withdrawn.** 50-seed multi-step result: violations/seed PPO 471.9, **CPO 180.7 (safest)**, SGPO-scale 508.0, SGPO-barrier 274.8. SGPO does not reach 0% and does not beat CPO.
-3. **Agentic Shortcut** *(UNVERIFIED)* — multi-step task with forbidden shortcut: only implementation is a one-step bandit; no multi-step re-run yet
-4. **Safety Gym Benchmarks** — PointGoal, CarGoal, DoggoGoal; comparison to SOTA safe RL methods
-5. **Metric Learning Ablations** — sharpness β, event horizon radius, severity σ; validates theoretical requirement β ≥ 2
+2. **Murky Drone** — ❌ **claim withdrawn.** 50-seed result: PPO 471.9 violations/seed, CPO 180.7 (safest), SGPO-scale 508.0, SGPO-barrier 274.8
+3. **Agentic Shortcut** *(UNVERIFIED)* — multi-step forbidden shortcut: no multi-step re-run yet
+4. **Safety Gym Benchmarks** — PointGoal, CarGoal, DoggoGoal (planned)
+5. **Metric Learning Ablations** — β, event horizon radius, severity σ (planned)
 
 ---
 
@@ -74,10 +96,10 @@ The Hodge-augmented critic developed in the Feedback Geometry track is used here
 
 - [ ] Paper outline finalized
 - [ ] Experimental design locked
-- [x] Sandbagging trap benchmark (existing)
-- [ ] Murky drone benchmark (re-run with 50+ seeds)
-- [ ] Agentic shortcut benchmark (re-run with 50+ seeds)
-- [ ] Safety Gym expansion (new)
+- [x] Sandbagging trap benchmark (single seed; needs 30+ seed re-run)
+- [x] Murky Drone re-run (50 seeds; claim withdrawn)
+- [ ] Agentic shortcut benchmark (multi-step re-run needed)
+- [ ] Safety Gym expansion
 - [ ] Connection to Natural Policy Gradient (theory)
 - [ ] Comparison to RCBF (theory + experiment)
 - [ ] First draft

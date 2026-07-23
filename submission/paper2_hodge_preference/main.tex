@@ -252,6 +252,7 @@ ORPO       & $0.622$ & $0.080$ & $\pm 0.030$ & --- \\
 \caption{Pairwise statistical tests (Hodge variants vs.\ base methods).}
 \label{tab:pairwise}
 \vskip 0.1in
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 \textbf{Comparison} & \textbf{$\Delta$} & \textbf{Cohen's $d$} & \textbf{$p$-value} & \textbf{Effect} \\
@@ -260,7 +261,8 @@ Hodge-DPO vs.\ DPO & $+0.060$ & $6.52$ & $< 0.0001$ & Large \\
 Hodge-KTO vs.\ KTO & $+0.196$ & $16.47$ & $< 0.0001$ & Large \\
 Hodge-GRPO vs.\ GRPO & $-0.001$ & $1.03$ & $0.18$ & --- \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 Table~\ref{tab:main_results} presents the main results. Two findings stand out:
@@ -350,7 +352,7 @@ The gradient potential $\phi^*$ is obtained by solving the normal equations $d_0
 \subsection{Preference Graph Construction}
 
 \begin{enumerate}
-    \item Embed all responses using \texttt{sentence-transformers/all-MiniLM-L6-v2} (384-dim).
+    \item Embed all responses using the \texttt{all-MiniLM-L6-v2} sentence-transformer (384-dim).
     \item Create direct edges: for each preference pair $(y_w, y_l)$, add edge $(w, l)$ with weight equal to the preference probability.
     \item Create cross-pair edges: for each response node, find its $k=5$ nearest neighbors (cosine similarity) from other pairs. Preference direction is determined by the dot product of embeddings with the prompt embedding.
     \item Total graph: $N$ direct edges + $\sim 0.45N$ cross-pair edges (varies by dataset).

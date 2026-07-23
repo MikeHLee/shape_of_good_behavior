@@ -1,16 +1,23 @@
-# Modular Safe RLHF: Discrete HodgeRank + Conformal Safety
+# The Shape of Good Behavior
 
-## Overview
+A research series applying topological and geometric methods to alignment — Hodge decomposition for preference structure, Riemannian metrics for safety constraints, and sheaf cohomology for cross-model behavioral verification.
 
-This research project develops a **modular framework** for safe reinforcement learning from human feedback, rigorously separating:
+## Research Tracks
 
-1. **Discrete HodgeRank** (Module 1) — Transitive alignment via combinatorial Hodge theory
-2. **Conformal Safety Manifolds** (Module 2) — Geometric safety via Riemannian barriers
-3. **Constitutional Diagnostics** (Module 3) — Cohomological monitoring (in development)
+| Track | Directory | Status | Key Result |
+|-------|-----------|--------|------------|
+| **1 — Feedback Geometry** | `feedback_geometry/` | Experiments complete | Hodge-DPO: exploit resistance 0.9999 vs DPO 0.940 (+6.3%, d=6.52, 30 seeds) |
+| **2 — Constraint Geometry** | `constraint_geometry/` | Paper draft | SGPO geodesic barriers; Murky Drone result under revision (see caveats) |
+| **3 — Constitutional Alignment Geometry** | `constitutional_alignment_geometry/` | Results complete | Peer sheaf: convincing-game AUC 0.661 (p=2.5e-6), insider-trading AUC 0.637 (p=8e-8) at 7–9B |
+| **Shared pipeline** | `shared/` | Production | SGB-003 PPO fine-tuning verified on A100 (both standard and Hodge-PPO, 64 steps) |
 
-**Critical Mathematical Insight**: Previous approaches conflated discrete topology (graphs/simplicial complexes) with continuous Riemannian geometry. These are mathematically distinct domains and must be separated.
+## Core Idea
 
-Traditional RLHF collapses rich human feedback into scalar rewards, losing structural information and creating opportunities for reward hacking. Our approach uses the **gradient component** of discrete Hodge decomposition for training (eliminating cyclic inconsistencies) and **conformal metrics** for safety (creating infinite barriers around dangerous regions).
+Standard RLHF collapses human preferences to a scalar reward, discarding topological structure and creating reward-hacking opportunities. This project uses:
+
+- **Discrete Hodge decomposition** to separate gradient (transitive) from harmonic (cyclic) preference components — Hodge variants filter exploit-exploitable cycles before training
+- **Conformal Riemannian metrics** to encode hard safety constraints as geodesic singularities rather than soft penalties
+- **Peer-consistency sheaves** to detect cross-model representational divergence on deceptive content without requiring deception as a training target
 
 ## Key Contributions
 
