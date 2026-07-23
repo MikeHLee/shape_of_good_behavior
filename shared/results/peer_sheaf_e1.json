@@ -1,0 +1,94 @@
+{
+  "config": {
+    "experiment": "E1",
+    "n_pairs": 2000,
+    "n_eval": 1000,
+    "seed": 0,
+    "ridge": 0.001,
+    "metric": "cosine",
+    "panel": [
+      {
+        "name": "SmolLM2",
+        "hf_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+        "hidden_dim": 960
+      },
+      {
+        "name": "Qwen2.5",
+        "hf_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "hidden_dim": 896
+      },
+      {
+        "name": "TinyLlama",
+        "hf_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "hidden_dim": 2048
+      }
+    ],
+    "device": "mps",
+    "feature": "last-real-token hidden state of final layer (no chat template)"
+  },
+  "aggregate": {
+    "L_chosen_mean": 0.3025544084981714,
+    "L_chosen_std": 0.23371380493166805,
+    "L_rejected_mean": 0.3191994536228395,
+    "L_rejected_std": 0.23626453331588637,
+    "welch_t": 1.5830640307602901,
+    "p_value": 0.1135651540893741,
+    "cohens_d": 0.0708322006684446,
+    "auc_rejected_high": 0.529882
+  },
+  "per_pair": {
+    "SmolLM2->Qwen2.5": {
+      "mean_chosen": 0.17031647281235474,
+      "mean_rejected": 0.18054952354765114,
+      "delta": 0.0102330507352964,
+      "auc_rejected_high": 0.530103
+    },
+    "SmolLM2->TinyLlama": {
+      "mean_chosen": 0.3447354955353106,
+      "mean_rejected": 0.36370118032993287,
+      "delta": 0.018965684794622295,
+      "auc_rejected_high": 0.5347465
+    },
+    "Qwen2.5->SmolLM2": {
+      "mean_chosen": 0.16584005353090367,
+      "mean_rejected": 0.17731032538353902,
+      "delta": 0.011470271852635355,
+      "auc_rejected_high": 0.526195
+    },
+    "Qwen2.5->TinyLlama": {
+      "mean_chosen": 0.35861282065099875,
+      "mean_rejected": 0.3739002591572196,
+      "delta": 0.01528743850622083,
+      "auc_rejected_high": 0.524946
+    },
+    "TinyLlama->SmolLM2": {
+      "mean_chosen": 0.36419886835583193,
+      "mean_rejected": 0.3878238111229168,
+      "delta": 0.023624942767084878,
+      "auc_rejected_high": 0.5197625
+    },
+    "TinyLlama->Qwen2.5": {
+      "mean_chosen": 0.4116227401036285,
+      "mean_rejected": 0.43191162219577756,
+      "delta": 0.020288882092149074,
+      "auc_rejected_high": 0.527621
+    }
+  },
+  "per_model_loo": {
+    "SmolLM2": {
+      "mean_chosen": 0.26127272255860023,
+      "mean_rejected": 0.27734621009601,
+      "auc_rejected_high": 0.52961
+    },
+    "Qwen2.5": {
+      "mean_chosen": 0.27659802177447135,
+      "mean_rejected": 0.29091793257104687,
+      "auc_rejected_high": 0.5287459999999999
+    },
+    "TinyLlama": {
+      "mean_chosen": 0.3697924811614424,
+      "mean_rejected": 0.3893342182014617,
+      "auc_rejected_high": 0.5292410000000001
+    }
+  }
+}

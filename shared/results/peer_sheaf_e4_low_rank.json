@@ -1,0 +1,899 @@
+{
+  "config": {
+    "experiment": "E4 (SGB-014)",
+    "depends_on": "E1 cached embeddings",
+    "n_pairs": 2000,
+    "n_eval": 1000,
+    "seed": 0,
+    "ridge": 0.001,
+    "k_values": [
+      16,
+      32,
+      64,
+      128
+    ],
+    "panel": [
+      {
+        "name": "SmolLM2",
+        "hf_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+        "hidden_dim": 960
+      },
+      {
+        "name": "Qwen2.5",
+        "hf_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "hidden_dim": 896
+      },
+      {
+        "name": "TinyLlama",
+        "hf_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "hidden_dim": 2048
+      }
+    ],
+    "complex": {
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808,
+      "num_directed_edges": 6,
+      "num_ordered_triangles": 6
+    }
+  },
+  "per_k": [
+    {
+      "k": 16,
+      "rank_low_rank_coboundary": 48,
+      "max_possible_rank": 48,
+      "fit_pca_seconds": 0.7739772796630859,
+      "decompose_seconds": 0.7063469886779785,
+      "pca_explained_variance": {
+        "SmolLM2": 0.745749407559012,
+        "Qwen2.5": 0.6022433853369498,
+        "TinyLlama": 0.43481958205216814
+      },
+      "aggregate": {
+        "total_norm": {
+          "chosen_mean": 434.4008074269526,
+          "chosen_std": 235.86446656128487,
+          "rejected_mean": 448.858939932421,
+          "rejected_std": 234.02209314182926,
+          "welch_t": 1.3753511070830027,
+          "p_value": 0.16917680842058674,
+          "cohens_d": 0.061538348237604616,
+          "auc_rejected_high": 0.531395
+        },
+        "resolvable_norm": {
+          "chosen_mean": 232.7338410025331,
+          "chosen_std": 140.64456974011404,
+          "rejected_mean": 241.3481326831516,
+          "rejected_std": 137.5571831658124,
+          "welch_t": 1.3839828581317382,
+          "p_value": 0.1665183534699368,
+          "cohens_d": 0.06192456503650187,
+          "auc_rejected_high": 0.5292319999999999
+        },
+        "harmonic_norm": {
+          "chosen_mean": 364.6082407071047,
+          "chosen_std": 193.52261661811949,
+          "rejected_mean": 376.39671698728324,
+          "rejected_std": 193.37864330576355,
+          "welch_t": 1.361931428234579,
+          "p_value": 0.17337305645937195,
+          "cohens_d": 0.0609379016563948,
+          "auc_rejected_high": 0.531527
+        },
+        "harmonic_fraction": {
+          "chosen_mean": 0.7162722572259187,
+          "chosen_std": 0.08016759967577672,
+          "rejected_mean": 0.7138441660691189,
+          "rejected_std": 0.07848386413483355,
+          "welch_t": -0.6840599895995826,
+          "p_value": 0.4940166506844762,
+          "cohens_d": -0.03060740027419507,
+          "auc_rejected_high": 0.48990600000000006
+        },
+        "cocycle_violation_norm": {
+          "chosen_mean": 319.3873539169452,
+          "chosen_std": 178.76773830841015,
+          "rejected_mean": 328.628908205897,
+          "rejected_std": 178.23667579453402,
+          "welch_t": 1.1570941413403957,
+          "p_value": 0.24737221625638509,
+          "cohens_d": 0.05177271596088524,
+          "auc_rejected_high": 0.52562
+        }
+      },
+      "per_pair": {
+        "SmolLM2->Qwen2.5": {
+          "harmonic": {
+            "chosen_mean": 136.7340443283504,
+            "chosen_std": 68.17304137879081,
+            "rejected_mean": 143.17241046981363,
+            "rejected_std": 70.85255209625292,
+            "welch_t": 2.0696552372355863,
+            "p_value": 0.03861309437218878,
+            "cohens_d": 0.09260410964507211,
+            "auc_rejected_high": 0.537809
+          },
+          "resolvable": {
+            "chosen_mean": 102.02444802425363,
+            "chosen_std": 61.47349195783916,
+            "rejected_mean": 106.26076722036143,
+            "rejected_std": 63.10359533355993,
+            "welch_t": 1.5198861880964583,
+            "p_value": 0.12869791311124626,
+            "cohens_d": 0.06800538789180663,
+            "auc_rejected_high": 0.52494
+          }
+        },
+        "SmolLM2->TinyLlama": {
+          "harmonic": {
+            "chosen_mean": 81.37466313714344,
+            "chosen_std": 41.82492436574993,
+            "rejected_mean": 84.861227532355,
+            "rejected_std": 42.99834990827313,
+            "welch_t": 1.8371255952296806,
+            "p_value": 0.06633991259888407,
+            "cohens_d": 0.0821998644951379,
+            "auc_rejected_high": 0.535428
+          },
+          "resolvable": {
+            "chosen_mean": 51.19939473545467,
+            "chosen_std": 31.277822105512303,
+            "rejected_mean": 52.49939055106263,
+            "rejected_std": 30.10032300625777,
+            "welch_t": 0.9465553899373911,
+            "p_value": 0.34398001280357193,
+            "cohens_d": 0.04235242543679678,
+            "auc_rejected_high": 0.528397
+          }
+        },
+        "Qwen2.5->SmolLM2": {
+          "harmonic": {
+            "chosen_mean": 34.27352981050151,
+            "chosen_std": 19.448964221967803,
+            "rejected_mean": 35.81658661473003,
+            "rejected_std": 19.51046303759322,
+            "welch_t": 1.7703802298389508,
+            "p_value": 0.07681628573723673,
+            "cohens_d": 0.07921342741917377,
+            "auc_rejected_high": 0.533586
+          },
+          "resolvable": {
+            "chosen_mean": 29.70093908773237,
+            "chosen_std": 19.8902960724411,
+            "rejected_mean": 30.725690909626696,
+            "rejected_std": 19.043637318681196,
+            "welch_t": 1.1762117051650451,
+            "p_value": 0.23965067438005416,
+            "cohens_d": 0.05262810720900878,
+            "auc_rejected_high": 0.528285
+          }
+        },
+        "Qwen2.5->TinyLlama": {
+          "harmonic": {
+            "chosen_mean": 77.71888382961141,
+            "chosen_std": 36.21682358724258,
+            "rejected_mean": 80.46634964005183,
+            "rejected_std": 36.63223469044773,
+            "welch_t": 1.685772775420502,
+            "p_value": 0.09199573388424573,
+            "cohens_d": 0.07542777372922807,
+            "auc_rejected_high": 0.5331790000000001
+          },
+          "resolvable": {
+            "chosen_mean": 48.38814510724708,
+            "chosen_std": 28.658267278748028,
+            "rejected_mean": 49.770998913730146,
+            "rejected_std": 28.197547992100223,
+            "welch_t": 1.087138464339585,
+            "p_value": 0.27710678530491784,
+            "cohens_d": 0.04864263754650584,
+            "auc_rejected_high": 0.525838
+          }
+        },
+        "TinyLlama->SmolLM2": {
+          "harmonic": {
+            "chosen_mean": 59.271138099330926,
+            "chosen_std": 33.51698843511193,
+            "rejected_mean": 61.57978647943908,
+            "rejected_std": 34.04533939029918,
+            "welch_t": 1.5273467690933982,
+            "p_value": 0.12683312619509315,
+            "cohens_d": 0.06833920216590733,
+            "auc_rejected_high": 0.530449
+          },
+          "resolvable": {
+            "chosen_mean": 42.80659769509451,
+            "chosen_std": 29.852891610299753,
+            "rejected_mean": 44.12475118622679,
+            "rejected_std": 27.93200735836625,
+            "welch_t": 1.0190829752468031,
+            "p_value": 0.3082874992646012,
+            "cohens_d": 0.04559758064016101,
+            "auc_rejected_high": 0.529033
+          }
+        },
+        "TinyLlama->Qwen2.5": {
+          "harmonic": {
+            "chosen_mean": 309.58882634439493,
+            "chosen_std": 171.1395097400061,
+            "rejected_mean": 318.1864718566991,
+            "rejected_std": 169.78531372592406,
+            "welch_t": 1.1272369765735482,
+            "p_value": 0.25977766399872515,
+            "cohens_d": 0.050436794832565746,
+            "auc_rejected_high": 0.528063
+          },
+          "resolvable": {
+            "chosen_mean": 186.65787281451168,
+            "chosen_std": 118.96653900085488,
+            "rejected_mean": 193.90128604617993,
+            "rejected_std": 115.4616311163495,
+            "welch_t": 1.3809650048144713,
+            "p_value": 0.1674442971079158,
+            "cohens_d": 0.06178953500132643,
+            "auc_rejected_high": 0.528255
+          }
+        }
+      },
+      "global_mass": {
+        "chosen": {
+          "total_sq": 244336108.0794278,
+          "resolvable_sq": 73945935.74517415,
+          "harmonic_sq": 170390172.33425367,
+          "harmonic_fraction": 0.6973597708238191,
+          "resolvable_fraction": 0.302640229176181
+        },
+        "rejected": {
+          "total_sq": 256240688.03573972,
+          "resolvable_sq": 77170899.79015699,
+          "harmonic_sq": 179069788.24558273,
+          "harmonic_fraction": 0.6988343249398651,
+          "resolvable_fraction": 0.3011656750601349
+        }
+      }
+    },
+    {
+      "k": 32,
+      "rank_low_rank_coboundary": 96,
+      "max_possible_rank": 96,
+      "fit_pca_seconds": 0.7533550262451172,
+      "decompose_seconds": 0.6036369800567627,
+      "pca_explained_variance": {
+        "SmolLM2": 0.8076149408260925,
+        "Qwen2.5": 0.6933916186497995,
+        "TinyLlama": 0.5141392459388462
+      },
+      "aggregate": {
+        "total_norm": {
+          "chosen_mean": 434.4008074269526,
+          "chosen_std": 235.86446656128487,
+          "rejected_mean": 448.858939932421,
+          "rejected_std": 234.02209314182926,
+          "welch_t": 1.3753511070830027,
+          "p_value": 0.16917680842058674,
+          "cohens_d": 0.061538348237604616,
+          "auc_rejected_high": 0.531395
+        },
+        "resolvable_norm": {
+          "chosen_mean": 262.9639468391801,
+          "chosen_std": 154.20906694570232,
+          "rejected_mean": 272.5298952082943,
+          "rejected_std": 150.84301147779985,
+          "welch_t": 1.401604065308628,
+          "p_value": 0.16118890670274486,
+          "cohens_d": 0.06271300369629856,
+          "auc_rejected_high": 0.531645
+        },
+        "harmonic_norm": {
+          "chosen_mean": 343.8962669936499,
+          "chosen_std": 182.04667522851614,
+          "rejected_mean": 354.9207843791353,
+          "rejected_std": 182.33421773628626,
+          "welch_t": 1.3523889001307574,
+          "p_value": 0.17640397863980725,
+          "cohens_d": 0.06051093328846614,
+          "auc_rejected_high": 0.530138
+        },
+        "harmonic_fraction": {
+          "chosen_mean": 0.6383610110112484,
+          "chosen_std": 0.07600866835792518,
+          "rejected_mean": 0.6351867028668957,
+          "rejected_std": 0.07412034721718117,
+          "welch_t": -0.9450348782299152,
+          "p_value": 0.3447554088187553,
+          "cohens_d": -0.04228439205707881,
+          "auc_rejected_high": 0.48698100000000005
+        },
+        "cocycle_violation_norm": {
+          "chosen_mean": 319.3873539169452,
+          "chosen_std": 178.76773830841015,
+          "rejected_mean": 328.628908205897,
+          "rejected_std": 178.23667579453402,
+          "welch_t": 1.1570941413403957,
+          "p_value": 0.24737221625638509,
+          "cohens_d": 0.05177271596088524,
+          "auc_rejected_high": 0.52562
+        }
+      },
+      "per_pair": {
+        "SmolLM2->Qwen2.5": {
+          "harmonic": {
+            "chosen_mean": 131.94771948829816,
+            "chosen_std": 65.3069743150253,
+            "rejected_mean": 137.70558546350364,
+            "rejected_std": 67.68548043035518,
+            "welch_t": 1.9349192559703585,
+            "p_value": 0.0531413709500613,
+            "cohens_d": 0.08657551833298138,
+            "auc_rejected_high": 0.535042
+          },
+          "resolvable": {
+            "chosen_mean": 115.75947630974808,
+            "chosen_std": 66.95674227880147,
+            "rejected_mean": 120.49167686662145,
+            "rejected_std": 68.68987268828924,
+            "welch_t": 1.5592526042068653,
+            "p_value": 0.11909507958877712,
+            "cohens_d": 0.06976678846144493,
+            "auc_rejected_high": 0.5278160000000001
+          }
+        },
+        "SmolLM2->TinyLlama": {
+          "harmonic": {
+            "chosen_mean": 82.15111175245535,
+            "chosen_std": 42.02137132852889,
+            "rejected_mean": 85.60099099197112,
+            "rejected_std": 43.203600202891586,
+            "welch_t": 1.8092267028975797,
+            "p_value": 0.07056614293858944,
+            "cohens_d": 0.08095156379364099,
+            "auc_rejected_high": 0.534929
+          },
+          "resolvable": {
+            "chosen_mean": 57.540274309460536,
+            "chosen_std": 33.30259344238023,
+            "rejected_mean": 59.176557275473336,
+            "rejected_std": 32.456329374717,
+            "welch_t": 1.1121554660726964,
+            "p_value": 0.2662051986222809,
+            "cohens_d": 0.0497619916929377,
+            "auc_rejected_high": 0.5310239999999999
+          }
+        },
+        "Qwen2.5->SmolLM2": {
+          "harmonic": {
+            "chosen_mean": 33.49939050957046,
+            "chosen_std": 18.531993455038055,
+            "rejected_mean": 35.076370922847,
+            "rejected_std": 18.63073601854285,
+            "welch_t": 1.8967710141283478,
+            "p_value": 0.058002269163810016,
+            "cohens_d": 0.08486862343244563,
+            "auc_rejected_high": 0.536161
+          },
+          "resolvable": {
+            "chosen_mean": 30.553255653843202,
+            "chosen_std": 19.537593566889285,
+            "rejected_mean": 31.605877949834515,
+            "rejected_std": 18.727879415410083,
+            "welch_t": 1.2293230134668622,
+            "p_value": 0.21909573127047954,
+            "cohens_d": 0.05500450562014901,
+            "auc_rejected_high": 0.5300349999999999
+          }
+        },
+        "Qwen2.5->TinyLlama": {
+          "harmonic": {
+            "chosen_mean": 77.64650186246217,
+            "chosen_std": 36.31747475517052,
+            "rejected_mean": 80.44755342094406,
+            "rejected_std": 36.97972038698919,
+            "welch_t": 1.7081018513995163,
+            "p_value": 0.08777282859905937,
+            "cohens_d": 0.0764268600326047,
+            "auc_rejected_high": 0.53256
+          },
+          "resolvable": {
+            "chosen_mean": 54.30275259684282,
+            "chosen_std": 30.270563060763063,
+            "rejected_mean": 56.03027456408861,
+            "rejected_std": 30.205444900743593,
+            "welch_t": 1.2768443328033612,
+            "p_value": 0.20180558362400872,
+            "cohens_d": 0.05713078703511242,
+            "auc_rejected_high": 0.529808
+          }
+        },
+        "TinyLlama->SmolLM2": {
+          "harmonic": {
+            "chosen_mean": 57.57364075218319,
+            "chosen_std": 32.39507399715213,
+            "rejected_mean": 59.79109857955236,
+            "rejected_std": 32.851278376796735,
+            "welch_t": 1.5190996298478805,
+            "p_value": 0.12889566611638145,
+            "cohens_d": 0.06797019433638585,
+            "auc_rejected_high": 0.53093
+          },
+          "resolvable": {
+            "chosen_mean": 43.71119256087312,
+            "chosen_std": 29.187853641161123,
+            "rejected_mean": 45.11173906868732,
+            "rejected_std": 27.30175655603338,
+            "welch_t": 1.1076046272616238,
+            "p_value": 0.26816651782168754,
+            "cohens_d": 0.049558370157980716,
+            "auc_rejected_high": 0.531301
+          }
+        },
+        "TinyLlama->Qwen2.5": {
+          "harmonic": {
+            "chosen_mean": 287.8181251179189,
+            "chosen_std": 158.74133609727346,
+            "rejected_mean": 295.8533247276526,
+            "rejected_std": 157.72178187492142,
+            "welch_t": 1.134929945969792,
+            "p_value": 0.25654081052152106,
+            "cohens_d": 0.050781007032090084,
+            "auc_rejected_high": 0.5272399999999999
+          },
+          "resolvable": {
+            "chosen_mean": 213.18442739540367,
+            "chosen_std": 131.28804940126307,
+            "rejected_mean": 221.11655811725382,
+            "rejected_std": 127.12169011695148,
+            "welch_t": 1.371899461386055,
+            "p_value": 0.17024891508739404,
+            "cohens_d": 0.06138390871027395,
+            "auc_rejected_high": 0.5303209999999999
+          }
+        }
+      },
+      "global_mass": {
+        "chosen": {
+          "total_sq": 244336108.0794278,
+          "resolvable_sq": 92930473.6655032,
+          "harmonic_sq": 151405634.41392457,
+          "harmonic_fraction": 0.6196613165529601,
+          "resolvable_fraction": 0.3803386834470398
+        },
+        "rejected": {
+          "total_sq": 256240688.03573972,
+          "resolvable_sq": 97026157.89393555,
+          "harmonic_sq": 159214530.1418041,
+          "harmonic_fraction": 0.6213475750564537,
+          "resolvable_fraction": 0.3786524249435461
+        }
+      }
+    },
+    {
+      "k": 64,
+      "rank_low_rank_coboundary": 192,
+      "max_possible_rank": 192,
+      "fit_pca_seconds": 0.7538959980010986,
+      "decompose_seconds": 0.6684510707855225,
+      "pca_explained_variance": {
+        "SmolLM2": 0.8589810557961968,
+        "Qwen2.5": 0.777080512819672,
+        "TinyLlama": 0.6047461163528023
+      },
+      "aggregate": {
+        "total_norm": {
+          "chosen_mean": 434.4008074269526,
+          "chosen_std": 235.86446656128487,
+          "rejected_mean": 448.858939932421,
+          "rejected_std": 234.02209314182926,
+          "welch_t": 1.3753511070830027,
+          "p_value": 0.16917680842058674,
+          "cohens_d": 0.061538348237604616,
+          "auc_rejected_high": 0.531395
+        },
+        "resolvable_norm": {
+          "chosen_mean": 294.0509119806236,
+          "chosen_std": 167.925005677499,
+          "rejected_mean": 304.46752567552375,
+          "rejected_std": 165.06571741784904,
+          "welch_t": 1.3982220797560299,
+          "p_value": 0.16220161601224586,
+          "cohens_d": 0.06256168102414705,
+          "auc_rejected_high": 0.531741
+        },
+        "harmonic_norm": {
+          "chosen_mean": 318.1892484499711,
+          "chosen_std": 168.60297708476506,
+          "rejected_mean": 328.3546913296869,
+          "rejected_std": 168.75046506567273,
+          "welch_t": 1.3469108737102677,
+          "p_value": 0.17816168748603034,
+          "cohens_d": 0.060265825914950555,
+          "auc_rejected_high": 0.530194
+        },
+        "harmonic_fraction": {
+          "chosen_mean": 0.5468143004910192,
+          "chosen_std": 0.06883432905984482,
+          "rejected_mean": 0.5439884915996199,
+          "rejected_std": 0.0671523535015924,
+          "welch_t": -0.9287758888522829,
+          "p_value": 0.3531175006278919,
+          "cohens_d": -0.04155690411150601,
+          "auc_rejected_high": 0.486602
+        },
+        "cocycle_violation_norm": {
+          "chosen_mean": 319.3873539169452,
+          "chosen_std": 178.76773830841015,
+          "rejected_mean": 328.628908205897,
+          "rejected_std": 178.23667579453402,
+          "welch_t": 1.1570941413403957,
+          "p_value": 0.24737221625638509,
+          "cohens_d": 0.05177271596088524,
+          "auc_rejected_high": 0.52562
+        }
+      },
+      "per_pair": {
+        "SmolLM2->Qwen2.5": {
+          "harmonic": {
+            "chosen_mean": 124.86675747651212,
+            "chosen_std": 61.91141175726853,
+            "rejected_mean": 130.09301636939034,
+            "rejected_std": 63.81798088299642,
+            "welch_t": 1.8578126548243437,
+            "p_value": 0.06334277065443257,
+            "cohens_d": 0.08312548084924001,
+            "auc_rejected_high": 0.534378
+          },
+          "resolvable": {
+            "chosen_mean": 129.09247817527043,
+            "chosen_std": 72.18448847335314,
+            "rejected_mean": 134.43345735439308,
+            "rejected_std": 74.26990490543908,
+            "welch_t": 1.6299421791511406,
+            "p_value": 0.1032714712610904,
+            "cohens_d": 0.07292970421240201,
+            "auc_rejected_high": 0.529833
+          }
+        },
+        "SmolLM2->TinyLlama": {
+          "harmonic": {
+            "chosen_mean": 82.21206569317847,
+            "chosen_std": 42.0807350810046,
+            "rejected_mean": 85.40416697135643,
+            "rejected_std": 43.010560315652654,
+            "welch_t": 1.6767307972367476,
+            "p_value": 0.09375164314423741,
+            "cohens_d": 0.07502320183528541,
+            "auc_rejected_high": 0.532855
+          },
+          "resolvable": {
+            "chosen_mean": 64.37776978161139,
+            "chosen_std": 35.96671616933973,
+            "rejected_mean": 66.19402120313619,
+            "rejected_std": 35.51593901243037,
+            "welch_t": 1.1357020201539327,
+            "p_value": 0.25621752729919406,
+            "cohens_d": 0.05081555251634077,
+            "auc_rejected_high": 0.530127
+          }
+        },
+        "Qwen2.5->SmolLM2": {
+          "harmonic": {
+            "chosen_mean": 31.911343632323707,
+            "chosen_std": 17.128816055450642,
+            "rejected_mean": 33.34863236059523,
+            "rejected_std": 17.15835761257746,
+            "welch_t": 1.8737425247862656,
+            "p_value": 0.06111177669959762,
+            "cohens_d": 0.08383824276148759,
+            "auc_rejected_high": 0.536872
+          },
+          "resolvable": {
+            "chosen_mean": 30.57100723763076,
+            "chosen_std": 18.605743206296307,
+            "rejected_mean": 31.591805157739103,
+            "rejected_std": 17.981334983405723,
+            "welch_t": 1.2469428597195467,
+            "p_value": 0.2125647725076648,
+            "cohens_d": 0.05579288338711094,
+            "auc_rejected_high": 0.529978
+          }
+        },
+        "Qwen2.5->TinyLlama": {
+          "harmonic": {
+            "chosen_mean": 78.1064219368829,
+            "chosen_std": 37.287858732858346,
+            "rejected_mean": 80.8978363035846,
+            "rejected_std": 37.974647545642654,
+            "welch_t": 1.6577738844741636,
+            "p_value": 0.09752014848393999,
+            "cohens_d": 0.07417499871603393,
+            "auc_rejected_high": 0.532205
+          },
+          "resolvable": {
+            "chosen_mean": 61.61548218504951,
+            "chosen_std": 33.2640700248961,
+            "rejected_mean": 63.317941682334464,
+            "rejected_std": 33.037921135897555,
+            "welch_t": 1.147745062030291,
+            "p_value": 0.2512112350904219,
+            "cohens_d": 0.05135440321490836,
+            "auc_rejected_high": 0.525791
+          }
+        },
+        "TinyLlama->SmolLM2": {
+          "harmonic": {
+            "chosen_mean": 54.64746751468906,
+            "chosen_std": 30.530604285451663,
+            "rejected_mean": 56.67874739075607,
+            "rejected_std": 31.017915520361438,
+            "welch_t": 1.4751503378843716,
+            "p_value": 0.14032972607083907,
+            "cohens_d": 0.0660037387748073,
+            "auc_rejected_high": 0.530294
+          },
+          "resolvable": {
+            "chosen_mean": 44.155129023836004,
+            "chosen_std": 28.233173389307492,
+            "rejected_mean": 45.50898875564464,
+            "rejected_std": 26.830399940115573,
+            "welch_t": 1.0986671474017717,
+            "p_value": 0.27204599293216386,
+            "cohens_d": 0.04915847390956118,
+            "auc_rejected_high": 0.530128
+          }
+        },
+        "TinyLlama->Qwen2.5": {
+          "harmonic": {
+            "chosen_mean": 261.1988728006472,
+            "chosen_std": 144.12139767346036,
+            "rejected_mean": 268.5333717486913,
+            "rejected_std": 143.09080204000958,
+            "welch_t": 1.141464773791169,
+            "p_value": 0.25381335607096916,
+            "cohens_d": 0.05107339964956331,
+            "auc_rejected_high": 0.527453
+          },
+          "resolvable": {
+            "chosen_mean": 240.22118197280952,
+            "chosen_std": 143.92514105018955,
+            "rejected_mean": 248.81587496858148,
+            "rejected_std": 139.97659472955672,
+            "welch_t": 1.3530631368904924,
+            "p_value": 0.17618865457657223,
+            "cohens_d": 0.06054110116072909,
+            "auc_rejected_high": 0.530413
+          }
+        }
+      },
+      "global_mass": {
+        "chosen": {
+          "total_sq": 244336108.0794278,
+          "resolvable_sq": 114664746.3684245,
+          "harmonic_sq": 129671361.71100324,
+          "harmonic_fraction": 0.5307089595977775,
+          "resolvable_fraction": 0.4692910404022223
+        },
+        "rejected": {
+          "total_sq": 256240688.03573972,
+          "resolvable_sq": 119947165.25764489,
+          "harmonic_sq": 136293522.77809477,
+          "harmonic_fraction": 0.5318964908456886,
+          "resolvable_fraction": 0.4681035091543112
+        }
+      }
+    },
+    {
+      "k": 128,
+      "rank_low_rank_coboundary": 384,
+      "max_possible_rank": 384,
+      "fit_pca_seconds": 0.7533009052276611,
+      "decompose_seconds": 0.7788140773773193,
+      "pca_explained_variance": {
+        "SmolLM2": 0.9099242481709816,
+        "Qwen2.5": 0.8597642618241841,
+        "TinyLlama": 0.709559413966043
+      },
+      "aggregate": {
+        "total_norm": {
+          "chosen_mean": 434.4008074269526,
+          "chosen_std": 235.86446656128487,
+          "rejected_mean": 448.858939932421,
+          "rejected_std": 234.02209314182926,
+          "welch_t": 1.3753511070830027,
+          "p_value": 0.16917680842058674,
+          "cohens_d": 0.061538348237604616,
+          "auc_rejected_high": 0.531395
+        },
+        "resolvable_norm": {
+          "chosen_mean": 327.94485370368267,
+          "chosen_std": 183.65542621178577,
+          "rejected_mean": 339.3225609014229,
+          "rejected_std": 180.8072324420497,
+          "welch_t": 1.3953597625146499,
+          "p_value": 0.16306248043061908,
+          "cohens_d": 0.062433610254247346,
+          "auc_rejected_high": 0.532322
+        },
+        "harmonic_norm": {
+          "chosen_mean": 283.64114612735705,
+          "chosen_std": 150.35513178879086,
+          "rejected_mean": 292.6607376916849,
+          "rejected_std": 150.8619402282938,
+          "welch_t": 1.3384569783226856,
+          "p_value": 0.18089980115897947,
+          "cohens_d": 0.05988756704298244,
+          "auc_rejected_high": 0.528996
+        },
+        "harmonic_fraction": {
+          "chosen_mean": 0.4348008617961827,
+          "chosen_std": 0.057132717585290926,
+          "rejected_mean": 0.43194233404054055,
+          "rejected_std": 0.055962548354630264,
+          "welch_t": -1.1297243346949362,
+          "p_value": 0.25872806568868684,
+          "cohens_d": -0.0505480885223063,
+          "auc_rejected_high": 0.484035
+        },
+        "cocycle_violation_norm": {
+          "chosen_mean": 319.3873539169452,
+          "chosen_std": 178.76773830841015,
+          "rejected_mean": 328.628908205897,
+          "rejected_std": 178.23667579453402,
+          "welch_t": 1.1570941413403957,
+          "p_value": 0.24737221625638509,
+          "cohens_d": 0.05177271596088524,
+          "auc_rejected_high": 0.52562
+        }
+      },
+      "per_pair": {
+        "SmolLM2->Qwen2.5": {
+          "harmonic": {
+            "chosen_mean": 115.2152261532073,
+            "chosen_std": 57.80284424022466,
+            "rejected_mean": 119.62650382323896,
+            "rejected_std": 59.01777720311982,
+            "welch_t": 1.6877928391019372,
+            "p_value": 0.091607142239962,
+            "cohens_d": 0.07551815892734229,
+            "auc_rejected_high": 0.532103
+          },
+          "resolvable": {
+            "chosen_mean": 142.73861518806163,
+            "chosen_std": 78.01083625235475,
+            "rejected_mean": 148.62898219483932,
+            "rejected_std": 80.21514862840804,
+            "welch_t": 1.663872900355076,
+            "p_value": 0.09629476825346783,
+            "cohens_d": 0.07444789147865534,
+            "auc_rejected_high": 0.531179
+          }
+        },
+        "SmolLM2->TinyLlama": {
+          "harmonic": {
+            "chosen_mean": 81.61784028187341,
+            "chosen_std": 41.80244951094956,
+            "rejected_mean": 84.71781637489362,
+            "rejected_std": 42.69966104907006,
+            "welch_t": 1.6396986980620483,
+            "p_value": 0.10122532276438434,
+            "cohens_d": 0.07336624732872636,
+            "auc_rejected_high": 0.532617
+          },
+          "resolvable": {
+            "chosen_mean": 72.01705692514986,
+            "chosen_std": 39.17688409061443,
+            "rejected_mean": 74.21446055371173,
+            "rejected_std": 38.9293994218027,
+            "welch_t": 1.2575331016204179,
+            "p_value": 0.2087076284121326,
+            "cohens_d": 0.05626673038564108,
+            "auc_rejected_high": 0.532308
+          }
+        },
+        "Qwen2.5->SmolLM2": {
+          "harmonic": {
+            "chosen_mean": 29.793815837258318,
+            "chosen_std": 15.673290614088241,
+            "rejected_mean": 30.90346900770711,
+            "rejected_std": 15.68143633313236,
+            "welch_t": 1.581910696133636,
+            "p_value": 0.1138282319980412,
+            "cohens_d": 0.07078059616786135,
+            "auc_rejected_high": 0.531673
+          },
+          "resolvable": {
+            "chosen_mean": 30.93125138017932,
+            "chosen_std": 17.888534674415492,
+            "rejected_mean": 31.899605206727816,
+            "rejected_std": 17.646058724717314,
+            "welch_t": 1.2180646903667591,
+            "p_value": 0.22334323599308112,
+            "cohens_d": 0.054500766172136325,
+            "auc_rejected_high": 0.524377
+          }
+        },
+        "Qwen2.5->TinyLlama": {
+          "harmonic": {
+            "chosen_mean": 78.6037001161637,
+            "chosen_std": 38.64712883165085,
+            "rejected_mean": 81.20720030531024,
+            "rejected_std": 38.887293884157216,
+            "welch_t": 1.500924042443405,
+            "p_value": 0.13353321979806987,
+            "cohens_d": 0.06715695063348015,
+            "auc_rejected_high": 0.531107
+          },
+          "resolvable": {
+            "chosen_mean": 70.3572041250817,
+            "chosen_std": 36.83909716071961,
+            "rejected_mean": 72.35232052805635,
+            "rejected_std": 36.55725711559152,
+            "welch_t": 1.2150336086247189,
+            "p_value": 0.2244968448736161,
+            "cohens_d": 0.05436514424780178,
+            "auc_rejected_high": 0.52756
+          }
+        },
+        "TinyLlama->SmolLM2": {
+          "harmonic": {
+            "chosen_mean": 51.199952511267206,
+            "chosen_std": 28.362934224451475,
+            "rejected_mean": 52.97790004815809,
+            "rejected_std": 28.77096653333053,
+            "welch_t": 1.390950684776221,
+            "p_value": 0.1643952910312275,
+            "cohens_d": 0.06223633163944359,
+            "auc_rejected_high": 0.5293859999999999
+          },
+          "resolvable": {
+            "chosen_mean": 45.426229826773834,
+            "chosen_std": 27.80824583368922,
+            "rejected_mean": 46.89856028175756,
+            "rejected_std": 26.9406960744921,
+            "welch_t": 1.2019123272966805,
+            "p_value": 0.22954007556953826,
+            "cohens_d": 0.05377804908676979,
+            "auc_rejected_high": 0.5294730000000001
+          }
+        },
+        "TinyLlama->Qwen2.5": {
+          "harmonic": {
+            "chosen_mean": 224.72962574143585,
+            "chosen_std": 123.69143080228129,
+            "rejected_mean": 231.18829824887374,
+            "rejected_std": 123.39143399141419,
+            "welch_t": 1.1684175122277582,
+            "p_value": 0.24277778883332243,
+            "cohens_d": 0.05227936588998442,
+            "auc_rejected_high": 0.5265389999999999
+          },
+          "resolvable": {
+            "chosen_mean": 269.5244581267886,
+            "chosen_std": 158.21372701550828,
+            "rejected_mean": 278.79321414034337,
+            "rejected_std": 154.05043031756372,
+            "welch_t": 1.326656405731796,
+            "p_value": 0.18477408142786533,
+            "cohens_d": 0.05935956532635789,
+            "auc_rejected_high": 0.5308379999999999
+          }
+        }
+      },
+      "global_mass": {
+        "chosen": {
+          "total_sq": 244336108.0794278,
+          "resolvable_sq": 141277142.64776248,
+          "harmonic_sq": 103058965.43166535,
+          "harmonic_fraction": 0.42179179426956964,
+          "resolvable_fraction": 0.5782082057304304
+        },
+        "rejected": {
+          "total_sq": 256240688.03573972,
+          "resolvable_sq": 147831055.6400532,
+          "harmonic_sq": 108409632.3956865,
+          "harmonic_fraction": 0.42307735444640177,
+          "resolvable_fraction": 0.5769226455535983
+        }
+      }
+    }
+  ],
+  "methodological_note": "Stalks restricted to U_i \u2282 R^{d_i} = span of top-k PCA directions of model i's calibration features. (im \u03b4\u2070_lowrank)^\u22a5 is nontrivial, so the per-input harmonic norm measures the part of cross-model translation that depends on the high-rank tail of each model's representation \u2014 what the panel cannot agree on within k dims of shared structure. The cocycle-violation channel \u03b4\u00b9c does not depend on k and is reported for cross-reference with E2/E3."
+}

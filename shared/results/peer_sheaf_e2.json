@@ -1,0 +1,360 @@
+{
+  "config": {
+    "experiment": "E2",
+    "depends_on": "E1 cached embeddings",
+    "n_pairs": 2000,
+    "n_eval": 1000,
+    "seed": 0,
+    "ridge": 0.001,
+    "panel": [
+      {
+        "name": "SmolLM2",
+        "hf_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+        "hidden_dim": 960
+      },
+      {
+        "name": "Qwen2.5",
+        "hf_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "hidden_dim": 896
+      },
+      {
+        "name": "TinyLlama",
+        "hf_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "hidden_dim": 2048
+      }
+    ],
+    "complex": {
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808,
+      "rank_coboundary": 3904,
+      "num_directed_edges": 6,
+      "num_ordered_triangles": 6
+    }
+  },
+  "aggregate": {
+    "total_norm": {
+      "chosen_mean": 434.4008074269526,
+      "chosen_std": 235.86446656128487,
+      "rejected_mean": 448.858939932421,
+      "rejected_std": 234.02209314182926,
+      "welch_t": 1.3753511070830027,
+      "p_value": 0.16917680842058674,
+      "cohens_d": 0.061538348237604616,
+      "auc_rejected_high": 0.531395
+    },
+    "resolvable_norm": {
+      "chosen_mean": 434.4008074269525,
+      "chosen_std": 235.86446656128484,
+      "rejected_mean": 448.85893993242087,
+      "rejected_std": 234.0220931418292,
+      "welch_t": 1.3753511070830031,
+      "p_value": 0.1691768084205866,
+      "cohens_d": 0.06153834823760463,
+      "auc_rejected_high": 0.531395
+    },
+    "harmonic_norm": {
+      "chosen_mean": 3.8277689519841754e-12,
+      "chosen_std": 1.9569487352664836e-12,
+      "rejected_mean": 3.963759094730359e-12,
+      "rejected_std": 1.9627829571495853e-12,
+      "welch_t": 1.550773425346995,
+      "p_value": 0.12111436645779834,
+      "cohens_d": 1.3599014274592241e-07,
+      "auc_rejected_high": 0.53363
+    },
+    "harmonic_fraction": {
+      "chosen_mean": 8.013458176777778e-29,
+      "chosen_std": 8.604332840352573e-30,
+      "rejected_mean": 8.015900583996954e-29,
+      "rejected_std": 8.546064632317494e-30,
+      "welch_t": 0.06365596713565443,
+      "p_value": 0.9492505345831688,
+      "cohens_d": 2.4424072191761922e-26,
+      "auc_rejected_high": 0.501786
+    },
+    "cocycle_violation_norm": {
+      "chosen_mean": 319.3873539169452,
+      "chosen_std": 178.76773830841015,
+      "rejected_mean": 328.628908205897,
+      "rejected_std": 178.23667579453402,
+      "welch_t": 1.1570941413403957,
+      "p_value": 0.24737221625638509,
+      "cohens_d": 0.05177271596088524,
+      "auc_rejected_high": 0.52562
+    }
+  },
+  "global_mass": {
+    "chosen": {
+      "total_sq": 244336108.0794278,
+      "resolvable_sq": 244336108.07942772,
+      "harmonic_sq": 1.8481463502235117e-20,
+      "harmonic_fraction": 7.563951004829477e-29,
+      "resolvable_fraction": 0.9999999999999997
+    },
+    "rejected": {
+      "total_sq": 256240688.03573972,
+      "resolvable_sq": 256240688.0357396,
+      "harmonic_sq": 1.9563903097934507e-20,
+      "harmonic_fraction": 7.634971341946205e-29,
+      "resolvable_fraction": 0.9999999999999996
+    }
+  },
+  "per_pair": {
+    "SmolLM2->Qwen2.5": {
+      "total": {
+        "chosen_mean": 157.18968732928585,
+        "chosen_std": 85.33614093263084,
+        "rejected_mean": 164.70056115452056,
+        "rejected_std": 89.3683887952359,
+        "welch_t": 1.9211815106665526,
+        "p_value": 0.054851265922051265,
+        "cohens_d": 0.0859608402699389,
+        "auc_rejected_high": 0.5336609999999999
+      },
+      "resolvable": {
+        "chosen_mean": 157.18968732928587,
+        "chosen_std": 85.33614093263085,
+        "rejected_mean": 164.70056115452056,
+        "rejected_std": 89.36838879523592,
+        "welch_t": 1.921181510666545,
+        "p_value": 0.05485126592205221,
+        "cohens_d": 0.08596084026993854,
+        "auc_rejected_high": 0.5336609999999999
+      },
+      "harmonic": {
+        "chosen_mean": 2.2776965635063063e-12,
+        "chosen_std": 1.214089353385967e-12,
+        "rejected_mean": 2.3625894723675975e-12,
+        "rejected_std": 1.213227644441292e-12,
+        "welch_t": 1.5633010961315565,
+        "p_value": 0.11814015446266127,
+        "cohens_d": 8.489290886122865e-08,
+        "auc_rejected_high": 0.533981
+      }
+    },
+    "SmolLM2->TinyLlama": {
+      "total": {
+        "chosen_mean": 74.24320924110556,
+        "chosen_std": 37.88976802896576,
+        "rejected_mean": 77.47478133686711,
+        "rejected_std": 39.64913707282528,
+        "welch_t": 1.862430860237572,
+        "p_value": 0.06268936584010142,
+        "cohens_d": 0.08333211661772737,
+        "auc_rejected_high": 0.5343905000000001
+      },
+      "resolvable": {
+        "chosen_mean": 74.24320924110556,
+        "chosen_std": 37.88976802896578,
+        "rejected_mean": 77.47478133686712,
+        "rejected_std": 39.6491370728253,
+        "welch_t": 1.8624308602375792,
+        "p_value": 0.06268936584010042,
+        "cohens_d": 0.08333211661772769,
+        "auc_rejected_high": 0.53439
+      },
+      "harmonic": {
+        "chosen_mean": 1.6683846187891092e-12,
+        "chosen_std": 7.875815339525864e-13,
+        "rejected_mean": 1.7219632928808807e-12,
+        "rejected_std": 7.907499004603298e-13,
+        "welch_t": 1.517366958181857,
+        "p_value": 0.12933226291799044,
+        "cohens_d": 5.357867409175486e-08,
+        "auc_rejected_high": 0.532743
+      }
+    },
+    "Qwen2.5->SmolLM2": {
+      "total": {
+        "chosen_mean": 26.261948314041184,
+        "chosen_std": 14.815824206989815,
+        "rejected_mean": 27.381520641352363,
+        "rejected_std": 14.918612193342323,
+        "welch_t": 1.6830134679922473,
+        "p_value": 0.09252872335476803,
+        "cohens_d": 0.0753043120033166,
+        "auc_rejected_high": 0.527624
+      },
+      "resolvable": {
+        "chosen_mean": 26.26194831404118,
+        "chosen_std": 14.815824206989813,
+        "rejected_mean": 27.381520641352363,
+        "rejected_std": 14.918612193342321,
+        "welch_t": 1.683013467992253,
+        "p_value": 0.09252872335476693,
+        "cohens_d": 0.07530431200331683,
+        "auc_rejected_high": 0.527624
+      },
+      "harmonic": {
+        "chosen_mean": 5.034173833588698e-13,
+        "chosen_std": 2.2409090660085653e-13,
+        "rejected_mean": 5.187616750698098e-13,
+        "rejected_std": 2.2620770415734893e-13,
+        "welch_t": 1.5231377522976628,
+        "p_value": 0.12788250970391282,
+        "cohens_d": 1.5344291710939593e-08,
+        "auc_rejected_high": 0.530806
+      }
+    },
+    "Qwen2.5->TinyLlama": {
+      "total": {
+        "chosen_mean": 73.52790367199393,
+        "chosen_std": 33.07666886485875,
+        "rejected_mean": 75.98464760981165,
+        "rejected_std": 33.97266058796864,
+        "welch_t": 1.637662568567209,
+        "p_value": 0.10164968197449269,
+        "cohens_d": 0.07327514328608228,
+        "auc_rejected_high": 0.526776
+      },
+      "resolvable": {
+        "chosen_mean": 73.52790367199391,
+        "chosen_std": 33.076668864858746,
+        "rejected_mean": 75.98464760981163,
+        "rejected_std": 33.972660587968626,
+        "welch_t": 1.6376625685672093,
+        "p_value": 0.10164968197449256,
+        "cohens_d": 0.0732751432860823,
+        "auc_rejected_high": 0.526776
+      },
+      "harmonic": {
+        "chosen_mean": 9.20641891499868e-13,
+        "chosen_std": 3.8453649318089897e-13,
+        "rejected_mean": 9.474309759688727e-13,
+        "rejected_std": 3.890297020779628e-13,
+        "welch_t": 1.5479281731577397,
+        "p_value": 0.12179798242724565,
+        "cohens_d": 2.6789084469002652e-08,
+        "auc_rejected_high": 0.530763
+      }
+    },
+    "TinyLlama->SmolLM2": {
+      "total": {
+        "chosen_mean": 60.1745894428663,
+        "chosen_std": 35.41243510834163,
+        "rejected_mean": 62.36371807275961,
+        "rejected_std": 36.04638114014635,
+        "welch_t": 1.369292141169813,
+        "p_value": 0.17106191394130485,
+        "cohens_d": 0.061267247460206405,
+        "auc_rejected_high": 0.5237955000000001
+      },
+      "resolvable": {
+        "chosen_mean": 60.174589442866285,
+        "chosen_std": 35.412435108341626,
+        "rejected_mean": 62.36371807275959,
+        "rejected_std": 36.04638114014634,
+        "welch_t": 1.369292141169809,
+        "p_value": 0.17106191394130613,
+        "cohens_d": 0.06126724746020622,
+        "auc_rejected_high": 0.523794
+      },
+      "harmonic": {
+        "chosen_mean": 6.511992712500031e-13,
+        "chosen_std": 2.8806627001834073e-13,
+        "rejected_mean": 6.68857898297739e-13,
+        "rejected_std": 2.9063344405018166e-13,
+        "welch_t": 1.3639458704696685,
+        "p_value": 0.17273824480105363,
+        "cohens_d": 1.7658627047735114e-08,
+        "auc_rejected_high": 0.5277479999999999
+      }
+    },
+    "TinyLlama->Qwen2.5": {
+      "total": {
+        "chosen_mean": 382.4074295555235,
+        "chosen_std": 216.51208630422897,
+        "rejected_mean": 394.110602309046,
+        "rejected_std": 212.46516345433014,
+        "welch_t": 1.2194044409200644,
+        "p_value": 0.2228347073245817,
+        "cohens_d": 0.054560711618558216,
+        "auc_rejected_high": 0.52976
+      },
+      "resolvable": {
+        "chosen_mean": 382.40742955552344,
+        "chosen_std": 216.51208630422892,
+        "rejected_mean": 394.1106023090459,
+        "rejected_std": 212.46516345433008,
+        "welch_t": 1.2194044409200588,
+        "p_value": 0.22283470732458366,
+        "cohens_d": 0.05456071161855797,
+        "auc_rejected_high": 0.52976
+      },
+      "harmonic": {
+        "chosen_mean": 2.2552091637040906e-12,
+        "chosen_std": 1.2343623284397548e-12,
+        "rejected_mean": 2.340386445415067e-12,
+        "rejected_std": 1.241454475035096e-12,
+        "welch_t": 1.5378048635452963,
+        "p_value": 0.12425468010180103,
+        "cohens_d": 8.517728171091112e-08,
+        "auc_rejected_high": 0.531222
+      }
+    }
+  },
+  "per_triangle_cocycle_violation": {
+    "SmolLM2->Qwen2.5->TinyLlama": {
+      "chosen_mean": 40.08919879543556,
+      "chosen_std": 22.286468276761077,
+      "rejected_mean": 42.16778021719442,
+      "rejected_std": 23.52483362799151,
+      "welch_t": 2.0273724134811815,
+      "p_value": 0.042757238209909024,
+      "cohens_d": 0.0907122180987843,
+      "auc_rejected_high": 0.535536
+    },
+    "SmolLM2->TinyLlama->Qwen2.5": {
+      "chosen_mean": 19.000732696487443,
+      "chosen_std": 12.79580982462586,
+      "rejected_mean": 19.993830741961233,
+      "rejected_std": 13.552578795413611,
+      "welch_t": 1.6840568597321928,
+      "p_value": 0.09232739237479722,
+      "cohens_d": 0.07535099724893152,
+      "auc_rejected_high": 0.527475
+    },
+    "Qwen2.5->SmolLM2->TinyLlama": {
+      "chosen_mean": 32.06754659189967,
+      "chosen_std": 15.305534311515062,
+      "rejected_mean": 33.39677517861573,
+      "rejected_std": 16.587225485781108,
+      "welch_t": 1.8614650851138508,
+      "p_value": 0.06282622279850102,
+      "cohens_d": 0.08328890422957651,
+      "auc_rejected_high": 0.520543
+    },
+    "Qwen2.5->TinyLlama->SmolLM2": {
+      "chosen_mean": 3.815836440880684,
+      "chosen_std": 2.2761944977288886,
+      "rejected_mean": 3.989999488817926,
+      "rejected_std": 2.458539508837905,
+      "welch_t": 1.6429953746745527,
+      "p_value": 0.10054216877207897,
+      "cohens_d": 0.07351375296009084,
+      "auc_rejected_high": 0.515405
+    },
+    "TinyLlama->SmolLM2->Qwen2.5": {
+      "chosen_mean": 309.1399208797347,
+      "chosen_std": 174.68515046242885,
+      "rejected_mean": 317.9532590816835,
+      "rejected_std": 173.9498959541293,
+      "welch_t": 1.1299680655050708,
+      "p_value": 0.25862531579965936,
+      "cohens_d": 0.05055899395748037,
+      "auc_rejected_high": 0.525261
+    },
+    "TinyLlama->Qwen2.5->SmolLM2": {
+      "chosen_mean": 54.56160605425342,
+      "chosen_std": 31.557963474226135,
+      "rejected_mean": 55.743040518322985,
+      "rejected_std": 31.268734832784094,
+      "welch_t": 0.8405402958753974,
+      "p_value": 0.4007061010145028,
+      "cohens_d": 0.03760891394854402,
+      "auc_rejected_high": 0.520413
+    }
+  },
+  "methodological_note": "Harmonic component (im \u03b4\u2070)^\u22a5 is numerically zero on this data: with affine ridge-fit restriction maps, c(x) = \u03b4\u2070(F(x)\u2212\u03bc) exactly, so the data itself provides a valid stalk-assignment that explains every measured cochain. The non-trivial sheaf signal is the cocycle violation \u03b4\u00b9c (composition failure of the triangle restriction maps). See shared/src/peer_hodge.py docstring."
+}

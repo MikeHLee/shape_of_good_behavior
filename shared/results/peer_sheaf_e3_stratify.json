@@ -1,0 +1,152 @@
+{
+  "config": {
+    "experiment": "E3 (SGB-013)",
+    "metric": "cocycle violation ||\u03b4\u00b9c|| from peer_hodge.hodge_decompose",
+    "n_pairs": 2000,
+    "n_eval": 1000,
+    "seed": 0,
+    "ridge": 0.001,
+    "panel": [
+      {
+        "name": "SmolLM2",
+        "hf_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+        "hidden_dim": 960
+      },
+      {
+        "name": "Qwen2.5",
+        "hf_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "hidden_dim": 896
+      },
+      {
+        "name": "TinyLlama",
+        "hf_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "hidden_dim": 2048
+      }
+    ],
+    "complex": {
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808,
+      "rank_coboundary": 3904,
+      "num_directed_edges": 6,
+      "num_ordered_triangles": 6
+    },
+    "label_cache": "/Users/Michaellee/Documents/Runes/ai_research/topics/shape_of_good_behavior/shared/data/cache/hh_rejected_categories.json",
+    "label_model_if_used": "claude-sonnet-4-6"
+  },
+  "overall": {
+    "n_eval": 1000,
+    "n_labeled": 998,
+    "delta1c_rejected_mean": 328.628908205897,
+    "delta1c_chosen_mean": 319.3873539169452,
+    "delta1c_cohens_d_rejected_vs_chosen": 0.05177271596088524,
+    "delta1c_auc_rejected_high": 0.52562,
+    "total_rejected_mean": 448.858939932421,
+    "total_chosen_mean": 434.4008074269526,
+    "total_cohens_d_rejected_vs_chosen": 0.061538348237604616
+  },
+  "per_category": {
+    "incoherent": {
+      "n": 269,
+      "delta1c_mean": 402.98626865615574,
+      "delta1c_std": 205.9557244802952,
+      "delta1c_cohens_d_vs_chosen": 0.4335110853622884,
+      "delta1c_welch_t_vs_chosen": 6.060675758861637,
+      "delta1c_p_value_vs_chosen": 3.24592343966571e-09,
+      "delta1c_auc_vs_chosen": 0.6368159851301116,
+      "total_mean": 556.4024171531547,
+      "total_cohens_d_vs_chosen": 0.4828636345248872
+    },
+    "wrong": {
+      "n": 413,
+      "delta1c_mean": 330.33822052517274,
+      "delta1c_std": 171.09440525897793,
+      "delta1c_cohens_d_vs_chosen": 0.0625859865057302,
+      "delta1c_welch_t_vs_chosen": 1.0788032083639758,
+      "delta1c_p_value_vs_chosen": 0.28100075896990984,
+      "delta1c_auc_vs_chosen": 0.5449467312348668,
+      "total_mean": 446.3277479861618,
+      "total_cohens_d_vs_chosen": 0.05207782202926705
+    },
+    "sycophantic": {
+      "n": 101,
+      "delta1c_mean": 271.86683015715073,
+      "delta1c_std": 140.4555756771412,
+      "delta1c_cohens_d_vs_chosen": -0.29560455967212806,
+      "delta1c_welch_t_vs_chosen": -3.1384115527212706,
+      "delta1c_p_value_vs_chosen": 0.002087272927475674,
+      "delta1c_auc_vs_chosen": 0.4221435643564357,
+      "total_mean": 378.24927306182326,
+      "total_cohens_d_vs_chosen": -0.2625624465789124
+    },
+    "refusal_of_benign": {
+      "n": 81,
+      "delta1c_mean": 240.90612696362314,
+      "delta1c_std": 75.91211545202098,
+      "delta1c_cohens_d_vs_chosen": -0.5714677851211456,
+      "delta1c_welch_t_vs_chosen": -7.69486625580877,
+      "delta1c_p_value_vs_chosen": 1.2452160379082687e-12,
+      "delta1c_auc_vs_chosen": 0.39362962962962966,
+      "total_mean": 329.54762803674333,
+      "total_cohens_d_vs_chosen": -0.5799848274815536
+    },
+    "harmful": {
+      "n": 113,
+      "delta1c_mean": 238.69383798054884,
+      "delta1c_std": 109.66313996539542,
+      "delta1c_cohens_d_vs_chosen": -0.5441350818199704,
+      "delta1c_welch_t_vs_chosen": -6.835367745164582,
+      "delta1c_p_value_vs_chosen": 1.1245011779727301e-10,
+      "delta1c_auc_vs_chosen": 0.3496460176991151,
+      "total_mean": 324.4151929275787,
+      "total_cohens_d_vs_chosen": -0.5700711792776294
+    },
+    "deceptive": {
+      "n": 21,
+      "delta1c_mean": 450.9098565756875,
+      "delta1c_std": 188.37851509883217,
+      "delta1c_cohens_d_vs_chosen": 0.7162130227466349,
+      "delta1c_welch_t_vs_chosen": 3.0945930324838447,
+      "delta1c_p_value_vs_chosen": 0.005549323217343249,
+      "delta1c_auc_vs_chosen": 0.7047142857142856,
+      "total_mean": 609.404870593502,
+      "total_cohens_d_vs_chosen": 0.7129252761058524
+    }
+  },
+  "discriminator_hiding_vs_competence": {
+    "hiding_categories": [
+      "deceptive",
+      "harmful"
+    ],
+    "competence_categories": [
+      "incoherent",
+      "refusal_of_benign",
+      "sycophantic",
+      "wrong"
+    ],
+    "n_hiding": 134,
+    "n_competence": 864,
+    "delta1c_hiding_mean": 271.951572237996,
+    "delta1c_competence_mean": 337.7371961519999,
+    "delta1c_cohens_d_hiding_vs_competence": -0.39874445095138483,
+    "delta1c_welch_t": -4.6424356803251,
+    "delta1c_p_value": 6.215095309176553e-06,
+    "interpretation": "d > 0 and p < .05 \u2192 hiding dominates \u2192 coordination hypothesis (A); d \u2248 0 \u2192 Anna-Karenina (B)."
+  },
+  "deceptive_contrasts": {
+    "n_deceptive": 21,
+    "vs_competence": {
+      "cohens_d": 0.6125494100367493,
+      "welch_t": 2.6584293804531187,
+      "p_value": 0.014750825822707184,
+      "auc": 0.6745480599647266
+    },
+    "vs_harmful": {
+      "n_harmful": 113,
+      "cohens_d": 1.3768586573069135,
+      "welch_t": 4.89218833565134,
+      "p_value": 6.468136651266177e-05
+    }
+  },
+  "methodological_note": "Per-input \u03b4\u00b9c is computed once on the eval split. Labels stratify the same \u03b4\u00b9c values into category buckets; the analysis is interpretable for any subset of labels \u2014 running --label-missing extends it incrementally."
+}

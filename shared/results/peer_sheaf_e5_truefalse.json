@@ -1,0 +1,56 @@
+{
+  "config": {
+    "experiment": "E5 (SGB-016)",
+    "dataset": "notrichardren/azaria-mitchell (true/false statements)",
+    "metric": "cocycle violation ||\u03b4\u00b9c|| (false high) + L residual",
+    "n_per_class": 1500,
+    "n_eval_per_class": 750,
+    "seed": 0,
+    "ridge": 0.001,
+    "panel": [
+      {
+        "name": "SmolLM2",
+        "hf_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+        "hidden_dim": 960
+      },
+      {
+        "name": "Qwen2.5",
+        "hf_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "hidden_dim": 896
+      },
+      {
+        "name": "TinyLlama",
+        "hf_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "hidden_dim": 2048
+      }
+    ],
+    "complex": {
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808
+    },
+    "note": "false-statement is a TRUTH proxy, not intentional deception."
+  },
+  "delta1c": {
+    "false_mean": 117.24524625428926,
+    "true_mean": 115.77223554644753,
+    "cohens_d_false_vs_true": 0.026259322705732814,
+    "welch_t": 0.5081704781340105,
+    "p_value": 0.6114087802001693,
+    "auc_false_high": 0.504352
+  },
+  "total_norm": {
+    "false_mean": 210.21581130625586,
+    "true_mean": 209.59842341321712,
+    "cohens_d_false_vs_true": 0.006853412929218182,
+    "auc_false_high": 0.5038186666666666
+  },
+  "L_residual": {
+    "false_mean": 0.10133154670092304,
+    "true_mean": 0.09854149915298346,
+    "cohens_d_false_vs_true": 0.038294645607322854,
+    "welch_t": 0.7410780768473632,
+    "p_value": 0.4587632839653019,
+    "auc_false_high": 0.5106471111111112
+  }
+}

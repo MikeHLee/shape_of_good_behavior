@@ -1,0 +1,50 @@
+{
+  "config": {
+    "experiment": "E6 (SGB-017)",
+    "dataset": "Cadenza-Labs/liars-bench [instructed-deception]",
+    "metric": "||\u03b4\u00b9c|| (deceptive high) + L residual",
+    "n_per_class": 1000,
+    "n_eval_per_class": 500,
+    "seed": 0,
+    "ridge": 0.001,
+    "panel": [
+      {
+        "name": "SmolLM2",
+        "hf_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+        "hidden_dim": 960
+      },
+      {
+        "name": "Qwen2.5",
+        "hf_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "hidden_dim": 896
+      },
+      {
+        "name": "TinyLlama",
+        "hf_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "hidden_dim": 2048
+      }
+    ],
+    "complex": {
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808
+    },
+    "note": "responses carry an instructed-lie posture (real deception construct)."
+  },
+  "delta1c": {
+    "deceptive_mean": 62.0427122686654,
+    "honest_mean": 53.57159616429581,
+    "cohens_d_deceptive_vs_honest": 0.33418416210467605,
+    "welch_t": 5.278628990874462,
+    "p_value": 1.6098248281662024e-07,
+    "auc_deceptive_high": 0.626644
+  },
+  "L_residual": {
+    "deceptive_mean": 0.2615923336030106,
+    "honest_mean": 0.23035660906783903,
+    "cohens_d_deceptive_vs_honest": 0.34743289568529623,
+    "welch_t": 5.4879002766350835,
+    "p_value": 5.1588169955326026e-08,
+    "auc_deceptive_high": 0.615864
+  }
+}

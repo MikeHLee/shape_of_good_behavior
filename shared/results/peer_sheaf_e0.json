@@ -1,0 +1,79 @@
+{
+  "config": {
+    "n_pairs": 2000,
+    "n_eval": 1000,
+    "seed": 0,
+    "ridge": 0.001,
+    "metric": "cosine",
+    "panel": [
+      "MiniLM",
+      "MPNet",
+      "BGE"
+    ]
+  },
+  "aggregate": {
+    "L_chosen_mean": 0.2892239546054119,
+    "L_chosen_std": 0.07850754475989687,
+    "L_rejected_mean": 0.284187643457828,
+    "L_rejected_std": 0.07684788111825144,
+    "welch_t": -1.4489689817025315,
+    "p_value": 0.14750323927108563,
+    "cohens_d": -0.0648322870537584,
+    "auc_rejected_high": 0.48173249999999995
+  },
+  "per_pair": {
+    "MiniLM->MPNet": {
+      "mean_chosen": 0.3387350223012487,
+      "mean_rejected": 0.3331192841468276,
+      "delta": -0.005615738154421068,
+      "auc_rejected_high": 0.48319449999999997
+    },
+    "MiniLM->BGE": {
+      "mean_chosen": 0.14172162666733593,
+      "mean_rejected": 0.13997276665291059,
+      "delta": -0.0017488600144253408,
+      "auc_rejected_high": 0.4873795
+    },
+    "MPNet->MiniLM": {
+      "mean_chosen": 0.3903342030104509,
+      "mean_rejected": 0.38411401530021616,
+      "delta": -0.006220187710234748,
+      "auc_rejected_high": 0.48318349999999993
+    },
+    "MPNet->BGE": {
+      "mean_chosen": 0.21660437514501346,
+      "mean_rejected": 0.20986220849571505,
+      "delta": -0.0067421666492984145,
+      "auc_rejected_high": 0.47489450000000005
+    },
+    "BGE->MiniLM": {
+      "mean_chosen": 0.2932809821748087,
+      "mean_rejected": 0.2911225324258952,
+      "delta": -0.0021584497489134935,
+      "auc_rejected_high": 0.49188350000000003
+    },
+    "BGE->MPNet": {
+      "mean_chosen": 0.35466751833361343,
+      "mean_rejected": 0.34693505372540323,
+      "delta": -0.007732464608210199,
+      "auc_rejected_high": 0.48054450000000004
+    }
+  },
+  "per_model_loo": {
+    "MiniLM": {
+      "mean_chosen": 0.291017958538461,
+      "mean_rejected": 0.2870821496314624,
+      "auc_rejected_high": 0.4848084999999999
+    },
+    "MPNet": {
+      "mean_chosen": 0.3250852796975816,
+      "mean_rejected": 0.31850764041704055,
+      "auc_rejected_high": 0.47922649999999994
+    },
+    "BGE": {
+      "mean_chosen": 0.2515686255801929,
+      "mean_rejected": 0.246973140324981,
+      "auc_rejected_high": 0.4825364999999999
+    }
+  }
+}

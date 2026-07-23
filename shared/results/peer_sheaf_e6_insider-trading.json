@@ -1,0 +1,248 @@
+{
+  "config": {
+    "experiment": "E6 (SGB-017)",
+    "dataset": "Cadenza-Labs/liars-bench [insider-trading]",
+    "metric": "||\u03b4\u00b9c|| (deceptive high) + L residual",
+    "n_per_class": 1000,
+    "n_eval_per_class": 500,
+    "seed": 0,
+    "split_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "ridge": 0.001,
+    "panel": [
+      {
+        "name": "SmolLM2",
+        "hf_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+        "hidden_dim": 960
+      },
+      {
+        "name": "Qwen2.5",
+        "hf_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "hidden_dim": 896
+      },
+      {
+        "name": "TinyLlama",
+        "hf_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "hidden_dim": 2048
+      }
+    ],
+    "complex": {
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808
+    },
+    "note": "responses carry an instructed-lie posture (real deception construct)."
+  },
+  "delta1c": {
+    "deceptive_mean": 91.24670425130296,
+    "honest_mean": 69.64987771169818,
+    "cohens_d_deceptive_vs_honest": 0.1544640412562072,
+    "p_value": 0.01488487148473774,
+    "auc_deceptive_high": 0.636524,
+    "across_splits": {
+      "cohens_d": {
+        "mean": 0.02504004226669651,
+        "std": 0.07067004214405759,
+        "min": -0.05139012555928058,
+        "max": 0.1544640412562072
+      },
+      "auc": {
+        "mean": 0.6247984,
+        "std": 0.008810308725578222,
+        "min": 0.615356,
+        "max": 0.636524
+      }
+    }
+  },
+  "L_residual": {
+    "cohens_d_deceptive_vs_honest": 0.1938043293177184,
+    "p_value": 0.0022632797374804456,
+    "auc_deceptive_high": 0.631988,
+    "across_splits": {
+      "cohens_d": {
+        "mean": 0.11477676774391114,
+        "std": 0.04446257635828771,
+        "min": 0.06392622537733847,
+        "max": 0.1938043293177184
+      },
+      "auc": {
+        "mean": 0.6155752000000001,
+        "std": 0.012560723902705618,
+        "min": 0.596528,
+        "max": 0.631988
+      }
+    }
+  },
+  "per_split": [
+    {
+      "split_seed": 0,
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808,
+      "delta1c": {
+        "deceptive_mean": 91.24670425130296,
+        "honest_mean": 69.64987771169818,
+        "cohens_d": 0.1544640412562072,
+        "p_value": 0.01488487148473774,
+        "auc": 0.636524
+      },
+      "L_residual": {
+        "deceptive_mean": 0.2064362584948303,
+        "honest_mean": 0.16894709764569588,
+        "cohens_d": 0.1938043293177184,
+        "p_value": 0.0022632797374804456,
+        "auc": 0.631988
+      }
+    },
+    {
+      "split_seed": 1,
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808,
+      "delta1c": {
+        "deceptive_mean": 97.4910082652386,
+        "honest_mean": 97.62233897559003,
+        "cohens_d": -0.0007557288520229509,
+        "p_value": 0.9904781315775444,
+        "auc": 0.620144
+      },
+      "L_residual": {
+        "deceptive_mean": 0.215258125029319,
+        "honest_mean": 0.19743006344409994,
+        "cohens_d": 0.08623147113917638,
+        "p_value": 0.17348854941598232,
+        "auc": 0.608716
+      }
+    },
+    {
+      "split_seed": 2,
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808,
+      "delta1c": {
+        "deceptive_mean": 92.71636036917089,
+        "honest_mean": 86.64975953076359,
+        "cohens_d": 0.03736246255248478,
+        "p_value": 0.5552164628698152,
+        "auc": 0.6342599999999999
+      },
+      "L_residual": {
+        "deceptive_mean": 0.20982513384442433,
+        "honest_mean": 0.1852313471570281,
+        "cohens_d": 0.1258826407928752,
+        "p_value": 0.047048842190775285,
+        "auc": 0.626004
+      }
+    },
+    {
+      "split_seed": 3,
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808,
+      "delta1c": {
+        "deceptive_mean": 80.24513987998944,
+        "honest_mean": 87.8922998767169,
+        "cohens_d": -0.05139012555928058,
+        "p_value": 0.4171447069629463,
+        "auc": 0.615356
+      },
+      "L_residual": {
+        "deceptive_mean": 0.2093620500111956,
+        "honest_mean": 0.19675051773263771,
+        "cohens_d": 0.06392622537733847,
+        "p_value": 0.3128706343002494,
+        "auc": 0.596528
+      }
+    },
+    {
+      "split_seed": 4,
+      "D_V": 3904,
+      "D_E": 7808,
+      "D_F": 7808,
+      "delta1c": {
+        "deceptive_mean": 85.66334853102752,
+        "honest_mean": 87.76837595641122,
+        "cohens_d": -0.014480438063905905,
+        "p_value": 0.8191284376600892,
+        "auc": 0.6177079999999999
+      },
+      "L_residual": {
+        "deceptive_mean": 0.2098441872515745,
+        "honest_mean": 0.18883093467639578,
+        "cohens_d": 0.10403917209244727,
+        "p_value": 0.10063069920372869,
+        "auc": 0.6146400000000001
+      }
+    }
+  ],
+  "structure": {
+    "per_edge": {
+      "SmolLM2->Qwen2.5": {
+        "auc": 0.670412,
+        "dec_mean": 150.64743447007874,
+        "hon_mean": 119.4112477827123
+      },
+      "SmolLM2->TinyLlama": {
+        "auc": 0.6500159999999999,
+        "dec_mean": 166.13665531089404,
+        "hon_mean": 129.3605837035061
+      },
+      "Qwen2.5->SmolLM2": {
+        "auc": 0.6793480000000001,
+        "dec_mean": 37.75028845561342,
+        "hon_mean": 23.493064286477896
+      },
+      "Qwen2.5->TinyLlama": {
+        "auc": 0.670688,
+        "dec_mean": 182.94780894935758,
+        "hon_mean": 122.40166972678239
+      },
+      "TinyLlama->SmolLM2": {
+        "auc": 0.6123160000000001,
+        "dec_mean": 10.636211816997996,
+        "hon_mean": 10.40552501668084
+      },
+      "TinyLlama->Qwen2.5": {
+        "auc": 0.624764,
+        "dec_mean": 84.07764629916124,
+        "hon_mean": 76.06420924872684
+      }
+    },
+    "per_triangle": {
+      "SmolLM2->Qwen2.5->TinyLlama": {
+        "auc": 0.6638600000000001
+      },
+      "SmolLM2->TinyLlama->Qwen2.5": {
+        "auc": 0.6742600000000001
+      },
+      "Qwen2.5->SmolLM2->TinyLlama": {
+        "auc": 0.6843760000000001
+      },
+      "Qwen2.5->TinyLlama->SmolLM2": {
+        "auc": 0.6940200000000001
+      },
+      "TinyLlama->SmolLM2->Qwen2.5": {
+        "auc": 0.596428
+      },
+      "TinyLlama->Qwen2.5->SmolLM2": {
+        "auc": 0.597132
+      }
+    },
+    "per_model": {
+      "SmolLM2": {
+        "mean_incident_edge_auc": 0.653023
+      },
+      "Qwen2.5": {
+        "mean_incident_edge_auc": 0.661303
+      },
+      "TinyLlama": {
+        "mean_incident_edge_auc": 0.639446
+      }
+    }
+  }
+}
