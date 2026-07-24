@@ -111,13 +111,46 @@ def _hf_cache_dir() -> str:
     return cache
 
 
-def _load_pairs(config):
-    """Load TRACE hacked records and match to cached counterfactuals."""
+_HOLDOUT_FRAC = 0.2
+_HOLDOUT_SEED = 42
+
+
+def _is_holdout(record, holdout_frac: float = _HOLDOUT_FRAC, seed: int = _HOLDOUT_SEED) -> bool:
+    """Deterministic train/held-out assignment, keyed on record content.
+
+    Content-keyed (not index-keyed) so the split is stable even if
+    ingest_all's ordering changes between runs — a record with the same
+    (source, exploit_category, exploit_text) always lands on the same side.
+    """
+    import hashlib
+    from shared.src.counterfactual_gen import _cache_key
+
+    digest = hashlib.sha256(f"{seed}:{_cache_key(record)}".encode()).hexdigest()
+    frac = int(digest[:8], 16) / 0xFFFFFFFF
+    return frac < holdout_frac
+
+
+def _load_pairs(config, split: str = "all"):
+    """Load TRACE hacked records and match to cached counterfactuals.
+
+    Args:
+        split: "train" — exclude the held-out fraction (Stages 1-3 must use
+            this so eval measures generalization, not memorization).
+            "holdout" — only the held-out fraction (Stage 4 eval).
+            "all" — no split (legacy/debug; do not use for train or eval).
+    """
     from shared.src.data_ingest import ingest_all
     from shared.src.counterfactual_gen import CounterfactualGenerator, _cache_key
 
     result = ingest_all(config, sources=["trace"])
     hacked = result.filter_hacked()
+
+    if split == "train":
+        hacked = [r for r in hacked if not _is_holdout(r)]
+    elif split == "holdout":
+        hacked = [r for r in hacked if _is_holdout(r)]
+    elif split != "all":
+        raise ValueError(f"split must be 'train', 'holdout', or 'all', got {split!r}")
 
     gen = CounterfactualGenerator(config)
     pairs = []
@@ -175,8 +208,8 @@ def train_sft() -> str:
     ft_config = FineTuneConfig()
     ft_config.checkpoint_dir = "/checkpoints"
 
-    pairs, _ = _load_pairs(config)
-    print(f"SFT: {len(pairs)} (context, ideal) pairs loaded")
+    pairs, _ = _load_pairs(config, split="train")
+    print(f"SFT: {len(pairs)} (context, ideal) pairs loaded  [train split, {_HOLDOUT_FRAC:.0%} held out]")
 
     output_dir = "/checkpoints/sft"
     run_sft(pairs, ft_config, output_dir)
@@ -222,8 +255,8 @@ def train_reward_model(hodge: bool = False) -> str:
     ft_config = FineTuneConfig()
     ft_config.checkpoint_dir = "/checkpoints"
 
-    pairs, _ = _load_pairs(config)
-    print(f"RM training: {len(pairs)} pairs  hodge={hodge}")
+    pairs, _ = _load_pairs(config, split="train")
+    print(f"RM training: {len(pairs)} pairs  hodge={hodge}  [train split, {_HOLDOUT_FRAC:.0%} held out]")
 
     output_dir = "/checkpoints/rm_hodge" if hodge else "/checkpoints/rm"
     run_reward_model_training(
@@ -315,9 +348,10 @@ def train_ppo(hodge: bool = False, experiment_id: str = "",
         if ppo_steps > 0:
             ft_config.ppo_steps = ppo_steps
 
-        _, hacked_records = _load_pairs(config)
+        _, hacked_records = _load_pairs(config, split="train")
         print(f"PPO: {len(hacked_records)} exploit prompts as queries  "
-              f"hodge={hodge}  ppo_steps={ft_config.ppo_steps}", flush=True)
+              f"hodge={hodge}  ppo_steps={ft_config.ppo_steps}  "
+              f"[train split, {_HOLDOUT_FRAC:.0%} held out]", flush=True)
 
         sft_ckpt = "/checkpoints/sft"
         rm_ckpt  = "/checkpoints/rm_hodge" if hodge else "/checkpoints/rm"
@@ -355,7 +389,12 @@ def train_ppo(hodge: bool = False, experiment_id: str = "",
 @app.function(
     image=image,
     gpu="L4",
-    timeout=3600,
+    # n_eval=100 across 4 checkpoints (base/sft/ppo/hodge_ppo) is ~400
+    # unbatched single-example generations at 256 tokens each — the original
+    # 3600s timeout was hit mid-run on the first SGB-004 attempt. Sized to
+    # match Stage 3's budget with headroom; incremental writes below mean a
+    # second timeout would still keep whatever finished instead of losing all.
+    timeout=14400,
     memory=32768,
     volumes={"/checkpoints": ckpt_vol, "/results": results_vol},
     secrets=_SECRETS,
@@ -388,7 +427,9 @@ def evaluate(n_eval: int = 50) -> dict:
     ft_config = FineTuneConfig()
     ft_config.checkpoint_dir = "/checkpoints"
 
-    _, hacked_records = _load_pairs(config)
+    _, hacked_records = _load_pairs(config, split="holdout")
+    print(f"Eval set: {len(hacked_records)} held-out exploit prompts "
+          f"[holdout split, {_HOLDOUT_FRAC:.0%} of total]")
 
     # Use Hodge-RM for scoring if available, else standard RM
     rm_ckpt = (
@@ -409,18 +450,26 @@ def evaluate(n_eval: int = 50) -> dict:
 
     print(f"Evaluating: {list(checkpoints.keys())}  n_eval={n_eval}")
 
-    results = evaluate_exploit_resistance(
-        records     = hacked_records,
-        checkpoints = checkpoints,
-        rm_checkpoint= rm_ckpt,
-        config      = ft_config,
-        n_eval      = n_eval,
-    )
-
     P("/results/finetune").mkdir(parents=True, exist_ok=True)
     out_path = "/results/finetune/eval_comparison.json"
-    with open(out_path, "w") as f:
-        json.dump(results, f, indent=2)
+
+    def _on_checkpoint_done(name: str, result: dict) -> None:
+        # Commit after every checkpoint, not just at the end, so a timeout
+        # (hit on the first SGB-004 attempt) leaves the partial table on the
+        # volume instead of losing everything.
+        results_vol.commit()
+        print(f"  [{name}] mean_reward={result['mean_reward']:.4f}  "
+              f"resist={result['exploit_resistance']:.2%}  (committed)", flush=True)
+
+    results = evaluate_exploit_resistance(
+        records      = hacked_records,
+        checkpoints  = checkpoints,
+        rm_checkpoint= rm_ckpt,
+        config       = ft_config,
+        n_eval       = n_eval,
+        results_path = out_path,
+        on_checkpoint_done = _on_checkpoint_done,
+    )
 
     results_vol.commit()
 

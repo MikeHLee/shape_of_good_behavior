@@ -705,8 +705,22 @@ def evaluate_exploit_resistance(
     rm_checkpoint: str,
     config: FineTuneConfig,
     n_eval: int = 50,
+    results_path: Optional[str] = None,
+    on_checkpoint_done=None,
 ) -> Dict[str, Dict]:
-    """Generate from each checkpoint, score with RM, report exploit resistance."""
+    """Generate from each checkpoint, score with RM, report exploit resistance.
+
+    Args:
+        results_path: if set, the partial `results` dict is written here after
+            EVERY checkpoint finishes (not just at the end). n_eval=100 across
+            4 checkpoints is ~400 unbatched single-example generations, which
+            comfortably exceeds a 1-hour Modal timeout (hit in practice on the
+            first SGB-004 run) — without this, a timeout mid-run loses every
+            checkpoint evaluated so far, not just the one in progress.
+        on_checkpoint_done: optional callback(name, result_dict) invoked after
+            each checkpoint, e.g. to commit the results volume so the partial
+            write actually survives a killed container.
+    """
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     rm_model, rm_tokenizer = load_reward_model(config, checkpoint=rm_checkpoint)
@@ -719,7 +733,12 @@ def evaluate_exploit_resistance(
 
     gen_kwargs = dict(
         max_new_tokens=config.ppo_max_new_tokens,
-        do_sample=True, temperature=0.7, top_p=0.9,
+        # Greedy decoding: same bf16 + top_p combination that crashed PPO
+        # rollouts on torch.multinomial (SGB-003 v4) — a near-empty filtered
+        # distribution in bf16 can renormalize to something multinomial
+        # rejects. Eval only needs one representative completion per
+        # checkpoint, so sampling variance isn't load-bearing here either.
+        do_sample=False,
         pad_token_id=None,                           # set per model below
     )
 
@@ -761,5 +780,11 @@ def evaluate_exploit_resistance(
         results[name] = {"mean_reward": mean_r, "exploit_resistance": resist, "n": len(rewards)}
         logger.info(f"  {name}: mean_reward={mean_r:.4f}  resist={resist:.2%}")
         del model
+
+        if results_path:
+            with open(results_path, "w") as f:
+                json.dump(results, f, indent=2)
+        if on_checkpoint_done:
+            on_checkpoint_done(name, results[name])
 
     return results
