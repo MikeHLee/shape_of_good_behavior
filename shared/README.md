@@ -57,6 +57,26 @@ Three bugs fixed to get here (all in `src/lm_finetuning.py` and `modal_finetune.
 2. `log_ratio.clamp(-5, 5)` before `.exp()` — bounds ratio to [e⁻⁵, e⁵], prevents bf16 overflow at step ~45
 3. `fn.spawn().get()` dispatch — decouples remote job lifetime from local gRPC stream; prevents `InputCancellation` on local process exit
 
+### Exploit Resistance Eval — SGB-004 (2026-07-24, true train/holdout split)
+
+File: `results/finetune/sgb004_exploit_resistance_holdout.json`
+
+The SGB-003 checkpoints above were retrained from scratch on a deterministic 217/51 train/holdout split (content-keyed SHA-256 hash, seed=42, 20% held out) after discovering the first eval (below) had no split at all. All four checkpoints (base/SFT/PPO/Hodge-PPO) are scored on the same 51 held-out exploit prompts by the Hodge reward model:
+
+| Model | Mean Reward | Exploit Resistance | N |
+|-------|-------------|---------------------|---|
+| base | -1.6614 | 11.76% | 51 |
+| **SFT** | -0.6398 | **35.29%** | 51 |
+| PPO | -1.1246 | 23.53% | 51 |
+| Hodge-PPO | -1.0473 | 25.49% | 51 |
+
+**Findings, reported plainly:**
+- **The headline hypothesis is not supported.** Hodge-PPO edges out standard PPO by 25.49% vs 23.53% — a one-example swing at n=51 (13/51 vs 12/51). That's noise, not a replication of the embedding-level Hodge-DPO/Hodge-KTO advantage from the optimizer comparison benchmark above.
+- **Unexpected finding:** plain SFT (35.29%) beats both PPO variants. Not yet investigated — candidates are insufficient PPO steps (64), the KL penalty pulling back toward base, or n=51 being too small to resolve real differences.
+- All fine-tuned checkpoints beat `base`, which makes sense now (base never saw the RM signal) — that alone confirms the eval is measuring something real, unlike the retracted run below.
+
+**Retracted:** a 2026-07-23 eval run reported base=70%, sft=24%, ppo=40%, hodge_ppo=31% resistance. That run had no train/holdout split — every stage loaded the identical 517-record set, so those numbers were in-sample RM agreement, not exploit resistance on unseen data. Superseded by the table above.
+
 ### Peer Sheaf — SGB-012 (2026-06, 7–9B panel)
 
 File: `results/peer_sheaf_modal_summary.json`

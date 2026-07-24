@@ -9,7 +9,7 @@ A research series applying topological and geometric methods to alignment — Ho
 | **1 — Feedback Geometry** | `feedback_geometry/` | Experiments complete | Hodge-DPO: exploit resistance 0.9999 vs DPO 0.940 (+6.3%, d=6.52, 30 seeds) |
 | **2 — Constraint Geometry** | `constraint_geometry/` | Paper draft | SGPO geodesic barriers; Murky Drone result under revision (see caveats) |
 | **3 — Constitutional Alignment Geometry** | `constitutional_alignment_geometry/` | Results complete | Peer sheaf: convincing-game AUC 0.661 (p=2.5e-6), insider-trading AUC 0.637 (p=8e-8) at 7–9B |
-| **Shared pipeline** | `shared/` | Production | SGB-003 PPO fine-tuning verified on A100 (both standard and Hodge-PPO, 64 steps) |
+| **Shared pipeline** | `shared/` | Production | SGB-004: no LM-level Hodge-PPO advantage on true holdout (25.5% vs 23.5% PPO, noise at n=51); SFT alone best (35.3%) |
 
 ## Core Idea
 

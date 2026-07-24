@@ -79,10 +79,24 @@ Key implementation notes:
 
 Hodge-PPO negative reward is expected: it penalizes exploit-trajectory reward, so lower mean on exploit queries is the training signal. Manifests in `_runs/SGB-SGB-003_2026-07-23_*.json`.
 
+Note: these checkpoints were retrained on a corrected train/holdout split for SGB-004 (below); the numbers above are from the original (in-sample) SGB-003 run and are kept for the crash-safe manifest verification record, not as a valid exploit-resistance measurement.
+
+### Exploit Resistance Eval (SGB-004, 2026-07-24, true 217/51 train/holdout split)
+
+| Model | Exploit Resistance (n=51 holdout) |
+|-------|-----------------------------------|
+| base | 11.76% |
+| **SFT** | **35.29%** |
+| PPO | 23.53% |
+| Hodge-PPO | 25.49% |
+
+No LM-level Hodge-PPO advantage over standard PPO was found (25.49% vs 23.53% is noise at n=51) — this does not replicate the embedding-level Hodge-DPO/Hodge-KTO advantage from the optimizer comparison above. Unexpectedly, plain SFT beats both PPO variants; not yet investigated. Full writeup: `shared/README.md#exploit-resistance-eval--sgb-004-2026-07-24-true-trainholdout-split`, data: `shared/results/finetune/sgb004_exploit_resistance_holdout.json`.
+
 ## Status
 
 - [x] Optimizer comparison benchmark (30 seeds)
 - [x] PPO fine-tuning verified on A100 (SGB-003)
+- [x] Exploit resistance eval on true holdout split (SGB-004) — hypothesis not supported, SFT unexpectedly best
 - [ ] Condorcet ring benchmark (extend to 200+ seeds)
 - [ ] HH-RLHF topological audit
 - [ ] Multi-evaluator sheaf analysis

@@ -455,7 +455,11 @@ def run_sft(pairs, config: FineTuneConfig, output_dir: str) -> str:
         bf16=True,
         logging_steps=10,
         save_strategy="epoch",
-        max_length=config.sft_max_seq_length,
+        # trl is pinned <0.13.0 (see requirements-finetune.txt) for the
+        # RewardTrainer pre-tokenized schema HodgeRewardTrainer depends on;
+        # that range's SFTConfig still uses max_seq_length, not the renamed
+        # max_length from later trl releases.
+        max_seq_length=config.sft_max_seq_length,
         dataset_text_field="text",
         report_to="none",
     )
