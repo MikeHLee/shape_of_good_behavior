@@ -90,13 +90,17 @@ Note: these checkpoints were retrained on a corrected train/holdout split for SG
 | PPO | 23.53% |
 | Hodge-PPO | 25.49% |
 
-No LM-level Hodge-PPO advantage over standard PPO was found (25.49% vs 23.53% is noise at n=51) — this does not replicate the embedding-level Hodge-DPO/Hodge-KTO advantage from the optimizer comparison above. Unexpectedly, plain SFT beats both PPO variants; not yet investigated. Full writeup: `shared/README.md#exploit-resistance-eval--sgb-004-2026-07-24-true-trainholdout-split`, data: `shared/results/finetune/sgb004_exploit_resistance_holdout.json`.
+No LM-level Hodge-PPO advantage over standard PPO was found (25.49% vs 23.53% is noise at n=51) — this does not replicate the embedding-level Hodge-DPO/Hodge-KTO advantage from the optimizer comparison above. Unexpectedly, plain SFT beats both PPO variants. Full writeup: `shared/README.md#exploit-resistance-eval--sgb-004-2026-07-24-true-trainholdout-split`, data: `shared/results/finetune/sgb004_exploit_resistance_holdout.json`.
+
+**Follow-up (SGB-005b):** tested whether the Hodge decomposition is more useful as an auxiliary *feature* than as a training-time loss reweight. A first pass looked like a strong win (98% holdout accuracy separating ideal/exploit text) but that turned out to be near-tautological — the graph is fed a near-certain direct edge asserting the exact ranking being tested. An ablation removing that edge (keeping only unsupervised cross-pair kNN structure) found a much weaker, honest signal: 55–65% accuracy, above chance but not reliable at n=268. The more important finding: both reward models' training loss converged to ≈log(2) — they barely learned to discriminate at all, which likely explains why SFT beat both PPO variants above. Full writeup: `shared/README.md#hodge-as-featurizer-test--sgb-005b-2026-07-24`.
 
 ## Status
 
 - [x] Optimizer comparison benchmark (30 seeds)
 - [x] PPO fine-tuning verified on A100 (SGB-003)
 - [x] Exploit resistance eval on true holdout split (SGB-004) — hypothesis not supported, SFT unexpectedly best
+- [x] Hodge-as-featurizer ablation (SGB-005b) — weak (55–65%) unsupervised signal once tautological confound removed; root cause of SGB-004 traced to undertrained RM
+- [ ] Fix reward-model training convergence (loss stuck at ≈log 2) before any further PPO/Hodge-PPO comparison
 - [ ] Condorcet ring benchmark (extend to 200+ seeds)
 - [ ] HH-RLHF topological audit
 - [ ] Multi-evaluator sheaf analysis

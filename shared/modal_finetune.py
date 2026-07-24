@@ -487,12 +487,92 @@ def evaluate(n_eval: int = 50) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Stage 5 (SGB-005b) — Score reference pairs with the RM
+# ---------------------------------------------------------------------------
+
+@app.function(
+    image=image,
+    gpu="L4",
+    timeout=1800,
+    memory=16384,
+    volumes={"/checkpoints": ckpt_vol, "/results": results_vol},
+    secrets=_SECRETS,
+)
+def score_pairs_rm(hodge: bool = False) -> dict:
+    """Score every train+holdout (ideal_text, exploit_text) reference pair with a trained RM.
+
+    Unlike `evaluate()`, this scores the fixed reference texts directly —
+    no policy generation involved. Used for the SGB-005b "Hodge as
+    featurizer" test: whether the Hodge potential-diff (computed separately,
+    locally, from embeddings) adds ranking signal beyond the RM's own scalar
+    score, without requiring a new PPO run.
+
+    Returns:
+        {"train": [...], "holdout": [...]} — each a list of
+        {exploit_text, ideal_text, rm_exploit, rm_ideal} dicts.
+    """
+    _setup_paths()
+    _hf_cache_dir()
+    ckpt_vol.reload()
+
+    import json
+    import torch
+    from pathlib import Path as P
+
+    from shared.src.config import PipelineConfig
+    from shared.src.lm_finetuning import FineTuneConfig, load_reward_model
+
+    config = PipelineConfig()
+    config.trace_max_samples   = 517
+    config.hh_rlhf_max_samples = 0
+    config.cache_dir           = "/app/shared/data/cache"
+
+    ft_config = FineTuneConfig()
+    ft_config.checkpoint_dir = "/checkpoints"
+
+    checkpoint = "/checkpoints/rm_hodge" if hodge else "/checkpoints/rm"
+    rm_model, rm_tokenizer = load_reward_model(ft_config, checkpoint=checkpoint)
+    rm_model.eval()
+
+    def _score(text: str) -> float:
+        enc = rm_tokenizer(
+            text, truncation=True, max_length=ft_config.rm_max_length,
+            return_tensors="pt",
+        ).to(rm_model.device)
+        with torch.no_grad():
+            return rm_model(**enc).logits.squeeze(-1).item()
+
+    out = {}
+    for split in ("train", "holdout"):
+        pairs, _ = _load_pairs(config, split=split)
+        rows = []
+        for p in pairs:
+            rows.append({
+                "exploit_text": p.exploit_text,
+                "ideal_text":   p.ideal_text,
+                "rm_exploit":   _score(p.exploit_text),
+                "rm_ideal":     _score(p.ideal_text),
+            })
+        out[split] = rows
+        print(f"scored {len(rows)} pairs [{split}]", flush=True)
+
+    out_path = "/results/finetune/sgb005b_rm_scores.json"
+    P(out_path).parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w") as f:
+        json.dump(out, f, indent=2)
+    results_vol.commit()
+    print(f"  → {out_path}", flush=True)
+
+    return out
+
+
+# ---------------------------------------------------------------------------
 # Local entrypoint
 # ---------------------------------------------------------------------------
 
 @app.local_entrypoint()
 def main(
-    stage:  str  = "all",   # sft | rm | ppo | eval | all
+    stage:  str  = "all",   # sft | rm | ppo | eval | score-pairs | all
     hodge:  bool = False,
     detach: bool = False,
     n_eval: int  = 50,
@@ -513,6 +593,9 @@ def main(
     modal run shared/modal_finetune.py --stage rm --hodge
     modal run shared/modal_finetune.py --stage ppo --hodge
     modal run shared/modal_finetune.py --stage eval --n-eval 100
+
+    # SGB-005b: score reference pairs with the standard RM (featurizer test)
+    modal run shared/modal_finetune.py --stage score-pairs
 
     # Fire-and-forget (survives local disconnect)
     modal run shared/modal_finetune.py --hodge --detach
@@ -563,3 +646,8 @@ def main(
         print("--- Stage 4: Evaluation ---")
         result = _run(evaluate, n_eval=n_eval)
         print(f"  → {result}")
+
+    if stage == "score-pairs":
+        print(f"--- Stage 5 (SGB-005b): Score reference pairs with RM (hodge={hodge}) ---")
+        result = _run(score_pairs_rm, hodge=hodge)
+        print(f"  → train={len(result['train'])} holdout={len(result['holdout'])} pairs scored")

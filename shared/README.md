@@ -72,10 +72,29 @@ The SGB-003 checkpoints above were retrained from scratch on a deterministic 217
 
 **Findings, reported plainly:**
 - **The headline hypothesis is not supported.** Hodge-PPO edges out standard PPO by 25.49% vs 23.53% — a one-example swing at n=51 (13/51 vs 12/51). That's noise, not a replication of the embedding-level Hodge-DPO/Hodge-KTO advantage from the optimizer comparison benchmark above.
-- **Unexpected finding:** plain SFT (35.29%) beats both PPO variants. Not yet investigated — candidates are insufficient PPO steps (64), the KL penalty pulling back toward base, or n=51 being too small to resolve real differences.
+- **Unexpected finding:** plain SFT (35.29%) beats both PPO variants. SGB-005b below found a likely root cause: the reward model both PPO variants trained against barely learned to discriminate ideal from exploit text at all (train loss ≈ log 2).
 - All fine-tuned checkpoints beat `base`, which makes sense now (base never saw the RM signal) — that alone confirms the eval is measuring something real, unlike the retracted run below.
 
 **Retracted:** a 2026-07-23 eval run reported base=70%, sft=24%, ppo=40%, hodge_ppo=31% resistance. That run had no train/holdout split — every stage loaded the identical 517-record set, so those numbers were in-sample RM agreement, not exploit resistance on unseen data. Superseded by the table above.
+
+### Hodge-as-Featurizer Test — SGB-005b (2026-07-24)
+
+Files: `scripts/sgb005b_hodge_featurizer.py`, `results/finetune/sgb005b_rm_scores.json`, `results/finetune/sgb005b_hodge_featurizer_result.json`.
+
+Prompted by SGB-004's null result: instead of using the Hodge decomposition to reweight the RM's training loss (the existing `compute_hodge_weights` use), test whether its per-pair gradient-potential difference (`HodgeDiagnosticCritic.diagnose_for_samples().sample_potential_diffs`) is useful as an auxiliary *feature* — does it separate reference ideal/exploit text beyond what the trained RM's own scalar score captures? Scored the RM directly on the 217 train + 51 holdout reference pairs (no generation, no new PPO run — cheap CPU/L4-only test).
+
+**First pass looked great and was wrong.** Hodge feature alone: 100% train / 98.04% holdout accuracy at ranking ideal > exploit. This is near-tautological: the graph construction feeds in a direct edge asserting `ideal > exploit` at confidence 0.999 for every single pair — the same quantity then being "recovered." Caught via an ablation (setting that direct edge's confidence to 0.5, i.e. zero log-odds weight, so only the unsupervised cross-pair kNN embedding-similarity edges remain) before reporting this as a result:
+
+| Test | Train acc | Holdout acc |
+|------|-----------|-------------|
+| RM alone | 49.31% | 45.10% |
+| Hodge feature alone (with direct edge — circular) | 100.00% | 98.04% |
+| **Hodge feature alone (ablated — unsupervised kNN only)** | **55.76%** | **64.71%** |
+| RM + Hodge feature (ablated) | 53.46% | 60.78% |
+
+**Honest read:** pure embedding-geometry Hodge decomposition, with no ideal/exploit labels at all, weakly discriminates ideal from exploit text (55–65%, above chance but not reliable, and n=268 pairs is small enough that this range could shift). Combining with the RM's own score doesn't help — because the RM itself is the bigger problem.
+
+**Bigger finding, not what this test was looking for:** RM training loss converged to ≈0.69 (`log 2`) for both the standard and Hodge RM in SGB-004 — the textbook value for a Bradley-Terry loss that learned nothing beyond chance. That's the likely real explanation for SGB-004's "SFT beats both PPO variants": if the reward signal both PPO runs trained against was close to noise, no amount of Hodge weighting could be expected to show an advantage. **Before re-testing Hodge-PPO vs standard PPO, the RM training itself needs to actually converge** (more epochs/steps on 217 pairs, a learning-rate sweep, or more data) — re-running PPO on top of a broken reward signal, Hodge-weighted or not, won't produce a meaningful comparison.
 
 ### Peer Sheaf — SGB-012 (2026-06, 7–9B panel)
 
