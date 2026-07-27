@@ -105,6 +105,8 @@ No LM-level Hodge-PPO advantage over standard PPO was found (25.49% vs 23.53% is
 
 This resolves the SGB-004 anomaly: PPO now clearly beats SFT (2.22 vs 1.93 mean reward), confirming the earlier result was an artifact of the broken RM, not a real PPO/Hodge property. Hodge-PPO edges ahead of standard PPO on both metrics — the first time this investigation's direction has matched the embedding-level hypothesis — but the resistance gap is still one example at n=51 (42/51 vs 41/51), so it's directionally positive, not statistically confirmed. Full writeup: `shared/README.md#rm-root-cause-fix--corrected-rerun--sgb-005c-2026-07-27`, data: `shared/results/finetune/sgb004_exploit_resistance_holdout_v2.json`.
 
+**Follow-up writeup (SGB-005, 2026-07-27):** folded the embedding-level 30-seed benchmark and the corrected 1.5B LM-level result above into one note with a method×scale figure, shipped now (per the steady-publishing-cadence preference) rather than waiting for the 7B run. Headline: the Hodge advantage is large and clean at the embedding level (+6.3%/+24.5% over DPO/KTO) but collapses to a one-example, unconfirmed margin at the LM level (82.35% vs 80.39%, n=51) — directionally consistent, not yet a replication. Full writeup: `WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md`, figure: `figures/sgb005_fig1_method_by_scale.png`.
+
 ## Status
 
 - [x] Optimizer comparison benchmark (30 seeds)
@@ -112,11 +114,12 @@ This resolves the SGB-004 anomaly: PPO now clearly beats SFT (2.22 vs 1.93 mean 
 - [x] Exploit resistance eval on true holdout split (SGB-004) — superseded by SGB-005c below
 - [x] Hodge-as-featurizer ablation (SGB-005b) — weak (55–65%) unsupervised signal once tautological confound removed; root cause of SGB-004 traced to undertrained RM
 - [x] Fix reward-model training convergence (SGB-005c) — truncation bug found and fixed; corrected rerun shows PPO > SFT (anomaly resolved) and Hodge-PPO directionally ahead of standard PPO (not yet significant at n=51)
+- [x] First draft (SGB-005) — `WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md`, ships the 1.5B result now with caveats per the steady-publishing-cadence preference
 - [ ] More holdout data or repeated seeds to firm up the Hodge-PPO vs standard-PPO gap
+- [ ] Scale Hodge-PPO to 7B/8B (SGB-006) and fold into a follow-up revision of the writeup
 - [ ] Condorcet ring benchmark (extend to 200+ seeds)
 - [ ] HH-RLHF topological audit
 - [ ] Multi-evaluator sheaf analysis
-- [ ] First draft
 - [ ] Venue selection
 
 **Target Venue**: NeurIPS 2026 (Theory/ML track), or ICML 2027
