@@ -520,7 +520,7 @@ def score_pairs_rm(hodge: bool = False) -> dict:
     from pathlib import Path as P
 
     from shared.src.config import PipelineConfig
-    from shared.src.lm_finetuning import FineTuneConfig, load_reward_model
+    from shared.src.lm_finetuning import FineTuneConfig, load_reward_model, SYSTEM_PROMPT
 
     config = PipelineConfig()
     config.trace_max_samples   = 517
@@ -533,8 +533,24 @@ def score_pairs_rm(hodge: bool = False) -> dict:
     checkpoint = "/checkpoints/rm_hodge" if hodge else "/checkpoints/rm"
     rm_model, rm_tokenizer = load_reward_model(ft_config, checkpoint=checkpoint)
     rm_model.eval()
+    # Match build_rm_dataset/_fmt exactly (chat-templated system+context+
+    # response, left-truncated) -- scoring raw response text alone, or with
+    # the tokenizer's default right-truncation, does not match what the RM
+    # was trained on and gives meaningless numbers (caught via a sanity
+    # check: hodge RM had *lower* train loss than standard but *worse*
+    # holdout "accuracy" under the old raw-text scoring -- backwards).
+    rm_tokenizer.truncation_side = "left"
 
-    def _score(text: str) -> float:
+    def _fmt(context_text: str, response: str) -> str:
+        msgs = [
+            {"role": "system",    "content": SYSTEM_PROMPT},
+            {"role": "user",      "content": context_text.strip()},
+            {"role": "assistant", "content": response.strip()},
+        ]
+        return rm_tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=False)
+
+    def _score(context_text: str, response: str) -> float:
+        text = _fmt(context_text, response)
         enc = rm_tokenizer(
             text, truncation=True, max_length=ft_config.rm_max_length,
             return_tensors="pt",
@@ -550,13 +566,13 @@ def score_pairs_rm(hodge: bool = False) -> dict:
             rows.append({
                 "exploit_text": p.exploit_text,
                 "ideal_text":   p.ideal_text,
-                "rm_exploit":   _score(p.exploit_text),
-                "rm_ideal":     _score(p.ideal_text),
+                "rm_exploit":   _score(p.context_text, p.exploit_text),
+                "rm_ideal":     _score(p.context_text, p.ideal_text),
             })
         out[split] = rows
         print(f"scored {len(rows)} pairs [{split}]", flush=True)
 
-    out_path = "/results/finetune/sgb005b_rm_scores.json"
+    out_path = f"/results/finetune/sgb005b_rm_scores{'_hodge' if hodge else ''}.json"
     P(out_path).parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w") as f:
         json.dump(out, f, indent=2)

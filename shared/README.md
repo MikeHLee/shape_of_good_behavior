@@ -77,6 +77,8 @@ The SGB-003 checkpoints above were retrained from scratch on a deterministic 217
 
 **Retracted:** a 2026-07-23 eval run reported base=70%, sft=24%, ppo=40%, hodge_ppo=31% resistance. That run had no train/holdout split — every stage loaded the identical 517-record set, so those numbers were in-sample RM agreement, not exploit resistance on unseen data. Superseded by the table above.
 
+**Update (2026-07-27):** the table above is itself superseded — SGB-005c found and fixed the real cause of the "SFT beats both PPO variants" anomaly (a reward-model truncation bug, not a fundamental PPO/Hodge property). See SGB-005c below for the corrected numbers.
+
 ### Hodge-as-Featurizer Test — SGB-005b (2026-07-24)
 
 Files: `scripts/sgb005b_hodge_featurizer.py`, `results/finetune/sgb005b_rm_scores.json`, `results/finetune/sgb005b_hodge_featurizer_result.json`.
@@ -95,6 +97,29 @@ Prompted by SGB-004's null result: instead of using the Hodge decomposition to r
 **Honest read:** pure embedding-geometry Hodge decomposition, with no ideal/exploit labels at all, weakly discriminates ideal from exploit text (55–65%, above chance but not reliable, and n=268 pairs is small enough that this range could shift). Combining with the RM's own score doesn't help — because the RM itself is the bigger problem.
 
 **Bigger finding, not what this test was looking for:** RM training loss converged to ≈0.69 (`log 2`) for both the standard and Hodge RM in SGB-004 — the textbook value for a Bradley-Terry loss that learned nothing beyond chance. That's the likely real explanation for SGB-004's "SFT beats both PPO variants": if the reward signal both PPO runs trained against was close to noise, no amount of Hodge weighting could be expected to show an advantage. **Before re-testing Hodge-PPO vs standard PPO, the RM training itself needs to actually converge** (more epochs/steps on 217 pairs, a learning-rate sweep, or more data) — re-running PPO on top of a broken reward signal, Hodge-weighted or not, won't produce a meaningful comparison.
+
+### RM Root-Cause Fix + Corrected Rerun — SGB-005c (2026-07-27)
+
+File: `results/finetune/sgb004_exploit_resistance_holdout_v2.json`
+
+Chasing the "RM stuck at log(2)" finding from SGB-005b to its actual cause, not just its symptom. First attempt (more epochs, higher LR) changed nothing — 5x the steps and 2x the LR left both RMs at ≈0.69 loss, ruling out "undertrained." The real cause: TRACE `context_text` averages ~1010 tokens (median 947, max 2122), but `rm_max_length=512` combined with the tokenizer's default right-truncation cut the chat-templated sequence off *before the assistant turn even started* — so 49/50 sampled chosen/rejected pairs were byte-identical after truncation. The RM was training on duplicate inputs; no amount of epochs or LR could fix that.
+
+**Fix:** `tokenizer.truncation_side = "left"` in `build_rm_dataset` (preserves the differentiating tail), `rm_max_length` 512→1024, and `rm_batch_size` 4→1 / `rm_grad_accum` 4→16 (batch=4 at the longer length OOM'd on L4). Result: both RMs' loss dropped from stuck-at-chance to fully saturated (train_loss 0.083 standard / 0.019 Hodge) within ~2 epochs. Verified this wasn't a training-set-only artifact by scoring both RMs directly on reference pairs in the exact chat-template + left-truncation format they trained on: **100% train AND 100% holdout ranking accuracy** for both (mean margin ~32–34 in logit space), up from 49.31%/45.10% (chance) before the fix. (A first version of this sanity check itself had a bug — it scored raw untemplated text with default right-truncation, giving misleading numbers; caught because the Hodge RM had *lower* train loss than standard but *worse* apparent accuracy, which is backwards and was the tell.)
+
+With the RM genuinely converged, retrained both PPO variants (64 steps, A100, same as before) and reran the Stage 4 eval on the true 51-record holdout:
+
+| Model | Mean Reward | Exploit Resistance | N |
+|-------|-------------|---------------------|---|
+| base | 1.1432 | 68.63% | 51 |
+| SFT | 1.9272 | 80.39% | 51 |
+| PPO | 2.2174 | 80.39% | 51 |
+| **Hodge-PPO** | **2.5873** | **82.35%** | 51 |
+
+**This resolves the SGB-004 anomaly.** PPO now clearly beats SFT on mean reward (2.22 vs 1.93) and matches it on resistance — confirming the earlier "SFT beats PPO" result was an artifact of PPO training against a near-random reward signal, not a real property of PPO. Ordering is now sensible and monotonic: base < SFT = PPO < Hodge-PPO.
+
+**On the headline hypothesis:** Hodge-PPO edges out standard PPO on both metrics for the first time in this investigation, in the hypothesized direction — but the resistance gap is still a single example at n=51 (42/51 vs 41/51), not statistically distinguishable at this sample size. The continuous mean-reward gap (0.37) is comparable in size to PPO's own margin over SFT (0.29), which is suggestive but not a substitute for a real significance test — per-example rewards weren't persisted, only aggregates, so no paired test was possible from this run. Directionally positive, not yet confirmed; more holdout data (or repeated seeds) is the cheapest path to a firmer answer, not further RM/PPO tuning.
+
+**Caveat:** both RMs' training loss hit exactly 0.0 several epochs before the configured 10 finished — extreme confidence on only 217 training pairs, a real overfitting signature in absolute terms. It doesn't appear to have hurt holdout generalization here (100% holdout ranking accuracy, sensible downstream PPO ordering), but epoch count wasn't independently tuned down to rule out.
 
 ### Peer Sheaf — SGB-012 (2026-06, 7–9B panel)
 

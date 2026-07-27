@@ -64,11 +64,27 @@ class FineTuneConfig:
     sft_max_seq_length: int = 512
 
     # Reward model
-    rm_epochs: int = 2
-    rm_lr: float = 1e-4
-    rm_batch_size: int = 4
-    rm_grad_accum: int = 4
-    rm_max_length: int = 512
+    # SGB-005b found both RMs' Bradley-Terry loss stuck at ~log(2) (chance).
+    # Root cause (SGB-005c): TRACE context_text averages ~1010 tokens
+    # (median 947, max 2122) -- with rm_max_length=512 and the tokenizer's
+    # default right-truncation, the chat-templated (system+user+assistant)
+    # sequence got truncated *before* the assistant turn even started, so
+    # 49/50 sampled chosen/rejected pairs were byte-for-byte identical
+    # after truncation. The RM was training on duplicate inputs; no amount
+    # of epochs/lr could fix that (see build_rm_dataset's truncation_side
+    # override, the actual fix). rm_max_length bumped 512->1024 for more
+    # retained context now that truncation keeps the differentiating tail.
+    # epochs/lr bump (2->10, 1e-4->2e-4) kept from the first (insufficient)
+    # attempt -- harmless now that there's real signal to learn from.
+    # rm_batch_size dropped 4->1 (grad_accum raised 4->16 to keep the same
+    # effective batch=16): at rm_max_length=1024, batch=4 forwards 8
+    # sequences (chosen+rejected) of up to 1024 tokens at once and OOM'd
+    # on L4's 22GB. batch=1 forwards 2 sequences at a time instead.
+    rm_epochs: int = 10
+    rm_lr: float = 2e-4
+    rm_batch_size: int = 1
+    rm_grad_accum: int = 16
+    rm_max_length: int = 1024
 
     # PPO (custom loop — PPO-Clip without value network)
     ppo_steps: int = 256             # gradient update steps
@@ -122,6 +138,13 @@ def build_rm_dataset(
     """
     if hodge_weights is not None and len(hodge_weights) != len(pairs):
         raise ValueError(f"hodge_weights length {len(hodge_weights)} != pairs {len(pairs)}")
+
+    # SGB-005c fix: TRACE context_text is long enough (mean ~1010 tokens)
+    # that right-truncation (the tokenizer default) cut off the assistant
+    # turn entirely before it started, making chosen/rejected identical
+    # after truncation for ~98% of pairs. Left-truncation keeps the
+    # differentiating tail (the assistant response) intact.
+    tokenizer.truncation_side = "left"
 
     rows = []
     for i, pair in enumerate(pairs):

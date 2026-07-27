@@ -94,13 +94,25 @@ No LM-level Hodge-PPO advantage over standard PPO was found (25.49% vs 23.53% is
 
 **Follow-up (SGB-005b):** tested whether the Hodge decomposition is more useful as an auxiliary *feature* than as a training-time loss reweight. A first pass looked like a strong win (98% holdout accuracy separating ideal/exploit text) but that turned out to be near-tautological — the graph is fed a near-certain direct edge asserting the exact ranking being tested. An ablation removing that edge (keeping only unsupervised cross-pair kNN structure) found a much weaker, honest signal: 55–65% accuracy, above chance but not reliable at n=268. The more important finding: both reward models' training loss converged to ≈log(2) — they barely learned to discriminate at all, which likely explains why SFT beat both PPO variants above. Full writeup: `shared/README.md#hodge-as-featurizer-test--sgb-005b-2026-07-24`.
 
+**Root cause + corrected rerun (SGB-005c, 2026-07-27):** the RM's stuck-at-chance loss traced to a real bug, not just undertraining — TRACE `context_text` is long enough (~1010 tokens average) that the default right-truncation at `rm_max_length=512` cut the sequence off before the assistant response even started, making chosen/rejected byte-identical for ~98% of pairs. Fixed with left-truncation + a longer context window; both RMs then converged properly, verified at **100% train and 100% holdout ranking accuracy** on reference pairs (up from 49%/45% chance). Retrained both PPO variants against the fixed RM and reran eval:
+
+| Model | Mean Reward | Exploit Resistance (n=51) |
+|-------|-------------|-----------------------------|
+| base | 1.1432 | 68.63% |
+| SFT | 1.9272 | 80.39% |
+| PPO | 2.2174 | 80.39% |
+| **Hodge-PPO** | **2.5873** | **82.35%** |
+
+This resolves the SGB-004 anomaly: PPO now clearly beats SFT (2.22 vs 1.93 mean reward), confirming the earlier result was an artifact of the broken RM, not a real PPO/Hodge property. Hodge-PPO edges ahead of standard PPO on both metrics — the first time this investigation's direction has matched the embedding-level hypothesis — but the resistance gap is still one example at n=51 (42/51 vs 41/51), so it's directionally positive, not statistically confirmed. Full writeup: `shared/README.md#rm-root-cause-fix--corrected-rerun--sgb-005c-2026-07-27`, data: `shared/results/finetune/sgb004_exploit_resistance_holdout_v2.json`.
+
 ## Status
 
 - [x] Optimizer comparison benchmark (30 seeds)
 - [x] PPO fine-tuning verified on A100 (SGB-003)
-- [x] Exploit resistance eval on true holdout split (SGB-004) — hypothesis not supported, SFT unexpectedly best
+- [x] Exploit resistance eval on true holdout split (SGB-004) — superseded by SGB-005c below
 - [x] Hodge-as-featurizer ablation (SGB-005b) — weak (55–65%) unsupervised signal once tautological confound removed; root cause of SGB-004 traced to undertrained RM
-- [ ] Fix reward-model training convergence (loss stuck at ≈log 2) before any further PPO/Hodge-PPO comparison
+- [x] Fix reward-model training convergence (SGB-005c) — truncation bug found and fixed; corrected rerun shows PPO > SFT (anomaly resolved) and Hodge-PPO directionally ahead of standard PPO (not yet significant at n=51)
+- [ ] More holdout data or repeated seeds to firm up the Hodge-PPO vs standard-PPO gap
 - [ ] Condorcet ring benchmark (extend to 200+ seeds)
 - [ ] HH-RLHF topological audit
 - [ ] Multi-evaluator sheaf analysis
