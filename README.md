@@ -45,6 +45,10 @@ high_dimensional_reward_spaces/
 │   ├── scenarios/               # Test scenarios
 │   └── simulations/             # Simulation code
 │
+├── threads/                     # X/Twitter thread series (public communication)
+│   ├── README.md                # Series plan, claims discipline, figure style
+│   └── NN_slug/                 # Per-thread copy + generate_figures.py + figures/
+│
 ├── handoffs/                    # Collaboration handoff docs
 │   └── 14_MATHEMATICAL_RESTRUCTURING.md  # Module separation guide
 │
@@ -133,8 +137,15 @@ print(f'Geodesic distance through danger: {metric.geodesic_distance_approx(np.ar
 
 See `handoffs/14_MATHEMATICAL_RESTRUCTURING.md` for full details.
 
+## Writing & Public Communication
+
+- [Thread series](threads/README.md) — X/Twitter threads + blog (Ghost,
+  mirrored to Substack) for the headline results; per-thread figure
+  pipelines regenerate every chart from the result JSONs.
+
 ## Quick Links
 
+- [Thread Series](threads/README.md) — Public-communication track (X + blog)
 - [Mathematical Restructuring](handoffs/14_MATHEMATICAL_RESTRUCTURING.md) — Module separation guide
 - [Research Proposal](docs/RESEARCH_PROPOSAL.md) — Core document (under revision)
 - [Hodge Theory Reference](Hodge%20Theory,%20Bilattices,%20and%20Social%20Choice.pdf) — Key mathematical reference
