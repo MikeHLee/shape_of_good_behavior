@@ -587,6 +587,7 @@ def run_ppo(
     config: FineTuneConfig,
     output_dir: str,
     on_checkpoint=None,
+    resume_from: Optional[str] = None,
 ) -> Dict:
     """Custom PPO-Clip training loop against the reward model.
 
@@ -600,14 +601,29 @@ def run_ppo(
             after the training loop completes normally. SGB-006's first 7B
             standard-PPO attempt hit exactly this: a 6-hour Modal timeout at
             step 155/256 with nothing to show for it.
+        resume_from: optional path to a previous PPO checkpoint directory
+            (same layout `output_dir` writes: an adapter checkpoint plus
+            `_ppo_progress.json`). When set, the POLICY loads from here
+            instead of `sft_checkpoint`, and `steps_done` starts from the
+            checkpoint's recorded progress rather than 0 — so only the
+            remaining steps run, not the whole budget again. `ref_policy`
+            always loads from `sft_checkpoint` regardless: the KL reference
+            must stay the original SFT model, not a partially-trained policy.
+            NOT restored: Adam's moment estimates (the optimizer restarts
+            fresh) and per-step reward history from before the resume point
+            (`mean_reward_all`/`mean_reward_final` in the returned stats only
+            cover steps run in this call).
 
     Uses PPO-Clip without a value network — advantage = normalised reward.
     KL penalty keeps the policy close to the SFT reference.
     """
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # Policy (trainable) and frozen SFT reference
-    policy,     tokenizer = load_policy_model(config, checkpoint=sft_checkpoint)
+    # Policy (trainable) and frozen SFT reference. If resuming, the policy
+    # loads from the interrupted checkpoint (load_policy_model auto-detects
+    # a PEFT adapter dir via adapter_config.json); the reference always stays
+    # the original SFT checkpoint.
+    policy,     tokenizer = load_policy_model(config, checkpoint=resume_from or sft_checkpoint)
     ref_policy, _         = load_policy_model(config, checkpoint=sft_checkpoint)
     for p in ref_policy.parameters():
         p.requires_grad_(False)
@@ -659,6 +675,13 @@ def run_ppo(
     )
 
     all_rewards, steps_done = [], 0
+    if resume_from is not None:
+        progress_path = Path(resume_from) / "_ppo_progress.json"
+        if progress_path.exists():
+            with open(progress_path) as f:
+                steps_done = json.load(f)["steps_done"]
+        print(f"  [resume] policy loaded from {resume_from}, starting at "
+              f"step {steps_done}/{config.ppo_steps}", flush=True)
 
     while steps_done < config.ppo_steps:
         # Sample a batch of queries

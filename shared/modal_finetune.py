@@ -811,7 +811,7 @@ def train_reward_model_7b(hodge: bool = False) -> str:
     secrets=_SECRETS,
 )
 def train_ppo_7b(hodge: bool = False, experiment_id: str = "",
-                  ppo_steps: int = 0) -> dict:
+                  ppo_steps: int = 0, resume: bool = False) -> dict:
     """SGB-006: PPO at 7B against the 7B reward model.
 
     Same manifest-tracked dispatch pattern as `train_ppo` (SGB-003); tagged
@@ -819,6 +819,15 @@ def train_ppo_7b(hodge: bool = False, experiment_id: str = "",
     `ppo_steps` override exists for the same reason it does in `train_ppo`:
     a cheap smoke test before committing to the full step count, which costs
     substantially more wall-clock per step at 7B than at 1.5B.
+
+    `resume`: if True, loads the policy from the existing checkpoint at
+    `out_dir` (see below) and continues from its recorded step count instead
+    of restarting from the SFT checkpoint at step 0. Added after the standard
+    (non-Hodge) PPO-7B run was stopped by the user at step 100/256 for cost
+    control (SGB-042 Stage A found the RM signal isn't a length/style
+    artifact, making the standard-vs-Hodge comparison worth finishing) —
+    restarting from scratch would re-spend the ~$96 for all 256 steps instead
+    of ~$58-60 for the remaining ~156.
     """
     _setup_paths()
     _hf_cache_dir()
@@ -889,6 +898,25 @@ def train_ppo_7b(hodge: bool = False, experiment_id: str = "",
             ckpt_vol.commit()
             print(f"  [7B] checkpoint committed at step {steps_done}", flush=True)
 
+        resume_from = None
+        if resume:
+            progress_file = P(out_dir) / "_ppo_progress.json"
+            if not progress_file.exists():
+                raise FileNotFoundError(
+                    f"resume=True but no checkpoint progress file at {progress_file} "
+                    f"-- nothing to resume from."
+                )
+            with open(progress_file) as f:
+                prior = json.load(f)
+            if prior.get("complete"):
+                raise ValueError(
+                    f"resume=True but {progress_file} is already marked complete "
+                    f"({prior['steps_done']}/{prior['total_steps']} steps) -- nothing to resume."
+                )
+            resume_from = out_dir
+            print(f"[7B] resuming PPO from {out_dir} at step "
+                  f"{prior['steps_done']}/{prior['total_steps']}", flush=True)
+
         stats = run_ppo(
             records       = hacked_records,
             sft_checkpoint= sft_ckpt,
@@ -896,6 +924,7 @@ def train_ppo_7b(hodge: bool = False, experiment_id: str = "",
             config        = ft_config,
             output_dir    = out_dir,
             on_checkpoint = _on_checkpoint,
+            resume_from   = resume_from,
         )
         stats["hodge"] = hodge
 
@@ -1028,6 +1057,7 @@ def main(
     hodge:  bool = False,
     n_eval: int  = 50,
     ppo_steps: int = 0,     # override FineTuneConfig.ppo_steps (default 256)
+    resume: bool = False,   # ppo-7b only: continue from the existing checkpoint's step count
 ):
     """Orchestrate the fine-tuning pipeline on Modal GPU.
 
@@ -1125,13 +1155,13 @@ def main(
         print(f"  → train_acc={train_acc:.2%}  holdout_acc={hold_acc:.2%}")
 
     if stage == "ppo-7b":
-        print(f"--- SGB-006 Stage 3: PPO (7B, hodge={hodge}) ---")
+        print(f"--- SGB-006 Stage 3: PPO (7B, hodge={hodge}, resume={resume}) ---")
         from shared_modal import mirror_from_volume, new_experiment_id
         exp_id = new_experiment_id()
         print(f"  manifest id: {exp_id}  (SGB-006 — see modal_finetune.py train_ppo_7b)")
         try:
             result = _run(train_ppo_7b, hodge=hodge, experiment_id=exp_id,
-                          ppo_steps=ppo_steps)
+                          ppo_steps=ppo_steps, resume=resume)
             print(f"  → {result}")
         finally:
             dest = mirror_from_volume(
