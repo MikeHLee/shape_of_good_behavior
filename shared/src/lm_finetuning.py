@@ -94,6 +94,16 @@ class FineTuneConfig:
     ppo_epsilon: float = 0.2         # clip ratio
     ppo_kl_coeff: float = 0.05       # KL penalty coefficient
     ppo_max_new_tokens: int = 256
+    # SGB-006: off by default (unverified for the 1.5B path, unnecessary there
+    # -- the whole point is to save activation memory a 1.5B model doesn't
+    # need saved). Set True only for the 7B PPO stage; see run_ppo.
+    ppo_gradient_checkpointing: bool = False
+    # 0 = disabled (1.5B default, unchanged -- those runs always finished
+    # inside their timeout so this was never needed). Set >0 for the 7B PPO
+    # stage: a 6-hour timeout killed the first real 7B attempt at step
+    # 155/256 with zero checkpoint saved, since the only save previously was
+    # policy.save_pretrained() after the loop exits normally. See run_ppo.
+    ppo_checkpoint_every: int = 0
 
     # Checkpointing
     checkpoint_dir: str = "/checkpoints"
@@ -576,8 +586,20 @@ def run_ppo(
     rm_checkpoint: str,
     config: FineTuneConfig,
     output_dir: str,
+    on_checkpoint=None,
 ) -> Dict:
     """Custom PPO-Clip training loop against the reward model.
+
+    Args:
+        on_checkpoint: optional callback(steps_done) invoked right after each
+            periodic checkpoint write (config.ppo_checkpoint_every > 0), so a
+            caller with access to the Modal volume object can commit it —
+            `run_ppo` itself has no volume handle, only `output_dir`. Without
+            this, a killed/timed-out run loses ALL progress: the only
+            existing save (policy.save_pretrained at the very end) only runs
+            after the training loop completes normally. SGB-006's first 7B
+            standard-PPO attempt hit exactly this: a 6-hour Modal timeout at
+            step 155/256 with nothing to show for it.
 
     Uses PPO-Clip without a value network — advantage = normalised reward.
     KL penalty keeps the policy close to the SFT reference.
@@ -590,6 +612,21 @@ def run_ppo(
     for p in ref_policy.parameters():
         p.requires_grad_(False)
     ref_policy.eval()
+
+    # SGB-006: at 7B, the three full model copies (policy/ref/rm) fit in
+    # bf16 weights alone, but the PPO inner-loop backward pass over the
+    # trainable policy's activations does not -- a batch=8 smoke test OOM'd
+    # on A100-80GB with 79.18/79.25 GiB already in use before the backward
+    # pass even finished one batch. Gradient checkpointing recomputes
+    # activations during backward instead of storing them; it changes
+    # nothing about the math, only trades compute for memory, so this is
+    # safe to enable without affecting the (already-verified) 1.5B results,
+    # which don't set this flag. `enable_input_require_grads` is required
+    # alongside it for LoRA/PEFT models -- without it the frozen embedding
+    # layer breaks the autograd graph and gradients silently don't flow.
+    if config.ppo_gradient_checkpointing:
+        policy.gradient_checkpointing_enable()
+        policy.enable_input_require_grads()
 
     # Frozen reward model
     rm_model, rm_tokenizer = load_reward_model(config, checkpoint=rm_checkpoint)
@@ -710,9 +747,34 @@ def run_ppo(
                 flush=True,
             )
 
+        # Periodic checkpoint: LoRA-only adapters are tiny (~40MB for this
+        # model size), so this is cheap even every few steps. Writes a
+        # progress manifest alongside the adapter so a consumer (evaluate_7b)
+        # can tell an interrupted checkpoint apart from a completed one --
+        # the discarded first 7B attempt left an invalid checkpoint sitting
+        # at the exact path a later eval would have silently picked up.
+        if config.ppo_checkpoint_every > 0 and steps_done % config.ppo_checkpoint_every == 0:
+            Path(output_dir).mkdir(parents=True, exist_ok=True)
+            policy.save_pretrained(output_dir)
+            tokenizer.save_pretrained(output_dir)
+            with open(Path(output_dir) / "_ppo_progress.json", "w") as f:
+                json.dump(
+                    {"steps_done": steps_done, "total_steps": config.ppo_steps, "complete": False},
+                    f,
+                )
+            if on_checkpoint:
+                on_checkpoint(steps_done)
+            print(f"  [checkpoint] saved at step {steps_done}/{config.ppo_steps}", flush=True)
+
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     policy.save_pretrained(output_dir)
     tokenizer.save_pretrained(output_dir)
+    if config.ppo_checkpoint_every > 0:
+        with open(Path(output_dir) / "_ppo_progress.json", "w") as f:
+            json.dump(
+                {"steps_done": steps_done, "total_steps": config.ppo_steps, "complete": True},
+                f,
+            )
     logger.info(f"PPO saved → {output_dir}")
 
     return {

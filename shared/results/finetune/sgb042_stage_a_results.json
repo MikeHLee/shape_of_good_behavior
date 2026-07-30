@@ -1,0 +1,277 @@
+{
+  "length_match_tolerance": 0.2,
+  "datasets": {
+    "1.5B_standard": {
+      "train": {
+        "n_total": 217,
+        "n_length_matched": 12,
+        "pct_length_matched": 5.5,
+        "rm_ranking_accuracy_all": 1.0,
+        "rm_ranking_accuracy_length_matched": 1.0,
+        "length_matched_binomial_p_vs_chance": 0.000488,
+        "length_only_classifier_accuracy_all": 0.9585,
+        "tolerance_sweep": {
+          "0.1": {
+            "n": 6,
+            "accuracy": 1.0
+          },
+          "0.2": {
+            "n": 12,
+            "accuracy": 1.0
+          },
+          "0.3": {
+            "n": 27,
+            "accuracy": 1.0
+          },
+          "0.5": {
+            "n": 79,
+            "accuracy": 1.0
+          }
+        },
+        "n_hedge_opener": 83,
+        "pct_hedge_opener": 38.2,
+        "rm_ranking_accuracy_no_hedge_opener": 1.0,
+        "no_hedge_binomial_p_vs_chance": 0.0,
+        "n_length_matched_and_no_hedge": 11,
+        "rm_ranking_accuracy_length_matched_and_no_hedge": 1.0
+      },
+      "holdout": {
+        "n_total": 51,
+        "n_length_matched": 5,
+        "pct_length_matched": 9.8,
+        "rm_ranking_accuracy_all": 1.0,
+        "rm_ranking_accuracy_length_matched": 1.0,
+        "length_matched_binomial_p_vs_chance": 0.0625,
+        "length_only_classifier_accuracy_all": 0.9608,
+        "tolerance_sweep": {
+          "0.1": {
+            "n": 2,
+            "accuracy": 1.0
+          },
+          "0.2": {
+            "n": 5,
+            "accuracy": 1.0
+          },
+          "0.3": {
+            "n": 9,
+            "accuracy": 1.0
+          },
+          "0.5": {
+            "n": 18,
+            "accuracy": 1.0
+          }
+        },
+        "n_hedge_opener": 19,
+        "pct_hedge_opener": 37.3,
+        "rm_ranking_accuracy_no_hedge_opener": 1.0,
+        "no_hedge_binomial_p_vs_chance": 0.0,
+        "n_length_matched_and_no_hedge": 5,
+        "rm_ranking_accuracy_length_matched_and_no_hedge": 1.0
+      }
+    },
+    "1.5B_hodge": {
+      "train": {
+        "n_total": 217,
+        "n_length_matched": 12,
+        "pct_length_matched": 5.5,
+        "rm_ranking_accuracy_all": 1.0,
+        "rm_ranking_accuracy_length_matched": 1.0,
+        "length_matched_binomial_p_vs_chance": 0.000488,
+        "length_only_classifier_accuracy_all": 0.9585,
+        "tolerance_sweep": {
+          "0.1": {
+            "n": 6,
+            "accuracy": 1.0
+          },
+          "0.2": {
+            "n": 12,
+            "accuracy": 1.0
+          },
+          "0.3": {
+            "n": 27,
+            "accuracy": 1.0
+          },
+          "0.5": {
+            "n": 79,
+            "accuracy": 1.0
+          }
+        },
+        "n_hedge_opener": 83,
+        "pct_hedge_opener": 38.2,
+        "rm_ranking_accuracy_no_hedge_opener": 1.0,
+        "no_hedge_binomial_p_vs_chance": 0.0,
+        "n_length_matched_and_no_hedge": 11,
+        "rm_ranking_accuracy_length_matched_and_no_hedge": 1.0
+      },
+      "holdout": {
+        "n_total": 51,
+        "n_length_matched": 5,
+        "pct_length_matched": 9.8,
+        "rm_ranking_accuracy_all": 1.0,
+        "rm_ranking_accuracy_length_matched": 1.0,
+        "length_matched_binomial_p_vs_chance": 0.0625,
+        "length_only_classifier_accuracy_all": 0.9608,
+        "tolerance_sweep": {
+          "0.1": {
+            "n": 2,
+            "accuracy": 1.0
+          },
+          "0.2": {
+            "n": 5,
+            "accuracy": 1.0
+          },
+          "0.3": {
+            "n": 9,
+            "accuracy": 1.0
+          },
+          "0.5": {
+            "n": 18,
+            "accuracy": 1.0
+          }
+        },
+        "n_hedge_opener": 19,
+        "pct_hedge_opener": 37.3,
+        "rm_ranking_accuracy_no_hedge_opener": 1.0,
+        "no_hedge_binomial_p_vs_chance": 0.0,
+        "n_length_matched_and_no_hedge": 5,
+        "rm_ranking_accuracy_length_matched_and_no_hedge": 1.0
+      }
+    },
+    "7B_standard": {
+      "train": {
+        "n_total": 217,
+        "n_length_matched": 12,
+        "pct_length_matched": 5.5,
+        "rm_ranking_accuracy_all": 1.0,
+        "rm_ranking_accuracy_length_matched": 1.0,
+        "length_matched_binomial_p_vs_chance": 0.000488,
+        "length_only_classifier_accuracy_all": 0.9585,
+        "tolerance_sweep": {
+          "0.1": {
+            "n": 6,
+            "accuracy": 1.0
+          },
+          "0.2": {
+            "n": 12,
+            "accuracy": 1.0
+          },
+          "0.3": {
+            "n": 27,
+            "accuracy": 1.0
+          },
+          "0.5": {
+            "n": 79,
+            "accuracy": 1.0
+          }
+        },
+        "n_hedge_opener": 83,
+        "pct_hedge_opener": 38.2,
+        "rm_ranking_accuracy_no_hedge_opener": 1.0,
+        "no_hedge_binomial_p_vs_chance": 0.0,
+        "n_length_matched_and_no_hedge": 11,
+        "rm_ranking_accuracy_length_matched_and_no_hedge": 1.0
+      },
+      "holdout": {
+        "n_total": 51,
+        "n_length_matched": 5,
+        "pct_length_matched": 9.8,
+        "rm_ranking_accuracy_all": 1.0,
+        "rm_ranking_accuracy_length_matched": 1.0,
+        "length_matched_binomial_p_vs_chance": 0.0625,
+        "length_only_classifier_accuracy_all": 0.9608,
+        "tolerance_sweep": {
+          "0.1": {
+            "n": 2,
+            "accuracy": 1.0
+          },
+          "0.2": {
+            "n": 5,
+            "accuracy": 1.0
+          },
+          "0.3": {
+            "n": 9,
+            "accuracy": 1.0
+          },
+          "0.5": {
+            "n": 18,
+            "accuracy": 1.0
+          }
+        },
+        "n_hedge_opener": 19,
+        "pct_hedge_opener": 37.3,
+        "rm_ranking_accuracy_no_hedge_opener": 1.0,
+        "no_hedge_binomial_p_vs_chance": 0.0,
+        "n_length_matched_and_no_hedge": 5,
+        "rm_ranking_accuracy_length_matched_and_no_hedge": 1.0
+      }
+    },
+    "7B_hodge": {
+      "train": {
+        "n_total": 217,
+        "n_length_matched": 12,
+        "pct_length_matched": 5.5,
+        "rm_ranking_accuracy_all": 1.0,
+        "rm_ranking_accuracy_length_matched": 1.0,
+        "length_matched_binomial_p_vs_chance": 0.000488,
+        "length_only_classifier_accuracy_all": 0.9585,
+        "tolerance_sweep": {
+          "0.1": {
+            "n": 6,
+            "accuracy": 1.0
+          },
+          "0.2": {
+            "n": 12,
+            "accuracy": 1.0
+          },
+          "0.3": {
+            "n": 27,
+            "accuracy": 1.0
+          },
+          "0.5": {
+            "n": 79,
+            "accuracy": 1.0
+          }
+        },
+        "n_hedge_opener": 83,
+        "pct_hedge_opener": 38.2,
+        "rm_ranking_accuracy_no_hedge_opener": 1.0,
+        "no_hedge_binomial_p_vs_chance": 0.0,
+        "n_length_matched_and_no_hedge": 11,
+        "rm_ranking_accuracy_length_matched_and_no_hedge": 1.0
+      },
+      "holdout": {
+        "n_total": 51,
+        "n_length_matched": 5,
+        "pct_length_matched": 9.8,
+        "rm_ranking_accuracy_all": 1.0,
+        "rm_ranking_accuracy_length_matched": 1.0,
+        "length_matched_binomial_p_vs_chance": 0.0625,
+        "length_only_classifier_accuracy_all": 0.9608,
+        "tolerance_sweep": {
+          "0.1": {
+            "n": 2,
+            "accuracy": 1.0
+          },
+          "0.2": {
+            "n": 5,
+            "accuracy": 1.0
+          },
+          "0.3": {
+            "n": 9,
+            "accuracy": 1.0
+          },
+          "0.5": {
+            "n": 18,
+            "accuracy": 1.0
+          }
+        },
+        "n_hedge_opener": 19,
+        "pct_hedge_opener": 37.3,
+        "rm_ranking_accuracy_no_hedge_opener": 1.0,
+        "no_hedge_binomial_p_vs_chance": 0.0,
+        "n_length_matched_and_no_hedge": 5,
+        "rm_ranking_accuracy_length_matched_and_no_hedge": 1.0
+      }
+    }
+  }
+}

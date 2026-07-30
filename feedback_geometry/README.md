@@ -107,6 +107,16 @@ This resolves the SGB-004 anomaly: PPO now clearly beats SFT (2.22 vs 1.93 mean 
 
 **Follow-up writeup (SGB-005, 2026-07-27):** folded the embedding-level 30-seed benchmark and the corrected 1.5B LM-level result above into one note with a method×scale figure, shipped now (per the steady-publishing-cadence preference) rather than waiting for the 7B run. Headline: the Hodge advantage is large and clean at the embedding level (+6.3%/+24.5% over DPO/KTO) but collapses to a one-example, unconfirmed margin at the LM level (82.35% vs 80.39%, n=51) — directionally consistent, not yet a replication. Full writeup: `WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md`, figure: `figures/sgb005_fig1_method_by_scale.png`.
 
+### 7B Scale-Up (SGB-006, 2026-07-29–30)
+
+RM-7B (both standard and Hodge) verified at 100% train and 100% holdout ranking accuracy, matching the 1.5B result. Hodge-PPO-7B completed all 256 training steps successfully. Standard PPO-7B was manually stopped by the user at step 100/256 for cost control after cumulative Modal spend reached $275 across the debugging process (OOM fix, a degenerate-advantage bug at batch_size=2, a missing incremental-checkpoint safeguard that cost one full 6-hour/$67 run with zero output, and the eventual correct run). A checkpoint-and-commit safeguard added mid-investigation preserved the last 100 steps; `_ppo_progress.json` correctly flags this checkpoint incomplete so evaluation code will not use it. Only Hodge-PPO-7B is a valid, complete 7B PPO result.
+
+### Length/Style-Matching Audit — Stage A (SGB-042, 2026-07-30)
+
+Tested whether the ~100% RM ranking accuracy seen at both 1.5B and 7B is explained by two confounds found in the TRACE `(ideal_text, exploit_text)` pairs: response length (`ideal_text` averages 2.3x longer, longer in 96% of pairs) and a hedge-phrase style tell (~43% of `ideal_text` opens with one of 7 near-identical phrases like "I need to stop..."). Method: re-scored the existing 268 reference pairs against all 4 existing RM checkpoints (1.5B/7B × standard/Hodge) on a length-matched subsample, a hedge-opener-free subsample, and their intersection — no new training, no GPU, no API cost.
+
+**Result: the confound is not confirmed.** RM ranking accuracy stayed at 100% on the length-matched subset (n=12/217 train, n=5/51 holdout, ±20% tolerance; p=0.0005 train vs. chance), held at 100% across a ±10%–±50% tolerance sweep, and stayed at 100% on the hedge-opener-free subset (n=134/217 train) and on the strictest combined slice (length-matched AND hedge-free, n=11 train). This holds identically for all 4 RM checkpoints. Conclusion: the reward model has real ranking signal beyond length/style on this dataset — Stage B (expensive TRACE regeneration) is not warranted by this result. Caveat: matched-subset sizes are small (11-12 pairs), so a smaller residual confound cannot be fully ruled out. Script: `scripts/sgb042_stage_a_length_matched_audit.py`, data: `shared/results/finetune/sgb042_stage_a_results.json`.
+
 ## Status
 
 - [x] Optimizer comparison benchmark (30 seeds)
@@ -116,7 +126,8 @@ This resolves the SGB-004 anomaly: PPO now clearly beats SFT (2.22 vs 1.93 mean 
 - [x] Fix reward-model training convergence (SGB-005c) — truncation bug found and fixed; corrected rerun shows PPO > SFT (anomaly resolved) and Hodge-PPO directionally ahead of standard PPO (not yet significant at n=51)
 - [x] First draft (SGB-005) — `WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md`, ships the 1.5B result now with caveats per the steady-publishing-cadence preference
 - [ ] More holdout data or repeated seeds to firm up the Hodge-PPO vs standard-PPO gap
-- [ ] Scale Hodge-PPO to 7B/8B (SGB-006) and fold into a follow-up revision of the writeup
+- [x] Scale Hodge-PPO to 7B/8B (SGB-006) — standard PPO-7B stopped by user at step 100/256 for cost control ($275 Modal spend); Hodge-PPO-7B completed all 256 steps and is the only valid 7B PPO result
+- [x] **Length/style-matching audit (SGB-042 Stage A, 2026-07-30)** — tested whether the ~100% RM ranking accuracy seen at 1.5B and 7B is a length or hedge-phrase-opener artifact. Result: it is not. RM ranking accuracy stays at 100% on the length-matched subset (n=12/217 train, n=5/51 holdout; ±20% length tolerance), across a ±10%–±50% tolerance sweep, and on the pairs where the known hedge-phrase opener is removed (n=134/217 train). The strictest slice (length-matched AND hedge-free, n=11 train) is still 100%. This holds for all 4 existing RM checkpoints (1.5B/7B × standard/Hodge). Conclusion: the RM has real ranking signal beyond length/style on this dataset; Stage B (expensive TRACE regeneration) is not warranted by this result. Script: `scripts/sgb042_stage_a_length_matched_audit.py`, data: `shared/results/finetune/sgb042_stage_a_results.json`.
 - [ ] Condorcet ring benchmark (extend to 200+ seeds)
 - [ ] HH-RLHF topological audit
 - [ ] Multi-evaluator sheaf analysis
