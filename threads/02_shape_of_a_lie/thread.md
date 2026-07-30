@@ -112,7 +112,26 @@ trading) and overstate the effect.
 • "Deceptive" is defined by each dataset's labels — the machinery inherits
 the quality of those labels.
 
-## Post 10 — links
+## Post 10 — credit where due (LONG)
+
+Lineage:
+
+• Consistency catches liars — behaviorally: "How to Catch an AI Liar"
+(@LPacchiardi et al.), consistency checks (Fluri, Paleka & Tramèr),
+LM-vs-LM cross-examination
+• Truth structure inside one model: Burns et al., Marks & Tegmark, "Truth
+is Universal"
+• Supervised deception probes hit 95–99% in-distribution: Apollo Research
+(@MariusHobbhahn et al.)
+• The sign-flip scenario: alignment faking — Greenblatt et al. (2024)
+• Our translators are borrowed machinery: the model-stitching line (Lenc &
+Vedaldi → Bansal et al. → Moschella et al. → Chen et al.)
+
+Our piece: moving the consistency test from outputs to internal
+representations, across a panel of models — and the selectivity that
+falls out.
+
+## Post 11 — links
 
 The full story, with the sheaf math and all five scenarios:
 
@@ -150,5 +169,16 @@ Paper: {{ARXIV_LINK}}
   the below-chance side, and an order of magnitude weaker than the
   reasoning sign-flip — the copy calls it "no usable signal" and shows the
   p-value rather than claiming strict blindness.
+- Post 10 citations + tags come from the verified search in
+  `ai_research/.swarm/related_work_SOGB.md` (2026-07-30). Tag ONLY handles
+  listed there as verified (@LPacchiardi, @MariusHobbhahn; @OwainEvans_UK
+  optional on the same post). Never present the triangle score as a rival
+  to Apollo's 95–99% probes — ours is AUC 0.66 and unsupervised; the copy
+  already frames it as structure evidence.
+- If a related-work reply chain is added: name "Rift" (arXiv 2606.17229)
+  and Zolfaghari (arXiv 2605.30381) — cross-family probe TRANSFER — with
+  the delta: transfer finds a shared direction; ‖δ¹c‖ measures breakdown
+  of shared structure. Both are recent low-profile preprints; check
+  quality before citing prominently.
 - ‖δ¹c‖ is called "the triangle score" throughout the thread; keep the
   plain-language handle consistent if you edit.

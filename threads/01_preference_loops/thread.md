@@ -121,7 +121,21 @@ hasn't been run.
 to ~2 points at n=51 — not statistically significant. That war story is
 thread 3.
 
-## Post 10 — the deepest caveat + links
+## Post 10 — credit where due (LONG)
+
+Lineage, because none of this came from nowhere:
+
+• The math: HodgeRank — Jiang, Lim, Yao, Ye (2011)
+• Cycles provably break scalar reward models: Liu, Long, Shi, Su & Xiao
+(Annals of Statistics)
+• Alignment beyond one scalar reward: Nash-LHF (Munos et al.), SPO
+(@g_k_swamy et al.), SPPO, GPM
+• Closest neighbor: "Transitivity Meets Cyclicity" (ICML 2026) also splits
+preferences into transitive + cyclic parts — via game theory. Our delta:
+combinatorial Hodge machinery on the preference graph itself, plus a
+reward-hacking evaluation.
+
+## Post 11 — the deepest caveat + links
 
 Deepest caveat: the geometry inherits its inputs. Loop cleanup makes a
 reward model faithful to the consistent core of the preferences you
@@ -143,6 +157,12 @@ Code + data: github.com/MikeHLee/shape_of_good_behavior
 - Numbers provenance: `shared/results/optimizer_comparison_hodge_v3_30seed.json`;
   the caveats in Post 9 mirror `shared/results/README.md` ("Caveats that must
   travel with file 4") — re-read that section before posting.
-- Add the blog/arXiv link to Post 10 once available; thread 03
+- Post 10 citations + the @g_k_swamy tag come from the verified search in
+  `ai_research/.swarm/related_work_SOGB.md` (2026-07-30). Tag ONLY handles
+  listed there as verified. Do NOT claim "first transitive/cyclic
+  decomposition for alignment" — "Transitivity Meets Cyclicity" (arXiv
+  2605.17342, ICML 2026) pre-empts it; our delta is the Hodge instantiation +
+  exploit-resistance framing, exactly as worded in Post 10.
+- Add the blog/arXiv link to Post 11 once available; thread 03
   (`03_the_bug_that_broke_our_rl/`) is the LM-scale follow-up teased in
   Post 9.

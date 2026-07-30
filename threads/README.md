@@ -45,6 +45,11 @@ Framing-wide caveat carried by every thread: safe/good behavior is defined
 **relative to the preference/constraint structure used** — the geometric
 machinery inherits the quality of its inputs.
 
+Citations and X tags for threads 01–02 come from the verified literature
+search in `ai_research/.swarm/related_work_SOGB.md` (2026-07-30); the
+Track-4 thread's equivalent is `ai_research/.swarm/related_work_and_collaborators.md`.
+Tag only handles those files list as verified — never guess a handle.
+
 ## Blog mirroring
 
 - Canonical posts publish to the oasis Ghost CMS. **Note**: dev and prod
