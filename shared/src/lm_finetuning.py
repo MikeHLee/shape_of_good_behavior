@@ -61,7 +61,11 @@ class FineTuneConfig:
     sft_lr: float = 2e-4
     sft_batch_size: int = 4
     sft_grad_accum: int = 4          # effective batch = 16
-    sft_max_seq_length: int = 512
+    # SGB-044: bumped 512->1024 alongside the truncation_side="left" fix in
+    # run_sft, matching rm_max_length's precedent for the same TRACE context
+    # lengths (mean 1101, median 987.5 tokens) -- 512 was too small even with
+    # the correct truncation side.
+    sft_max_seq_length: int = 1024
 
     # Reward model
     # SGB-005b found both RMs' Bradley-Terry loss stuck at ~log(2) (chance).
@@ -85,6 +89,20 @@ class FineTuneConfig:
     rm_batch_size: int = 1
     rm_grad_accum: int = 16
     rm_max_length: int = 1024
+
+    # SGB-044: build_ppo_dataset (PPO training queries) and
+    # evaluate_exploit_resistance (eval prompts) both tokenized the
+    # context-only prompt with the tokenizer's default (right) truncation
+    # side, at two different, uncoordinated lengths (sft_max_seq_length=512
+    # for training, a hardcoded 256 for eval). Right-truncation drops the
+    # END of the prompt -- exactly where the chat template's assistant-turn
+    # marker lives -- so with 100% of TRACE records exceeding 256 tokens and
+    # 98.5% exceeding 512 (mean 1101, median 987.5), essentially every query
+    # at both stages lost its generation cue. Same bug class as the
+    # build_rm_dataset fix above; this field + the truncation_side="left"
+    # overrides in build_ppo_dataset/evaluate_exploit_resistance are the fix.
+    # Matches rm_max_length's precedent value (1024) for the same dataset.
+    ppo_query_max_length: int = 1024
 
     # PPO (custom loop — PPO-Clip without value network)
     ppo_steps: int = 256             # gradient update steps
@@ -200,6 +218,11 @@ def build_rm_dataset(
 
 def build_ppo_dataset(records, tokenizer, config: FineTuneConfig) -> Dataset:
     """Format TRACE exploit contexts as PPO query prompts (no response prefix)."""
+    # SGB-044 fix: default (right) truncation drops the END of the prompt --
+    # exactly where add_generation_prompt's assistant-turn marker lives.
+    # Left-truncation keeps it, same fix as build_rm_dataset above.
+    tokenizer.truncation_side = "left"
+
     rows = []
     for record in records:
         if not record.context_text:
@@ -216,7 +239,7 @@ def build_ppo_dataset(records, tokenizer, config: FineTuneConfig) -> Dataset:
             prompt = f"{SYSTEM_PROMPT}\n\nUser: {record.context_text.strip()}\nAssistant:"
 
         enc = tokenizer(
-            prompt, truncation=True, max_length=config.sft_max_seq_length,
+            prompt, truncation=True, max_length=config.ppo_query_max_length,
             padding=False, return_tensors="pt",
         )
         rows.append({
@@ -475,6 +498,16 @@ def load_reward_model(config: FineTuneConfig, checkpoint: Optional[str] = None):
 
 def run_sft(pairs, config: FineTuneConfig, output_dir: str) -> str:
     model, tokenizer = load_policy_model(config)
+    # SGB-044 fix: build_sft_dataset hands SFTTrainer a single formatted
+    # string (system+context+assistant response) via dataset_text_field;
+    # TRL tokenizes it internally using this tokenizer's default (right)
+    # truncation side, which -- for any example where context_text alone
+    # exceeds sft_max_seq_length -- drops the END of the string. The
+    # assistant's ideal response sits at the very end (add_generation_prompt
+    # was False when building it), so right-truncation cuts off the actual
+    # SFT training target, not just leftover context. Left-truncation keeps
+    # it, same fix as build_rm_dataset/build_ppo_dataset above.
+    tokenizer.truncation_side = "left"
     dataset = build_sft_dataset(pairs, tokenizer, config)
 
     sft_cfg = SFTConfig(
@@ -859,6 +892,11 @@ def evaluate_exploit_resistance(
         model, tokenizer = load_policy_model(config, checkpoint=ckpt)
         model.eval()
         gen_kwargs["pad_token_id"] = tokenizer.eos_token_id
+        # SGB-044 fix: same right-truncation-drops-the-assistant-marker bug
+        # as build_ppo_dataset, plus a mismatched hardcoded length (256 vs
+        # training's 512) below -- both replaced with the shared, generous
+        # config field so eval sees prompts formed the same way training did.
+        tokenizer.truncation_side = "left"
 
         rewards = []
         for record in eval_records:
@@ -873,7 +911,7 @@ def evaluate_exploit_resistance(
             except Exception:
                 prompt = f"{SYSTEM_PROMPT}\n\nUser: {record.context_text.strip()}\nAssistant:"
 
-            enc = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=256)
+            enc = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=config.ppo_query_max_length)
             enc = {k: v.to(device) for k, v in enc.items()}
 
             with torch.no_grad():
