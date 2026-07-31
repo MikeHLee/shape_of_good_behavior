@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""Figure for X/Twitter thread #4: "When the judge can't keep up with the
-contestant" (SCAFFOLD).
+"""Figures for X/Twitter thread #4: "When the judge can't keep up with the
+contestant".
 
 fig1 renders from
 `feedback_geometry/results/verifier_gap/mechanism_argmax_50seed.json`
 (SGB-035 summary block, weakest-judge cell) — nothing hand-entered.
 
-fig2 (the hook figure: saturated inside/outside-trap split) is specified in
-thread.md's pre-posting checklist and not yet built — it needs the per-seed
-argmax-inside-trap classification from the `rows` block plus the SGB-036
-out-of-sample file.
+fig2 (the hook figure) recomputes the saturated inside/outside-trap split —
+group means AND the Mann–Whitney p-values — from the per-run rows of
+`mechanism_argmax_50seed.json` and `mechanism_oos_seed200.json`.
 
 Usage: ./venv/bin/python3 threads/04_verifier_generator_gap/generate_figures.py
 Outputs PNGs into threads/04_verifier_generator_gap/figures/
@@ -111,6 +110,84 @@ def fig1():
     plt.close(fig)
 
 
+
+
+
+# ---------------------------------------------------------------- figure 2
+# The hook: at saturated search, argmax-inside-trap decides everything.
+def fig2():
+    from scipy import stats as sps
+
+    files = [
+        ("mechanism_argmax_50seed.json", "SGB-035 (seeds 100–149, 7 judge grades)"),
+        ("mechanism_oos_seed200.json", "SGB-036 out-of-sample (fresh seeds 200–249)"),
+    ]
+    base = os.path.dirname(SRC)
+
+    fig, axes = plt.subplots(1, 2, figsize=(12, 6.75), dpi=160, sharex=True)
+    fig.subplots_adjust(top=0.76, bottom=0.14, left=0.06, right=0.97,
+                        wspace=0.10)
+    rng = np.random.default_rng(7)  # fixed jitter for reproducibility
+
+    for ax, (fname, panel_title) in zip(axes, files):
+        with open(os.path.join(base, fname)) as f:
+            d = json.load(f)
+        groups = {True: [], False: []}
+        for r in d["rows"]:
+            groups[r["competence"]["argmax_in_trap"]].append(
+                r["search"]["1024"])
+        p = sps.mannwhitneyu(groups[True], groups[False],
+                             alternative="greater").pvalue
+
+        for y, (flag, color, label) in enumerate([
+            (False, BLUE, "trap NOT the judge's global optimum"),
+            (True, ORANGE, "trap IS the judge's global optimum"),
+        ]):
+            vals = np.array(groups[flag])
+            jit = rng.uniform(-0.16, 0.16, size=len(vals))
+            ax.scatter(vals, y + jit, s=42, color=color, alpha=0.55,
+                       edgecolor=SURFACE, linewidth=0.8, zorder=3)
+            m = vals.mean()
+            ax.plot([m, m], [y - 0.28, y + 0.28], color=INK, linewidth=2.4,
+                    zorder=4)
+            ax.text(m, y + 0.36, f"mean {m:.3f}  (n={len(vals)})",
+                    ha="center", va="bottom", fontsize=11.5, color=INK,
+                    fontweight="bold")
+            if flag:  # inside-trap row: label above, clear of the row gap
+                ax.text(-0.03, y + 0.42, label, ha="left", va="bottom",
+                        fontsize=11, color=color, fontweight="bold")
+            else:
+                ax.text(-0.03, y - 0.42, label, ha="left", va="top",
+                        fontsize=11, color=color, fontweight="bold")
+
+        ax.set_title(panel_title, fontsize=12.5, color=INK, pad=32)
+        ax.text(0.5, 1.02, f"Mann–Whitney p = {p:.1e}",
+                transform=ax.transAxes, ha="center", va="bottom",
+                fontsize=11, color=INK2)
+        ax.set_xlim(-0.05, 1.05)
+        ax.set_ylim(-0.75, 1.75)
+        ax.set_yticks([])
+        ax.set_xlabel("hack rate at saturated search (N = 1024)",
+                      fontsize=11.5, color=INK2)
+        ax.grid(axis="x", color=GRID, linewidth=0.8, zorder=0)
+        ax.spines[["top", "right", "left"]].set_visible(False)
+
+    fig.text(0.05, 0.97,
+             "At saturated search, one property of the judge decides everything",
+             fontsize=19, fontweight="bold", color=INK, ha="left", va="top")
+    fig.text(0.05, 0.915,
+             "Per-run hack rate at best-of-1024, split by whether the judge's highest-scored point sits inside the trap · each dot = one run.",
+             fontsize=12.5, color=INK2, ha="left", va="top")
+    fig.text(0.05, 0.02,
+             "SGB-035/036 · mechanism_argmax_50seed.json + mechanism_oos_seed200.json (p computed from the plotted per-run values) · "
+             "github.com/MikeHLee/shape_of_good_behavior",
+             fontsize=9.5, color=MUTED, ha="left")
+    fig.savefig(os.path.join(OUT, "fig2_inside_outside.png"),
+                bbox_inches="tight")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig1()
-    print(f"wrote 1 figure to {OUT} (fig2 not yet built — see thread.md)")
+    fig2()
+    print(f"wrote 2 figures to {OUT}")

@@ -22,7 +22,7 @@ Each thread directory contains:
 | 01 | Your preferences have loops — and reward models trip on them | `shared/results/optimizer_comparison_hodge_v3_30seed.json` (+ caveats in `shared/results/README.md`) | **Draft ready** |
 | 02 | The shape of a lie (peer-consistency sheaf) | `shared/results/peer_sheaf_e6_modal_*.json` (SGB-021 7–9B panel); pairs with the LIVE Part 4 blog post | **Draft** — pending blog URL + final read |
 | 03 | The bug that made our RL look broken (SGB-005c war story) | `shared/results/finetune/sgb004_exploit_resistance_holdout_v2.json`, `sgb005b_rm_scores{,_hodge}.json`, `feedback_geometry/WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md` | **Draft ready** |
-| 04 | When the judge can't keep up with the contestant (verifier–generator gap) | `feedback_geometry/results/verifier_gap/*.json`, `feedback_geometry/VERIFIER_GAP_WRITEUP.md` | **Scaffolded** — copy final, re-verify §-marked numbers against the writeup before posting |
+| 04 | When the judge can't keep up with the contestant (verifier–generator gap) | `feedback_geometry/results/verifier_gap/*.json`, `feedback_geometry/VERIFIER_GAP_WRITEUP.md` | **Draft ready** — numbers recomputed from raw rows 2026-07-31; only writeup/arXiv links pending |
 
 ## Claims discipline
 
