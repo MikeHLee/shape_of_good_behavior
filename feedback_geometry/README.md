@@ -117,6 +117,18 @@ Tested whether the ~100% RM ranking accuracy seen at both 1.5B and 7B is explain
 
 **Result: the confound is not confirmed.** RM ranking accuracy stayed at 100% on the length-matched subset (n=12/217 train, n=5/51 holdout, ±20% tolerance; p=0.0005 train vs. chance), held at 100% across a ±10%–±50% tolerance sweep, and stayed at 100% on the hedge-opener-free subset (n=134/217 train) and on the strictest combined slice (length-matched AND hedge-free, n=11 train). This holds identically for all 4 RM checkpoints. Conclusion: the reward model has real ranking signal beyond length/style on this dataset — Stage B (expensive TRACE regeneration) is not warranted by this result. Caveat: matched-subset sizes are small (11-12 pairs), so a smaller residual confound cannot be fully ruled out. Script: `scripts/sgb042_stage_a_length_matched_audit.py`, data: `shared/results/finetune/sgb042_stage_a_results.json`.
 
+### ⚠ Prompt Right-Truncation Bug Found — Exploit-Resistance Numbers Suspect (SGB-044, 2026-07-31)
+
+Found while diagnosing an impossible-looking 7B eval result (base 22% > SFT 20% > Hodge-PPO 14% > PPO 10% exploit resistance — exact opposite ordering of the 1.5B result). A diagnostic script (`scripts/sgb006_diagnose_7b_eval.py`) printed raw generations and found every prompt severely truncated, with trained-model outputs collapsing into visible repetition loops that `base` did not show.
+
+**Root cause:** `evaluate_exploit_resistance` (`shared/src/lm_finetuning.py:876`) truncates the generation prompt to a hardcoded `max_length=256`, right-truncation (the default side) — which drops the END of the prompt, exactly where the chat template's assistant-turn marker sits. `build_ppo_dataset` (same file) truncates PPO **training** queries the same way, at `config.sft_max_seq_length=512` — a different, uncoordinated constant, still the wrong truncation side. A cheap CPU-only check (`scripts/sgb006_check_context_lengths.py`) found **100% of the 268 TRACE reference records exceed 256 tokens** (mean 1101, median 987.5, min 311) and **98.5% exceed 512 tokens** — meaning essentially every eval prompt at both 1.5B and 7B, and nearly every PPO training query at both scales, has been truncated this way since SGB-003.
+
+This is a **separate, still-unfixed bug** from the SGB-005c RM-truncation fix (thread 03's "the bug that broke our RL") — that fix (`truncation_side="left"` + `rm_max_length` 512→1024) was applied only inside `build_rm_dataset` (RM pair tokenization), never to `build_ppo_dataset` or `evaluate_exploit_resistance`.
+
+**Implication:** every exploit-resistance percentage this pipeline has produced (SGB-004, SGB-005c, the SGB-005 writeup, SGB-006) came from the affected function and is now unconfirmed — not necessarily wrong, but not verified against a correctly-formed prompt either. A full fix likely requires retraining PPO at both scales, not just re-running eval, since training queries are affected too.
+
+**Status: paused at the user's explicit instruction — no fix applied, no retraining, no further Modal spend, pending a scoping decision.** Ticket: `.swarm/queue.md` SGB-044. Memory: `project_sgb044_truncation_bug.md`.
+
 ## Status
 
 - [x] Optimizer comparison benchmark (30 seeds)
@@ -128,6 +140,7 @@ Tested whether the ~100% RM ranking accuracy seen at both 1.5B and 7B is explain
 - [ ] More holdout data or repeated seeds to firm up the Hodge-PPO vs standard-PPO gap
 - [x] Scale Hodge-PPO to 7B/8B (SGB-006) — standard PPO-7B stopped by user at step 100/256 for cost control ($275 Modal spend); Hodge-PPO-7B completed all 256 steps and is the only valid 7B PPO result
 - [x] **Length/style-matching audit (SGB-042 Stage A, 2026-07-30)** — tested whether the ~100% RM ranking accuracy seen at 1.5B and 7B is a length or hedge-phrase-opener artifact. Result: it is not. RM ranking accuracy stays at 100% on the length-matched subset (n=12/217 train, n=5/51 holdout; ±20% length tolerance), across a ±10%–±50% tolerance sweep, and on the pairs where the known hedge-phrase opener is removed (n=134/217 train). The strictest slice (length-matched AND hedge-free, n=11 train) is still 100%. This holds for all 4 existing RM checkpoints (1.5B/7B × standard/Hodge). Conclusion: the RM has real ranking signal beyond length/style on this dataset; Stage B (expensive TRACE regeneration) is not warranted by this result. Script: `scripts/sgb042_stage_a_length_matched_audit.py`, data: `shared/results/finetune/sgb042_stage_a_results.json`.
+- [ ] **Prompt right-truncation bug (SGB-044, found 2026-07-31, PAUSED)** — `evaluate_exploit_resistance` and `build_ppo_dataset` right-truncate prompts (256 and 512 tokens respectively) losing the assistant-turn marker for ~100%/98.5% of TRACE records. Every exploit-resistance % below (SGB-004/005c/006) is unconfirmed pending this fix. Paused at user's explicit instruction — no fix, no retraining, no further spend yet.
 - [ ] Condorcet ring benchmark (extend to 200+ seeds)
 - [ ] HH-RLHF topological audit
 - [ ] Multi-evaluator sheaf analysis
