@@ -27,9 +27,18 @@ Cross-track infrastructure for the Shape of Good Behavior research series. Provi
 
 ## Key Results
 
-### Optimizer Comparison (30 seeds, 2026-07)
+### Optimizer Comparison (30 seeds, in-sample — superseded 2026-09-18)
 
 File: `results/optimizer_comparison_hodge_v3_30seed.json`
+
+> **⚠ CORRECTION (2026-09-18): the Hodge gain below does not survive held-out evaluation.**
+> These numbers are in-sample ranking accuracy from a non-reproducible run (unseeded subsample of
+> a 2,268-pair HH-RLHF + TRACE pool) that gave each sample another pair's Hodge target. A held-out
+> re-test (`shared/results/optimizer_comparison_heldout_v1.json`, 5 splits × 30 seeds) finds
+> Hodge-DPO 0.537 vs DPO 0.550 and Hodge-KTO 0.543 vs KTO 0.542 (split-level p ≥ 0.34), and a margin
+> control reproduces the whole in-sample gain. Do not cite the table below as evidence for
+> HodgePO. Details: `shared/results/README.md`.
+
 
 | Method | Exploit Resistance | Notes |
 |--------|--------------------|-------|

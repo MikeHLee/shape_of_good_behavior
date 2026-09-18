@@ -50,9 +50,18 @@ The SGPO algorithm (Constraint Geometry paper) uses the Hodge critic developed h
 
 ## Results Summary (as of 2026-07-23)
 
-### Optimizer Comparison — Hodge variants vs baselines (30 seeds, 500 pairs + 1482 edges, rm_epochs=50)
+### Optimizer Comparison — Hodge variants vs baselines (30 seeds, in-sample; superseded by the held-out re-test)
 
 Results saved: `shared/results/optimizer_comparison_hodge_v3_30seed.json`
+
+> **⚠ CORRECTION (2026-09-18): the Hodge gain below does not survive held-out evaluation.**
+> These numbers are in-sample ranking accuracy from a non-reproducible run (unseeded subsample of
+> a 2,268-pair HH-RLHF + TRACE pool) that gave each sample another pair's Hodge target. A held-out
+> re-test (`shared/results/optimizer_comparison_heldout_v1.json`, 5 splits × 30 seeds) finds
+> Hodge-DPO 0.537 vs DPO 0.550 and Hodge-KTO 0.543 vs KTO 0.542 (split-level p ≥ 0.34), and a margin
+> control reproduces the whole in-sample gain. Do not cite the table below as evidence for
+> HodgePO. Details: `shared/results/README.md`.
+
 
 | Method | Exploit Resistance | vs Baseline |
 |--------|--------------------|-------------|
@@ -105,7 +114,7 @@ No LM-level Hodge-PPO advantage over standard PPO was found (25.49% vs 23.53% is
 
 This resolves the SGB-004 anomaly: PPO now clearly beats SFT (2.22 vs 1.93 mean reward), confirming the earlier result was an artifact of the broken RM, not a real PPO/Hodge property. Hodge-PPO edges ahead of standard PPO on both metrics — the first time this investigation's direction has matched the embedding-level hypothesis — but the resistance gap is still one example at n=51 (42/51 vs 41/51), so it's directionally positive, not statistically confirmed. Full writeup: `shared/README.md#rm-root-cause-fix--corrected-rerun--sgb-005c-2026-07-27`, data: `shared/results/finetune/sgb004_exploit_resistance_holdout_v2.json`.
 
-**Follow-up writeup (SGB-005, 2026-07-27):** folded the embedding-level 30-seed benchmark and the corrected 1.5B LM-level result above into one note with a method×scale figure, shipped now (per the steady-publishing-cadence preference) rather than waiting for the 7B run. Headline: the Hodge advantage is large and clean at the embedding level (+6.3%/+24.5% over DPO/KTO) but collapses to a one-example, unconfirmed margin at the LM level (82.35% vs 80.39%, n=51) — directionally consistent, not yet a replication. Full writeup: `WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md`, figure: `figures/sgb005_fig1_method_by_scale.png`.
+**Follow-up writeup (SGB-005, 2026-07-27):** folded the embedding-level 30-seed benchmark and the corrected 1.5B LM-level result above into one note with a method×scale figure, shipped now (per the steady-publishing-cadence preference) rather than waiting for the 7B run. Headline (superseded 2026-09-18 — the embedding-level advantage was in-sample and does not survive held-out evaluation; see the correction above): the Hodge advantage appeared large at the embedding level (+6.3%/+24.5% over DPO/KTO) but collapses to a one-example, unconfirmed margin at the LM level (82.35% vs 80.39%, n=51) — directionally consistent, not yet a replication. Full writeup: `WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md`, figure: `figures/sgb005_fig1_method_by_scale.png`.
 
 ### 7B Scale-Up (SGB-006, 2026-07-29–30)
 

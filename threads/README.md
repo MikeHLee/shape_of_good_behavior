@@ -19,7 +19,7 @@ Each thread directory contains:
 
 | # | Thread | Source result | Status |
 |---|--------|---------------|--------|
-| 01 | Your preferences have loops — and reward models trip on them | `shared/results/optimizer_comparison_hodge_v3_30seed.json` (+ caveats in `shared/results/README.md`) | **⚠ ON HOLD (2026-09-18)** — benchmark is in-sample and its loops are constructed; see thread.md for required changes |
+| 01 | Your preferences have loops — and reward models trip on them | `shared/results/optimizer_comparison_hodge_v3_30seed.json` (+ caveats in `shared/results/README.md`) | **✖ WITHDRAWN (2026-09-18)** — held-out re-test finds no Hodge benefit; possible replacement: a pitfalls / negative-result thread |
 | 02 | The shape of a lie (peer-consistency sheaf) | `shared/results/peer_sheaf_e6_modal_*.json` (SGB-021 7–9B panel); pairs with the LIVE Part 4 blog post | **Draft** — pending blog URL + final read |
 | 03 | The bug that made our RL look broken (SGB-005c war story) | `shared/results/finetune/sgb004_exploit_resistance_holdout_v2.json`, `sgb005b_rm_scores{,_hodge}.json`, `feedback_geometry/WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md` | **⚠ ON HOLD (SGB-044)** — do not post, headline numbers unconfirmed |
 | 04 | When the judge can't keep up with the contestant (verifier–generator gap) | `feedback_geometry/results/verifier_gap/*.json`, `feedback_geometry/VERIFIER_GAP_WRITEUP.md` | **Draft ready** — numbers recomputed from raw rows 2026-07-31; only writeup/arXiv links pending |
@@ -45,11 +45,11 @@ project memory and public errata):
   prompt right-truncation bug (SGB-044, found 2026-07-31) affects 100% of
   eval prompts and 98.5% of PPO training queries at both scales. Unconfirmed,
   not retracted, until SGB-044 resolves. Thread 03 is ON HOLD for this reason.
-- The v3 Hodge benchmark described as held-out, as "exploit resistance", or as
-  evidence about loops in human preference data — it is in-sample ranking
-  accuracy on 500 HH-RLHF pairs, and its loops come from constructed
-  similarity edges (`shared/results/README.md` caveats 5–6, found 2026-09-18).
-  Never cite "28% of HH-RLHF is cyclic": no result file supports it.
+- Any claim that HodgePO (Hodge-DPO / Hodge-KTO) improves preference
+  optimization. The 0.9999 / 0.9964 figures were in-sample, came from a run
+  with misaligned targets, and are reproduced by a margin control; held-out,
+  there is no benefit (`shared/results/README.md`, found 2026-09-18). Never
+  cite "28% of HH-RLHF is cyclic": no result file supports it.
 
 Framing-wide caveat carried by every thread: safe/good behavior is defined
 **relative to the preference/constraint structure used** — the geometric

@@ -21,7 +21,19 @@ were produced in this order:
 | 1 | `optimizer_comparison.json` | 2026-03-20 | 30 | batch harmonic penalty | **superseded** |
 | 2 | `optimizer_comparison_modal_5seed.json` | 2026-03-21 | 5 | batch harmonic penalty | **superseded** (pilot) |
 | 3 | `optimizer_comparison_modal_30seed.json` | 2026-03-23 | 30 | batch harmonic penalty | **superseded** |
-| 4 | `optimizer_comparison_hodge_v3_30seed.json` | 2026-03-24 | 30 | potential-alignment regulariser (v3) | **current** |
+| 4 | `optimizer_comparison_hodge_v3_30seed.json` | 2026-03-24 | 30 | potential-alignment regulariser (v3) | **in-sample only; not reproducible** |
+| 5 | `optimizer_comparison_heldout_v1.json` | 2026-09-18 | 5 splits × 30 | v3 regulariser + margin control, held-out | **current** |
+
+> **Bottom line (2026-09-18): the Hodge gain does not survive held-out evaluation.**
+> File 5 trains on 400 pairs and scores 100 held-out pairs (5 splits × 30 seeds). On
+> held-out pairs every method, including a plain linear probe, scores 0.52–0.59 (chance
+> is 0.50): DPO 0.550, Hodge-DPO 0.537, KTO 0.542, Hodge-KTO 0.543. The split-level
+> paired tests are not significant (Hodge-DPO − DPO −0.013, p = 0.49; Hodge-KTO − KTO
+> +0.001, p = 0.97). On the training pairs, a **margin control** — the same loss term
+> with every pair's target set to the mean Hodge target, so no pair-specific Hodge
+> information — reproduces the full in-sample gain (DPO 1.000, KTO 0.997). File 4's
+> 0.9999 / 0.9964 figures are therefore in-sample fitting from an extra positive-margin
+> term, not an effect of cycle-aware targets. Do not cite file 4 as evidence for HodgePO.
 
 **Files 1–3 report a null effect. This is expected and is not a contradiction of
 file 4.** In all three, every Hodge variant is *numerically identical* to its base
@@ -89,29 +101,35 @@ optimizer_comparison_hodge_v3_30seed.json
    what the name suggests. See `.swarm/handoff_verifier_gap_unblock.md` for the
    thread that addresses this.
 
-4. **Counterfactual fallback rows.** `shared/src/counterfactual_gen.py:245,258`
-   silently substitutes the literal string `"I cannot assist with that request."`
-   as `ideal_text` when an API call fails. Those rows are inside
-   `counterfactual_pairs.json` and inside the exploit-resistance metric.
-   **Census done 2026-09-18: 0 of 500 rows** have that `ideal_text`. All 500
-   rows in the committed cache are HH-RLHF pairs (`source = hh_rlhf_direct`),
-   not TRACE counterfactuals, so this failure mode does not affect file 4.
+4. **The published training set was not the committed file (found 2026-09-18).**
+   File 4 was produced by `shared/modal_runner.py::run_optimizer_comparison` from
+   `pipeline/mapping.pkl` on the Modal volume `reward-hacking-results` (the volume's
+   `pipeline/optimizer_comparison.json` is byte-identical to file 4). That mapping holds
+   **2268 pairs: 2000 HH-RLHF harmless-base + 268 TRACE LLM counterfactuals**, and
+   21,767 edges. The runner took a random 500-pair subsample with the **unseeded**
+   global `np.random.choice` (`modal_runner.py:99`), so the exact subsample cannot be
+   recovered and file 4 cannot be reproduced exactly. A replay of 200 seeded draws
+   (`scripts/replay_published_v3_subsample.py`) gives 1470 ± 197 kept edges (1482 is the
+   52nd percentile) and about 59 TRACE pairs per draw; the published baselines fall
+   inside the across-draw range (DPO 0.907–0.963, KTO 0.735–0.827). The committed
+   `counterfactual_pairs.json` (500 HH-RLHF pairs) is a different set. Fallback-row
+   census on that committed file: 0 of 500 rows use the literal fallback `ideal_text`;
+   a census of the 268 TRACE pairs inside the volume mapping has not been done.
 
-5. **In-sample (found 2026-09-18).** `optimizer_comparison.py:167` calls
-   `trainer.train(samples)`, and `train()` scores
-   `evaluate_exploit_resistance(samples)` on the same list
-   (`preference_optimizers.py:161`). Every number in file 4 is accuracy on the
-   **training pairs**. There is no held-out split. Because the
-   potential-alignment target `Δφ_i` is computed from a graph that contains
-   pair *i*'s own edge, the Hodge variants also receive an extra label-derived
-   supervision signal that the metric then scores. A gain from stronger
-   in-sample fitting is therefore not ruled out. Needed: a held-out re-run,
-   plus a baseline given an equivalent label-derived target without the Hodge
-   projection.
+5. **In-sample, and the targets belong to other pairs (found 2026-09-18).**
+   `optimizer_comparison.py:167` calls `trainer.train(samples)`, and `train()` scores
+   `evaluate_exploit_resistance(samples)` on the same list (`preference_optimizers.py:161`),
+   so every number in file 4 is accuracy on the training pairs. In addition, after the
+   subsample the kept edges stay in the original pair order while the samples follow the
+   random draw order, and `hodge_diagnostic.py:230-251` reads sample *i*'s target and
+   cycle weight from edge *i*. In the replay, on average 1.02 of 500 samples (maximum 6)
+   received their own edge. **In the published run, each sample's Hodge target and cycle
+   weight came from a different pair.** Every target was positive, so the regularizer
+   acted as a generic positive-margin term. File 5's Misaligned arms reproduce this and
+   also reach 1.000 in-sample.
 
-6. **The cycles are constructed (found 2026-09-18).** The 500 training pairs
-   (`counterfactual_pairs.json`: all `hh_rlhf_direct`, all `harmless-base`,
-   confidence 1.0, 0 fallback rows) give disjoint direct edges with no cycles.
+6. **The cycles are constructed (found 2026-09-18).** Each direct edge joins two
+   responses that appear in no other pair, so the direct edges contain no cycles.
    All cyclic structure comes from `preference_mapper.py::_compute_similarity_preferences`,
    which sets edge probabilities by fixed formulas of embedding cosine
    similarity, from every node toward each of its 5 nearest neighbours (so
@@ -122,7 +140,11 @@ optimizer_comparison_hodge_v3_30seed.json
 
 ### If you cite one number
 
-Cite file 4, with caveats 1–3, 5 and 6 attached, and call it in-sample ranking accuracy, not "exploit resistance". Do not delete files 1–3: they are the
+Cite **file 5**: on held-out pairs, Hodge-DPO and Hodge-KTO do not beat their base
+methods or a margin control, and all methods are near chance. If you mention file 4,
+call it in-sample ranking accuracy from a non-reproducible run with misaligned targets
+(caveats 4–6), never "exploit resistance" and never evidence for HodgePO. Do not delete
+files 1–4: they are the
 evidence that the null result was diagnosed and explained rather than discarded,
 and a reviewer who finds them without this README will reasonably assume the
 latter.
@@ -137,9 +159,9 @@ latter.
   (strong on convincing-game and insider-trading, sign-flipped on alignment-faking
   reasoning, blind to overt/instructed lies). Do not describe it as a general
   deception detector.
-- `counterfactual_pairs.json` — the 500 training pairs for file 4. Despite the
-  name, all 500 rows are HH-RLHF harmless-base pairs (`source = hh_rlhf_direct`),
-  not TRACE counterfactuals. See caveats 4 and 6.
+- `counterfactual_pairs.json` — 500 HH-RLHF harmless-base pairs
+  (`source = hh_rlhf_direct`); the data set for file 5. It is **not** the training set
+  of file 4 (see caveat 4).
 - `hh_rlhf_quick_results.json` — early smoke test, superseded by the optimizer
   comparison files. Not cited anywhere.
 - `figures/`, `pipeline/` — generated artefacts.
