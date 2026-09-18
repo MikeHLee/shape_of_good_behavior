@@ -6,16 +6,16 @@ A research series applying topological and geometric methods to alignment — Ho
 
 | Track | Directory | Status | Key Result |
 |-------|-----------|--------|------------|
-| **1 — Feedback Geometry** | `feedback_geometry/` | Experiments complete | Hodge-DPO: exploit resistance 0.9999 vs DPO 0.940 (+6.3%, d=6.52, 30 seeds) |
+| **1 — Feedback Geometry** | `feedback_geometry/` | Experiments complete | Hodge-DPO 0.9999 vs DPO 0.940 in-sample ranking accuracy (d=6.52, 30 seeds; embedding level, 500 HH-RLHF pairs). Not held-out; loops are constructed — see `shared/results/README.md` caveats 5–6 |
 | **2 — Constraint Geometry** | `constraint_geometry/` | Paper draft | SGPO geodesic barriers; Murky Drone result under revision (see caveats) |
-| **3 — Constitutional Alignment Geometry** | `constitutional_alignment_geometry/` | Results complete | Peer sheaf: convincing-game AUC 0.661 (p=2.5e-6), insider-trading AUC 0.637 (p=8e-8) at 7–9B |
-| **Shared pipeline** | `shared/` | Production | SGB-005c: fixed a reward-model truncation bug (context text was silently duplicated across chosen/rejected) that had stuck RM training at chance; after the fix, corrected SGB-004 rerun shows PPO > SFT as expected (resolving the earlier anomaly) and Hodge-PPO edges ahead of standard PPO (82.4% vs 80.4% resistance) — directionally positive but still a 1-example gap at n=51, not yet statistically confirmed |
+| **3 — Constitutional Alignment Geometry** | `constitutional_alignment_geometry/` | Results complete | Peer sheaf at 7–9B: convincing-game AUC 0.661 ± 0.012, insider-trading AUC 0.625 ± 0.014 (subsample aggregates; p reported as a bracket in `alignment_research/README.md`); selective — null on instructed lies, sign-flipped on alignment-faking reasoning |
+| **Shared pipeline** | `shared/` | Production | SGB-005c: fixed a reward-model truncation bug (context text was silently duplicated across chosen/rejected) that had stuck RM training at chance; after the fix, corrected SGB-004 rerun shows PPO > SFT as expected (resolving the earlier anomaly) — but every LM-level exploit-resistance percentage (SGB-004/005c/006, including the former 82.4% vs 80.4%) is UNCONFIRMED: a second truncation bug (SGB-044) affected 100% of eval prompts and ~98.5% of training examples. Retrain in progress (2026-09-18) |
 
 ## Core Idea
 
 Standard RLHF collapses human preferences to a scalar reward, discarding topological structure and creating reward-hacking opportunities. This project uses:
 
-- **Discrete Hodge decomposition** to separate gradient (transitive) from harmonic (cyclic) preference components — Hodge variants filter exploit-exploitable cycles before training
+- **Discrete Hodge decomposition** to separate gradient (transitive) from harmonic (cyclic) preference components — Hodge variants use the cycle-free potential as a training target
 - **Conformal Riemannian metrics** to encode hard safety constraints as geodesic singularities rather than soft penalties
 - **Peer-consistency sheaves** to detect cross-model representational divergence on deceptive content without requiring deception as a training target
 
@@ -165,7 +165,7 @@ preprint and the repository:
 ```bibtex
 @misc{lee2026hodgepo,
   title={Hodge-Decomposed Preference Optimization: Using the Cycle-Free Component of a Preference Graph as a Training Target},
-  author={Lee, Michael},
+  author={Lee, Mike H},
   year={2026},
   note={Preprint},
   howpublished={\url{https://github.com/MikeHLee/shape_of_good_behavior}}
