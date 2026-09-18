@@ -159,11 +159,19 @@ See `requirements.txt`. Key dependencies:
 
 ## Citation
 
+None of this work has appeared at a peer-reviewed venue. Cite the self-published
+preprint and the repository:
+
 ```bibtex
-@inproceedings{lee2026modular,
-  title={Modular Safe RLHF: Discrete HodgeRank for Transitive Alignment and Conformal Metrics for Geometric Safety},
+@misc{lee2026hodgepo,
+  title={Hodge-Decomposed Preference Optimization: Using the Cycle-Free Component of a Preference Graph as a Training Target},
   author={Lee, Michael},
-  booktitle={Proceedings of the International Conference on Machine Learning},
-  year={2026}
+  year={2026},
+  note={Preprint},
+  howpublished={\url{https://github.com/MikeHLee/shape_of_good_behavior}}
 }
 ```
+
+An earlier version of this block cited an ICML 2026 proceedings paper. That paper
+was not accepted, and the conformal-safety claim in its title is refuted by the
+50-seed Murky Drone re-run (see `EXPERIMENT_ISSUES.md`).

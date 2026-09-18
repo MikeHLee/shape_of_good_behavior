@@ -1,6 +1,6 @@
 # `shared/results/` — provenance and supersession
 
-**Last updated**: 2026-07-21
+**Last updated**: 2026-09-18
 
 This directory holds raw result JSON from the Track 2 (`shared/`) pipeline. Several
 files measure the same thing at different points in the method's development and
@@ -92,12 +92,37 @@ optimizer_comparison_hodge_v3_30seed.json
 4. **Counterfactual fallback rows.** `shared/src/counterfactual_gen.py:245,258`
    silently substitutes the literal string `"I cannot assist with that request."`
    as `ideal_text` when an API call fails. Those rows are inside
-   `counterfactual_pairs.json` and inside the exploit-resistance metric. A census
-   of how many exist has **not** been done.
+   `counterfactual_pairs.json` and inside the exploit-resistance metric.
+   **Census done 2026-09-18: 0 of 500 rows** have that `ideal_text`. All 500
+   rows in the committed cache are HH-RLHF pairs (`source = hh_rlhf_direct`),
+   not TRACE counterfactuals, so this failure mode does not affect file 4.
+
+5. **In-sample (found 2026-09-18).** `optimizer_comparison.py:167` calls
+   `trainer.train(samples)`, and `train()` scores
+   `evaluate_exploit_resistance(samples)` on the same list
+   (`preference_optimizers.py:161`). Every number in file 4 is accuracy on the
+   **training pairs**. There is no held-out split. Because the
+   potential-alignment target `Δφ_i` is computed from a graph that contains
+   pair *i*'s own edge, the Hodge variants also receive an extra label-derived
+   supervision signal that the metric then scores. A gain from stronger
+   in-sample fitting is therefore not ruled out. Needed: a held-out re-run,
+   plus a baseline given an equivalent label-derived target without the Hodge
+   projection.
+
+6. **The cycles are constructed (found 2026-09-18).** The 500 training pairs
+   (`counterfactual_pairs.json`: all `hh_rlhf_direct`, all `harmless-base`,
+   confidence 1.0, 0 fallback rows) give disjoint direct edges with no cycles.
+   All cyclic structure comes from `preference_mapper.py::_compute_similarity_preferences`,
+   which sets edge probabilities by fixed formulas of embedding cosine
+   similarity, from every node toward each of its 5 nearest neighbours (so
+   mutual neighbours get edges in both directions, each with p > 0.5). This
+   benchmark does **not** measure how cyclic human preference data is. The
+   "28% harmonic energy in HH-RLHF" figure that appeared in the July paper
+   draft and READMEs has no supporting result file and is withdrawn.
 
 ### If you cite one number
 
-Cite file 4, with caveats 1–3 attached. Do not delete files 1–3: they are the
+Cite file 4, with caveats 1–3, 5 and 6 attached, and call it in-sample ranking accuracy, not "exploit resistance". Do not delete files 1–3: they are the
 evidence that the null result was diagnosed and explained rather than discarded,
 and a reviewer who finds them without this README will reasonably assume the
 latter.
@@ -112,7 +137,9 @@ latter.
   (strong on convincing-game and insider-trading, sign-flipped on alignment-faking
   reasoning, blind to overt/instructed lies). Do not describe it as a general
   deception detector.
-- `counterfactual_pairs.json` — TRACE counterfactual cache output. See caveat 4.
+- `counterfactual_pairs.json` — the 500 training pairs for file 4. Despite the
+  name, all 500 rows are HH-RLHF harmless-base pairs (`source = hh_rlhf_direct`),
+  not TRACE counterfactuals. See caveats 4 and 6.
 - `hh_rlhf_quick_results.json` — early smoke test, superseded by the optimizer
   comparison files. Not cited anywhere.
 - `figures/`, `pipeline/` — generated artefacts.
