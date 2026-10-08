@@ -317,13 +317,16 @@ def train_reward_model(hodge: bool = False) -> str:
     # bump to A100-40GB which has real headroom for the rollout buffers
     # and ppo-epoch autograd graph.
     gpu="A100-40GB",
-    timeout=14400,
+    # SGB-044: 1024-token queries + gradient checkpointing make each step
+    # slower; the 2-step smoke implied ~2-3h for 256 steps, too close to the
+    # old 4h (14400s) limit for a run with no periodic checkpoint.
+    timeout=28800,
     memory=32768,
     volumes={"/checkpoints": ckpt_vol, "/results": results_vol},
     secrets=_SECRETS,
 )
 def train_ppo(hodge: bool = False, experiment_id: str = "",
-              ppo_steps: int = 0) -> dict:
+              ppo_steps: int = 0, resume: bool = False) -> dict:
     """PPO policy optimization against the reward model.
 
     Loads the SFT checkpoint as the initial policy and frozen reference.
@@ -383,6 +386,14 @@ def train_ppo(hodge: bool = False, experiment_id: str = "",
         ft_config.checkpoint_dir = "/checkpoints"
         if ppo_steps > 0:
             ft_config.ppo_steps = ppo_steps
+        # SGB-044: queries grew 512->1024 tokens (+256 response), and the first
+        # 2-step smoke OOM'd on A100-40GB in the policy forward of the PPO
+        # inner loop (8 x 1280 x 151936 bf16 logits = 2.90 GiB alloc at 38.8
+        # GiB used). Same math-neutral fix the 7B path uses (train_ppo_7b).
+        ft_config.ppo_gradient_checkpointing = True
+        # Same periodic LoRA checkpoint + resume as train_ppo_7b: a kill loses
+        # at most 10 steps, not the whole run.
+        ft_config.ppo_checkpoint_every = 10
 
         _, hacked_records = _load_pairs(config, split="train")
         print(f"PPO: {len(hacked_records)} exploit prompts as queries  "
@@ -393,12 +404,37 @@ def train_ppo(hodge: bool = False, experiment_id: str = "",
         rm_ckpt  = "/checkpoints/rm_hodge" if hodge else "/checkpoints/rm"
         out_dir  = "/checkpoints/ppo_hodge" if hodge else "/checkpoints/ppo"
 
+        def _on_checkpoint(steps_done: int) -> None:
+            ckpt_vol.commit()
+            print(f"  checkpoint committed at step {steps_done}", flush=True)
+
+        resume_from = None
+        if resume:
+            progress_file = P(out_dir) / "_ppo_progress.json"
+            if not progress_file.exists():
+                raise FileNotFoundError(
+                    f"resume=True but no checkpoint progress file at {progress_file} "
+                    f"-- nothing to resume from."
+                )
+            with open(progress_file) as f:
+                prior = json.load(f)
+            if prior.get("complete"):
+                raise ValueError(
+                    f"resume=True but {progress_file} is already marked complete "
+                    f"({prior['steps_done']}/{prior['total_steps']} steps) -- nothing to resume."
+                )
+            resume_from = out_dir
+            print(f"resuming PPO from {out_dir} at step "
+                  f"{prior['steps_done']}/{prior['total_steps']}", flush=True)
+
         stats = run_ppo(
             records       = hacked_records,
             sft_checkpoint= sft_ckpt,
             rm_checkpoint = rm_ckpt,
             config        = ft_config,
             output_dir    = out_dir,
+            on_checkpoint = _on_checkpoint,
+            resume_from   = resume_from,
         )
         stats["hodge"] = hodge
 
@@ -487,7 +523,7 @@ def evaluate(n_eval: int = 50) -> dict:
     print(f"Evaluating: {list(checkpoints.keys())}  n_eval={n_eval}")
 
     P("/results/finetune").mkdir(parents=True, exist_ok=True)
-    out_path = "/results/finetune/eval_comparison.json"
+    out_path = "/results/finetune/eval_comparison_sgb044.json"
 
     def _on_checkpoint_done(name: str, result: dict) -> None:
         # Commit after every checkpoint, not just at the end, so a timeout
@@ -556,7 +592,7 @@ def score_pairs_rm(hodge: bool = False) -> dict:
     from pathlib import Path as P
 
     from shared.src.config import PipelineConfig
-    from shared.src.lm_finetuning import FineTuneConfig, load_reward_model, SYSTEM_PROMPT
+    from shared.src.lm_finetuning import FineTuneConfig, load_reward_model, format_rm_input
 
     config = PipelineConfig()
     config.trace_max_samples   = 517
@@ -578,12 +614,8 @@ def score_pairs_rm(hodge: bool = False) -> dict:
     rm_tokenizer.truncation_side = "left"
 
     def _fmt(context_text: str, response: str) -> str:
-        msgs = [
-            {"role": "system",    "content": SYSTEM_PROMPT},
-            {"role": "user",      "content": context_text.strip()},
-            {"role": "assistant", "content": response.strip()},
-        ]
-        return rm_tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=False)
+        # Shared helper (SGB-044 follow-up) -- same string PPO/eval score.
+        return format_rm_input(rm_tokenizer, context_text, response)
 
     def _score(context_text: str, response: str) -> float:
         text = _fmt(context_text, response)
@@ -645,7 +677,7 @@ def score_pairs_rm_7b(hodge: bool = False) -> dict:
     from pathlib import Path as P
 
     from shared.src.config import PipelineConfig
-    from shared.src.lm_finetuning import FineTuneConfig, load_reward_model, SYSTEM_PROMPT
+    from shared.src.lm_finetuning import FineTuneConfig, load_reward_model, format_rm_input
 
     config = PipelineConfig()
     config.trace_max_samples   = 517
@@ -664,12 +696,8 @@ def score_pairs_rm_7b(hodge: bool = False) -> dict:
     rm_tokenizer.truncation_side = "left"
 
     def _fmt(context_text: str, response: str) -> str:
-        msgs = [
-            {"role": "system",    "content": SYSTEM_PROMPT},
-            {"role": "user",      "content": context_text.strip()},
-            {"role": "assistant", "content": response.strip()},
-        ]
-        return rm_tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=False)
+        # Shared helper (SGB-044 follow-up) -- same string PPO/eval score.
+        return format_rm_input(rm_tokenizer, context_text, response)
 
     def _score(context_text: str, response: str) -> float:
         text = _fmt(context_text, response)
@@ -1014,7 +1042,7 @@ def evaluate_7b(n_eval: int = 50) -> dict:
     print(f"[7B] Evaluating: {list(checkpoints.keys())}  n_eval={n_eval}")
 
     P("/results/finetune").mkdir(parents=True, exist_ok=True)
-    out_path = "/results/finetune/7b_eval_comparison.json"
+    out_path = "/results/finetune/7b_eval_comparison_sgb044.json"
 
     def _on_checkpoint_done(name: str, result: dict) -> None:
         results_vol.commit()
@@ -1057,7 +1085,7 @@ def main(
     hodge:  bool = False,
     n_eval: int  = 50,
     ppo_steps: int = 0,     # override FineTuneConfig.ppo_steps (default 256)
-    resume: bool = False,   # ppo-7b only: continue from the existing checkpoint's step count
+    resume: bool = False,   # ppo / ppo-7b: continue from the existing checkpoint's step count
 ):
     """Orchestrate the fine-tuning pipeline on Modal GPU.
 
@@ -1115,7 +1143,7 @@ def main(
         # background process so it stays connected and mirrors the manifest.
         try:
             result = _run(train_ppo, hodge=hodge, experiment_id=exp_id,
-                          ppo_steps=ppo_steps)
+                          ppo_steps=ppo_steps, resume=resume)
             print(f"  → {result}")
         finally:
             dest = mirror_from_volume(

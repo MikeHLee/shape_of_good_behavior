@@ -19,10 +19,11 @@ Each thread directory contains:
 
 | # | Thread | Source result | Status |
 |---|--------|---------------|--------|
-| 01 | Your preferences have loops — and reward models trip on them | `shared/results/optimizer_comparison_hodge_v3_30seed.json` (+ caveats in `shared/results/README.md`) | **✖ WITHDRAWN (2026-09-18)** — held-out re-test finds no Hodge benefit; possible replacement: a pitfalls / negative-result thread |
+| 01 | Your preferences have loops — and reward models trip on them | `shared/results/optimizer_comparison_hodge_v3_30seed.json` (+ caveats in `shared/results/README.md`) | **✖ WITHDRAWN (2026-09-18)** — held-out re-test finds no Hodge benefit. **Replacement has a spine (2026-09-28): "we built cycle-aware preference optimization and the cycles weren't there."** b₁ = 0 on the real label graph (`shared/results/README.md` § 6a) — the loops in the title were kNN artefacts. Retitle; the premise is the retraction |
 | 02 | The shape of a lie (peer-consistency sheaf) | `shared/results/peer_sheaf_e6_modal_*.json` (SGB-021 7–9B panel); pairs with the LIVE Part 4 blog post | **Draft** — pending blog URL + final read |
-| 03 | The bug that made our RL look broken (SGB-005c war story) | `shared/results/finetune/sgb004_exploit_resistance_holdout_v2.json`, `sgb005b_rm_scores{,_hodge}.json`, `feedback_geometry/WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md` | **⚠ ON HOLD (SGB-044)** — do not post, headline numbers unconfirmed |
+| 03 | The bug that made our RL look broken (SGB-005c war story) | `shared/results/finetune/sgb004_exploit_resistance_holdout_v2.json`, `sgb005b_rm_scores{,_hodge}.json`, `feedback_geometry/WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md` | **✖ WITHDRAWN (2026-09-19)** — retrain shows the metric is invalid; PPO drifts to RM-over-rewarded incoherent text |
 | 04 | When the judge can't keep up with the contestant (verifier–generator gap) | `feedback_geometry/results/verifier_gap/*.json`, `feedback_geometry/VERIFIER_GAP_WRITEUP.md` | **Draft ready** — numbers recomputed from raw rows 2026-07-31; only writeup/arXiv links pending |
+| 05 | We built cycle-aware preference optimization. The cycles weren't there. | `shared/results/README.md` §6a (b₁=0), `optimizer_comparison_heldout_v1.json`, `docs/DESIGN_NOTE_RELATIVE_REWARDS.md` | **Draft (2026-09-28)** — **replaces thread 01**, withdrawing its premise not just its numbers. Needs Mike's review + Fig 1 (label graph) before posting; do not post without Fig 1 |
 
 ## Claims discipline
 
@@ -40,11 +41,25 @@ project memory and public errata):
   (misses overt/instructed lies); the blindness is a finding, not a footnote.
 - Hodge decomposition attributing irreducible disagreement to causes — it
   separates resolvable from irreducible; attribution needs extra structure.
+- **Any h₁ / harmonic-energy / curl-mass number from a kNN-augmented graph,
+  presented as a property of human feedback (added 2026-09-28).** The label
+  graph of `counterfactual_pairs.json` has **b₁ = E − V + C = 500 − 998 + 498
+  = 0** — a forest. On a forest, curl and harmonic energy are exactly zero for
+  *every possible* edge flow, so no labelling of that data could have shown
+  intransitivity. The decomposed graph was 90.9% synthetic kNN edges, so every
+  cycle in it passes through a similarity artefact, and `marginal_h1 ≈ 2.22`
+  measures the kNN wiring, not preferences. **Rule: whenever an h₁ or curl
+  figure is cited, report the b₁ of the labelled subgraph alongside it.** Never
+  let graph augmentation supply the topology being claimed as a finding. Also
+  never claim curl from a single scalar grader at any density — one scalar gives
+  flow grad s, which is exactly curl-free
+  (`hodge_preference_optimizers.py:8-13`). See `shared/results/README.md` § 6a.
 - Any LM-level exploit-resistance percentage from SGB-004/005c/006 (base
   68.6%/SFT 80.4%/PPO 80.4%/Hodge-PPO 82.4% at 1.5B; the 7B numbers) — a
   prompt right-truncation bug (SGB-044, found 2026-07-31) affects 100% of
-  eval prompts and 98.5% of PPO training queries at both scales. Unconfirmed,
-  not retracted, until SGB-044 resolves. Thread 03 is ON HOLD for this reason.
+  eval prompts and 98.5% of PPO training queries at both scales. The 2026-09-19
+  retrain WITHDRAWS them: "RM score > 0" does not measure exploit resistance, and
+  both PPO policies drift toward incoherent text the RMs over-reward. Never claim an LM-level Hodge-PPO benefit.
 - Any claim that HodgePO (Hodge-DPO / Hodge-KTO) improves preference
   optimization. The 0.9999 / 0.9964 figures were in-sample, came from a run
   with misaligned targets, and are reproduced by a margin control; held-out,

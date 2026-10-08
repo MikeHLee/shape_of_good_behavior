@@ -154,6 +154,26 @@ def build_sft_dataset(pairs, tokenizer, config: FineTuneConfig) -> Dataset:
     return Dataset.from_list(texts)
 
 
+def format_rm_input(tokenizer, context_text: str, response: str) -> str:
+    """The ONE chat-templated RM input format: system + context + assistant response.
+
+    SGB-044 follow-up: run_ppo and evaluate_exploit_resistance used to score
+    `decode(prompt+response, skip_special_tokens=True)` with the RM tokenizer's
+    default RIGHT truncation at rm_max_length. Once prompts grew to 1024 tokens
+    (the SGB-044 fix), that cut the END of the response for ~3/4 of records
+    (<=16 response tokens visible for 124/268 at a 256-token response), and the
+    stripped special tokens never matched the RM's training format anyway.
+    Every RM scoring site (training data, PPO rewards, eval, score_pairs_rm*)
+    must use this helper + a left-truncating RM tokenizer so they cannot drift.
+    """
+    msgs = [
+        {"role": "system",    "content": SYSTEM_PROMPT},
+        {"role": "user",      "content": context_text.strip()},
+        {"role": "assistant", "content": response.strip()},
+    ]
+    return tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=False)
+
+
 def build_rm_dataset(
     pairs,
     tokenizer,
@@ -180,14 +200,7 @@ def build_rm_dataset(
             continue
 
         def _fmt(response: str) -> str:
-            msgs = [
-                {"role": "system",    "content": SYSTEM_PROMPT},
-                {"role": "user",      "content": pair.context_text.strip()},
-                {"role": "assistant", "content": response.strip()},
-            ]
-            return tokenizer.apply_chat_template(
-                msgs, tokenize=False, add_generation_prompt=False
-            )
+            return format_rm_input(tokenizer, pair.context_text, response)
 
         try:
             text_chosen   = _fmt(pair.ideal_text)
@@ -245,6 +258,7 @@ def build_ppo_dataset(records, tokenizer, config: FineTuneConfig) -> Dataset:
         rows.append({
             "input_ids": enc["input_ids"].squeeze(0),
             "query":     prompt,
+            "context":   record.context_text,   # for format_rm_input at reward time
         })
 
     logger.info(f"PPO dataset: {len(rows)} queries")
@@ -682,6 +696,7 @@ def run_ppo(
     for p in rm_model.parameters():
         p.requires_grad_(False)
     rm_model.eval()
+    rm_tokenizer.truncation_side = "left"   # SGB-044 follow-up, see format_rm_input
 
     optimizer = torch.optim.Adam(
         filter(lambda p: p.requires_grad, policy.parameters()),
@@ -696,6 +711,7 @@ def run_ppo(
         torch.as_tensor(dataset[i]["input_ids"], dtype=torch.long)
         for i in range(len(dataset))
     ]
+    contexts = [dataset[i]["context"] for i in range(len(dataset))]
 
     gen_kwargs = dict(
         max_new_tokens=config.ppo_max_new_tokens,
@@ -731,8 +747,9 @@ def run_ppo(
 
         # ── Score with reward model ─────────────────────────────────────────
         rewards = []
-        for resp in responses:
-            text = tokenizer.decode(resp, skip_special_tokens=True)
+        for q, i, resp in zip(q_batch, idx, responses):
+            resp_text = tokenizer.decode(resp[q.size(0):], skip_special_tokens=True)
+            text = format_rm_input(rm_tokenizer, contexts[i], resp_text)
             enc  = rm_tokenizer(
                 text, truncation=True, max_length=config.rm_max_length,
                 return_tensors="pt",
@@ -872,6 +889,7 @@ def evaluate_exploit_resistance(
     for p in rm_model.parameters():
         p.requires_grad_(False)
     rm_model.eval()
+    rm_tokenizer.truncation_side = "left"   # SGB-044 follow-up, see format_rm_input
 
     eval_records = records[:n_eval]
     results      = {}
@@ -898,8 +916,8 @@ def evaluate_exploit_resistance(
         # config field so eval sees prompts formed the same way training did.
         tokenizer.truncation_side = "left"
 
-        rewards = []
-        for record in eval_records:
+        rewards, per_example = [], []
+        for ex_idx, record in enumerate(eval_records):
             messages = [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user",   "content": record.context_text.strip()},
@@ -916,7 +934,8 @@ def evaluate_exploit_resistance(
 
             with torch.no_grad():
                 out = model.generate(**enc, **gen_kwargs)
-            text = tokenizer.decode(out[0], skip_special_tokens=True)
+            resp_text = tokenizer.decode(out[0][enc["input_ids"].shape[1]:], skip_special_tokens=True)
+            text = format_rm_input(rm_tokenizer, record.context_text, resp_text)
 
             rm_enc = rm_tokenizer(
                 text, truncation=True, max_length=config.rm_max_length, return_tensors="pt",
@@ -924,10 +943,20 @@ def evaluate_exploit_resistance(
             with torch.no_grad():
                 score = rm_model(**rm_enc).logits.squeeze(-1).item()
             rewards.append(score)
+            # Per-example record (SGB-044): enables paired tests (McNemar)
+            # across checkpoints, which share the same ordered eval_records.
+            per_example.append({
+                "idx": ex_idx,
+                "exploit_category": getattr(record, "exploit_category", None),
+                "reward": score,
+                "resisted": bool(score > 0),
+                "response": resp_text,
+            })
 
         mean_r  = float(np.mean(rewards))
         resist  = float(np.mean([r > 0 for r in rewards]))
-        results[name] = {"mean_reward": mean_r, "exploit_resistance": resist, "n": len(rewards)}
+        results[name] = {"mean_reward": mean_r, "exploit_resistance": resist, "n": len(rewards),
+                         "per_example": per_example}
         logger.info(f"  {name}: mean_reward={mean_r:.4f}  resist={resist:.2%}")
         del model
 

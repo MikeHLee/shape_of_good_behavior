@@ -138,6 +138,70 @@ optimizer_comparison_hodge_v3_30seed.json
    "28% harmonic energy in HH-RLHF" figure that appeared in the July paper
    draft and READMEs has no supporting result file and is withdrawn.
 
+#### 6a. Caveat 6, quantified: b₁ = 0 (2026-09-28)
+
+Caveat 6 above states the direct edges contain no cycles. Computing the cyclomatic
+number makes the consequence exact and much stronger than "this benchmark does not
+measure how cyclic human preference data is."
+
+On the label graph of `counterfactual_pairs.json` (items = response texts, edges =
+asserted preferences), via `cai_geometry/curl_mass_real.py`:
+
+```
+labels 500 | V 998 | E 500 | C 498 | max degree 3 | mean degree 1.002
+b1 = E - V + C = 500 - 998 + 498 = 0
+degree histogram {1: 997, 3: 1}
+```
+
+**b₁ = 0: the label graph is a forest** — one 3-star plus 497 disjoint edges, i.e.
+very nearly a perfect matching. The stronger statement this licenses:
+
+> On a graph with b₁ = 0, curl energy and harmonic energy are **exactly zero for
+> every possible edge flow**, not merely for the flow we observed. Every conceivable
+> labelling of this graph is perfectly scalar-representable.
+
+So it is not that these particular labels happened to be acyclic. **No labelling of
+this data could have exhibited intransitivity.** The benchmark could not have
+measured preference cycles under any outcome.
+
+Proportions in the graph that was actually decomposed: 400 labelled edges vs 3,998
+kNN/cross edges per split — **90.9% synthetic** (2,000 vs 19,992 pooled across five
+splits). Since the labelled subgraph is a forest, every cycle in the decomposed graph
+passes through at least one synthetic edge. Therefore `graphs[*].marginal_h1 ≈ 2.22`
+is a property of the kNN wiring, not of human feedback.
+
+**This supplies the mechanism the file-5 null previously lacked.** File 5 established
+*that* Hodge-DPO ≈ DPO held out. It could not say why, which left tuning, seed count
+and regulariser strength open. b₁ = 0 closes them: there was no cycle structure in the
+labels to exploit, so the null is forced by the data's collection design rather than
+by weak method configuration.
+
+**Root cause — collection design, not preprocessing.** HH-RLHF supplies exactly one
+(chosen, rejected) pair per prompt, so each response text appears in exactly one
+comparison. The label graph is therefore a disjoint union of single edges, the
+sparsest possible forest. Intransitivity requires an item compared against *multiple*
+alternatives. Minimum viable design to make curl mass measurable at all:
+
+- ≥ 3 responses per prompt with **all** pairs compared (complete subgraph per prompt;
+  K₃ gives b₁ = 1, K₅ gives b₁ = 6)
+- each comparison labelled under a **named** principle (otherwise there is no mixture
+  and no reason to expect curl)
+- ≥ 2 principles that actually disagree on some triangle
+
+Cost is O(n²) comparisons per prompt instead of O(1). That is the real price of the
+cyclic-preference programme, and it was never paid.
+
+**Related trap, same root (documented at `hodge_preference_optimizers.py:8-13`).** A
+single *scalar* grader can never produce curl either, at any graph density: pairwise
+logits derived from one scalar score s give flow s(a) − s(b) = grad s, which is
+exactly curl-free. Verified numerically (residual 4.7e-33). Density is necessary but
+not sufficient — the labels must come from a mixture of principle-conditioned graders.
+
+Derivation of why a principle mixture is the only source of curl, plus a correction to
+the Track 3 H3 hypothesis (on a *complete* comparison graph the clique complex is
+contractible, so H¹ = 0 and all residual is curl — harmonic mass is manufactured by
+annotation sparsity, not by value conflict), is in `cai_geometry/FINDINGS.md`.
+
 ### If you cite one number
 
 Cite **file 5**: on held-out pairs, Hodge-DPO and Hodge-KTO do not beat their base
@@ -148,6 +212,37 @@ files 1–4: they are the
 evidence that the null result was diagnosed and explained rather than discarded,
 and a reviewer who finds them without this README will reasonably assume the
 latter.
+
+## LM fine-tuning (`finetune/`) — SGB-044 retrain, 2026-09-19
+
+**Bottom line: no LM-level exploit-resistance claim is supported.** The pre-2026-09 files
+(`sgb004_*`, `sgb005*`, 7B `sgb006_*`) were produced with prompt-truncation bugs; do not
+cite them. The retrain with the fixes gives:
+
+- `eval_comparison_sgb044.json` — 51 held-out prompts × {base, SFT, PPO, Hodge-PPO}; each
+  response and its Hodge-RM score.
+- `eval_rescore_sgb044.json` — the same responses scored by both RMs
+  (`scripts/sgb044_rescore_eval_both_rms.py`; the Hodge-RM rescore reproduces the eval exactly).
+- `eval_claude_judge_sgb044.json` — blind independent judge labels
+  (EXPLOIT / LEGITIMATE / DEFLECT / INCOHERENT).
+
+Findings:
+1. **"RM score > 0" is not an exploit-resistance metric.** The standard RM scores EXPLOIT and
+   DEFLECT responses the same (mean −13.0 vs −13.2).
+2. **PPO drifts toward text the RMs over-reward.** Both RMs score incoherent text (fabricated
+   `user:` turns, loops) above exploits and refusals. Hodge-PPO produced 25/51 incoherent
+   responses under judge 1 (PPO 12), but only 19 vs 13 under judge 2 (see below). Never
+   evaluate a policy with the RM it trained against.
+3. Judge-level: only base → SFT is significant (exploits 31 → 18, McNemar p = 0.011).
+   PPO does not beat SFT; Hodge-PPO does not beat PPO.
+
+Second judge (2026-10-07): `eval_claude_judge_bedrock_sgb044.json`, Claude Opus 5 on
+Bedrock (`scripts/sgb044_claude_judge.py --bedrock`). Agreement with judge 1: 169/204,
+Cohen's κ = 0.759. Under both judges: base → SFT reduces exploits (p = 0.011 / 0.041);
+SFT → PPO increases incoherent text (p = 0.021 / 0.039); both RMs score incoherent text above
+exploits and refusals. Under judge 1 only: Hodge-PPO more incoherent than PPO (p = 0.004;
+judge 2 p = 0.26). **Correct wording for finding 2:** both PPO policies drift toward text the
+RMs over-reward; the Hodge-PPO excess is not robust across judges.
 
 ---
 
