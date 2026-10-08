@@ -62,6 +62,47 @@ This is the simplest possible "constitutional gradient" — a linear direction i
 
 ### H3: Constitutional Principles Form a Non-Transitive Preference Order
 
+> **⚠️ CORRECTED 2026-09-28 — read this before using H3.** As written below, H3 is
+> **false as stated** on a dense comparison graph, and its empirical version is
+> **unmeasurable** in our current data. Two separate errors:
+>
+> **(1) The invariant is wrong: conflict is curl, not H¹.** On a *complete*
+> comparison graph the clique complex of Kₙ is a simplex — contractible — so
+> **H¹ = 0 identically**, and the harmonic component is exactly zero no matter how
+> violently the principles disagree. All of the non-scalar residual lives in
+> **curl** (local 3-cycles), not in cohomology. Demonstrated on identical utilities
+> in `cai_geometry/mixture_curl.py`: on K₆ the residual is pure curl with H¹ = 0,
+> while the same utilities on a 4-cycle (no triangles) give a genuine harmonic
+> circulation of ±0.03433 on every edge. **A nonzero harmonic class therefore
+> measures annotation sparsity, not value conflict** — collect the triangles and the
+> hole closes. Any claim of "irreducible value tension" read off harmonic mass is
+> partly reading off our own sampling design. Restate H3 in terms of curl, or argue
+> that the comparison graph is *intrinsically* sparse and say why.
+>
+> **(2) The data cannot exhibit the phenomenon at all.** The label graph of
+> `counterfactual_pairs.json` has **b₁ = E − V + C = 500 − 998 + 498 = 0** (a
+> forest). On a forest, curl *and* harmonic energy are exactly zero for every
+> possible edge flow — so no labelling of our data could have shown intransitivity.
+> And `principles_violated` is **empty on all 500 pairs**, so no
+> principle-conditioned labels exist to form a mixture from in the first place.
+> See `shared/results/README.md` § 6a.
+>
+> **What survives.** The underlying obstruction is real and theorem-shaped: a
+> mixture of principle-conditioned Bradley–Terry models is not representable by any
+> single scalar reward, because a scalar's logit flow is grad s and hence exactly
+> curl-free. That is a statement about *label processes*, and it is why H3 is worth
+> rescuing. But note the sharp limit found the same day: the obstruction does **not**
+> imply a performance benefit. A scalar reward fitted to curl-bearing mixture labels
+> never escaped the convex hull of the Pareto frontier across a full β×w sweep
+> (`cai_geometry/nonconvex_frontier.py`), whereas a one-line concave aggregator (Nash
+> log, or Chebyshev max-min) reaches the concave interior immediately with no geometry
+> at all. **Curl > 0 constrains what the labels are, not where the fit lands.**
+>
+> **To make H3 testable**, the data must be collected differently: ≥ 3 responses per
+> prompt with all pairs compared (K₃ gives b₁ = 1, K₅ gives b₁ = 6), each comparison
+> labelled under a *named* principle, and ≥ 2 principles that actually disagree on
+> some triangle. Cost is O(n²) comparisons per prompt, not O(1).
+
 **Hypothesis**: When constitutional principles are modeled as vectors {v₁, ..., vₖ} in embedding space, they exhibit non-trivial harmonic structure — obeying one principle fully may make another harder to satisfy.
 
 **Example tension**: "Be maximally helpful" vs. "Be maximally safe" are not collinear in embedding space. A policy that optimally follows one may fail the other — this is a genuine value conflict, not a noise artifact. The harmonic component of the principle system (via Hodge decomposition) quantifies the irresolvable tension.
