@@ -45,7 +45,7 @@ This document records issues discovered during experiment verification and their
 > exists (`src/murky_drone_experiment.py`, 50 seeds), built so that SGPO learns
 > danger from the observed cost signal rather than from ground truth.
 >
-> **§13 extends the audit to Track 3** (peer-consistency ‖δ¹c‖, in
+> **§16: Track 3 RETRACTED 2026-10-22.** §13 extends the audit to Track 3 (peer-consistency ‖δ¹c‖, in
 > `alignment_research`). Track 3 is **materially cleaner than Tracks 1–2** — it
 > genuinely seeds and aggregates, every number reconciles to a committed JSON, and
 > its figures regenerate. Its defects are reporting-convention only, now corrected:
@@ -947,3 +947,19 @@ runs and are exposed to collisions mod 10000. Grouping behaviour is preserved
 within a single process, so this is a latent rather than active defect — but it
 should be replaced with a stable hash before any of it is cited.
 
+## §16 — Track 3 (peer-consistency ‖δ¹c‖) ❌ RETRACTED 2026-10-22
+
+§13 found reporting-convention defects only; it missed the main defect.
+1. (δ¹c)_ijk = W_jk c_ij + c_jk − c_ik = (W_jk W_ij − W_ik) s_i. Models j and k cancel
+   exactly, so the score is not cross-model. Scrambling j and k changes it by < 1e-9.
+   With 876 calibration texts in 3.5k–4k dimensions, it is essentially single-model
+   distance from the calibration span.
+2. Pre-registered pairwise agreement after a single-model-typicality control: AF .519
+   (bar .55), FAIL.
+3. Word statistics: TF-IDF centroid distance .313 on AF, better than every hidden-state
+   score. Hidden states add nothing after words on AF. Supervised BoW gets .98–1.00 on
+   all datasets.
+4. Also: the AF comparison cell mostly complies (it is not "honest refusal"); AF is
+   confounded with tier; texts truncated at 512 tokens.
+Scripts, prereg and raw results: alignment_research `peer_consistency_geometry/checks/` (PR #2).
+Blog Part 4: correction notice in oasis-cloud PR #30 (live Ghost post unchanged pending Mike).

@@ -8,7 +8,7 @@ A research series applying topological and geometric methods to alignment — Ho
 |-------|-----------|--------|------------|
 | **1 — Feedback Geometry** | `feedback_geometry/` | **Negative result** | Held-out re-test: Hodge-DPO 0.537 vs DPO 0.550, Hodge-KTO 0.543 vs KTO 0.542 (5 splits × 30 seeds, split-level p ≥ 0.34); the earlier 0.9999 / 0.9964 figures were in-sample and are reproduced by a margin control — see `shared/results/README.md` |
 | **2 — Constraint Geometry** | `constraint_geometry/` | Paper draft | SGPO geodesic barriers; Murky Drone result under revision (see caveats) |
-| **3 — Constitutional Alignment Geometry** | `constitutional_alignment_geometry/` | Results complete | Peer sheaf at 7–9B: convincing-game AUC 0.661 ± 0.012, insider-trading AUC 0.625 ± 0.014 (subsample aggregates; p reported as a bracket in `alignment_research/README.md`); selective — null on instructed lies, sign-flipped on alignment-faking reasoning |
+| **3 — Constitutional Alignment Geometry** | `constitutional_alignment_geometry/` | Peer-sheaf result RETRACTED 2026-10-22 | Panel score reads one model only; word statistics match it. See note at end of README. |
 | **Shared pipeline** | `shared/` | Production | SGB-044 retrain DONE (2026-09-19): every earlier LM-level exploit-resistance percentage (SGB-004/005c/006, including 82.4% vs 80.4%) is **withdrawn**. A blind independent judge shows that "RM score > 0" does not measure exploit resistance, and that PPO drifts toward incoherent text that both RMs over-reward (two independent judges, κ = 0.76). Only base → SFT reduces exploits under both judges (p = 0.011 / 0.041). See `shared/results/README.md` § LM fine-tuning |
 
 ## Core Idea
@@ -17,7 +17,7 @@ Standard RLHF collapses human preferences to a scalar reward, discarding topolog
 
 - **Discrete Hodge decomposition** to separate gradient (transitive) from harmonic (cyclic) preference components — Hodge variants use the cycle-free potential as a training target
 - **Conformal Riemannian metrics** to encode hard safety constraints as geodesic singularities rather than soft penalties
-- **Peer-consistency sheaves** to detect cross-model representational divergence on deceptive content without requiring deception as a training target
+- ~~**Peer-consistency sheaves** to detect cross-model representational divergence on deceptive content~~ (RETRACTED 2026-10-22, see below)
 
 ## Key Contributions
 
@@ -175,3 +175,5 @@ preprint and the repository:
 An earlier version of this block cited an ICML 2026 proceedings paper. That paper
 was not accepted, and the conformal-safety claim in its title is refuted by the
 50-seed Murky Drone re-run (see `EXPERIMENT_ISSUES.md`).
+
+> **RETRACTED 2026-10-22 (Kolmogorov):** the peer-consistency deception result is withdrawn. The panel score (W_jk W_ij − W_ik)s_i reads one model only; a pre-registered pairwise rescue failed (.519 vs bar .55); word statistics beat every hidden-state score on alignment faking (.313). Full account: alignment_research `peer_consistency_geometry/checks/` (PR #2, branch kolmogorov/retract-peer-consistency). Do not cite these AUCs as evidence about deception.

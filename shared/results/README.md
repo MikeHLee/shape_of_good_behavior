@@ -248,7 +248,7 @@ RMs over-reward; the Hodge-PPO excess is not robust across judges.
 
 ## Other files in this directory
 
-- `peer_sheaf_e*.json` — SGB-012 peer-consistency sheaf experiments (E0–E6).
+- `peer_sheaf_e*.json` — SGB-012 peer-consistency sheaf experiments (E0–E6). **RETRACTED 2026-10-22 as deception evidence: see EXPERIMENT_ISSUES.md §14.**
   `peer_sheaf_modal_summary.json` aggregates the Modal runs. Findings summarised in
   the project memory note on peer-sheaf results; `‖δ¹c‖` is a *selective* detector
   (strong on convincing-game and insider-trading, sign-flipped on alignment-faking
