@@ -193,12 +193,10 @@ Treats a panel of independently-trained models as a sheaf over inputs; measures 
 | alignment-faking reasoning | 0.391 | n.s. | Sign-flipped — cue-robust behavior, not strategy |
 | instructed-deception | ~0.54 | n.s. | Overt lies not detected |
 
-Key findings:
-- Signal is **selective**: detects strategy-as-deception but not overt instructed lies
-- **Gated by scale**: effect absent at 0.3–1B, present at 7–9B
-- ‖δ¹c‖ is a relative comparator (cross-model divergence), not a ground-truth deception score
-
-Full writeup: `WRITEUP_PEER_DECEPTION_DIVERGENCE.md`
+**RETRACTED and REMOVED 2026-10-22.** The earlier findings listed here (selective deception signal,
+scale gating) do not hold: the panel score reads one model only, and plain word statistics beat it.
+The writeup, inquiry and TMLR plan were deleted. See EXPERIMENT_ISSUES.md §16 and
+alignment_research `peer_consistency_geometry/checks/`.
 
 ## Status and Next Steps
 

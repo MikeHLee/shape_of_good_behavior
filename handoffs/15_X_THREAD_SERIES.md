@@ -54,7 +54,7 @@ Standards (all demonstrated in SCT threads 01 and 03):
 | # | Thread | Headline numbers (verify against source before use) | Source |
 |---|--------|------------------------------------------------------|--------|
 | 01 | **Your preferences have loops — and reward models trip on them** (Hodge-DPO) | **✖ WITHDRAWN — DO NOT POST (2026-09-18/28).** The numbers formerly listed here (Hodge-DPO 0.9999±0.001 vs DPO 0.940±0.013, d=6.52; Hodge-KTO 0.9964 vs KTO 0.800, d=16.47) were **in-sample**, came from a run with misaligned targets, and are fully reproduced by a margin control carrying no pair-specific Hodge information. Held-out: Hodge-DPO 0.537 vs DPO 0.550, Hodge-KTO 0.543 vs KTO 0.542 (split-level p ≥ 0.34). **Mechanism (2026-09-28): b₁ = 0 on the real label graph — the "loops" in the title never existed in the data; they were kNN-augmentation artefacts.** Replacement thread spine: *we built cycle-aware preference optimization and the cycles weren't there.* | `shared/results/optimizer_comparison_heldout_v1.json` + `shared/results/README.md` §6a (NOT the v3 file) |
-| 02 | **The shape of a lie** (peer-consistency sheaf) | ‖δ¹c‖ detects deception-as-strategy at 7–9B: convincing-game AUC 0.661 (p=2.5e-6), insider-trading ~0.625–0.637; alignment-faking reasoning sign-flips (0.391, cue-robust); **blind to overt/instructed lies — selectivity IS the story** | `constitutional_alignment_geometry/`, Part 4 blog (LIVE on Ghost since 2026-06-04) |
+| 02 | ~~The shape of a lie~~ | **✖ REMOVED 2026-10-22 — DO NOT POST.** The panel score reads one model only, and word statistics beat it (EXPERIMENT_ISSUES §16). Thread deleted; Part 4 blog post unpublished. | — |
 | 03 | **The bug that made our RL look broken** (SGB-005c war story) | **✖ WITHDRAWN — DO NOT POST (2026-09-19).** The 2026-09-19 retrain shows "RM score > 0" does not measure exploit resistance, and PPO drifts toward incoherent text that both RMs over-reward (two blind judges, κ = 0.76; the Hodge-PPO excess holds under judge 1 only). The 82.4% vs 80.4% gap listed here previously is withdrawn, not merely non-significant. Only base → SFT reduces exploits under both judges (p = 0.011 / 0.041). | `shared/results/README.md` § LM fine-tuning |
 | 04 | **When the judge can't keep up with the contestant** (verifier–generator gap) | Lead with saturated hack rate 0.971 vs 0.056 (MW p=1.6e-35); scaling slope ≈ −19 across 3 disjoint blocks; mechanism confirmed OOS (SGB-035→036+3rd block) | Track 4 files, memory `project_verifier_gap_track4` |
 
@@ -94,9 +94,8 @@ Project memory (auto-loaded in ai_research sessions) has the details:
 ## Publishing mechanics
 
 - Blog: Ghost CMS — **dev and prod share one instance; publishing is
-  immediately public**. Part 4 "Shape of a Lie" is already LIVE (verify with
-  `scripts/_list-posts.js`, read-only) — thread 02 links to it rather than
-  re-publishing.
+  immediately public**. Part 4 "Shape of a Lie" was unpublished and removed
+  2026-10-22 (retracted); thread 02 is deleted.
 - Substack mirror: no publishing API — markdown paste per post, or a
   one-time Ghost RSS import. Titles identical; canonical URL = Ghost.
 - End each thread with repo + (when available) arXiv links.

@@ -20,7 +20,7 @@ Each thread directory contains:
 | # | Thread | Source result | Status |
 |---|--------|---------------|--------|
 | 01 | Your preferences have loops — and reward models trip on them | `shared/results/optimizer_comparison_hodge_v3_30seed.json` (+ caveats in `shared/results/README.md`) | **✖ WITHDRAWN (2026-09-18)** — held-out re-test finds no Hodge benefit. **Replacement has a spine (2026-09-28): "we built cycle-aware preference optimization and the cycles weren't there."** b₁ = 0 on the real label graph (`shared/results/README.md` § 6a) — the loops in the title were kNN artefacts. Retitle; the premise is the retraction |
-| 02 | ~~The shape of a lie (peer-consistency sheaf)~~ RETRACTED 2026-10-22, do not post | `shared/results/peer_sheaf_e6_modal_*.json` (SGB-021 7–9B panel); pairs with the LIVE Part 4 blog post | **Draft** — pending blog URL + final read |
+| 02 | ~~The shape of a lie~~ REMOVED 2026-10-22 | Result retracted (EXPERIMENT_ISSUES §16). Thread deleted; Part 4 blog post unpublished | **✖ REMOVED** |
 | 03 | The bug that made our RL look broken (SGB-005c war story) | `shared/results/finetune/sgb004_exploit_resistance_holdout_v2.json`, `sgb005b_rm_scores{,_hodge}.json`, `feedback_geometry/WRITEUP_OPEN_MODEL_EXPLOIT_RESISTANCE.md` | **✖ WITHDRAWN (2026-09-19)** — retrain shows the metric is invalid; PPO drifts to RM-over-rewarded incoherent text |
 | 04 | When the judge can't keep up with the contestant (verifier–generator gap) | `feedback_geometry/results/verifier_gap/*.json`, `feedback_geometry/VERIFIER_GAP_WRITEUP.md` | **Draft ready** — numbers recomputed from raw rows 2026-07-31; only writeup/arXiv links pending |
 | 05 | We built cycle-aware preference optimization. The cycles weren't there. | `shared/results/README.md` §6a (b₁=0), `optimizer_comparison_heldout_v1.json`, `docs/DESIGN_NOTE_RELATIVE_REWARDS.md` | **Draft (2026-09-28)** — **replaces thread 01**, withdrawing its premise not just its numbers. Needs Mike's review + Fig 1 (label graph) before posting; do not post without Fig 1 |
@@ -80,9 +80,7 @@ Tag only handles those files list as verified — never guess a handle.
 - Canonical posts publish to the oasis Ghost CMS. **Note**: dev and prod
   share one Ghost instance — publishing surfaces the post publicly
   immediately; there is no staging.
-- Part 4 "Shape of a Lie" is already LIVE (since 2026-06-04) — thread 02
-  links to it rather than re-publishing. Get the URL with the read-only
-  `scripts/_list-posts.js` in the oasis blog repo.
+- Part 4 "Shape of a Lie" was unpublished and removed 2026-10-22 (retracted).
 - **Substack mirror**: Substack has no publishing API — mirror by pasting the
   markdown (or importing the Ghost RSS feed once at setup). Keep titles
   identical; canonical URL points at the Ghost post.
