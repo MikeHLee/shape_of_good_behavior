@@ -1,6 +1,6 @@
 # The Shape of Good Behavior
 
-A research series applying topological and geometric methods to alignment — Hodge decomposition for preference structure, Riemannian metrics for safety constraints, and sheaf cohomology for cross-model behavioral verification.
+A research series applying topological and geometric methods to alignment — Hodge decomposition for preference structure, Riemannian metrics for safety constraints, and sheaf cohomology for cross-model behavioral verification (the cross-model deception result is RETRACTED 2026-10-22; see Track 3).
 
 ## Research Tracks
 
