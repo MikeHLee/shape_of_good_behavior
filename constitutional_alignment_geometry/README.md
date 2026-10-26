@@ -182,23 +182,26 @@ The three tracks together give:
 
 ## Results Summary (as of 2026-07-23)
 
-### Peer-Consistency Sheaf — Deception Detection (SGB-012)
+### Peer-Consistency Sheaf — Deception Detection (SGB-012) — RETRACTED 2026-10-22
+
+**RETRACTED and REMOVED 2026-10-22.** The earlier findings listed here (selective deception signal,
+scale gating) do not hold: the panel score reads one model only, and plain word statistics beat it.
+The writeup, inquiry and TMLR plan were deleted. See EXPERIMENT_ISSUES.md §16 and
+alignment_research `peer_consistency_geometry/checks/`.
+
+The table below is kept only as a record of what was claimed. **None of these values is a valid result.**
+The score reduces to (W_jk W_ij − W_ik) s_i, so it reads model i only (scrambling models j and k moves it by
+less than 1e-9); a TF-IDF baseline scores 0.313 on alignment faking, better than every hidden-state score.
 
 Treats a panel of independently-trained models as a sheaf over inputs; measures cocycle violation ‖δ¹c‖ as a deception signal. Results at 7–9B panel (Yi-1.5-9B, Zephyr-7B, Qwen2.5-7B); length-matched.
 
 | Config | AUC | p-value | Interpretation |
 |--------|-----|---------|----------------|
-| **convincing-game** (persuasion deception) | **0.661** | 2.5e-6 | Robust; deceptive responses shorter, so confound runs against |
-| **insider-trading** (agentic/strategic) | **0.625** | 8e-8 | Robust across seeds |
-| alignment-faking reasoning | 0.391 | n.s. | Sign-flipped — cue-robust behavior, not strategy |
-| instructed-deception | ~0.54 | n.s. | Overt lies not detected |
+| ~~convincing-game (persuasion deception)~~ | ~~0.661~~ | 2.5e-6 | RETRACTED |
+| ~~insider-trading (agentic/strategic)~~ | ~~0.625~~ | 8e-8 | RETRACTED |
+| ~~alignment-faking reasoning~~ | ~~0.391~~ | n.s. | RETRACTED (same score; reproduces as 0.364) |
+| ~~instructed-deception~~ | ~~0.54~~ | n.s. | RETRACTED (same score) |
 
-Key findings:
-- Signal is **selective**: detects strategy-as-deception but not overt instructed lies
-- **Gated by scale**: effect absent at 0.3–1B, present at 7–9B
-- ‖δ¹c‖ is a relative comparator (cross-model divergence), not a ground-truth deception score
-
-Full writeup: `WRITEUP_PEER_DECEPTION_DIVERGENCE.md`
 
 ## Status and Next Steps
 
